@@ -92,5 +92,10 @@
     "socials": {
       "linkedin": "https://linkedin.com/company/marzipan"
     }
-  }
+  },
+  "integrations": {
+    "fathom": {
+        "siteId": "RTPAJHQC"
+    }
+}
 }
