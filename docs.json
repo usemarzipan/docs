@@ -4,8 +4,8 @@
   "name": "Marzipan Docs",
   "colors": {
     "primary": "#2563eb",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "light": "#2563eb",
+    "dark": "#2563eb"
   },
   "favicon": "/favicon.svg",
   "navigation": {
