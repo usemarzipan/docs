@@ -66,6 +66,11 @@
           "anchor": "Blog",
           "href": "https://marzipan.co/blog",
           "icon": "newspaper"
+        },
+        {
+          "anchor": "Status",
+          "href": "https://status.marzipan.co",
+          "icon": "wrench"
         }
       ]
     }
