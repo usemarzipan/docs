@@ -1,0 +1,46 @@
+---
+title: 'Styling'
+description: "Customising the appearance of the web components."
+---
+
+### Introduction
+You can customise the appearance of the web components to match your branding by adding CSS to your website.
+
+<Tip>
+Styling the web components is optional, but recommended to match your branding, and requires an understanding of CSS. If in doubt, please ask your web developer to take a look.
+</Tip>
+
+We use TailwindCSS to style the web components, which are isolated from your global CSS so that they do not affect the rest of your website.
+
+We use the [**part**](https://developer.mozilla.org/en-US/docs/Web/CSS/::part) attribute to style the web components, which allows you to target specific elements within each component. The format is always `web-component::part(element-name)`.
+
+### Examples
+
+This CSS would target the button within the add to cart component, using Tailwind classes that exist with your own CSS styles.
+
+```css
+marzipan-addtocart::part(--add-to-cart-button) {
+    @apply text-white py-3 px-4 uppercase no-underline text-sm hover:bg-zinc-900;
+}
+```
+
+And this CSS would target the cart icon of the cart icon component using traditional CSS.
+
+```css
+marzipan-carticon::part(cart-icon) {
+    color: #bebebe;
+}
+```
+
+Because of how the web components are structured and how `part` works, we may use the same name for the same part in different components. For example, the `--marzipan-spinner` part is used in multiple components. However you must target each part separately:
+
+```css
+marzipan-cart::part(--marzipan-spinner), marzipan-checkout::part(--marzipan-spinner) {
+    color: #399383
+}
+```
+
+### Available parts
+
+Available parts are listed under each component's **Styling** section.
+

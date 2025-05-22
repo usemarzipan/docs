@@ -1,0 +1,108 @@
+---
+title: "Add to Cart"
+description: "The Add to Cart component is a call to action button that adds a product to a users cart."
+---
+
+### Code
+
+```javascript
+<marzipan-addtocart
+  product-id=""
+  show-quantity
+  availability=""
+></marzipan-addtocart>
+```
+
+### Props
+
+<ResponseField name="availability" type="string" >
+
+Who the product is available to. One of `all` or `subscribers`.
+
+Defaults to `all`
+
+</ResponseField>
+<ResponseField name="button-text" type="string">
+  The message to display on the button.
+
+Defaults to `Add to cart`
+
+</ResponseField>
+<ResponseField name="empty-cart-message" type="string">
+  The message to display when the cart is empty.
+
+Defaults to `Your cart is currently empty. Visit the store to start shopping.`
+
+</ResponseField>
+
+<ResponseField name="options" type="object">
+  The options for the product.
+
+</ResponseField>
+
+<ResponseField name="out-of-stock" type="boolean">
+  Whether the product is out of stock.
+
+Defaults to `false`
+
+</ResponseField>
+
+<ResponseField name="product-id" type="string" required>
+  The ID of the product to add to the cart.
+</ResponseField>
+
+<ResponseField name="product-type" type="string" required>
+  The type of the product to add to the cart.
+
+Defaults to `phsyical`
+
+</ResponseField>
+
+<ResponseField name="quantity" type="number">
+  The quantity of the product to add to the cart.
+
+Defaults to `1`
+
+</ResponseField>
+
+<ResponseField name="show-quantity" type="boolean">
+  Whether to show the quantity of the product in the cart.
+
+Defaults to `false`
+
+</ResponseField>
+
+<ResponseField name="view-cart-text" type="string">
+  The message to display on the "view cart" link.
+
+Defaults to `View cart`
+
+</ResponseField>
+
+### Styling
+
+The following parts are available to style the add to cart component:
+
+<ResponseField name="--add-to-cart-button">
+  The "add to cart" button.
+</ResponseField>
+
+<ResponseField name="--add-to-cart-button-spinner">
+  The loading spinner displayed instead of the button text when the add to cart action is being performd.
+</ResponseField>
+
+<ResponseField name="--add-to-cart-container">
+  The container around the add to cart button.
+</ResponseField>
+
+<ResponseField name="--add-to-cart-out-of-stock">
+  The div that contains the out of stock message.
+</ResponseField>
+
+<ResponseField name="--add-to-cart-quantity">
+  The quantity input field.
+</ResponseField>
+
+<ResponseField name="--view-cart-button">
+  The "view cart" button.
+</ResponseField>

@@ -1,0 +1,85 @@
+---
+title: 'Account'
+description: 'The Account component enables users to log in and manage their account.'
+
+---
+
+From their account your customers can manage their subscriptions, view their orders, and update their billing and shipping details.
+
+### Code
+```javascript
+<marzipan-account>
+  <div slot="stripe-card-element" id="stripe-card-element"></div>
+</marzipan-account>
+```
+
+### Styling
+
+The following parts are available to style the account component:
+
+<ParamField body="--button">
+  The primary action buttons displayed in the account component. This is normally when a "submit" button is used.
+</ParamField>
+
+<ParamField body="--cancel-button">
+  The cancel button displayed in the account component.
+</ParamField>
+
+<ParamField body="--nav-link" >
+  The navigation links displayed in the account component.
+</ParamField>
+
+<ParamField body="--active-nav-link" >
+  The navigation links displayed in the account component when they are active.
+</ParamField>
+
+<ParamField body="--form-container" >
+  The containing div around the login and register forms.
+</ParamField>
+
+<ParamField body="--form" >
+  The login and register forms
+</ParamField>
+
+<ParamField body="--h1" >
+  The h1 heading.
+</ParamField>
+
+<ParamField body="--h2" >
+  The h2 heading.
+</ParamField>
+
+<ParamField body="--label" >
+  The label.
+</ParamField>
+
+<ParamField body="--link" >
+  Links
+</ParamField>
+
+<ParamField body="--loading-spinner">
+  The loading spinner displayed when various actions are loading.
+</ParamField>
+
+<ParamField body="--login-button" >
+  The primary action button on the login, register and verify account forms.
+</ParamField>
+
+<ParamField body="--input" >
+  The styling applied to form input fields, including the `<textarea>` element.
+</ParamField>
+
+<ParamField body="--marzipan-spinner">
+  The loading spinner displayed when various actions are loading.
+</ParamField>
+
+<Info>
+When targetting any of the parts, you must prepend the part name with the component name. For example, to target the loading spinner in the account component, you would use the following CSS:
+</Info>
+
+```css
+marzipan-account::part(--loading-spinner) {
+    @apply bg-green-500;
+}
+```
+

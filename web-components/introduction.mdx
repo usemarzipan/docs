@@ -1,0 +1,44 @@
+---
+title: 'Introduction'
+description: "Get started with Marzipan's web components."
+---
+
+The Marzipan web components are a set of custom elements that can be used to add a fully functional commerce solution to your website.
+
+## Setup
+
+To use the web components, you will need to generate an API token from your [account settings](https://app.marzipan.co/settings/api) and add the following script to your website.
+
+<Note>
+You will need to select the `read`, `cart:create`, `cart:update`, `cart:read` scopes.
+</Note>
+
+Replace `YOUR_API_TOKEN` in the script with the API token that you generate.
+
+```javascript
+<script data-m-token="YOUR_API_TOKEN"
+  src="https://web-components.marzipan.cloud/script.js"
+  type="module"
+  crossorigin
+>
+</script>
+```
+
+Once you have added the script to your website, you can start adding the required web components.
+<Tip>
+If you are not sure how to add the web components to your website, you may want to get your web developer to add them for you.
+</Tip>
+
+## Marzipan CMS
+
+If you are using the Marzipan CMS to power your website, you can use add the account, cart, checkout and products components in the page builder by selecting the Marzipan components button from the editor toolbar.
+
+<Frame>
+  <img src="https://cdn.marzipan.cloud/0/docs/web-components/cms-web-components.png" noZoom />
+</Frame>
+
+If there are any configurable properties, you will be shown a modal where you can set them. The properties are the same as detailed in the **Props** section of the relevant web component documentation page.
+
+<Frame>
+  <img width="300" src="https://cdn.marzipan.cloud/0/docs/web-components/cms-web-components-products.png" noZoom />
+</Frame>
