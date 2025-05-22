@@ -1,95 +1,165 @@
 {
-  "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
   "name": "Marzipan Docs",
+  "appearance": {
+    "default": "light"
+  },
   "colors": {
     "primary": "#2563eb",
     "light": "#2563eb",
     "dark": "#2563eb"
   },
   "favicon": "/favicon.svg",
+  "fonts": {
+    "heading": {
+      "source": "https://marzipan-cloud.b-cdn.net/0/fonts/Inter/InterVariable.woff2",
+      "format": "woff2",
+      "family": "Inter",
+      "weight": 350
+    },
+    "body": {
+      "family": "Inter",
+      "source": "https://marzipan-cloud.b-cdn.net/0/fonts/Inter/InterVariable.woff2",
+      "format": "woff2",
+      "weight": 400
+    }
+  },
+  "icons": {
+    "library": "lucide"
+  },
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Documentation",
         "groups": [
           {
             "group": "Get Started",
             "pages": [
               "index",
-              "quickstart",
-              "development"
+              "quickstart"
             ]
           },
           {
-            "group": "Essentials",
+            "group": "Orders",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/settings",
-              "essentials/navigation",
-              "essentials/reusable-snippets"
+              "essentials/markdown"
+            ]
+          },
+          {
+            "group": "Subscriptions",
+            "pages": [
+              "essentials/code"
+            ]
+          },
+          {
+            "group": "Events",
+            "pages": [
+              "events/checkout"
+            ]
+          },
+          {
+            "group": "Customers",
+            "pages": [
+              "customers/checkout"
+            ]
+          },
+          {
+            "group": "Products",
+            "pages": [
+              "products/checkout"
+            ]
+          },
+          {
+            "group": "Attributes",
+            "pages": [
+              "attributes/checkout"
+            ]
+          },
+          {
+            "group": "Collections",
+            "pages": [
+              "collections/checkout"
+            ]
+          },
+          {
+            "group": "Discounts",
+            "pages": [
+              "discounts/checkout"
+            ]
+          },
+          {
+            "group": "CMS",
+            "pages": [
+              "cms/checkout"
+            ]
+          },
+          {
+            "group": "Flows",
+            "pages": [
+              "flows/checkout"
+            ]
+          },
+          {
+            "group": "Settings",
+            "pages": [
+              "settings/checkout"
+            ]
+          },
+          {
+            "group": "Other",
+            "pages": [
+              "changelog"
             ]
           }
         ]
       },
       {
-        "tab": "API Reference",
+        "tab": "Web Components",
         "groups": [
           {
-            "group": "API Documentation",
+            "group": "Get Started",
             "pages": [
-              "api-reference/introduction"
+              "web-components/introduction",
+              "web-components/styling"
             ]
           },
           {
-            "group": "Endpoint Examples",
+            "group": "Components",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "web-components/account",
+              "web-components/add-to-cart",
+              "web-components/cart",
+              "web-components/cart-icon",
+              "web-components/checkout",
+              "web-components/contact-form",
+              "web-components/logged-in-only",
+              "web-components/products",
+              "web-components/subscriber-only"
+            ]
+          },
+          {
+            "group": "Plugins",
+            "pages": [
+              "web-components/wordpress"
             ]
           }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://docs.marzipan.co",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://marzipan.co/blog",
-          "icon": "newspaper"
-        },
-        {
-          "anchor": "Status",
-          "href": "https://status.marzipan.co",
-          "icon": "wrench"
-        }
-      ]
-    }
+    ]
   },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
-  },
+  "logo": "https://cdn.marzipan.cloud/0/docs/logo.png",
   "navbar": {
     "links": [
     ],
     "primary": {
       "type": "button",
-      "label": "Get Started",
-      "href": "https://app.marzipan.co/register"
+      "label": "Login",
+      "href": "https://app.marzipan.co/login"
     }
   },
   "footer": {
     "socials": {
+      "website": "https://marzipan.co",
       "linkedin": "https://linkedin.com/company/marzipan"
     }
   },
