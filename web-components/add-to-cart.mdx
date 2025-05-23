@@ -9,11 +9,13 @@ description: "The Add to Cart component is a call to action button that adds a p
 <marzipan-addtocart
   product-id=""
   show-quantity
-  availability=""
+  redirect
 ></marzipan-addtocart>
 ```
 
 ### Props
+
+Props should be passed as attributes to the component element.
 
 <ResponseField name="availability" type="string" >
 
@@ -28,12 +30,6 @@ Defaults to `all`
 Defaults to `Add to cart`
 
 </ResponseField>
-<ResponseField name="empty-cart-message" type="string">
-  The message to display when the cart is empty.
-
-Defaults to `Your cart is currently empty. Visit the store to start shopping.`
-
-</ResponseField>
 
 <ResponseField name="options" type="object">
   The options for the product.
@@ -41,10 +37,9 @@ Defaults to `Your cart is currently empty. Visit the store to start shopping.`
 </ResponseField>
 
 <ResponseField name="out-of-stock" type="boolean">
-  Whether the product is out of stock.
+  Whether the product is out of stock. Setting this to `true` will disable the add to cart button and show an out of stock message.
 
-Defaults to `false`
-
+  Defaults to `false`
 </ResponseField>
 
 <ResponseField name="product-id" type="string" required>
@@ -52,24 +47,29 @@ Defaults to `false`
 </ResponseField>
 
 <ResponseField name="product-type" type="string" required>
-  The type of the product to add to the cart.
+  The product type of the product being added to the cart.
 
-Defaults to `phsyical`
+  One of `physical`, `bundle`, `event`, `subscription`.
 
+Defaults to `physical`
 </ResponseField>
 
 <ResponseField name="quantity" type="number">
   The quantity of the product to add to the cart.
 
 Defaults to `1`
+</ResponseField>
 
+<ResponseField name="redirect" type="boolean">
+  Whether to redirect to the cart page after adding the product to the cart.
+
+  Defaults to `false`
 </ResponseField>
 
 <ResponseField name="show-quantity" type="boolean">
   Whether to show the quantity of the product in the cart.
 
 Defaults to `false`
-
 </ResponseField>
 
 <ResponseField name="view-cart-text" type="string">
@@ -84,7 +84,7 @@ Defaults to `View cart`
 The following parts are available to style the add to cart component:
 
 <ResponseField name="--add-to-cart-button">
-  The "add to cart" button.
+  The "add to cart" button element.
 </ResponseField>
 
 <ResponseField name="--add-to-cart-button-spinner">
@@ -92,11 +92,11 @@ The following parts are available to style the add to cart component:
 </ResponseField>
 
 <ResponseField name="--add-to-cart-container">
-  The container around the add to cart button.
+  The containing `<div>` around the add to cart button.
 </ResponseField>
 
 <ResponseField name="--add-to-cart-out-of-stock">
-  The div that contains the out of stock message.
+  The `<div>` that contains the out of stock message.
 </ResponseField>
 
 <ResponseField name="--add-to-cart-quantity">
@@ -104,5 +104,5 @@ The following parts are available to style the add to cart component:
 </ResponseField>
 
 <ResponseField name="--view-cart-button">
-  The "view cart" button.
+  The "view cart" button element
 </ResponseField>

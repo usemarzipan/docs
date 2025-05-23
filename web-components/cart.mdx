@@ -1,20 +1,67 @@
 ---
 title: 'Cart'
-description: 'Example section for showcasing API endpoints'
+description: "The Cart component displays the user's cart."
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
+### Code
 ```javascript
-<marzipan-products
-  collection="Events"
-  placeholder-items="3"
-  v-bind:show-cart-quantity.prop="true"
-  v-bind:show-collection-name.prop="false"
-  v-bind:show-more-link.prop="true"
-  show-more-text="Learn more"
-  v-bind:redirect-to-cart.prop="false"
-></marzipan-products>
+<marzipan-cart></marzipan-cart>
 ```
+
+### Props
+
+Props should be passed as attributes to the component element.
+
+<ResponseField name="checkout-path" type="string" >
+The path to the checkout page.
+
+Defaults to `/checkout`
+</ResponseField>
+<ResponseField name="empty-cart-message" type="string" >
+The message to display when the cart is empty.
+
+Defaults to `You have nothing in your cart.`
+</ResponseField>
+<ResponseField name="shop-path" type="string" >
+The path to the shop page.
+
+Defaults to `/shop`
+</ResponseField>
+
+
+### Styling
+
+The following parts are available to style the cart component:
+
+<ResponseField name="--cart-container">
+The containing `<div>` around the cart.
+</ResponseField>
+
+<ResponseField name="--cart-checkout-button">
+The checkout button element.
+</ResponseField>
+
+<ResponseField name="--cart-image">
+The `<img>` element that contains the product image.
+</ResponseField>
+
+<ResponseField name="--cart-image-container">
+The containing `<div>` around the product image.
+</ResponseField>
+
+<ResponseField name="--cart-shopping-link">
+The "continue shopping" link element.
+</ResponseField>
+
+<ResponseField name="--empty-cart-message">
+The `<div>` that contains the empty cart message.
+</ResponseField>
+
+<ResponseField name="--loading-colour">
+The pulsating loading elements that are shown when the cart is loading.
+</ResponseField>
+
+
+
+
+

@@ -1,20 +1,40 @@
 ---
 title: 'Cart Icon'
-description: 'Example section for showcasing API endpoints'
+description: 'The cart icon component displays a cart icon and shows the number of items in the cart. It is ideal to be placed in the header of your website.'
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
+### Code
+
 ```javascript
-<marzipan-products
-  collection="Events"
-  placeholder-items="3"
-  v-bind:show-cart-quantity.prop="true"
-  v-bind:show-collection-name.prop="false"
-  v-bind:show-more-link.prop="true"
-  show-more-text="Learn more"
-  v-bind:redirect-to-cart.prop="false"
-></marzipan-products>
+<marzipan-carticon
+  cart-path="/cart"
+  icon-style="bag-outline"
+/>
 ```
+
+### Props
+
+Props should be passed as attributes to the component element.
+
+<ResponseField name="cart-path" type="string">
+The path to the cart page.
+
+Defaults to `/cart`
+</ResponseField>
+
+<ResponseField name="icon-style" type="string">
+The style of the icon to display.
+
+Can be one of `cart-outline`, `cart-solid`, `bag-outline`, or `bag-solid`.
+
+Defaults to `bag-outline`
+</ResponseField>
+
+### Styling
+
+The following parts are available to style the cart icon component:
+
+<ResponseField name="cart-icon" type="string">
+The `<a>` element that contains the icon and cart count.
+</ResponseField>
+

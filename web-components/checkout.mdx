@@ -1,20 +1,103 @@
 ---
 title: 'Checkout'
-description: 'Example section for showcasing API endpoints'
+description: 'The checkout component displays the checkout page.'
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
+### Code
 ```javascript
-<marzipan-products
-  collection="Events"
-  placeholder-items="3"
-  v-bind:show-cart-quantity.prop="true"
-  v-bind:show-collection-name.prop="false"
-  v-bind:show-more-link.prop="true"
-  show-more-text="Learn more"
-  v-bind:redirect-to-cart.prop="false"
-></marzipan-products>
+<marzipan-checkout>
+    <div slot="stripe-card-element" id="stripe-card-element">
+    </div>
+    <div slot="express-checkout-element" id="express-checkout-element">
+    </div>
+</marzipan-checkout>
 ```
+
+<Info>
+The `stripe-card-element` and `express-checkout-element` slots are required for the checkout component to work.
+</Info>
+
+### Props
+
+Props should be passed as attributes to the component element.
+
+<ResponseField name="show-forgot-password-link" type="boolean">
+Whether to show the forgot password link.
+
+Defaults to `false`
+</ResponseField>
+<ResponseField name="sign-in-message" type="string">
+The message to display to prompt the user to sign in.
+
+Defaults to `Checkout faster by signing in and using saved details`
+</ResponseField>
+<ResponseField name="return-to-cart" type="string">
+The slug of the page to return to when the user clicks the cart icon.
+
+Defaults to `/cart`
+</ResponseField>
+
+### Styling
+
+The following parts are available to style the checkout component:
+
+<ResponseField name="--marzipan-spinner">
+The spinner element.
+</ResponseField>
+
+<ResponseField name="--cart-icon-link">
+The cart icon link element.
+</ResponseField>
+<ResponseField name="--checkout-button">
+The primary action button, normally the "continue" button.
+</ResponseField>
+<ResponseField name="--checkout-sidebar">
+The sidebar element.
+</ResponseField>
+<ResponseField name="--checkout-image">
+The product image element.
+</ResponseField>
+<ResponseField name="--checkout-image-container">
+The containing `<div>` around a product image.
+</ResponseField>
+<ResponseField name="--checkout-logo">
+The logo element.
+</ResponseField>
+<ResponseField name="--discount-button">
+The discount button element.
+</ResponseField>
+<ResponseField name="--highlighted-item">
+The highlighted breadcrumb item element.
+</ResponseField>
+<ResponseField name="--input">
+The input element.
+</ResponseField>
+<ResponseField name="--input-checkbox">
+The input checkbox element.
+</ResponseField>
+<ResponseField name="--link">
+An `<a>` element used for links.
+</ResponseField>
+<ResponseField name="--option-button">
+The unselected option(s) of a radio group.
+
+For example the "ship" and "pickup" delivery options
+</ResponseField>
+<ResponseField name="--option-button-active">
+The selected option of a radio group.
+
+For example the "ship" and "pickup" delivery options
+</ResponseField>
+<ResponseField name="--select">
+The select element.
+</ResponseField>
+<ResponseField name="--shipping-option">
+The options for the selected shipping method
+</ResponseField>
+
+
+
+
+
+
+
