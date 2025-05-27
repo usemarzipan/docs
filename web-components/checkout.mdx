@@ -21,7 +21,11 @@ The `stripe-card-element` and `express-checkout-element` slots are required for 
 
 Props should be passed as attributes to the component element.
 
-<ResponseField name="show-forgot-password-link" type="boolean">
+<Note>
+Boolean props have a leading dot. This is to allow the boolean props to be passed as attributes to the component element.
+</Note>
+
+<ResponseField name=".show-forgot-password-link" type="boolean">
 Whether to show the forgot password link.
 
 Defaults to `false`

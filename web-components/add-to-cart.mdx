@@ -7,15 +7,19 @@ description: "The Add to Cart component is a call to action button that adds a p
 
 ```javascript
 <marzipan-addtocart
-  product-id=""
-  show-quantity
-  redirect
+  product-id="c66e6274-3a05-4b78-95ae-9451ac459f0b"
+  .show-quantity="true"
+  .redirect="true"
 ></marzipan-addtocart>
 ```
 
 ### Props
 
 Props should be passed as attributes to the component element.
+
+<Note>
+Boolean props have a leading dot. This is to allow the boolean props to be passed as attributes to the component element.
+</Note>
 
 <ResponseField name="availability" type="string" >
 
@@ -36,14 +40,14 @@ Defaults to `Add to cart`
 
 </ResponseField>
 
-<ResponseField name="out-of-stock" type="boolean">
+<ResponseField name=".out-of-stock" type="boolean">
   Whether the product is out of stock. Setting this to `true` will disable the add to cart button and show an out of stock message.
 
   Defaults to `false`
 </ResponseField>
 
 <ResponseField name="product-id" type="string" required>
-  The ID of the product to add to the cart.
+  The UUID of the product to add to the cart.
 </ResponseField>
 
 <ResponseField name="product-type" type="string" required>
@@ -60,13 +64,13 @@ Defaults to `physical`
 Defaults to `1`
 </ResponseField>
 
-<ResponseField name="redirect" type="boolean">
+<ResponseField name=".redirect" type="boolean">
   Whether to redirect to the cart page after adding the product to the cart.
 
   Defaults to `false`
 </ResponseField>
 
-<ResponseField name="show-quantity" type="boolean">
+<ResponseField name=".show-quantity" type="boolean">
   Whether to show the quantity of the product in the cart.
 
 Defaults to `false`

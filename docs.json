@@ -132,9 +132,7 @@
               "web-components/cart-icon",
               "web-components/checkout",
               "web-components/contact-form",
-              "web-components/logged-in-only",
-              "web-components/products",
-              "web-components/subscriber-only"
+              "web-components/products"
             ]
           },
           {
