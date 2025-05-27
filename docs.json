@@ -28,10 +28,11 @@
     "library": "lucide"
   },
   "navigation": {
-    "tabs": [
-      {
-        "tab": "Documentation",
-        "groups": [
+    "dropdowns": [
+    {
+      "dropdown": "Documentation",
+      "icon": "book",
+      "groups": [
           {
             "group": "Get Started",
             "pages": [
@@ -44,8 +45,9 @@
             "group": "Orders",
             "pages": [
               "orders/overview",
+              "orders/create",
               "orders/details",
-              "orders/create"
+              "orders/fulfilment"
             ]
           },
           {
@@ -107,18 +109,13 @@
             "pages": [
               "settings/checkout"
             ]
-          },
-          {
-            "group": "Other",
-            "pages": [
-              "changelog"
-            ]
           }
         ]
-      },
-      {
-        "tab": "Web Components",
-        "groups": [
+    },
+    {
+      "dropdown": "Web Components",
+      "icon": "puzzle",
+      "groups": [
           {
             "group": "Get Started",
             "pages": [
@@ -145,8 +142,30 @@
             ]
           }
         ]
-      }
-    ]
+    },
+    {
+      "dropdown": "Changelog",
+      "icon": "history",
+      "groups": [
+        {
+          "group": "Changelog",
+          "pages": [
+            "changelog/index"
+          ]
+        }
+      ]
+    },
+    {
+      "dropdown": "Blog",
+      "icon": "square-library",
+      "href": "https://marzipan.co/blog"
+    },
+    {
+      "dropdown": "Service status",
+      "icon": "radio-tower",
+      "href": "https://status.marzipan.co"
+    }
+  ]
   },
   "logo": "https://cdn.marzipan.cloud/0/docs/logo.png",
   "navbar": {
