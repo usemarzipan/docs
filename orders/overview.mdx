@@ -1,0 +1,90 @@
+---
+title: 'Overview'
+description: 'Manage and track all customer orders in one place'
+---
+
+The Orders section provides a comprehensive view of all customer transactions in your Marzipan store. This dashboard allows you to monitor, manage, and process orders efficiently.
+
+To view your orders:
+
+1. Log in to your Marzipan account
+2. Click on **Orders** in the main navigation menu
+3. By default the overview page will display all your orders by order date (newest first)
+
+### Orders
+
+The main orders table displays key information for each order.
+
+<Frame>
+<img noZoom src="https://marzipan-cloud.b-cdn.net/0/docs/orders/orders-table.jpg" alt="Orders Table" />
+</Frame>
+
+- **Ref** - the unique reference for each order
+- **Date** - when the order was placed
+- **Customer** - name of the customer
+- **Channel** - the channel the order was placed through
+- **Amount** - the total amount of the order
+- **Payment** - whether payment has been received (paid, pending, failed, etc.)
+- **Status** - the current order status (Processing, Shipped, Cancelled, etc.)
+
+Click on any order in the list to view all the [order details](/orders/details), including:
+
+- Customer details
+- Order items and quantities
+- Applied discounts
+- Shipping details
+- Payment information
+- Order notes and history
+
+### Filtering and Searching
+
+You can locate specific orders using the the search box `(⌘K)` which is the fastest way if you know the order number or customer name,or by filtering the orders table using the following options:
+
+
+- Order date
+- Channel
+- Payment Status
+- Status
+- Tags
+- Search term - searches the billing and shipping name
+
+<Frame>
+<img width="300" noZoom src="https://marzipan-cloud.b-cdn.net/0/docs/orders/order-filter.png" alt="Orders filter options" />
+</Frame>
+
+### Bulk Actions
+
+Perform actions on multiple orders simultaneously:
+
+- Add tags
+- Cancel orders
+- Export order data
+
+### Exporting Orders
+
+You can export orders to a CSV file by clicking the **Export** button in the top-right corner of the orders table. This will download a CSV file containing all the orders in the table.
+
+When you click the **Export** button, you will be shown a modal where you can select the fields you want to export. The app will remember your selection for the next time you export orders.
+
+<Frame>
+<img width="300" noZoom src="https://marzipan-cloud.b-cdn.net/0/docs/orders/order-export.png" alt="Orders export options" />
+</Frame>
+
+<Tip>
+Apply filters _before_ clicking the export button to only export the orders you need.
+</Tip>
+
+
+
+
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Order Details" icon="truck" href="/orders/details">
+    Learn how to view and manage order details
+  </Card>
+  <Card title="Create Order" icon="plus" href="/orders/create">
+    Learn how to create orders manually in the admin dashboard
+  </Card>
+</CardGroup>

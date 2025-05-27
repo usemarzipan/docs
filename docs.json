@@ -42,7 +42,9 @@
           {
             "group": "Orders",
             "pages": [
-              "essentials/markdown"
+              "orders/overview",
+              "orders/details",
+              "orders/create"
             ]
           },
           {
@@ -165,5 +167,5 @@
     "fathom": {
         "siteId": "RTPAJHQC"
     }
-}
+  }
 }
