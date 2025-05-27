@@ -1,0 +1,19 @@
+---
+title: Support
+description: "Helping you get the most out of Marzipan."
+---
+<Columns cols={2}>
+   <div onClick={openSearch} style={{ cursor: 'pointer' }}>
+    <Card title="Search the docs" icon="message-circle-question" href="https://docs.marzipan.co">
+      Search the documentation for answers to your questions.
+    </Card>
+  </div>
+    <Card title="Email Us" icon="mail" href="mailto:hello@marzipan.co">
+      Email us at [hello@marzipan.co](mailto:hello@marzipan.co). We'll get back to you as soon as possible.
+    </Card>
+</Columns>
+
+export function openSearch(e) {
+  e.preventDefault();
+  document.getElementById('search-bar-entry').click();
+}
