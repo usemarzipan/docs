@@ -1,124 +1,73 @@
 ---
-title: 'Create Order'
+title: 'Manual Orders'
+sidebarTitle: 'Create'
 description: 'Learn how to create and process orders manually in Marzipan'
 ---
 
-# Creating Order
-
-Manual orders allow you to create orders directly in the Marzipan admin dashboard without requiring customers to go through the standard checkout process. This is useful for phone orders, in-person sales, or special customer arrangements.
-
-## When to Use Manual Orders
+Manual orders allow you to create orders directly in the Marzipan without requiring customers to go through the standard checkout process.
 
 Manual orders are ideal for:
 
 - Taking orders over the phone
-- Processing in-person sales
+- Processing in-person sales at events
 - Creating orders for customers with special requirements
 - Testing your order processing workflow
 - Creating orders with custom pricing or discounts
-- Handling complex B2B orders
 
-## Creating a Manual Order
+## Creating a manual order
 
-### Step 1: Access the Manual Order Form
+To access the manual order form, follow these steps:
 
-1. Log in to your Marzipan admin dashboard
+1. Log in to your Marzipan account
 2. Navigate to **Orders** in the main menu
-3. Click the **+ Create Order** button in the top-right corner
-4. Select **Manual Order** from the dropdown menu
+3. Click the **+ Create order** button in the top-right corner
 
-### Step 2: Add Customer Information
+<Frame>
+<img src="https://marzipan-cloud.b-cdn.net/0/docs/orders/create-order.png" />
+</Frame>
 
-You can either:
+<Steps titleSize="p">
+   <Step title="Select customer">
+      You can either select an existing customer by typing their name or email address in the lookup box, or create a new customer by clicking the **create a customer** button.
 
-- Select an existing customer from your database
-- Create a new customer by entering their details:
-  - Full name
-  - Email address
-  - Phone number (optional)
-  - Billing address
-  - Shipping address (if different from billing)
+      The create a customer button will open a panel to the right of the screen where you can create a new customer.
+   </Step>
+   <Step title="Pick a channel">
+      Select the appropriate channel for the order from the dropdown menu.
 
-### Step 3: Add Products
+      - **Cellar Door** - The order was placed at your cellar door
+      - **Event** - The order was placed at an event
+      - **Email** - The order was placed via email
+      - **Manual** - The order was created manually by you or a member of your team
+      - **Website** - The order should have been placed through your website
+      - **Phone** - The order was placed over the phone
+      - **Tasting** - The order was placed at a tasting
+   </Step>
+   <Step title="Select a billing address for the customer">
+      Select the appropriate billing address for the customer from the dropdown menu.
+   </Step>
+   <Step title="Select a shipping option">
+      Select either **Pickup** or **Delivery**.
+   </Step>
+   <Step title="Select a shipping method">
+      Select the appropriate shipping method for the order from the dropdown menu.
+   </Step>
+   <Step title="Gift options">
+      If the order is a gift, click the down arrow and complete the relevant fields.
 
-1. Click the **Add Products** button
-2. Search for products by name, SKU, or barcode
-3. Select the desired products from the dropdown results
-4. Specify the quantity for each product
-5. Add any product-specific customizations or options
+   </Step>
+   <Step title="Add items">
+      Use the product selector to add products to the order. You can enter the product name or SKU.
 
-### Step 4: Apply Discounts (Optional)
+      Once you have selected a product update the quantity
+   </Step>
+   <Step title="Add discounts">
+      Any relevent auto applied discounts should get applied when you select the first product. If you need to add a manual discount to the order you can do this by clicking the add discount button.
+   </Step>
+   <Step title="Save the order">
+      Review the order details and click the **Save** button at the bottom of the screen to save the order.
+   </Step>
 
-You can add discounts to the manual order:
+</Steps>
 
-1. Click **Add Discount**
-2. Choose from:
-   - Percentage discount
-   - Fixed amount discount
-   - Free shipping
-3. Enter the discount amount
-4. Add a note about the discount (optional)
-
-### Step 5: Add Shipping
-
-1. Select the appropriate shipping method
-2. The shipping cost will be calculated automatically based on your shipping rules
-3. You can manually override the shipping cost if needed
-
-### Step 6: Review and Finalize
-
-1. Review the order details, including:
-   - Line items and quantities
-   - Subtotal
-   - Discounts
-   - Taxes
-   - Shipping costs
-   - Total amount
-2. Add any order notes for internal reference
-3. Click **Create Order** to finalize
-
-## Processing Manual Orders
-
-After creating a manual order, you'll need to:
-
-### Collect Payment
-
-1. From the order details page, click **Collect Payment**
-2. Choose the payment method:
-   - Credit card (if you have a card terminal)
-   - Cash
-   - Bank transfer
-   - Other payment methods
-3. Enter the payment details
-4. Mark the order as paid
-
-### Fulfill the Order
-
-1. Once payment is collected, update the order status to **Processing**
-2. Prepare the items for shipment or pickup
-3. Update the fulfillment status when the order is shipped or ready for pickup
-4. Send the customer a notification with tracking information (if applicable)
-
-## Manual Order Settings
-
-You can customize your manual order workflow in **Settings** > **Orders** > **Manual Orders**:
-
-- Default payment methods for manual orders
-- Default shipping options
-- Tax calculation preferences
-- Order numbering format
-- Email notification templates
-
-## Best Practices
-
-- Always verify customer information before creating a manual order
-- Double-check product availability before finalizing the order
-- Keep detailed notes about special requests or arrangements
-- Follow up with customers after order fulfillment
-- Regularly review manual orders for patterns or opportunities to improve your processes
-
-## Related Documentation
-
-- [Orders Overview](/orders/overview) - General information about managing orders
-- [Order Fulfillment](/orders/fulfillment) - Process and ship orders
-- [Customer Management](/customers/overview) - Managing customer information
+After creating an order you will be taken to the [order details](/orders/details) page where the order will have a **processing** status and a **pending** payment status.

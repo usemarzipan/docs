@@ -11,17 +11,17 @@
   },
   "favicon": "/favicon.svg",
   "fonts": {
-    "heading": {
-      "source": "https://marzipan-cloud.b-cdn.net/0/fonts/Inter/InterVariable.woff2",
-      "format": "woff2",
-      "family": "Inter",
-      "weight": 350
-    },
     "body": {
       "family": "Inter",
       "source": "https://marzipan-cloud.b-cdn.net/0/fonts/Inter/InterVariable.woff2",
       "format": "woff2",
       "weight": 400
+    },
+    "heading": {
+      "source": "https://marzipan-cloud.b-cdn.net/0/fonts/Inter/InterVariable.woff2",
+      "format": "woff2",
+      "family": "Inter",
+      "weight": 350
     }
   },
   "icons": {
@@ -42,72 +42,80 @@
             ]
           },
           {
+            "group": "Dashboard",
+            "pages": [
+              "dashboard",
+              "navigation"
+            ]
+          },
+          {
             "group": "Orders",
             "pages": [
               "orders/overview",
               "orders/create",
               "orders/details",
-              "orders/fulfilment"
+              "orders/fulfilment",
+              "orders/payments"
             ]
           },
           {
             "group": "Subscriptions",
             "pages": [
-              "essentials/code"
+              "subscriptions/overview"
             ]
           },
           {
             "group": "Events",
             "pages": [
-              "events/checkout"
+              "events/overview"
             ]
           },
           {
             "group": "Customers",
             "pages": [
-              "customers/checkout"
+              "customers/overview"
             ]
           },
           {
             "group": "Products",
             "pages": [
-              "products/checkout"
+              "products/overview"
             ]
           },
           {
             "group": "Attributes",
             "pages": [
-              "attributes/checkout"
+              "attributes/overview"
             ]
           },
           {
             "group": "Collections",
             "pages": [
-              "collections/checkout"
+              "collections/overview"
             ]
           },
           {
             "group": "Discounts",
             "pages": [
-              "discounts/checkout"
+              "discounts/overview"
             ]
           },
           {
             "group": "CMS",
             "pages": [
-              "cms/checkout"
+              "cms/overview"
             ]
           },
           {
             "group": "Flows",
             "pages": [
-              "flows/checkout"
+              "flows/overview"
             ]
           },
           {
             "group": "Settings",
             "pages": [
-              "settings/checkout"
+              "settings/overview"
             ]
           }
         ]

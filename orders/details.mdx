@@ -3,29 +3,34 @@ title: 'Details'
 description: 'View and manage order details'
 ---
 
-### Order Processing
+The order details screen provides a comprehensive view of an order and allows you to process the order. The left side of the screen contains the order details and any logged order activity, while the right side contains the customer and shipping details.
 
-From the order details page, you can:
+<Frame>
+<img src="https://marzipan-cloud.b-cdn.net/0/docs/orders/order-detail-overview.png" alt="Order detail screenshot" />
+</Frame>
 
-- Update order status
-- Process refunds
-- Add order notes
-- Send order notifications to customers
-- Print invoices and packing slips
+### Payments
+The payments section below the order details contains the payment status for the order and any payment activity that has been logged. If the order is still in has a `processing` status then you can mark the payment as `paid` either manually (eg if you have received payment offline) or by selecting a saved payment method.
 
-## Order Types
+### Order Fulfilment
+The fulfilment section contains the fulfilment status for the order and any fulfilment activity that has been logged. If the order is still in has a `processing` status then you can fulfil the order. This will update the order status to `Shipped`.
 
-Marzipan supports various order types:
 
-- **Standard Orders** - Regular purchases through your store
-- **Subscription Orders** - Recurring orders from subscription products
-- **Manual Orders** - Orders created by store administrators
-- **Draft Orders** - Incomplete orders saved for later processing
+### Tagging Orders
+You can add tags to an order to help you identify and manage orders. Tags are useful for filtering orders and can be used to group orders by customer, channel, or any other criteria.
 
-## Related Documentation
+### Shipping Details
 
-<CardGroup cols={1}>
-  <Card title="Order Fulfillment" icon="truck" href="/orders/fulfillment">
-    Process and ship orders to your customers
-  </Card>
-</CardGroup>
+The shipping details section contains the shipping address for the order and the shipping method that has been applied. If the order is still in has a `processing` status then you can edit these details. Orders that are for collection will not have a shipping address.
+
+### Shipping Date
+
+You can optionally set a shipping date for the order. This is the date that the order is expected to be shipped. This can be useful when the customer has requested a specific delivery date or you are expecting the customer to collect the order on a specific date.
+
+<Info>
+  The shipping date is not the same as the delivery date. The shipping date is the date that the order is expected to be shipped.
+</Info>
+
+### Order Activity
+
+This is where you can view a history of actions taken on the order (either manually or by the app) and any notes that have been added.

@@ -1,31 +1,28 @@
 ---
 title: 'Fulfilment'
-description: 'Process and ship orders to your customers'
+description: 'Ship orders to your customers'
 ---
 
-### Order Processing
+Fulfilling orders is the process of preparing and sending orders to customers. Marzipan provides a simple and easy way to orders as shipped.
 
-From the order details page, you can:
+### Manual Fulfilment
 
-- Update order status
-- Process refunds
-- Add order notes
-- Send order notifications to customers
-- Print invoices and packing slips
+It is easy to fulfil orders manually in Marzipan. To fulfil an order, click the **Fulfil** button in the fulfilment section of the order details page.
 
-## Order Types
+<Frame>
+<img src="https://marzipan-cloud.b-cdn.net/0/docs/orders/order-fulfil.png" alt="Order detail screenshot" />
+</Frame>
 
-Marzipan supports various order types:
+When you click the **Fulfil** button, you will be shown a modal where you can select the fulfilment method and add any notes to the order. The fulfilment method is the method you will use to ship the order to the customer.
 
-- **Standard Orders** - Regular purchases through your store
-- **Subscription Orders** - Recurring orders from subscription products
-- **Manual Orders** - Orders created by store administrators
-- **Draft Orders** - Incomplete orders saved for later processing
+<Frame>
+<img src="https://marzipan-cloud.b-cdn.net/0/docs/orders/order-fulfil-modal.png" alt="Order detail screenshot" />
+</Frame>
 
-## Related Documentation
+### Automatic Fulfilment
 
-<CardGroup cols={1}>
-  <Card title="Order Fulfillment" icon="truck" href="/orders/fulfillment">
-    Process and ship orders to your customers
-  </Card>
-</CardGroup>
+If you are using the London City Bond integration and have set up a flow to automatically send orders to London City Bond then Marzipan will automatically create a shipment for the order with a status of `Processing`. Orders sent to London City Bond are checked daily and will update the order status to `Shipped` or `Delivered` as and when they are processed.
+
+<Frame>
+<img src="https://marzipan-cloud.b-cdn.net/0/docs/orders/order-fulfilled.png" alt="Order detail screenshot" />
+</Frame>
