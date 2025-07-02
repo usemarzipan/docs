@@ -2,11 +2,11 @@
   "theme": "mint",
   "name": "Marzipan Docs",
   "appearance": {
-    "default": "light"
+    "default": "dark"
   },
   "colors": {
     "primary": "#2563eb",
-    "light": "#2563eb",
+    "light": "#000000",
     "dark": "#2563eb"
   },
   "favicon": "/favicon.svg",
@@ -175,7 +175,10 @@
     }
   ]
   },
-  "logo": "https://cdn.marzipan.cloud/0/docs/logo.png",
+  "logo": {
+    "light": "https://cdn.marzipan.cloud/0/docs/logo.png",
+    "dark": "https://cdn.marzipan.cloud/0/docs/logo-white.png"
+  },
   "navbar": {
     "links": [
     ],
