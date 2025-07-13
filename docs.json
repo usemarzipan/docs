@@ -2,12 +2,12 @@
   "theme": "mint",
   "name": "Marzipan Docs",
   "appearance": {
-    "default": "dark"
+    "default": "light"
   },
   "colors": {
-    "primary": "#2563eb",
+    "primary": "#000000",
     "light": "#000000",
-    "dark": "#2563eb"
+    "dark": "#000000"
   },
   "favicon": "/favicon.svg",
   "fonts": {
@@ -28,9 +28,9 @@
     "library": "lucide"
   },
   "navigation": {
-    "dropdowns": [
+    "tabs": [
     {
-      "dropdown": "Documentation",
+      "tab": "Documentation",
       "icon": "book",
       "groups": [
           {
@@ -121,7 +121,7 @@
         ]
     },
     {
-      "dropdown": "Web Components",
+      "tab": "Web Components",
       "icon": "puzzle",
       "groups": [
           {
@@ -152,19 +152,19 @@
         ]
     },
     {
-      "dropdown": "Changelog",
+      "tab": "Changelog",
       "icon": "history",
       "pages": [
         "changelog/2025"
       ]
     },
     {
-      "dropdown": "Blog",
+      "tab": "Blog",
       "icon": "square-library",
       "href": "https://marzipan.co/blog"
     },
     {
-      "dropdown": "Service status",
+      "tab": "Service status",
       "icon": "radio-tower",
       "href": "https://status.marzipan.co"
     }
