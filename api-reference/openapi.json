@@ -182,7 +182,7 @@
             "items": {
               "$ref": "#/components/schemas/LinkedSubscription"
             },
-            "description": "Full details of linked subscriptions. Only included when using ?include=linkedSubscriptions parameter"
+            "description": "Full details of linked subscriptions. Only included when requested via the include query parameter."
           },
           "billing_frequency": {
             "type": "integer",
