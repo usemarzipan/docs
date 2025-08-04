@@ -932,7 +932,7 @@
           },
           "type": {
             "type": "string",
-            "enum": ["product", "page", "collection"],
+            "enum": ["product", "page", "collection", "event", "subscription_package"],
             "description": "Type of search result"
           },
           "title": {
@@ -2911,7 +2911,7 @@
             "description": "Filter results by content type. If not specified, searches all types",
             "schema": {
               "type": "string",
-              "enum": ["products", "pages", "collections"]
+              "enum": ["products", "pages", "collections", "events", "subscription_packages"]
             }
           },
           {
@@ -2966,6 +2966,20 @@
                             "$ref": "#/components/schemas/SearchResult"
                           },
                           "description": "Collection search results"
+                        },
+                        "events": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/SearchResult"
+                          },
+                          "description": "Event search results"
+                        },
+                        "subscription_packages": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/SearchResult"
+                          },
+                          "description": "Subscription package search results"
                         }
                       },
                       "description": "Search results organized by content type"
