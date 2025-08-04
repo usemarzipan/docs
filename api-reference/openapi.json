@@ -2,15 +2,173 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Marzipan API",
-    "version": "1.0.0",
-    "description": "# Introduction\n\nThe Marzipan API is organized around REST. Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.\n\n## Getting Started\n\nTo get started with the Marzipan API, you'll need to:\n\n1. **Register an account** using the `/account/register` endpoint\n2. **Login** to obtain authentication credentials\n3. **Explore** the available endpoints organized by category\n\n## Authentication\n\nAll API endpoints require authentication. Include your authentication token in the request headers.\n\n## Base URL\n\nAll API requests should be made to: `{{apiUrl}}`\n\n## Endpoints Overview\n\n- **Account**: User registration, login, and profile management\n- **Carts**: Shopping cart creation and management\n- **Products**: Product catalog and search functionality\n- **Subscriptions**: Subscription management and renewals\n- **CMS**: Content management system endpoints\n- **Search**: Global search functionality"
+    "version": "1.0.0"
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+      "type": "http",
+      "scheme": "bearer"
+      }
+    },
+    "schemas": {
+      "Product": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Unique identifier for the product"
+          },
+          "name": {
+            "type": "string",
+            "description": "Product name"
+          },
+          "slug": {
+            "type": "string",
+            "description": "URL-friendly product identifier"
+          },
+          "description": {
+            "type": "string",
+            "description": "Product description"
+          },
+          "productType": {
+            "type": "string",
+            "enum": ["physical", "event", "subscription"],
+            "description": "Type of product"
+          },
+          "sku": {
+            "type": "string",
+            "description": "Stock Keeping Unit"
+          },
+          "collection": {
+            "type": "string",
+            "description": "Product collection name"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["active", "inactive"],
+            "description": "Product status"
+          },
+          "image": {
+            "$ref": "#/components/schemas/ProductImage"
+          },
+          "price": {
+            "type": "string",
+            "description": "Formatted price (e.g., £10.00)"
+          },
+          "salePrice": {
+            "type": "string",
+            "nullable": true,
+            "description": "Sale price if on sale"
+          },
+          "subscriberPrice": {
+            "type": "string",
+            "nullable": true,
+            "description": "Special price for subscribers"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Creation timestamp"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last update timestamp"
+          },
+          "storeSlug": {
+            "type": "string",
+            "description": "Store identifier"
+          },
+          "subscriptionsSlug": {
+            "type": "string",
+            "description": "Subscription identifier"
+          },
+          "availability": {
+            "type": "string",
+            "enum": ["all", "subscribers"],
+            "description": "Product availability"
+          },
+          "upsellProducts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Product"
+            },
+            "description": "Related upsell products"
+          }
+        },
+        "required": ["id", "name", "slug", "productType", "status", "price"]
+      },
+      "ProductImage": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "path": {
+            "type": "string"
+          },
+          "src": {
+            "type": "string",
+            "format": "uri"
+          },
+          "alt": {
+            "type": "string",
+            "nullable": true
+          },
+          "mimeType": {
+            "type": "string"
+          },
+          "filename": {
+            "type": "string"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Error message"
+          }
+        },
+        "required": ["message"]
+      },
+      "ValidationError": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Validation error message"
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "description": "Field-specific validation errors"
+          }
+        },
+        "required": ["message", "errors"]
+      }
+    }
   },
   "servers": [
     {
-      "url": "{{apiUrl}}"
+      "url": "https://api.marzipan.co/v1"
     },
     {
-      "url": ""
+      "url": "https://api.marzipan.test/v1"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
     }
   ],
   "tags": [
@@ -63,6 +221,22 @@
         "responses": {
           "200": {
             "description": "Success"
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"}
+                  }
+                },
+                "example": {
+                  "message": "string"
+                }
+              }
+            }
           }
         },
         "requestBody": {
@@ -110,6 +284,22 @@
         "responses": {
           "200": {
             "description": "Success"
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"}
+                  }
+                },
+                "example": {
+                  "message": "string"
+                }
+              }
+            }
           }
         },
         "requestBody": {
@@ -152,6 +342,22 @@
         "responses": {
           "200": {
             "description": "Success"
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"}
+                  }
+                },
+                "example": {
+                  "message": "string"
+                }
+              }
+            }
           }
         },
         "requestBody": {
@@ -190,6 +396,22 @@
         "responses": {
           "200": {
             "description": "Success"
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"}
+                  }
+                },
+                "example": {
+                  "message": "string"
+                }
+              }
+            }
           }
         },
         "requestBody": {
@@ -211,7 +433,60 @@
         "parameters": [],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {"type": "string"},
+                          "ref": {"type": "string"},
+                          "items": {"type": "integer"},
+                          "amount": {"type": "string"},
+                          "status": {"type": "string"},
+                          "paymentStatus": {"type": "string"},
+                          "createdAt": {"type": "string"}
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "data": [
+                    {
+                      "id": "uuid",
+                      "ref": "string",
+                      "items": 1,
+                      "amount": "£0.00",
+                      "status": "pending|shipped|cancelled",
+                      "paymentStatus": "paid|failed|pending",
+                      "createdAt": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"}
+                  }
+                },
+                "example": {
+                  "message": "string"
+                }
+              }
+            }
           }
         }
       }
@@ -234,7 +509,66 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {"type": "string"},
+                          "subscriptionType": {"type": "string"},
+                          "name": {"type": "string"},
+                          "productId": {"type": "string"},
+                          "price": {"type": "string"},
+                          "status": {"type": "string"},
+                          "startDate": {"type": "string"},
+                          "endDate": {"type": "string"},
+                          "renewalDate": {"type": "string"},
+                          "billingInterval": {"type": "integer"}
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "data": [
+                    {
+                      "id": "uuid",
+                      "subscriptionType": "picknmix|variable",
+                      "name": "string",
+                      "productId": "uuid",
+                      "price": "£0.00",
+                      "status": "active|inactive|cancelled",
+                      "startDate": "string",
+                      "endDate": "string",
+                      "renewalDate": "string",
+                      "billingInterval": 1
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"}
+                  }
+                },
+                "example": {
+                  "message": "string"
+                }
+              }
+            }
           }
         }
       }
@@ -257,7 +591,51 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "firstName": {"type": "string"},
+                        "lastName": {"type": "string"},
+                        "email": {"type": "string", "format": "email"},
+                        "phone": {"type": "string"},
+                        "marketing": {"type": "array", "items": {"type": "string"}}
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "data": {
+                    "firstName": "string",
+                    "lastName": "string",
+                    "email": "user@example.com",
+                    "phone": "string",
+                    "marketing": []
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"}
+                  }
+                },
+                "example": {
+                  "message": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -278,6 +656,22 @@
         "responses": {
           "200": {
             "description": "Success"
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"}
+                  }
+                },
+                "example": {
+                  "message": "string"
+                }
+              }
+            }
           }
         },
         "requestBody": {
@@ -306,6 +700,7 @@
     "/carts": {
       "parameters": [],
       "post": {
+        "tags": ["Carts"],
         "summary": "Create Cart",
         "parameters": [
           {
@@ -320,7 +715,62 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {"type": "string"},
+                    "items": {"type": "array", "items": {"type": "object"}},
+                    "total": {"type": "string"},
+                    "createdAt": {"type": "string", "format": "date-time"}
+                  }
+                },
+                "example": {
+                  "id": "uuid",
+                  "items": [],
+                  "total": "£0.00",
+                  "createdAt": "2025-01-01T00:00:00.000000Z"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"},
+                    "errors": {"type": "object"}
+                  }
+                },
+                "example": {
+                  "message": "string",
+                  "errors": {
+                    "field.name": ["string"]
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"}
+                  }
+                },
+                "example": {
+                  "message": "string"
+                }
+              }
+            }
           }
         },
         "requestBody": {
@@ -353,10 +803,23 @@
         }
       }
     },
-    "/carts/893ff86d-4453-4134-9f62-5c9b7a70d74e": {
-      "parameters": [],
+    "/carts/{cartId}": {
+      "parameters": [
+        {
+          "name": "cartId",
+          "in": "path",
+          "required": true,
+          "description": "The unique identifier for the cart",
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "example": "893ff86d-4453-4134-9f62-5c9b7a70d74e"
+        }
+      ],
       "get": {
-        "summary": "Cart",
+        "tags": ["Carts"],
+        "summary": "Get Cart",
         "parameters": [
           {
             "name": "Accept",
@@ -371,14 +834,28 @@
         "responses": {
           "200": {
             "description": "Success"
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"}
+                  }
+                },
+                "example": {
+                  "message": "string"
+                }
+              }
+            }
           }
         }
-      }
-    },
-    "/carts/fba1b405-2533-45d1-b3d3-9c12162e6ce2": {
-      "parameters": [],
+      },
       "put": {
-        "summary": "Update",
+        "tags": ["Carts"],
+        "summary": "Update Cart",
         "parameters": [
           {
             "name": "Accept",
@@ -393,6 +870,22 @@
         "responses": {
           "200": {
             "description": "Success"
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"}
+                  }
+                },
+                "example": {
+                  "message": "string"
+                }
+              }
+            }
           }
         },
         "requestBody": {
@@ -410,12 +903,10 @@
             }
           }
         }
-      }
-    },
-    "/carts/d6f60da9-4042-452d-890d-379b6a24dd60/items/": {
-      "parameters": [],
+      },
       "delete": {
-        "summary": "Cart",
+        "tags": ["Carts"],
+        "summary": "Clear All Cart Items",
         "parameters": [
           {
             "name": "Accept",
@@ -430,6 +921,22 @@
         "responses": {
           "200": {
             "description": "Success"
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"}
+                  }
+                },
+                "example": {
+                  "message": "string"
+                }
+              }
+            }
           }
         },
         "requestBody": {
@@ -443,10 +950,23 @@
         }
       }
     },
-    "/carts/2ec7d69b-c40b-40fd-9f66-8e81130b5bb5/items": {
-      "parameters": [],
+    "/carts/{cartId}/items": {
+      "parameters": [
+        {
+          "name": "cartId",
+          "in": "path",
+          "required": true,
+          "description": "The unique identifier for the cart",
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "example": "2ec7d69b-c40b-40fd-9f66-8e81130b5bb5"
+        }
+      ],
       "post": {
-        "summary": "Add Item",
+        "tags": ["Carts"],
+        "summary": "Add Item to Cart",
         "parameters": [
           {
             "name": "Accept",
@@ -461,6 +981,22 @@
         "responses": {
           "200": {
             "description": "Success"
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"}
+                  }
+                },
+                "example": {
+                  "message": "string"
+                }
+              }
+            }
           }
         },
         "requestBody": {
@@ -493,10 +1029,34 @@
         }
       }
     },
-    "/carts/8bb107dd-4b10-4b19-ac7d-c88d21e49909/items/39e460ed-c517-4bbc-b358-c05f8abcccca": {
-      "parameters": [],
+    "/carts/{cartId}/items/{itemId}": {
+      "parameters": [
+        {
+          "name": "cartId",
+          "in": "path",
+          "required": true,
+          "description": "The unique identifier for the cart",
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "example": "8bb107dd-4b10-4b19-ac7d-c88d21e49909"
+        },
+        {
+          "name": "itemId",
+          "in": "path",
+          "required": true,
+          "description": "The unique identifier for the cart item",
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "example": "39e460ed-c517-4bbc-b358-c05f8abcccca"
+        }
+      ],
       "put": {
-        "summary": "Update Item Qty",
+        "tags": ["Carts"],
+        "summary": "Update Cart Item Quantity",
         "parameters": [
           {
             "name": "Accept",
@@ -511,6 +1071,22 @@
         "responses": {
           "200": {
             "description": "Success"
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"}
+                  }
+                },
+                "example": {
+                  "message": "string"
+                }
+              }
+            }
           }
         },
         "requestBody": {
@@ -527,12 +1103,10 @@
             }
           }
         }
-      }
-    },
-    "/carts/2ec7d69b-c40b-40fd-9f66-8e81130b5bb5/items/3c376299-a715-4254-bef4-779c0e27f857": {
-      "parameters": [],
+      },
       "delete": {
-        "summary": "Item",
+        "tags": ["Carts"],
+        "summary": "Remove Cart Item",
         "parameters": [
           {
             "name": "Accept",
@@ -547,6 +1121,22 @@
         "responses": {
           "200": {
             "description": "Success"
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"}
+                  }
+                },
+                "example": {
+                  "message": "string"
+                }
+              }
+            }
           }
         },
         "requestBody": {
@@ -560,10 +1150,23 @@
         }
       }
     },
-    "/carts/21047fd2-b068-41ed-b70c-1689af54368f//discount": {
-      "parameters": [],
+    "/carts/{cartId}/discount": {
+      "parameters": [
+        {
+          "name": "cartId",
+          "in": "path",
+          "required": true,
+          "description": "The unique identifier for the cart",
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "example": "21047fd2-b068-41ed-b70c-1689af54368f"
+        }
+      ],
       "post": {
-        "summary": "Apply Discount",
+        "tags": ["Carts"],
+        "summary": "Apply Discount to Cart",
         "parameters": [
           {
             "name": "Accept",
@@ -578,6 +1181,22 @@
         "responses": {
           "200": {
             "description": "Success"
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"}
+                  }
+                },
+                "example": {
+                  "message": "string"
+                }
+              }
+            }
           }
         },
         "requestBody": {
@@ -596,10 +1215,23 @@
         }
       }
     },
-    "/carts/2beaa641-3076-49bc-a0f7-e91e7143e1f9/checkout": {
-      "parameters": [],
+    "/carts/{cartId}/checkout": {
+      "parameters": [
+        {
+          "name": "cartId",
+          "in": "path",
+          "required": true,
+          "description": "The unique identifier for the cart",
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "example": "2beaa641-3076-49bc-a0f7-e91e7143e1f9"
+        }
+      ],
       "post": {
-        "summary": "Checkout",
+        "tags": ["Carts"],
+        "summary": "Checkout Cart",
         "parameters": [
           {
             "name": "Accept",
@@ -614,6 +1246,22 @@
         "responses": {
           "200": {
             "description": "Success"
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"}
+                  }
+                },
+                "example": {
+                  "message": "string"
+                }
+              }
+            }
           }
         },
         "requestBody": {
@@ -643,38 +1291,125 @@
         }
       }
     },
-    "/carts/43341d73-e9b5-4cd6-a35f-245e6c0e9aac/shippingMethods": {
-      "parameters": [],
+    "/carts/{cartId}/shippingMethods": {
+      "parameters": [
+        {
+          "name": "cartId",
+          "in": "path",
+          "required": true,
+          "description": "The unique identifier for the cart",
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "example": "43341d73-e9b5-4cd6-a35f-245e6c0e9aac"
+        }
+      ],
       "get": {
-        "summary": "Shipping Methods",
+        "tags": ["Carts"],
+        "summary": "Get Cart Shipping Methods",
         "parameters": [],
         "responses": {
           "200": {
             "description": "Success"
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"}
+                  }
+                },
+                "example": {
+                  "message": "string"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/carts/2ec7d69b-c40b-40fd-9f66-8e81130b5bb5/countries": {
-      "parameters": [],
+    "/carts/{cartId}/countries": {
+      "parameters": [
+        {
+          "name": "cartId",
+          "in": "path",
+          "required": true,
+          "description": "The unique identifier for the cart",
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "example": "2ec7d69b-c40b-40fd-9f66-8e81130b5bb5"
+        }
+      ],
       "get": {
-        "summary": "Countries",
+        "tags": ["Carts"],
+        "summary": "Get Cart Countries",
         "parameters": [],
         "responses": {
           "200": {
             "description": "Success"
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"}
+                  }
+                },
+                "example": {
+                  "message": "string"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/carts/d9c2f45b-f62f-4d60-8d1d-48929b662c6a/createSetupIntent": {
-      "parameters": [],
+    "/carts/{cartId}/createSetupIntent": {
+      "parameters": [
+        {
+          "name": "cartId",
+          "in": "path",
+          "required": true,
+          "description": "The unique identifier for the cart",
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "example": "d9c2f45b-f62f-4d60-8d1d-48929b662c6a"
+        }
+      ],
       "post": {
-        "summary": "Stripe Setup Intent",
+        "tags": ["Carts"],
+        "summary": "Create Cart Setup Intent",
         "parameters": [],
         "responses": {
           "200": {
             "description": "Success"
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"}
+                  }
+                },
+                "example": {
+                  "message": "string"
+                }
+              }
+            }
           }
         }
       }
@@ -682,6 +1417,7 @@
     "/cms/pages": {
       "parameters": [],
       "get": {
+        "tags": ["CMS"],
         "summary": "Pages",
         "parameters": [
           {
@@ -705,15 +1441,181 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "slug": {"type": "string"},
+                          "name": {"type": "string", "nullable": true},
+                          "metaTitle": {"type": "string"},
+                          "metaDescription": {"type": "string"},
+                          "status": {"type": "string"},
+                          "createdAt": {"type": "string", "format": "date-time"},
+                          "updatedAt": {"type": "string", "format": "date-time"},
+                          "publishedAt": {"type": "string", "nullable": true}
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "data": [
+                    {
+                      "slug": "string",
+                      "name": null,
+                      "metaTitle": "string",
+                      "metaDescription": "string",
+                      "status": "published|draft",
+                      "createdAt": "2025-01-01T00:00:00.000000Z",
+                      "updatedAt": "2025-01-01T00:00:00.000000Z",
+                      "publishedAt": null
+                    }
+                  ]
+                }
+              }
+            }
           }
         }
       }
     },
-    "/cms/pages/about": {
-      "parameters": [],
+    "/cms/pages/{pageSlug}": {
+      "parameters": [
+        {
+          "name": "pageSlug",
+          "in": "path",
+          "required": true,
+          "description": "The unique slug identifier for the page",
+          "schema": {
+            "type": "string"
+          },
+          "example": "about"
+        }
+      ],
       "get": {
-        "summary": "Page",
+        "tags": ["CMS"],
+        "summary": "Get CMS Page",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "slug": {"type": "string"},
+                    "name": {"type": "string"},
+                    "content": {"type": "string"},
+                    "seo": {
+                      "type": "object",
+                      "properties": {
+                        "title": {"type": "string"},
+                        "description": {"type": "string"},
+                        "ogImage": {"type": "string", "format": "uri"}
+                      }
+                    },
+                    "status": {"type": "string"},
+                    "fields": {"type": "object"},
+                    "createdAt": {"type": "string", "format": "date-time"},
+                    "updatedAt": {"type": "string", "format": "date-time"},
+                    "publishedAt": {"type": "string", "nullable": true}
+                  }
+                },
+                "example": {
+                  "slug": "string",
+                  "name": "string",
+                  "content": "string",
+                  "seo": {
+                    "title": "string",
+                    "description": "string",
+                    "ogImage": "https://example.com/image.jpg"
+                  },
+                  "status": "published|draft",
+                  "fields": {},
+                  "createdAt": "2025-01-01T00:00:00.000000Z",
+                  "updatedAt": "2025-01-01T00:00:00.000000Z",
+                  "publishedAt": null
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"}
+                  }
+                },
+                "example": {
+                  "message": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"}
+                  }
+                },
+                "example": {
+                  "message": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cms/collections/{collectionName}": {
+      "parameters": [
+        {
+          "name": "collectionName",
+          "in": "path",
+          "required": true,
+          "description": "The unique name identifier for the collection",
+          "schema": {
+            "type": "string"
+          },
+          "example": "test"
+        }
+      ],
+      "get": {
+        "tags": ["CMS"],
+        "summary": "Get CMS Collection",
         "parameters": [
           {
             "name": "Content-Type",
@@ -737,65 +1639,31 @@
         "responses": {
           "200": {
             "description": "Success"
-          }
-        }
-      }
-    },
-    "/cms/collections/test": {
-      "parameters": [],
-      "get": {
-        "summary": "Collection",
-        "parameters": [
-          {
-            "name": "Content-Type",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
           },
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"}
+                  }
+                },
+                "example": {
+                  "message": "string"
+                }
+              }
             }
           }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
         }
       }
     },
-    "/": {
-      "parameters": [],
-      "post": {
-        "summary": "Add to list",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      },
-      "get": {
-        "summary": "New Request",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
-    },
+
     "/messages": {
       "parameters": [],
       "post": {
+        "tags": ["Messaging"],
         "summary": "Create message",
         "parameters": [
           {
@@ -820,13 +1688,31 @@
         "responses": {
           "200": {
             "description": "Success"
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"}
+                  }
+                },
+                "example": {
+                  "message": "string"
+                }
+              }
+            }
           }
         }
       }
     },
     "/products": {
       "parameters": [],
+
       "get": {
+        "tags": ["Products"],
         "summary": "products",
         "parameters": [
           {
@@ -859,80 +1745,6 @@
         ],
         "responses": {
           "200": {
-            "headers": {
-              "Server": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "nginx/1.25.4"
-              },
-              "Content-Type": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "application/json"
-              },
-              "Transfer-Encoding": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "chunked"
-              },
-              "Connection": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "keep-alive"
-              },
-              "Vary": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "Accept-Encoding"
-              },
-              "X-Powered-By": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "PHP/8.3.23"
-              },
-              "Cache-Control": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "no-cache, private"
-              },
-              "Date": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "Mon, 04 Aug 2025 09:58:26 GMT"
-              },
-              "X-RateLimit-Limit": {
-                "schema": {
-                  "type": "integer"
-                },
-                "example": "150"
-              },
-              "X-RateLimit-Remaining": {
-                "schema": {
-                  "type": "integer"
-                },
-                "example": "149"
-              },
-              "Access-Control-Allow-Origin": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "*"
-              },
-              "Content-Encoding": {
-                "schema": {
-                  "type": "string"
-                },
-                "example": "gzip"
-              }
-            },
             "description": "products",
             "content": {
               "application/json": {
@@ -942,87 +1754,7 @@
                     "data": {
                       "type": "array",
                       "items": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "string"
-                          },
-                          "name": {
-                            "type": "string"
-                          },
-                          "slug": {
-                            "type": "string"
-                          },
-                          "description": {
-                            "type": "string"
-                          },
-                          "productType": {
-                            "type": "string"
-                          },
-                          "sku": {
-                            "type": "string"
-                          },
-                          "collection": {
-                            "type": "string"
-                          },
-                          "status": {
-                            "type": "string"
-                          },
-                          "image": {
-                            "type": "object",
-                            "properties": {
-                              "id": {
-                                "type": "string"
-                              },
-                              "path": {
-                                "type": "string"
-                              },
-                              "src": {
-                                "type": "string",
-                                "format": "uri"
-                              },
-                              "alt": {
-                                "nullable": true
-                              },
-                              "mimeType": {
-                                "type": "string"
-                              },
-                              "filename": {
-                                "type": "string"
-                              }
-                            }
-                          },
-                          "price": {
-                            "type": "string"
-                          },
-                          "salePrice": {
-                            "nullable": true
-                          },
-                          "subscriberPrice": {
-                            "nullable": true
-                          },
-                          "createdAt": {
-                            "type": "string",
-                            "format": "date-time"
-                          },
-                          "updatedAt": {
-                            "type": "string",
-                            "format": "date-time"
-                          },
-                          "storeSlug": {
-                            "type": "string"
-                          },
-                          "subscriptionsSlug": {
-                            "type": "string"
-                          },
-                          "availability": {
-                            "type": "string"
-                          },
-                          "upsellProducts": {
-                            "type": "array",
-                            "items": {}
-                          }
-                        }
+                        "$ref": "#/components/schemas/Product"
                       }
                     },
                     "links": {
@@ -1033,12 +1765,18 @@
                           "format": "uri"
                         },
                         "last": {
+                          "type": "string",
+                          "format": "uri",
                           "nullable": true
                         },
                         "prev": {
+                          "type": "string",
+                          "format": "uri",
                           "nullable": true
                         },
                         "next": {
+                          "type": "string",
+                          "format": "uri",
                           "nullable": true
                         }
                       }
@@ -1065,6 +1803,50 @@
                       }
                     }
                   }
+                },
+                "example": {
+                  "data": [
+                    {
+                      "id": "uuid",
+                      "name": "string",
+                      "slug": "string",
+                      "description": "string",
+                      "productType": "physical|event|subscription",
+                      "sku": "string",
+                      "collection": "string",
+                      "status": "active|inactive",
+                      "image": {
+                        "id": "uuid",
+                        "path": "string",
+                        "src": "https://example.com/image.jpg",
+                        "alt": null,
+                        "mimeType": "image/jpeg",
+                        "filename": "string"
+                      },
+                      "price": "£0.00",
+                      "salePrice": null,
+                      "subscriberPrice": null,
+                      "createdAt": "2025-01-01T00:00:00.000000Z",
+                      "updatedAt": "2025-01-01T00:00:00.000000Z",
+                      "storeSlug": "string",
+                      "subscriptionsSlug": "string",
+                      "availability": "all|subscribers",
+                      "upsellProducts": []
+                    }
+                  ],
+                  "links": {
+                    "first": "https://api.example.com/v1/products?page=1",
+                    "last": "https://api.example.com/v1/products?page=5",
+                    "prev": null,
+                    "next": "https://api.example.com/v1/products?page=2"
+                  },
+                  "meta": {
+                    "currentPage": 1,
+                    "from": 1,
+                    "path": "https://api.example.com/v1/products",
+                    "perPage": 15,
+                    "to": 15
+                  }
                 }
               }
             }
@@ -1072,10 +1854,23 @@
         }
       }
     },
-    "/products/2c19867e-2a31-48c5-a1a6-26605b3e2dea": {
-      "parameters": [],
+    "/products/{productId}": {
+      "parameters": [
+        {
+          "name": "productId",
+          "in": "path",
+          "required": true,
+          "description": "The unique identifier for the product",
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "example": "2c19867e-2a31-48c5-a1a6-26605b3e2dea"
+        }
+      ],
       "get": {
-        "summary": "product",
+        "tags": ["Products"],
+        "summary": "Get Product",
         "parameters": [
           {
             "name": "Content-Type",
@@ -1099,6 +1894,22 @@
         "responses": {
           "200": {
             "description": "Success"
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"}
+                  }
+                },
+                "example": {
+                  "message": "string"
+                }
+              }
+            }
           }
         }
       }
@@ -1106,6 +1917,7 @@
     "/subscriptions/renew": {
       "parameters": [],
       "post": {
+        "tags": ["Subscriptions"],
         "summary": "Renew",
         "parameters": [
           {
@@ -1130,6 +1942,22 @@
         "responses": {
           "200": {
             "description": "Success"
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"}
+                  }
+                },
+                "example": {
+                  "message": "string"
+                }
+              }
+            }
           }
         },
         "requestBody": {
@@ -1158,6 +1986,7 @@
     "/subscription-packages": {
       "parameters": [],
       "get": {
+        "tags": ["Subscriptions"],
         "summary": "Packages",
         "parameters": [
           {
@@ -1181,7 +2010,53 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {"type": "string"},
+                          "subscriptionType": {"type": "string"},
+                          "name": {"type": "string"},
+                          "slug": {"type": "string"},
+                          "description": {"type": "string"},
+                          "price": {
+                            "type": "object",
+                            "properties": {
+                              "value": {"type": "integer"},
+                              "formatted": {"type": "string"},
+                              "currency": {"type": "string"}
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "data": [
+                    {
+                      "id": "uuid",
+                      "subscriptionType": "picknmix|variable",
+                      "name": "string",
+                      "slug": "string",
+                      "description": "string",
+                      "price": {
+                        "value": 0,
+                        "formatted": "0.00",
+                        "currency": "GBP"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
           }
         }
       }
@@ -1189,6 +2064,7 @@
     "/subscription-packages/ec30c355-f910-4fa7-aa3c-bf41115d4f48": {
       "parameters": [],
       "get": {
+        "tags": ["Subscriptions"],
         "summary": "Package",
         "parameters": [
           {
@@ -1213,6 +2089,22 @@
         "responses": {
           "200": {
             "description": "Success"
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"}
+                  }
+                },
+                "example": {
+                  "message": "string"
+                }
+              }
+            }
           }
         }
       }
@@ -1253,6 +2145,22 @@
         "responses": {
           "200": {
             "description": "Success"
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"}
+                  }
+                },
+                "example": {
+                  "message": "string"
+                }
+              }
+            }
           }
         }
       }
