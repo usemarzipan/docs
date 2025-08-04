@@ -6,9 +6,16 @@
   },
   "components": {
     "securitySchemes": {
-      "bearerAuth": {
-      "type": "http",
-      "scheme": "bearer"
+      "tenantAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Bearer authentication header of the form `Bearer <token>`, where `<token>` is your API token.",
+        "bearerFormat": "JWT"
+      },
+      "accountAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Bearer authentication header of the form `Bearer <token>`, where `<token>` is the account token returned from the `Login` endpoint."
       }
     },
     "schemas": {
@@ -93,12 +100,41 @@
           "upsellProducts": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Product"
+              "$ref": "#/components/schemas/ProductSummary"
             },
             "description": "Related upsell products"
           }
         },
         "required": ["id", "name", "slug", "productType", "status", "price"]
+      },
+      "ProductSummary": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Unique identifier for the product"
+          },
+          "name": {
+            "type": "string",
+            "description": "Product name"
+          },
+          "slug": {
+            "type": "string",
+            "description": "URL-friendly product identifier"
+          },
+          "price": {
+            "type": "number",
+            "format": "float",
+            "description": "Product price"
+          },
+          "productType": {
+            "type": "string",
+            "enum": ["physical", "event", "subscription"],
+            "description": "Type of product"
+          }
+        },
+        "required": ["id", "name", "slug", "productType", "price"]
       },
       "ProductImage": {
         "type": "object",
@@ -125,6 +161,20 @@
             "type": "string"
           }
         }
+      },
+      "LoginResponse": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "description": "Authentication token for API access"
+          },
+          "isSubscriber": {
+            "type": "boolean",
+            "description": "Whether the user has an active subscription"
+          }
+        },
+        "required": ["token", "isSubscriber"]
       },
       "Error": {
         "type": "object",
@@ -161,14 +211,11 @@
   "servers": [
     {
       "url": "https://api.marzipan.co/v1"
-    },
-    {
-      "url": "https://api.marzipan.test/v1"
     }
   ],
   "security": [
     {
-      "bearerAuth": []
+      "tenantAuth": []
     }
   ],
   "tags": [
@@ -207,6 +254,11 @@
       "post": {
         "tags": ["Account"],
         "summary": "Register",
+        "security": [
+          {
+            "tenantAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "Accept",
@@ -256,11 +308,129 @@
         }
       }
     },
+
+    "/account/login": {
+      "parameters": [],
+      "post": {
+        "tags": ["Account"],
+        "summary": "Login",
+        "security": [
+          {
+            "tenantAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"}
+                  }
+                },
+                "example": {
+                  "message": "string"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/account/logout": {
+      "parameters": [],
+      "post": {
+        "tags": ["Account"],
+        "summary": "Logout",
+        "security": [
+          {
+            "accountAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"}
+                  }
+                },
+                "example": {
+                  "message": "string"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
     "/account/password": {
       "parameters": [],
       "post": {
         "tags": ["Account"],
         "summary": "Password Reset",
+        "security": [
+          {
+            "accountAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "Accept",
@@ -323,113 +493,16 @@
         }
       }
     },
-    "/account/login": {
-      "parameters": [],
-      "post": {
-        "tags": ["Account"],
-        "summary": "Login",
-        "parameters": [
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "401": {
-            "description": "Unauthenticated",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {"type": "string"}
-                  }
-                },
-                "example": {
-                  "message": "string"
-                }
-              }
-            }
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "email": {
-                    "type": "string",
-                    "format": "email"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/account/logout": {
-      "parameters": [],
-      "post": {
-        "tags": ["Account"],
-        "summary": "Logout",
-        "parameters": [
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "401": {
-            "description": "Unauthenticated",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {"type": "string"}
-                  }
-                },
-                "example": {
-                  "message": "string"
-                }
-              }
-            }
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object"
-              }
-            }
-          }
-        }
-      }
-    },
     "/account/orders": {
       "parameters": [],
       "get": {
         "tags": ["Account"],
         "summary": "Orders",
+        "security": [
+          {
+            "accountAuth": []
+          }
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -496,6 +569,11 @@
       "get": {
         "tags": ["Account"],
         "summary": "Subscriptions",
+        "security": [
+          {
+            "accountAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "Accept",
@@ -578,6 +656,11 @@
       "get": {
         "tags": ["Account"],
         "summary": "Details",
+        "security": [
+          {
+            "accountAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "Accept",
@@ -642,6 +725,11 @@
       "post": {
         "tags": ["Account"],
         "summary": "Update details",
+        "security": [
+          {
+            "accountAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "Accept",
@@ -856,6 +944,11 @@
       "put": {
         "tags": ["Carts"],
         "summary": "Update Cart",
+        "security": [
+          {
+            "tenantAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "Accept",
@@ -1659,61 +1752,12 @@
         }
       }
     },
-
-    "/messages": {
-      "parameters": [],
-      "post": {
-        "tags": ["Messaging"],
-        "summary": "Create message",
-        "parameters": [
-          {
-            "name": "Content-Type",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "401": {
-            "description": "Unauthenticated",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {"type": "string"}
-                  }
-                },
-                "example": {
-                  "message": "string"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/products": {
       "parameters": [],
 
       "get": {
         "tags": ["Products"],
-        "summary": "products",
+        "summary": "Products",
         "parameters": [
           {
             "name": "sort",
@@ -1914,75 +1958,6 @@
         }
       }
     },
-    "/subscriptions/renew": {
-      "parameters": [],
-      "post": {
-        "tags": ["Subscriptions"],
-        "summary": "Renew",
-        "parameters": [
-          {
-            "name": "Content-Type",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "401": {
-            "description": "Unauthenticated",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {"type": "string"}
-                  }
-                },
-                "example": {
-                  "message": "string"
-                }
-              }
-            }
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "renewal": {
-                    "type": "string"
-                  },
-                  "expires": {
-                    "type": "string",
-                    "format": "utc-millisec"
-                  },
-                  "signature": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/subscription-packages": {
       "parameters": [],
       "get": {
@@ -2109,9 +2084,80 @@
         }
       }
     },
+
+    "/subscriptions/renew": {
+      "parameters": [],
+      "post": {
+        "tags": ["Subscriptions"],
+        "summary": "Renew",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"}
+                  }
+                },
+                "example": {
+                  "message": "string"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "renewal": {
+                    "type": "string"
+                  },
+                  "expires": {
+                    "type": "string",
+                    "format": "utc-millisec"
+                  },
+                  "signature": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/search": {
       "parameters": [],
       "get": {
+        "tags": ["Search"],
         "summary": "Search",
         "parameters": [
           {
