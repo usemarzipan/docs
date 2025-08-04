@@ -35,44 +35,89 @@
             "type": "string",
             "description": "URL-friendly product identifier"
           },
+          "url": {
+            "type": "string",
+            "description": "Full URL to the product page"
+          },
           "description": {
             "type": "string",
             "description": "Product description"
           },
-          "productType": {
+          "product_type": {
             "type": "string",
-            "enum": ["physical", "event", "subscription"],
+            "enum": ["physical", "event", "subscription", "bundle"],
             "description": "Type of product"
+          },
+          "subscription_type": {
+            "type": "string",
+            "enum": ["picknmix", "variable"],
+            "description": "Type of subscription. Only present for subscription products"
           },
           "sku": {
             "type": "string",
             "description": "Stock Keeping Unit"
           },
-          "collection": {
-            "type": "string",
-            "description": "Product collection name"
+          "collections": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Collection"
+            },
+            "description": "Collections this product belongs to"
           },
           "status": {
             "type": "string",
-            "enum": ["active", "inactive"],
-            "description": "Product status"
+            "enum": ["active", "inactive", "out_of_stock"],
+            "description": "Product status - automatically set to out_of_stock when quantity is 0"
           },
-          "image": {
-            "$ref": "#/components/schemas/ProductImage"
+          "images": {
+            "type": "object",
+            "properties": {
+              "product": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ProductImage"
+                },
+                "description": "Main product images"
+              },
+              "labels": {
+                "type": "object",
+                "properties": {
+                  "front": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ProductImage"
+                    },
+                    "description": "Front label images"
+                  },
+                  "back": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ProductImage"
+                    },
+                    "description": "Back label images"
+                  }
+                }
+              }
+            },
+            "description": "Product images organized by type"
+          },
+          "primaryImage": {
+            "$ref": "#/components/schemas/ProductImage",
+            "description": "Primary product image"
           },
           "price": {
             "type": "string",
-            "description": "Formatted price (e.g., £10.00)"
+            "description": "Formatted price (e.g., £10.00). For pick-and-mix subscriptions with per-item pricing, may show 'from £X.XX'"
           },
           "salePrice": {
             "type": "string",
             "nullable": true,
-            "description": "Sale price if on sale"
+            "description": "Formatted sale price if on sale"
           },
           "subscriberPrice": {
             "type": "string",
             "nullable": true,
-            "description": "Special price for subscribers"
+            "description": "Special price for subscribers. Not shown for subscription products"
           },
           "createdAt": {
             "type": "string",
@@ -84,28 +129,141 @@
             "format": "date-time",
             "description": "Last update timestamp"
           },
-          "storeSlug": {
+          "store_slug": {
             "type": "string",
-            "description": "Store identifier"
+            "description": "Store URL slug"
           },
-          "subscriptionsSlug": {
+          "subscriptions_slug": {
             "type": "string",
-            "description": "Subscription identifier"
+            "description": "Subscriptions URL slug"
           },
           "availability": {
             "type": "string",
             "enum": ["all", "subscribers"],
             "description": "Product availability"
           },
-          "upsellProducts": {
+          "upsell_products": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ProductSummary"
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "description": "Product ID"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Product name"
+                },
+                "sku": {
+                  "type": "string",
+                  "description": "Product SKU"
+                },
+                "price": {
+                  "type": "string",
+                  "description": "Formatted price"
+                },
+                "sale_price": {
+                  "type": "string",
+                  "nullable": true,
+                  "description": "Formatted sale price"
+                },
+                "subscriber_price": {
+                  "type": "string",
+                  "nullable": true,
+                  "description": "Formatted subscriber price"
+                }
+              }
             },
-            "description": "Related upsell products"
+            "description": "Upsell products with simplified data"
+          },
+          "linkedSubscriptions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LinkedSubscription"
+            },
+            "description": "Full details of linked subscriptions. Only included when using ?include=linkedSubscriptions parameter"
+          },
+          "billing_frequency": {
+            "type": "integer",
+            "description": "Billing frequency in months. Only present for subscription products"
+          },
+          "billing_frequencies": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "description": "Available billing frequencies. Only present for subscription products"
+          },
+          "pricing_type": {
+            "type": "string",
+            "enum": ["fixed", "per_item"],
+            "description": "Pricing type for subscriptions. Only present for subscription products"
+          },
+          "bundle_items": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "Items included in bundle. Only present for bundle products"
+          },
+          "attributes": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "Product attributes like color, size, etc."
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "Product options with their possible values"
+          },
+          "related_products": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "Related products"
+          },
+          "awards": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "Product awards"
+          },
+          "reviews": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "Product reviews"
+          },
+          "meta_title": {
+            "type": "string",
+            "description": "SEO meta title"
+          },
+          "meta_description": {
+            "type": "string",
+            "description": "SEO meta description"
+          },
+          "meta_image": {
+            "type": "string",
+            "nullable": true,
+            "description": "SEO meta image URL (1200x630)"
+          },
+          "linked_subscription": {
+            "type": "boolean",
+            "description": "Whether product has linked subscriptions. Only present if product has linked subscriptions"
+          },
+          "store_name": {
+            "type": "string",
+            "description": "Store name"
           }
-        },
-        "required": ["id", "name", "slug", "productType", "status", "price"]
+        }
       },
       "ProductSummary": {
         "type": "object",
@@ -133,32 +291,112 @@
             "enum": ["physical", "event", "subscription"],
             "description": "Type of product"
           }
-        },
-        "required": ["id", "name", "slug", "productType", "price"]
+        }
       },
       "ProductImage": {
         "type": "object",
         "properties": {
           "id": {
             "type": "string",
-            "format": "uuid"
+            "format": "uuid",
+            "description": "Unique identifier for the image"
           },
           "path": {
-            "type": "string"
+            "type": "string",
+            "description": "Relative path to the image file"
           },
           "src": {
             "type": "string",
-            "format": "uri"
+            "format": "uri",
+            "description": "Full URL to access the image"
           },
           "alt": {
             "type": "string",
-            "nullable": true
+            "nullable": true,
+            "description": "Alternative text for accessibility"
           },
           "mimeType": {
-            "type": "string"
+            "type": "string",
+            "description": "MIME type of the image (e.g., image/jpeg, image/png)"
           },
           "filename": {
-            "type": "string"
+            "type": "string",
+            "description": "Original filename of the uploaded image"
+          }
+        }
+      },
+      "LinkedSubscription": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Subscription ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "Subscription name"
+          },
+          "options": {
+            "type": "object",
+            "description": "Subscription options"
+          },
+          "status": {
+            "type": "string",
+            "description": "Subscription status"
+          },
+          "start_date": {
+            "type": "string",
+            "format": "date",
+            "description": "Subscription start date"
+          },
+          "end_date": {
+            "type": "string",
+            "format": "date",
+            "description": "Subscription end date"
+          },
+          "next_billing_date": {
+            "type": "string",
+            "format": "date",
+            "description": "Next billing date"
+          },
+          "billing_interval": {
+            "type": "integer",
+            "description": "Billing interval in months"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Creation timestamp"
+          }
+        }
+      },
+      "Collection": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Unique identifier for the collection"
+          },
+          "name": {
+            "type": "string",
+            "description": "Collection name"
+          },
+          "description": {
+            "type": "string",
+            "description": "Collection description"
+          },
+          "slug": {
+            "type": "string",
+            "description": "URL-friendly collection identifier"
+          },
+          "attributes": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "Collection attributes"
           }
         }
       },
@@ -173,8 +411,7 @@
             "type": "boolean",
             "description": "Whether the user has an active subscription"
           }
-        },
-        "required": ["token", "isSubscriber"]
+        }
       },
       "Error": {
         "type": "object",
@@ -254,22 +491,13 @@
       "post": {
         "tags": ["Account"],
         "summary": "Register",
+        "description": "Register a new user account with an email address. A verification email will be sent to complete the registration process.",
         "security": [
           {
             "tenantAuth": []
           }
         ],
-        "parameters": [
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Success"
@@ -314,22 +542,13 @@
       "post": {
         "tags": ["Account"],
         "summary": "Login",
+        "description": "Authenticate a user with their email address and receive an authentication token for API access.",
         "security": [
           {
             "tenantAuth": []
           }
         ],
-        "parameters": [
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Success"
@@ -373,22 +592,13 @@
       "post": {
         "tags": ["Account"],
         "summary": "Logout",
+        "description": "Invalidate the current authentication token and log out the user from their session.",
         "security": [
           {
             "accountAuth": []
           }
         ],
-        "parameters": [
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Success"
@@ -426,31 +636,13 @@
       "post": {
         "tags": ["Account"],
         "summary": "Password Reset",
+        "description": "Request a password reset link to be sent to the user's email address. The user can use the link to set a new password.",
         "security": [
           {
             "accountAuth": []
           }
         ],
-        "parameters": [
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Content-Type",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Success"
@@ -498,6 +690,7 @@
       "get": {
         "tags": ["Account"],
         "summary": "Orders",
+        "description": "Retrieve a list of all orders associated with the authenticated user's account, including order status and payment information.",
         "security": [
           {
             "accountAuth": []
@@ -569,22 +762,13 @@
       "get": {
         "tags": ["Account"],
         "summary": "Subscriptions",
+        "description": "Get all active and inactive subscriptions for the authenticated user, including subscription details and renewal dates.",
         "security": [
           {
             "accountAuth": []
           }
         ],
-        "parameters": [
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Success",
@@ -656,22 +840,13 @@
       "get": {
         "tags": ["Account"],
         "summary": "Details",
+        "description": "Retrieve the authenticated user's account details including personal information and marketing preferences.",
         "security": [
           {
             "accountAuth": []
           }
         ],
-        "parameters": [
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Success",
@@ -725,22 +900,13 @@
       "post": {
         "tags": ["Account"],
         "summary": "Update details",
+        "description": "Update the authenticated user's account information such as name and email address.",
         "security": [
           {
             "accountAuth": []
           }
         ],
-        "parameters": [
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Success"
@@ -788,19 +954,11 @@
     "/carts": {
       "parameters": [],
       "post": {
+        "x-excluded": true,
         "tags": ["Carts"],
         "summary": "Create Cart",
-        "parameters": [
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "description": "Create a new shopping cart session. The cart can be used to add items and proceed to checkout.",
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Success",
@@ -906,19 +1064,11 @@
         }
       ],
       "get": {
+        "x-excluded": true,
         "tags": ["Carts"],
         "summary": "Get Cart",
-        "parameters": [
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "description": "Retrieve the contents and details of a specific cart including all items, totals, and applied discounts.",
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Success"
@@ -942,24 +1092,16 @@
         }
       },
       "put": {
+        "x-excluded": true,
         "tags": ["Carts"],
         "summary": "Update Cart",
+        "description": "Update cart details such as the customer email address associated with the cart.",
         "security": [
           {
             "tenantAuth": []
           }
         ],
-        "parameters": [
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Success"
@@ -998,19 +1140,11 @@
         }
       },
       "delete": {
+        "x-excluded": true,
         "tags": ["Carts"],
         "summary": "Clear All Cart Items",
-        "parameters": [
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "description": "Remove all items from the cart, effectively emptying it while keeping the cart session active.",
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Success"
@@ -1058,19 +1192,11 @@
         }
       ],
       "post": {
+        "x-excluded": true,
         "tags": ["Carts"],
         "summary": "Add Item to Cart",
-        "parameters": [
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "description": "Add one or more items to the cart with specified quantities and product types.",
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Success"
@@ -1148,19 +1274,11 @@
         }
       ],
       "put": {
+        "x-excluded": true,
         "tags": ["Carts"],
         "summary": "Update Cart Item Quantity",
-        "parameters": [
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "description": "Update the quantity of a specific item in the cart. Set quantity to zero to remove the item.",
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Success"
@@ -1198,19 +1316,11 @@
         }
       },
       "delete": {
+        "x-excluded": true,
         "tags": ["Carts"],
         "summary": "Remove Cart Item",
-        "parameters": [
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "description": "Remove a specific item from the cart completely regardless of quantity.",
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Success"
@@ -1258,19 +1368,11 @@
         }
       ],
       "post": {
+        "x-excluded": true,
         "tags": ["Carts"],
         "summary": "Apply Discount to Cart",
-        "parameters": [
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "description": "Apply a discount code to the cart to receive promotional pricing or special offers.",
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Success"
@@ -1323,19 +1425,11 @@
         }
       ],
       "post": {
+        "x-excluded": true,
         "tags": ["Carts"],
         "summary": "Checkout Cart",
-        "parameters": [
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "description": "Process the cart for payment and convert it to an order. Supports multiple payment providers including PayPal.",
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Success"
@@ -1399,8 +1493,10 @@
         }
       ],
       "get": {
+        "x-excluded": true,
         "tags": ["Carts"],
         "summary": "Get Cart Shipping Methods",
+        "description": "Retrieve available shipping methods and rates for the items in the cart based on the destination.",
         "parameters": [],
         "responses": {
           "200": {
@@ -1440,8 +1536,10 @@
         }
       ],
       "get": {
+        "x-excluded": true,
         "tags": ["Carts"],
         "summary": "Get Cart Countries",
+        "description": "Get a list of countries available for shipping for the items in the current cart.",
         "parameters": [],
         "responses": {
           "200": {
@@ -1481,8 +1579,10 @@
         }
       ],
       "post": {
+        "x-excluded": true,
         "tags": ["Carts"],
         "summary": "Create Cart Setup Intent",
+        "description": "Create a payment setup intent for saving payment methods for future use with this cart.",
         "parameters": [],
         "responses": {
           "200": {
@@ -1512,26 +1612,8 @@
       "get": {
         "tags": ["CMS"],
         "summary": "Pages",
-        "parameters": [
-          {
-            "name": "Content-Type",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "description": "Retrieve a list of all CMS pages including their metadata, status, and publication dates.",
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Success",
@@ -1593,27 +1675,9 @@
       ],
       "get": {
         "tags": ["CMS"],
-        "summary": "Get CMS Page",
-        "parameters": [
-          {
-            "name": "Content-Type",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "summary": "Page",
+        "description": "Get the full content and details of a specific CMS page by its slug identifier.",
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Success",
@@ -1708,27 +1772,9 @@
       ],
       "get": {
         "tags": ["CMS"],
-        "summary": "Get CMS Collection",
-        "parameters": [
-          {
-            "name": "Content-Type",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "summary": "Collection",
+        "description": "Retrieve all items from a specific CMS collection by its name.",
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Success"
@@ -1754,37 +1800,94 @@
     },
     "/products": {
       "parameters": [],
-
       "get": {
         "tags": ["Products"],
         "summary": "Products",
+        "description": "Get a paginated list of all products with filtering and sorting options. Returns product details including pricing and availability.",
         "parameters": [
+          {
+            "name": "collection",
+            "in": "query",
+            "required": false,
+            "description": "Filter products by collection slug or name. Products will be ordered by their position in the collection.",
+            "schema": {
+              "type": "string"
+            },
+            "example": "featured-products"
+          },
+          {
+            "name": "attr",
+            "in": "query",
+            "required": false,
+            "description": "Filter products by attributes using deep object notation. Each attribute filter accepts comma-separated values for OR matching.\n\nFormat: attr[attribute_slug]=value1,value2\n\nExample: attr[color]=red,blue&attr[size]=large\nThis returns products that are (red OR blue) AND large.",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "style": "deepObject",
+            "explode": true,
+            "example": {
+              "color": "red,blue",
+              "size": "large"
+            }
+          },
           {
             "name": "sort",
             "in": "query",
             "required": false,
-            "description": "Deserunt labore tempor consequat laboris ad. Tempor consequat, laboris ad. Ad enim nostrud eiusmod, laborum. Eiusmod laborum consectetur, dolore cillum velit labore est. Dolore cillum, velit labore est aliquip.",
+            "description": "Sort products by field and direction. Format: field.direction (e.g., price.asc, name.desc). Multiple sort options can be comma-separated.",
             "schema": {
               "type": "string"
+            },
+            "example": "price.asc,name.desc"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Limit the number of results returned. Maximum 50 per page.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50
+            },
+            "example": 10
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "description": "Page number for pagination.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "example": 1
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "required": false,
+            "description": "Number of items per page. Default is 50.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 50
             }
           },
           {
-            "name": "Content-Type",
-            "in": "header",
+            "name": "include",
+            "in": "query",
             "required": false,
-            "example": "application/json",
+            "description": "Comma-separated list of related resources to include in the response.\n\n Available options: linkedSubscriptions (includes full subscription details for products with linked subscriptions).",
             "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
+              "type": "string",
+              "enum": ["linkedSubscriptions"]
+            },
+            "example": "linkedSubscriptions"
           }
         ],
         "responses": {
@@ -1915,26 +2018,8 @@
       "get": {
         "tags": ["Products"],
         "summary": "Get Product",
-        "parameters": [
-          {
-            "name": "Content-Type",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "description": "Retrieve detailed information about a specific product by its unique identifier.",
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Success"
@@ -1963,26 +2048,8 @@
       "get": {
         "tags": ["Subscriptions"],
         "summary": "Packages",
-        "parameters": [
-          {
-            "name": "Content-Type",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "description": "List all available subscription packages including pricing and subscription type information.",
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Success",
@@ -2041,26 +2108,8 @@
       "get": {
         "tags": ["Subscriptions"],
         "summary": "Package",
-        "parameters": [
-          {
-            "name": "Content-Type",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "description": "Get detailed information about a specific subscription package by its unique identifier.",
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Success"
@@ -2090,26 +2139,8 @@
       "post": {
         "tags": ["Subscriptions"],
         "summary": "Renew",
-        "parameters": [
-          {
-            "name": "Content-Type",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "description": "Renew an existing subscription using a renewal token and signature. Used for subscription extensions and renewals.",
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Success"
@@ -2159,30 +2190,13 @@
       "get": {
         "tags": ["Search"],
         "summary": "Search",
+        "description": "Search across products, pages, and other content using a query string. Returns relevant results based on the search term.",
         "parameters": [
           {
             "name": "query",
             "in": "query",
             "required": false,
             "example": "Adam",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Content-Type",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Accept",
-            "in": "header",
-            "required": false,
-            "example": "application/json",
             "schema": {
               "type": "string"
             }
