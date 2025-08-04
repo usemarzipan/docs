@@ -2513,9 +2513,21 @@
       ],
       "get": {
         "tags": ["Products"],
-        "summary": "Get Product",
+        "summary": "Product",
         "description": "Retrieve detailed information about a specific product by its unique identifier.",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated list of related resources to include in the response. Available options: linkedSubscriptions (includes full subscription details for products with linked subscriptions).",
+            "schema": {
+              "type": "string",
+              "enum": ["linkedSubscriptions"]
+            },
+            "example": "linkedSubscriptions"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Product details",
