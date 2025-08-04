@@ -613,7 +613,7 @@
                   "data": {
                     "firstName": "string",
                     "lastName": "string",
-                    "email": "user@example.com",
+                    "email": "john.doe@marzipan.co",
                     "phone": "string",
                     "marketing": []
                   }
@@ -1554,7 +1554,7 @@
                   "seo": {
                     "title": "string",
                     "description": "string",
-                    "ogImage": "https://example.com/image.jpg"
+                    "ogImage": "https://cdn.marzipan.co/images/og-image.jpg"
                   },
                   "status": "published|draft",
                   "fields": {},
@@ -1818,7 +1818,7 @@
                       "image": {
                         "id": "uuid",
                         "path": "string",
-                        "src": "https://example.com/image.jpg",
+                        "src": "https://cdn.marzipan.co/images/product-image.jpg",
                         "alt": null,
                         "mimeType": "image/jpeg",
                         "filename": "string"
@@ -1835,15 +1835,15 @@
                     }
                   ],
                   "links": {
-                    "first": "https://api.example.com/v1/products?page=1",
-                    "last": "https://api.example.com/v1/products?page=5",
+                    "first": "https://api.marzipan.co/v1/products?page=1",
+                    "last": "https://api.marzipan.co/v1/products?page=5",
                     "prev": null,
-                    "next": "https://api.example.com/v1/products?page=2"
+                    "next": "https://api.marzipan.co/v1/products?page=2"
                   },
                   "meta": {
                     "currentPage": 1,
                     "from": 1,
-                    "path": "https://api.example.com/v1/products",
+                    "path": "https://api.marzipan.co/v1/products",
                     "perPage": 15,
                     "to": 15
                   }
