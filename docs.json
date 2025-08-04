@@ -121,6 +121,19 @@
         ]
     },
     {
+      "tab": "API Reference",
+      "icon": "terminal",
+      "groups": [
+        {
+          "group": "Get Started",
+          "pages": [
+            "api-reference/introduction"
+          ]
+        }
+      ],
+      "openapi": "api-reference/openapi.json"
+    },
+    {
       "tab": "Web Components",
       "icon": "puzzle",
       "groups": [

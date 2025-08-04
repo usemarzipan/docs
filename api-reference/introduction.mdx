@@ -1,33 +1,54 @@
 ---
 title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+description: 'Welcome to the Marzipan API documentation'
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
+# Marzipan API
 
-## Welcome
+The Marzipan API is organized around REST. Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+## Getting Started
+
+To get started with the Marzipan API, you'll need to:
+
+1. **Register an account** using the `/account/register` endpoint
+2. **Login** to obtain authentication credentials
+3. **Explore** the available endpoints organized by category
+
+## Base URL
+
+All API requests should be made to: `{{apiUrl}}`
+
+## Endpoints Overview
 
 <Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
+  title="Account Management"
+  icon="user"
 >
-  View the OpenAPI specification file
+  User registration, login, and profile management
+</Card>
+
+<Card
+  title="Shopping Carts"
+  icon="shopping-cart"
+>
+  Cart creation, item management, and checkout
+</Card>
+
+<Card
+  title="Products"
+  icon="package"
+>
+  Product catalog and search functionality
+</Card>
+
+<Card
+  title="Subscriptions"
+  icon="credit-card"
+>
+  Subscription management and renewals
 </Card>
 
 ## Authentication
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
-
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
-```
+All API endpoints require authentication. Include your authentication token in the request headers.
