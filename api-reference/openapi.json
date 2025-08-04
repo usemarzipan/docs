@@ -922,6 +922,52 @@
           }
         }
       },
+      "SearchResult": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Unique identifier for the result"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["product", "page", "collection"],
+            "description": "Type of search result"
+          },
+          "title": {
+            "type": "string",
+            "description": "Title or name of the result"
+          },
+          "slug": {
+            "type": "string",
+            "description": "URL-friendly identifier"
+          },
+          "url": {
+            "type": "string",
+            "description": "URL to the result"
+          },
+          "excerpt": {
+            "type": "string",
+            "nullable": true,
+            "description": "Brief excerpt or description"
+          },
+          "image": {
+            "$ref": "#/components/schemas/ProductImage",
+            "nullable": true,
+            "description": "Associated image if available"
+          },
+          "price": {
+            "type": "string",
+            "nullable": true,
+            "description": "Formatted price for product results"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the result"
+          }
+        }
+      },
       "LoginResponse": {
         "type": "object",
         "properties": {
@@ -2850,16 +2896,84 @@
           {
             "name": "query",
             "in": "query",
-            "required": false,
-            "example": "Adam",
+            "required": true,
+            "description": "Search term to find matching content",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
+            },
+            "example": "coffee"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "required": false,
+            "description": "Filter results by content type. If not specified, searches all types",
+            "schema": {
+              "type": "string",
+              "enum": ["products", "pages", "collections"]
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of results to return per type",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 10
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Search results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "query": {
+                      "type": "string",
+                      "description": "The search query that was executed"
+                    },
+                    "total_results": {
+                      "type": "integer",
+                      "description": "Total number of results found across all types"
+                    },
+                    "results": {
+                      "type": "object",
+                      "properties": {
+                        "products": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/SearchResult"
+                          },
+                          "description": "Product search results"
+                        },
+                        "pages": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/SearchResult"
+                          },
+                          "description": "Page search results"
+                        },
+                        "collections": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/SearchResult"
+                          },
+                          "description": "Collection search results"
+                        }
+                      },
+                      "description": "Search results organized by content type"
+                    }
+                  }
+                }
+              }
+            }
           },
           "401": {
             "description": "Unauthenticated",
