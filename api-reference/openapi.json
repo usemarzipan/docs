@@ -400,6 +400,528 @@
           }
         }
       },
+      "SubscriptionPackage": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Unique identifier for the subscription package"
+          },
+          "subscription_type": {
+            "type": "string",
+            "enum": ["picknmix", "variable"],
+            "description": "Type of subscription package"
+          },
+          "name": {
+            "type": "string",
+            "description": "Package name"
+          },
+          "slug": {
+            "type": "string",
+            "description": "URL-friendly package identifier"
+          },
+          "sku": {
+            "type": "string",
+            "description": "Stock Keeping Unit"
+          },
+          "url": {
+            "type": "string",
+            "description": "Full URL to the package page"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["active", "inactive", "out_of_stock"],
+            "description": "Package status"
+          },
+          "availability": {
+            "type": "string",
+            "enum": ["all", "subscribers"],
+            "description": "Who can purchase this package"
+          },
+          "product_type": {
+            "type": "string",
+            "enum": ["subscription"],
+            "description": "Always 'subscription' for packages"
+          },
+          "description": {
+            "type": "string",
+            "description": "Package description"
+          },
+          "meta_title": {
+            "type": "string",
+            "description": "SEO meta title"
+          },
+          "meta_description": {
+            "type": "string",
+            "description": "SEO meta description"
+          },
+          "collections": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Collection"
+            },
+            "description": "Collections this package belongs to"
+          },
+          "images": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductImage"
+            },
+            "description": "Package images"
+          },
+          "primaryImage": {
+            "$ref": "#/components/schemas/ProductImage",
+            "description": "Primary package image"
+          },
+          "price": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "integer",
+                "description": "Price in cents"
+              },
+              "formatted": {
+                "type": "string",
+                "description": "Formatted price with currency"
+              },
+              "currency": {
+                "type": "string",
+                "description": "Currency code"
+              }
+            },
+            "description": "Package price information"
+          },
+          "salePrice": {
+            "type": "object",
+            "nullable": true,
+            "properties": {
+              "value": {
+                "type": "integer",
+                "description": "Sale price in cents"
+              },
+              "formatted": {
+                "type": "string",
+                "description": "Formatted sale price with currency"
+              },
+              "currency": {
+                "type": "string",
+                "description": "Currency code"
+              }
+            },
+            "description": "Sale price information if on sale"
+          },
+          "billing_frequency": {
+            "type": "integer",
+            "description": "Default billing frequency in months"
+          },
+          "billing_frequencies": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "description": "Available billing frequencies in months"
+          },
+          "pricing_type": {
+            "type": "string",
+            "enum": ["fixed", "per_item"],
+            "description": "How the subscription is priced"
+          },
+          "auto_renew": {
+            "type": "boolean",
+            "description": "Whether the subscription auto-renews"
+          },
+          "minimum_items": {
+            "type": "integer",
+            "description": "Minimum number of items required for pick & mix"
+          },
+          "available_items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SubscriptionAvailableItem"
+            },
+            "description": "Available items for pick & mix subscriptions. Only present for picknmix type"
+          },
+          "attributes": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "Package attributes"
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "Package options"
+          },
+          "related_products": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "Related products"
+          },
+          "subscribers": {
+            "type": "integer",
+            "description": "Number of subscribers. Only included when using ?include=subscribers parameter"
+          }
+        }
+      },
+      "SubscriptionPackageCollection": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Unique identifier for the subscription package"
+          },
+          "subscription_type": {
+            "type": "string",
+            "enum": ["picknmix", "variable"],
+            "description": "Type of subscription package"
+          },
+          "name": {
+            "type": "string",
+            "description": "Package name"
+          },
+          "slug": {
+            "type": "string",
+            "description": "URL-friendly package identifier"
+          },
+          "subscriptions_slug": {
+            "type": "string",
+            "description": "Subscriptions URL slug"
+          },
+          "url": {
+            "type": "string",
+            "description": "Full URL to the package page"
+          },
+          "description": {
+            "type": "string",
+            "description": "Package description"
+          },
+          "product_type": {
+            "type": "string",
+            "enum": ["subscription"],
+            "description": "Always 'subscription' for packages"
+          },
+          "sku": {
+            "type": "string",
+            "description": "Stock Keeping Unit"
+          },
+          "collection": {
+            "type": "string",
+            "nullable": true,
+            "description": "Primary collection name"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["active", "inactive", "out_of_stock"],
+            "description": "Package status"
+          },
+          "image": {
+            "$ref": "#/components/schemas/ProductImage",
+            "description": "Primary package image"
+          },
+          "price": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "integer",
+                "description": "Price in cents"
+              },
+              "formatted": {
+                "type": "string",
+                "description": "Formatted price with currency"
+              },
+              "currency": {
+                "type": "string",
+                "description": "Currency code"
+              }
+            },
+            "description": "Package price information"
+          },
+          "salePrice": {
+            "type": "object",
+            "nullable": true,
+            "properties": {
+              "value": {
+                "type": "integer",
+                "description": "Sale price in cents"
+              },
+              "formatted": {
+                "type": "string",
+                "description": "Formatted sale price with currency"
+              },
+              "currency": {
+                "type": "string",
+                "description": "Currency code"
+              }
+            },
+            "description": "Sale price information if on sale"
+          },
+          "attributes": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "Package attributes. Only included when using ?include=attributes parameter"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Creation timestamp"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last update timestamp"
+          }
+        }
+      },
+      "SubscriptionAvailableItem": {
+        "type": "object",
+        "properties": {
+          "item_id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Product ID of the available item"
+          },
+          "item_name": {
+            "type": "string",
+            "description": "Name of the available item"
+          },
+          "item_sku": {
+            "type": "string",
+            "description": "SKU of the available item"
+          },
+          "item_description": {
+            "type": "string",
+            "description": "Description of the available item"
+          },
+          "min_qty": {
+            "type": "integer",
+            "description": "Minimum quantity allowed"
+          },
+          "max_qty": {
+            "type": "integer",
+            "description": "Maximum quantity allowed"
+          },
+          "default_qty": {
+            "type": "integer",
+            "description": "Default quantity"
+          },
+          "sort_order": {
+            "type": "integer",
+            "description": "Display order"
+          },
+          "image": {
+            "$ref": "#/components/schemas/ProductImage",
+            "description": "Primary item image"
+          },
+          "collections": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Collection"
+            },
+            "description": "Collections this item belongs to"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["active", "inactive", "out_of_stock"],
+            "description": "Item availability status"
+          },
+          "attributes": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "Item attributes"
+          },
+          "related_products": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "Related products"
+          }
+        }
+      },
+      "CmsPage": {
+        "type": "object",
+        "properties": {
+          "slug": {
+            "type": "string",
+            "description": "URL-friendly page identifier"
+          },
+          "name": {
+            "type": "string",
+            "description": "Page title/name"
+          },
+          "meta_title": {
+            "type": "string",
+            "description": "SEO meta title"
+          },
+          "meta_description": {
+            "type": "string",
+            "description": "SEO meta description"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["published", "draft"],
+            "description": "Page publication status"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Creation timestamp"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last update timestamp"
+          },
+          "published_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "description": "Publication timestamp"
+          }
+        }
+      },
+      "CmsPageDetail": {
+        "type": "object",
+        "properties": {
+          "slug": {
+            "type": "string",
+            "description": "URL-friendly page identifier"
+          },
+          "name": {
+            "type": "string",
+            "description": "Page title/name"
+          },
+          "content": {
+            "type": "string",
+            "description": "Page content/body"
+          },
+          "seo": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "description": "SEO meta title"
+              },
+              "description": {
+                "type": "string",
+                "description": "SEO meta description"
+              },
+              "og_image": {
+                "type": "string",
+                "nullable": true,
+                "description": "Open Graph image URL (1200x630)"
+              }
+            },
+            "description": "SEO metadata"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["published", "draft"],
+            "description": "Page publication status"
+          },
+          "fields": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Custom fields as key-value pairs"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Creation timestamp"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last update timestamp"
+          },
+          "published_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "description": "Publication timestamp"
+          }
+        }
+      },
+      "CmsCollection": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Unique identifier for the collection"
+          },
+          "name": {
+            "type": "string",
+            "description": "Collection name"
+          },
+          "slug": {
+            "type": "string",
+            "description": "URL-friendly collection identifier"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CmsItem"
+            },
+            "description": "Collection items sorted by order"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Creation timestamp"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last update timestamp"
+          }
+        }
+      },
+      "CmsItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Unique identifier for the item"
+          },
+          "name": {
+            "type": "string",
+            "description": "Item name"
+          },
+          "content": {
+            "type": "string",
+            "description": "Item content"
+          },
+          "order": {
+            "type": "integer",
+            "description": "Display order within collection"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Creation timestamp"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last update timestamp"
+          }
+        }
+      },
       "LoginResponse": {
         "type": "object",
         "properties": {
@@ -1620,24 +2142,9 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "slug": {"type": "string"},
-                          "name": {"type": "string", "nullable": true},
-                          "metaTitle": {"type": "string"},
-                          "metaDescription": {"type": "string"},
-                          "status": {"type": "string"},
-                          "createdAt": {"type": "string", "format": "date-time"},
-                          "updatedAt": {"type": "string", "format": "date-time"},
-                          "publishedAt": {"type": "string", "nullable": true}
-                        }
-                      }
-                    }
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CmsPage"
                   }
                 },
                 "example": {
@@ -1680,29 +2187,11 @@
         "parameters": [],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "CMS page details",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "slug": {"type": "string"},
-                    "name": {"type": "string"},
-                    "content": {"type": "string"},
-                    "seo": {
-                      "type": "object",
-                      "properties": {
-                        "title": {"type": "string"},
-                        "description": {"type": "string"},
-                        "ogImage": {"type": "string", "format": "uri"}
-                      }
-                    },
-                    "status": {"type": "string"},
-                    "fields": {"type": "object"},
-                    "createdAt": {"type": "string", "format": "date-time"},
-                    "updatedAt": {"type": "string", "format": "date-time"},
-                    "publishedAt": {"type": "string", "nullable": true}
-                  }
+                  "$ref": "#/components/schemas/CmsPageDetail"
                 },
                 "example": {
                   "slug": "string",
@@ -1777,7 +2266,14 @@
         "parameters": [],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "CMS collection with items",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CmsCollection"
+                }
+              }
+            }
           },
           "401": {
             "description": "Unauthenticated",
@@ -2022,7 +2518,14 @@
         "parameters": [],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Product details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Product"
+                }
+              }
+            }
           },
           "401": {
             "description": "Unauthenticated",
@@ -2048,8 +2551,90 @@
       "get": {
         "tags": ["Subscriptions"],
         "summary": "Packages",
-        "description": "List all available subscription packages including pricing and subscription type information.",
-        "parameters": [],
+        "description": "List all available subscription packages including pricing and subscription type information. Supports filtering and sorting similar to products endpoint.",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "required": false,
+            "description": "Filter by subscription type (picknmix, variable)",
+            "schema": {
+              "type": "string",
+              "enum": ["picknmix", "variable"]
+            }
+          },
+          {
+            "name": "collection",
+            "in": "query",
+            "required": false,
+            "description": "Filter packages by collection slug or name",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "attr",
+            "in": "query",
+            "required": false,
+            "description": "Filter packages by attributes using deep object notation",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "style": "deepObject",
+            "explode": true
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "description": "Sort packages by field and direction (e.g., price.asc, name.desc)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Limit the number of results returned",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "description": "Page number for pagination",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "required": false,
+            "description": "Number of items per page",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "Include additional data. Available: attributes, subscribers",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success",
@@ -2061,21 +2646,51 @@
                     "data": {
                       "type": "array",
                       "items": {
-                        "type": "object",
-                        "properties": {
-                          "id": {"type": "string"},
-                          "subscriptionType": {"type": "string"},
-                          "name": {"type": "string"},
-                          "slug": {"type": "string"},
-                          "description": {"type": "string"},
-                          "price": {
-                            "type": "object",
-                            "properties": {
-                              "value": {"type": "integer"},
-                              "formatted": {"type": "string"},
-                              "currency": {"type": "string"}
-                            }
-                          }
+                        "$ref": "#/components/schemas/SubscriptionPackageCollection"
+                      }
+                    },
+                    "links": {
+                      "type": "object",
+                      "properties": {
+                        "first": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "last": {
+                          "type": "string",
+                          "format": "uri",
+                          "nullable": true
+                        },
+                        "prev": {
+                          "type": "string",
+                          "format": "uri",
+                          "nullable": true
+                        },
+                        "next": {
+                          "type": "string",
+                          "format": "uri",
+                          "nullable": true
+                        }
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "currentPage": {
+                          "type": "integer"
+                        },
+                        "from": {
+                          "type": "integer"
+                        },
+                        "path": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "perPage": {
+                          "type": "integer"
+                        },
+                        "to": {
+                          "type": "integer"
                         }
                       }
                     }
@@ -2103,16 +2718,44 @@
         }
       }
     },
-    "/subscription-packages/ec30c355-f910-4fa7-aa3c-bf41115d4f48": {
-      "parameters": [],
+    "/subscription-packages/{packageId}": {
+      "parameters": [
+        {
+          "name": "packageId",
+          "in": "path",
+          "required": true,
+          "description": "The unique identifier or slug for the subscription package",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
       "get": {
         "tags": ["Subscriptions"],
         "summary": "Package",
         "description": "Get detailed information about a specific subscription package by its unique identifier.",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "description": "Include additional data. Available: subscribers",
+            "schema": {
+              "type": "string",
+              "enum": ["subscribers"]
+            }
+          }
+        ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Subscription package details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriptionPackage"
+                }
+              }
+            }
           },
           "401": {
             "description": "Unauthenticated",
