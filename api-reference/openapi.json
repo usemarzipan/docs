@@ -1207,7 +1207,7 @@
         "description": "Request a password reset link to be sent to the user's email address. The user can use the link to set a new password.",
         "security": [
           {
-            "accountAuth": []
+            "tenantAuth": []
           }
         ],
         "parameters": [],
@@ -3125,7 +3125,7 @@
                     {
                       "item_id": "df0d13db-1332-4461-b3d1-b2774d47ff5f",
                       "item_name": "Chardonnay",
-                      "item_sku": "CHARD2015", 
+                      "item_sku": "CHARD2015",
                       "item_description": "Elegant white wine with crisp citrus notes",
                       "min_qty": 1,
                       "max_qty": 2,
