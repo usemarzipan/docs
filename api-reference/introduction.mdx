@@ -1,60 +1,37 @@
 ---
 title: 'Introduction'
-description: 'Welcome to the Marzipan API documentation'
+description: 'Welcome to the Marzipan API documentation.'
 ---
 
-# Marzipan API
+The Marzipan REST API enables you to interact with the Marzipan platform, retrieve data, and allow customers to manage their and accounts.
 
-The Marzipan API is organized around REST. Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.
+<Note>
+The API is currently in beta and subject to change.
+</Note>
 
 ## Getting Started
 
-To get started with the Marzipan API, you'll need to:
+To get started with the Marzipan API, you will need to create an API key with the right permissions in your Marzipan [account settings](https://app.marzipan.co/settings/api).
 
-1. **Register an account** using the `/account/register` endpoint
-2. **Login** to obtain authentication credentials
-3. **Explore** the available endpoints organized by category
+You will be able to choose the permissions you need for your API key. The current available permissions are:
 
-## Base URL
+- `read` - read access to products, collections, events, subscriptions and CMS
+- `create` - create access to products, collections, events, subscriptions and CMS
+- `update` - update access to products, collections, events, subscriptions and CMS
+- `delete` - delete access to products, collections, events, subscriptions and CMS
+- `cart:create` - create access to carts
+- `cart:update` - update access to carts
+- `cart:read` - read access to carts
+- `cart:delete` - delete access to carts
 
-All API requests should be made to: `https://api.marzipan.co/v1`
-
-## Endpoints Overview
-
-<Card
-  title="Account Management"
-  icon="user"
->
-  User registration, login, and profile management
-</Card>
-
-<Card
-  title="Shopping Carts"
-  icon="shopping-cart"
->
-  Cart creation, item management, and checkout
-</Card>
-
-<Card
-  title="Products"
-  icon="package"
->
-  Product catalog and search functionality
-</Card>
-
-<Card
-  title="Subscriptions"
-  icon="credit-card"
->
-  Subscription management and renewals
-</Card>
 
 ## Authentication
 
-All API endpoints require authentication. Include your authentication token in the request headers.
+The Marizpan API uses Bearer authentication. Include your generated api key in the `Authorization` header of your HTTP requests.
 
 ```http
-Authorization: Bearer YOUR_AUTH_TOKEN
+Authorization: Bearer YOUR_API_KEY
 ```
 
-You can find your authentication token in your [account settings](https://app.marzipan.co/settings).
+Keep your API key secure and never expose it in a public repository or share it with untrusted parties. If you believe your API key has been compromised, you can revoke it and generate a new one in your [account settings](https://app.marzipan.co/settings/api).
+

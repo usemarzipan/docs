@@ -2782,16 +2782,26 @@
           "name": "packageId",
           "in": "path",
           "required": true,
-          "description": "The unique identifier or slug for the subscription package",
+          "description": "The unique identifier (UUID) or slug for the subscription package",
           "schema": {
             "type": "string"
+          },
+          "examples": {
+            "uuid": {
+              "value": "550e8400-e29b-41d4-a716-446655440000",
+              "description": "Using a UUID"
+            },
+            "slug": {
+              "value": "premium-coffee-subscription",
+              "description": "Using a slug"
+            }
           }
         }
       ],
       "get": {
         "tags": ["Subscriptions"],
         "summary": "Package",
-        "description": "Get detailed information about a specific subscription package by its unique identifier.",
+        "description": "Get detailed information about a specific subscription package by its unique identifier (UUID) or slug.",
         "parameters": [
           {
             "name": "include",
@@ -2839,6 +2849,7 @@
       "parameters": [],
       "post": {
         "tags": ["Subscriptions"],
+        "x-excluded": true,
         "summary": "Renew",
         "description": "Renew an existing subscription using a renewal token and signature. Used for subscription extensions and renewals.",
         "parameters": [],
