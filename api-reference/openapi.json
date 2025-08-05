@@ -904,7 +904,7 @@
           },
           "content": {
             "type": "string",
-            "description": "Item content"
+            "description": "Item content (may contain HTML)"
           },
           "order": {
             "type": "integer",
@@ -1293,13 +1293,31 @@
                 "example": {
                   "data": [
                     {
-                      "id": "uuid",
-                      "ref": "string",
+                      "id": "73d5c504-adbb-43ac-891e-9b3dd4900de4",
+                      "ref": "1010744",
+                      "items": 2,
+                      "amount": "£96.98",
+                      "status": "processing",
+                      "paymentStatus": "paid",
+                      "createdAt": "2024-06-08T22:07:53.000000Z"
+                    },
+                    {
+                      "id": "6326728d-05e1-4fc5-92fb-c40b5aa0e52f",
+                      "ref": "1010961",
                       "items": 1,
-                      "amount": "£0.00",
-                      "status": "pending|shipped|cancelled",
-                      "paymentStatus": "paid|failed|pending",
-                      "createdAt": "string"
+                      "amount": "£9.99",
+                      "status": "shipped",
+                      "paymentStatus": "paid",
+                      "createdAt": "2024-10-07T12:12:58.000000Z"
+                    },
+                    {
+                      "id": "835152d7-a1a7-4aa1-941e-1114acae24df",
+                      "ref": "1010985",
+                      "items": 5,
+                      "amount": "£281.89",
+                      "status": "shipped",
+                      "paymentStatus": "paid",
+                      "createdAt": "2024-10-25T09:03:10.000000Z"
                     }
                   ]
                 }
@@ -1368,15 +1386,27 @@
                 "example": {
                   "data": [
                     {
-                      "id": "uuid",
-                      "subscriptionType": "picknmix|variable",
-                      "name": "string",
-                      "productId": "uuid",
-                      "price": "£0.00",
-                      "status": "active|inactive|cancelled",
-                      "startDate": "string",
-                      "endDate": "string",
-                      "renewalDate": "string",
+                      "id": "1224f9ef-8caf-4564-9474-023f95819949",
+                      "subscriptionType": "variable",
+                      "name": "Discovery Club",
+                      "productId": "084b80ef-d16d-4531-a25f-40b7ff4c744b",
+                      "price": "£9.99",
+                      "status": "active",
+                      "startDate": "2024-10-07T12:12:58.000000Z",
+                      "endDate": "2030-10-07T12:12:58.000000Z",
+                      "renewalDate": "2025-01-07T12:12:58.000000Z",
+                      "billingInterval": 3
+                    },
+                    {
+                      "id": "feb40b5e-bde2-4494-a547-12f6ab368ca9",
+                      "subscriptionType": "variable",
+                      "name": "Premium Wine Selection",
+                      "productId": "0b0210cb-5180-49b8-81f0-82ea693fcc37",
+                      "price": "£24.99",
+                      "status": "active",
+                      "startDate": "2025-05-05T15:31:18.000000Z",
+                      "endDate": "2031-05-05T15:31:18.000000Z",
+                      "renewalDate": "2025-09-05T15:31:18.000000Z",
                       "billingInterval": 1
                     }
                   ]
@@ -1437,10 +1467,10 @@
                 },
                 "example": {
                   "data": {
-                    "firstName": "string",
-                    "lastName": "string",
-                    "email": "john.doe@marzipan.co",
-                    "phone": "string",
+                    "firstName": "Demo",
+                    "lastName": "User",
+                    "email": "demo@marzipan.uk",
+                    "phone": "+44 7700 900123",
                     "marketing": []
                   }
                 }
@@ -2196,14 +2226,24 @@
                 "example": {
                   "data": [
                     {
-                      "slug": "string",
-                      "name": null,
-                      "metaTitle": "string",
-                      "metaDescription": "string",
-                      "status": "published|draft",
-                      "createdAt": "2025-01-01T00:00:00.000000Z",
-                      "updatedAt": "2025-01-01T00:00:00.000000Z",
-                      "publishedAt": null
+                      "slug": "about-us",
+                      "name": "About Us",
+                      "metaTitle": "About Our Wine Collection",
+                      "metaDescription": "Learn about our carefully curated wine selection and subscription services",
+                      "status": "published",
+                      "createdAt": "2024-01-15T10:30:00.000000Z",
+                      "updatedAt": "2024-02-01T14:20:00.000000Z",
+                      "publishedAt": "2024-01-15T10:30:00.000000Z"
+                    },
+                    {
+                      "slug": "wine-guide",
+                      "name": "Wine Guide",
+                      "metaTitle": "Complete Wine Tasting Guide",
+                      "metaDescription": "Your comprehensive guide to wine tasting, pairing, and appreciation",
+                      "status": "published",
+                      "createdAt": "2024-01-20T09:00:00.000000Z",
+                      "updatedAt": "2024-01-25T16:45:00.000000Z",
+                      "publishedAt": "2024-01-20T09:00:00.000000Z"
                     }
                   ]
                 }
@@ -2223,7 +2263,7 @@
           "schema": {
             "type": "string"
           },
-          "example": "about"
+          "example": "about-us"
         }
       ],
       "get": {
@@ -2240,19 +2280,22 @@
                   "$ref": "#/components/schemas/CmsPageDetail"
                 },
                 "example": {
-                  "slug": "string",
-                  "name": "string",
-                  "content": "string",
+                  "slug": "about-us",
+                  "name": "About Us",
+                  "content": "<h1>About Our Wine Collection</h1><p>We are passionate about bringing you the finest wines from around the world. Our carefully curated selection includes premium vintages and exclusive discoveries that you won't find anywhere else.</p><p>Founded in 2020, our mission is to make exceptional wines accessible through our subscription service and expert recommendations.</p>",
                   "seo": {
-                    "title": "string",
-                    "description": "string",
-                    "ogImage": "https://cdn.marzipan.co/images/og-image.jpg"
+                    "title": "About Our Wine Collection - Premium Wines & Subscriptions",
+                    "description": "Learn about our carefully curated wine selection and subscription services. Discover premium vintages and exclusive wines delivered to your door.",
+                    "ogImage": "https://marzipan-cloud-dev.b-cdn.net/1/ea9f0c5b-e517-4e24-99a1-90d40dcb1c79.jpg"
                   },
-                  "status": "published|draft",
-                  "fields": {},
-                  "createdAt": "2025-01-01T00:00:00.000000Z",
-                  "updatedAt": "2025-01-01T00:00:00.000000Z",
-                  "publishedAt": null
+                  "status": "published",
+                  "fields": {
+                    "hero_image": "https://marzipan-cloud-dev.b-cdn.net/1/3bc26391-8cc1-4d20-a636-1c2ec55ef10d.jpg",
+                    "team_photo": "https://marzipan-cloud-dev.b-cdn.net/1/0736c529-a33d-4b8c-8126-eb69779dcdad.jpg"
+                  },
+                  "createdAt": "2024-01-15T10:30:00.000000Z",
+                  "updatedAt": "2024-02-01T14:20:00.000000Z",
+                  "publishedAt": "2024-01-15T10:30:00.000000Z"
                 }
               }
             }
@@ -2302,7 +2345,7 @@
           "schema": {
             "type": "string"
           },
-          "example": "test"
+          "example": "faqs"
         }
       ],
       "get": {
@@ -2317,6 +2360,55 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/CmsCollection"
+                },
+                "example": {
+                  "id": "30ce94bf-230e-460e-97f8-c5807515c5d0",
+                  "name": "FAQs",
+                  "slug": "faqs",
+                  "items": [
+                    {
+                      "id": "cbcb30f9-e88b-475b-a458-47380cdb6b10",
+                      "name": "How do wine subscriptions work?",
+                      "content": "Our wine subscriptions deliver carefully selected wines to your door on a regular basis. You can choose monthly, quarterly, or bi-annual deliveries. Each shipment includes tasting notes and information about the vineyard and winemaker.",
+                      "order": 1,
+                      "created_at": "2025-08-05T15:44:33.000000Z",
+                      "updated_at": "2025-08-05T15:44:33.000000Z"
+                    },
+                    {
+                      "id": "11faa766-21bc-4cb0-989d-7abb93a2a3e0",
+                      "name": "Can I skip a delivery?",
+                      "content": "Yes, you can skip any delivery up to 7 days before your next shipment date. Simply log into your account and manage your subscription settings. You can also pause your subscription for up to 3 months.",
+                      "order": 2,
+                      "created_at": "2025-08-05T15:44:33.000000Z",
+                      "updated_at": "2025-08-05T15:44:33.000000Z"
+                    },
+                    {
+                      "id": "bb28663d-d37b-469c-bad2-235c5a86d6a7",
+                      "name": "What if I do not like a wine?",
+                      "content": "We offer a satisfaction guarantee. If you are not happy with any wine in your shipment, contact us within 30 days and we will provide a credit or replacement. We want you to love every bottle!",
+                      "order": 3,
+                      "created_at": "2025-08-05T15:44:33.000000Z",
+                      "updated_at": "2025-08-05T15:44:33.000000Z"
+                    },
+                    {
+                      "id": "18e6da9f-86a4-43e1-8667-8a19aa5057f6",
+                      "name": "Do you ship internationally?",
+                      "content": "Currently we ship within the UK only. We are working on expanding to EU countries in 2025. UK shipping is free on all subscription orders and orders over £50.",
+                      "order": 4,
+                      "created_at": "2025-08-05T15:44:33.000000Z",
+                      "updated_at": "2025-08-05T15:44:33.000000Z"
+                    },
+                    {
+                      "id": "e58aef3b-fcea-4444-88b6-441ee059263f",
+                      "name": "How do I cancel my subscription?",
+                      "content": "You can cancel your subscription at any time through your account settings. There are no cancellation fees or commitments. If you cancel before your next billing date, you won't be charged for future shipments.",
+                      "order": 5,
+                      "created_at": "2025-08-05T15:44:33.000000Z",
+                      "updated_at": "2025-08-05T15:44:33.000000Z"
+                    }
+                  ],
+                  "created_at": "2025-08-05T15:44:33.000000Z",
+                  "updated_at": "2025-08-05T15:44:33.000000Z"
                 }
               }
             }
@@ -2496,31 +2588,87 @@
                 "example": {
                   "data": [
                     {
-                      "id": "uuid",
-                      "name": "string",
-                      "slug": "string",
-                      "description": "string",
-                      "productType": "physical|event|subscription",
-                      "sku": "string",
-                      "collection": "string",
-                      "status": "active|inactive",
+                      "id": "2e2805a1-738e-4118-8a8b-f9431f0e210c",
+                      "name": "Cellar Selection Malbec",
+                      "slug": "cellar-selection-malbec-2015",
+                      "description": "Id laboris ad aliqua exercitation dolore. Ad, aliqua exercitation dolore est culpa. Dolore est culpa id duis duis labore dolore do ex.",
+                      "productType": "physical",
+                      "sku": "CSMALBC2015",
+                      "collection": "Store",
+                      "status": "active",
                       "image": {
-                        "id": "uuid",
-                        "path": "string",
-                        "src": "https://cdn.marzipan.co/images/product-image.jpg",
-                        "alt": null,
+                        "id": "0736c529-a33d-4b8c-8126-eb69779dcdad",
+                        "path": "1/0736c529-a33d-4b8c-8126-eb69779dcdad.jpg",
+                        "src": "https://marzipan-cloud-dev.b-cdn.net/1/0736c529-a33d-4b8c-8126-eb69779dcdad.jpg",
+                        "alt": "Cellar Selection Malbec 2015 bottle",
                         "mimeType": "image/jpeg",
-                        "filename": "string"
+                        "filename": "0736c529-a33d-4b8c-8126-eb69779dcdad.jpg"
                       },
-                      "price": "£0.00",
+                      "price": "£24.99",
                       "salePrice": null,
                       "subscriberPrice": null,
-                      "createdAt": "2025-01-01T00:00:00.000000Z",
-                      "updatedAt": "2025-01-01T00:00:00.000000Z",
-                      "storeSlug": "string",
-                      "subscriptionsSlug": "string",
-                      "availability": "all|subscribers",
+                      "createdAt": "2024-02-05T23:22:56.000000Z",
+                      "updatedAt": "2024-02-05T23:22:56.000000Z",
+                      "storeSlug": "store",
+                      "subscriptionsSlug": null,
+                      "availability": "all",
                       "upsellProducts": []
+                    },
+                    {
+                      "id": "df0d13db-1332-4461-b3d1-b2774d47ff5f",
+                      "name": "Chardonnay",
+                      "slug": "chardonnay-2015",
+                      "description": "Lorem sed id, culpa. Culpa id duis duis labore dolore do ex. Duis duis labore, dolore.",
+                      "productType": "physical",
+                      "sku": "CHARD2015",
+                      "collection": "Store",
+                      "status": "active",
+                      "image": {
+                        "id": "1b978a90-3ecb-4f37-b480-9fb81882176e",
+                        "path": "1/1b978a90-3ecb-4f37-b480-9fb81882176e.jpg",
+                        "src": "https://marzipan-cloud-dev.b-cdn.net/1/1b978a90-3ecb-4f37-b480-9fb81882176e.jpg",
+                        "alt": "Chardonnay 2015 bottle",
+                        "mimeType": "image/jpeg",
+                        "filename": "1b978a90-3ecb-4f37-b480-9fb81882176e.jpg"
+                      },
+                      "price": "£23.99",
+                      "salePrice": null,
+                      "subscriberPrice": null,
+                      "createdAt": "2024-02-05T23:22:56.000000Z",
+                      "updatedAt": "2024-02-05T23:22:56.000000Z",
+                      "storeSlug": "store",
+                      "subscriptionsSlug": null,
+                      "availability": "all",
+                      "upsellProducts": []
+                    },
+                    {
+                      "id": "084b80ef-d16d-4531-a25f-40b7ff4c744b",
+                      "name": "Discovery Club",
+                      "slug": "discovery-club",
+                      "description": "Laborum adipiscing, tempor cillum. Cillum exercitation sed officia mollit do dolore.",
+                      "productType": "subscription",
+                      "sku": "DISCCLUB",
+                      "collection": "Club",
+                      "status": "active",
+                      "image": {
+                        "id": "bc1a0d61-e7f9-44d3-ae53-1475b5f9395d",
+                        "path": "1/bc1a0d61-e7f9-44d3-ae53-1475b5f9395d.jpg",
+                        "src": "https://marzipan-cloud-dev.b-cdn.net/1/bc1a0d61-e7f9-44d3-ae53-1475b5f9395d.jpg",
+                        "alt": "Discovery Club subscription box",
+                        "mimeType": "image/jpeg",
+                        "filename": "bc1a0d61-e7f9-44d3-ae53-1475b5f9395d.jpg"
+                      },
+                      "price": "from £0.00",
+                      "salePrice": null,
+                      "subscriberPrice": null,
+                      "createdAt": "2024-02-05T23:22:56.000000Z",
+                      "updatedAt": "2024-02-05T23:22:56.000000Z",
+                      "storeSlug": null,
+                      "subscriptionsSlug": "club",
+                      "availability": "all",
+                      "upsellProducts": [],
+                      "billing_frequency": 6,
+                      "pricing_type": "per_item"
                     }
                   ],
                   "links": {
@@ -2554,7 +2702,7 @@
             "type": "string",
             "format": "uuid"
           },
-          "example": "2c19867e-2a31-48c5-a1a6-26605b3e2dea"
+          "example": "2e2805a1-738e-4118-8a8b-f9431f0e210c"
         }
       ],
       "get": {
@@ -2581,6 +2729,66 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Product"
+                },
+                "example": {
+                  "id": "2e2805a1-738e-4118-8a8b-f9431f0e210c",
+                  "name": "Cellar Selection Malbec",
+                  "slug": "cellar-selection-malbec-2015",
+                  "url": "https://api.marzipan.co/products/cellar-selection-malbec-2015",
+                  "description": "Id laboris ad aliqua exercitation dolore. Ad, aliqua exercitation dolore est culpa. Dolore est culpa, nostrud. Nostrud ad sed mollit, fugiat. Mollit fugiat, irure adipiscing ipsum id. Adipiscing ipsum id ea cillum deserunt, ipsum lorem.",
+                  "product_type": "physical",
+                  "sku": "CSMALBC2015",
+                  "collections": [
+                    {
+                      "id": "885ea507-690b-4598-a8fc-095c0528be24",
+                      "name": "Store",
+                      "slug": "store",
+                      "description": "Store collection"
+                    }
+                  ],
+                  "status": "active",
+                  "images": {
+                    "product": [
+                      {
+                        "id": "0736c529-a33d-4b8c-8126-eb69779dcdad",
+                        "path": "1/0736c529-a33d-4b8c-8126-eb69779dcdad.jpg",
+                        "src": "https://marzipan-cloud-dev.b-cdn.net/1/0736c529-a33d-4b8c-8126-eb69779dcdad.jpg",
+                        "alt": "Cellar Selection Malbec 2015 bottle",
+                        "mimeType": "image/jpeg",
+                        "filename": "0736c529-a33d-4b8c-8126-eb69779dcdad.jpg"
+                      }
+                    ],
+                    "labels": {
+                      "front": [],
+                      "back": []
+                    }
+                  },
+                  "primaryImage": {
+                    "id": "0736c529-a33d-4b8c-8126-eb69779dcdad",
+                    "path": "1/0736c529-a33d-4b8c-8126-eb69779dcdad.jpg",
+                    "src": "https://marzipan-cloud-dev.b-cdn.net/1/0736c529-a33d-4b8c-8126-eb69779dcdad.jpg",
+                    "alt": "Cellar Selection Malbec 2015 bottle",
+                    "mimeType": "image/jpeg",
+                    "filename": "0736c529-a33d-4b8c-8126-eb69779dcdad.jpg"
+                  },
+                  "price": "£24.99",
+                  "salePrice": null,
+                  "subscriberPrice": null,
+                  "createdAt": "2024-02-05T23:22:56.000000Z",
+                  "updatedAt": "2024-02-05T23:22:56.000000Z",
+                  "store_slug": "store",
+                  "subscriptions_slug": null,
+                  "availability": "all",
+                  "upsell_products": [],
+                  "attributes": [],
+                  "options": [],
+                  "related_products": [],
+                  "awards": [],
+                  "reviews": [],
+                  "meta_title": "Cellar Selection Malbec 2015",
+                  "meta_description": "Cupidatat quis reprehenderit, exercitation quis cillum nulla do.",
+                  "meta_image": null,
+                  "store_name": "Wine Collection"
                 }
               }
             }
@@ -2757,18 +2965,48 @@
                 "example": {
                   "data": [
                     {
-                      "id": "uuid",
-                      "subscriptionType": "picknmix|variable",
-                      "name": "string",
-                      "slug": "string",
-                      "description": "string",
+                      "id": "084b80ef-d16d-4531-a25f-40b7ff4c744b",
+                      "subscriptionType": "variable",
+                      "name": "Discovery Club",
+                      "slug": "discovery-club",
+                      "subscriptions_slug": "club",
+                      "url": "https://api.marzipan.co/subscription-packages/discovery-club",
+                      "description": "Laborum adipiscing, tempor cillum. Cillum exercitation sed officia mollit do dolore. Sed officia mollit do dolore do ex.",
+                      "product_type": "subscription",
+                      "sku": "DISCCLUB",
+                      "collection": "Club",
+                      "status": "active",
+                      "image": {
+                        "id": "bc1a0d61-e7f9-44d3-ae53-1475b5f9395d",
+                        "path": "1/bc1a0d61-e7f9-44d3-ae53-1475b5f9395d.jpg",
+                        "src": "https://marzipan-cloud-dev.b-cdn.net/1/bc1a0d61-e7f9-44d3-ae53-1475b5f9395d.jpg",
+                        "alt": "Discovery Club subscription box",
+                        "mimeType": "image/jpeg",
+                        "filename": "bc1a0d61-e7f9-44d3-ae53-1475b5f9395d.jpg"
+                      },
                       "price": {
                         "value": 0,
-                        "formatted": "0.00",
+                        "formatted": "£0.00",
                         "currency": "GBP"
-                      }
+                      },
+                      "salePrice": null,
+                      "created_at": "2024-02-05T23:22:56.000000Z",
+                      "updated_at": "2024-02-05T23:22:56.000000Z"
                     }
-                  ]
+                  ],
+                  "links": {
+                    "first": "https://api.marzipan.co/v1/subscription-packages?page=1",
+                    "last": "https://api.marzipan.co/v1/subscription-packages?page=1",
+                    "prev": null,
+                    "next": null
+                  },
+                  "meta": {
+                    "currentPage": 1,
+                    "from": 1,
+                    "path": "https://api.marzipan.co/v1/subscription-packages",
+                    "perPage": 15,
+                    "to": 1
+                  }
                 }
               }
             }
@@ -2792,7 +3030,7 @@
               "description": "Using a UUID"
             },
             "slug": {
-              "value": "premium-coffee-subscription",
+              "value": "discovery-club",
               "description": "Using a slug"
             }
           }
@@ -2821,6 +3059,84 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SubscriptionPackage"
+                },
+                "example": {
+                  "id": "084b80ef-d16d-4531-a25f-40b7ff4c744b",
+                  "subscription_type": "variable",
+                  "name": "Discovery Club",
+                  "slug": "discovery-club",
+                  "sku": "DISCCLUB",
+                  "url": "https://api.marzipan.co/subscription-packages/discovery-club",
+                  "status": "active",
+                  "availability": "all",
+                  "product_type": "subscription",
+                  "description": "Laborum adipiscing, tempor cillum. Cillum exercitation sed officia mollit do dolore. Sed officia mollit do dolore do ex officia mollit. Mollit irure adipiscing ipsum id lorem sunt. Ipsum id lorem sunt dolore magna aliqua.",
+                  "meta_title": "Discovery Club - Premium Wine Subscription",
+                  "meta_description": "Join our Discovery Club and explore exceptional wines delivered monthly to your door.",
+                  "collections": [
+                    {
+                      "id": "46759fdd-1b5b-4339-a175-af0569c1ca73",
+                      "name": "Club",
+                      "slug": "club",
+                      "description": "Club products"
+                    }
+                  ],
+                  "images": [
+                    {
+                      "id": "bc1a0d61-e7f9-44d3-ae53-1475b5f9395d",
+                      "path": "1/bc1a0d61-e7f9-44d3-ae53-1475b5f9395d.jpg",
+                      "src": "https://marzipan-cloud-dev.b-cdn.net/1/bc1a0d61-e7f9-44d3-ae53-1475b5f9395d.jpg",
+                      "alt": "Discovery Club subscription box",
+                      "mimeType": "image/jpeg",
+                      "filename": "bc1a0d61-e7f9-44d3-ae53-1475b5f9395d.jpg"
+                    }
+                  ],
+                  "primaryImage": {
+                    "id": "bc1a0d61-e7f9-44d3-ae53-1475b5f9395d",
+                    "path": "1/bc1a0d61-e7f9-44d3-ae53-1475b5f9395d.jpg",
+                    "src": "https://marzipan-cloud-dev.b-cdn.net/1/bc1a0d61-e7f9-44d3-ae53-1475b5f9395d.jpg",
+                    "alt": "Discovery Club subscription box",
+                    "mimeType": "image/jpeg",
+                    "filename": "bc1a0d61-e7f9-44d3-ae53-1475b5f9395d.jpg"
+                  },
+                  "price": {
+                    "value": 0,
+                    "formatted": "£0.00",
+                    "currency": "GBP"
+                  },
+                  "salePrice": null,
+                  "billing_frequency": 6,
+                  "billing_frequencies": [1, 3, 6, 12],
+                  "pricing_type": "per_item",
+                  "auto_renew": true,
+                  "minimum_items": 2,
+                  "available_items": [
+                    {
+                      "item_id": "2e2805a1-738e-4118-8a8b-f9431f0e210c",
+                      "item_name": "Cellar Selection Malbec",
+                      "item_sku": "CSMALBC2015",
+                      "item_description": "Premium Malbec with rich, full-bodied flavor profile",
+                      "min_qty": 1,
+                      "max_qty": 3,
+                      "default_qty": 1,
+                      "sort_order": 1,
+                      "status": "active"
+                    },
+                    {
+                      "item_id": "df0d13db-1332-4461-b3d1-b2774d47ff5f",
+                      "item_name": "Chardonnay",
+                      "item_sku": "CHARD2015", 
+                      "item_description": "Elegant white wine with crisp citrus notes",
+                      "min_qty": 1,
+                      "max_qty": 2,
+                      "default_qty": 1,
+                      "sort_order": 2,
+                      "status": "active"
+                    }
+                  ],
+                  "attributes": [],
+                  "options": [],
+                  "related_products": []
                 }
               }
             }
@@ -2913,7 +3229,7 @@
               "type": "string",
               "minLength": 1
             },
-            "example": "coffee"
+            "example": "malbec"
           },
           {
             "name": "type",
@@ -2995,6 +3311,64 @@
                       },
                       "description": "Search results organized by content type"
                     }
+                  }
+                },
+                "example": {
+                  "query": "malbec",
+                  "total_results": 3,
+                  "results": {
+                    "products": [
+                      {
+                        "id": "2e2805a1-738e-4118-8a8b-f9431f0e210c",
+                        "type": "product",
+                        "title": "Cellar Selection Malbec",
+                        "slug": "cellar-selection-malbec-2015",
+                        "url": "https://api.marzipan.co/products/cellar-selection-malbec-2015",
+                        "excerpt": "Premium Malbec with rich, full-bodied flavor profile and notes of dark fruit",
+                        "image": {
+                          "id": "0736c529-a33d-4b8c-8126-eb69779dcdad",
+                          "path": "1/0736c529-a33d-4b8c-8126-eb69779dcdad.jpg",
+                          "src": "https://marzipan-cloud-dev.b-cdn.net/1/0736c529-a33d-4b8c-8126-eb69779dcdad.jpg",
+                          "alt": "Cellar Selection Malbec 2015 bottle",
+                          "mimeType": "image/jpeg",
+                          "filename": "0736c529-a33d-4b8c-8126-eb69779dcdad.jpg"
+                        },
+                        "price": "£24.99",
+                        "status": "active"
+                      }
+                    ],
+                    "pages": [
+                      {
+                        "id": "page-wine-guide",
+                        "type": "page",
+                        "title": "Malbec Wine Guide",
+                        "slug": "malbec-wine-guide",
+                        "url": "https://api.marzipan.co/pages/malbec-wine-guide",
+                        "excerpt": "Learn about Malbec wines, their origins, flavor profiles, and perfect food pairings",
+                        "image": null,
+                        "price": null,
+                        "status": "published"
+                      }
+                    ],
+                    "collections": [
+                      {
+                        "id": "885ea507-690b-4598-a8fc-095c0528be24",
+                        "type": "collection",
+                        "title": "Red Wine Collection",
+                        "slug": "red-wines",
+                        "url": "https://api.marzipan.co/collections/red-wines",
+                        "excerpt": "Our carefully curated selection of premium red wines including Malbec, Cabernet, and more",
+                        "image": {
+                          "id": "1b978a90-3ecb-4f37-b480-9fb81882176e",
+                          "src": "https://marzipan-cloud-dev.b-cdn.net/1/1b978a90-3ecb-4f37-b480-9fb81882176e.jpg",
+                          "alt": "Red wine collection"
+                        },
+                        "price": null,
+                        "status": "active"
+                      }
+                    ],
+                    "events": [],
+                    "subscription_packages": []
                   }
                 }
               }
