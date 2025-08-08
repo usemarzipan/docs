@@ -1,0 +1,178 @@
+---
+title: 'Collection'
+description: 'The collection component displays a grid of products from a specific collection.'
+---
+
+### Component example
+```javascript
+<marzipan-collection
+  collection="store"
+  placeholder-items="3"
+  show-cart-quantity="true"
+  show-collection-name="false"
+  show-more-link="true"
+  show-more-text="Learn more"
+  redirect-to-cart="false"
+  show-description="false"
+></marzipan-collection>
+```
+
+### Props
+
+Props should be passed as attributes to the component element.
+
+
+<ResponseField name="bundle-text">
+The text to display after the price if the product type is `bundle`.
+
+E.g £99/case, where case is the bundle-text.
+
+Defaults to `bundle`
+</ResponseField>
+<ResponseField name="cart-path">
+The path to the cart page.
+
+Defaults to `/cart`
+</ResponseField>
+<ResponseField name="collection" required>
+The slug for the collection to display products from.
+</ResponseField>
+<ResponseField name="add-to-cart-text">
+The text to display on the "add to cart" button.
+
+Defaults to `Add to Cart`
+</ResponseField>
+
+<ResponseField name="hide-add-to-cart-button" type="boolean">
+Whether to hide the "add to cart" button for the product.
+
+Defaults to `false`
+</ResponseField>
+<ResponseField name="placeholder-items" type="number">
+The number of placeholder items to display while the products are loading.
+
+Defaults to `8`
+</ResponseField>
+<ResponseField name="redirect-to-cart" type="boolean">
+Whether to redirect to the cart page after adding the product to the cart.
+
+Defaults to `false`
+</ResponseField>
+<ResponseField name="show-cart-quantity" type="boolean">
+Whether to show the quantity field for the product.
+
+Defaults to `false`
+</ResponseField>
+<ResponseField name="show-collection-name" type="boolean">
+Whether to show the name of the collection.
+
+Defaults to `true`
+</ResponseField>
+<ResponseField name="show-more-link" type="boolean">
+Whether to show a "show more" link.
+
+Defaults to `false`
+</ResponseField>
+<ResponseField name="show-more-text">
+The text to display on the "show more" link.
+
+Defaults to `More`
+</ResponseField>
+<ResponseField name="show-description" type="boolean">
+Whether to show the product description.
+
+Defaults to `false`
+</ResponseField>
+<ResponseField name="sale-badge-text">
+The text to display on sale price badges.
+
+Defaults to `Sale`
+</ResponseField>
+<ResponseField name="subscriber-badge-text">
+The text to display on subscriber price badges.
+
+Defaults to `Subscribers`
+</ResponseField>
+<ResponseField name="subscriber-price-label">
+The label text for subscriber pricing.
+
+Defaults to `for subscribers`
+</ResponseField>
+<ResponseField name="show-subscriber-pricing" type="boolean">
+Whether to show subscriber pricing information.
+
+Defaults to `false`
+</ResponseField>
+
+
+### Styling
+
+The following parts are available to style the collection component:
+
+<ResponseField name="--loading-grid">
+The containing div of placeholder items that is shown while the products are loading.
+</ResponseField>
+<ResponseField name="--loading-colour">
+The colour of the placeholder items that is shown while the products are loading.
+</ResponseField>
+<ResponseField name="--product-grid">
+The containing `ul` of the products grid.
+</ResponseField>
+<ResponseField name="--product-grid-item">
+The containing `li` of a product.
+</ResponseField>
+<ResponseField name="--product-image-container">
+The containing `div` of the product image.
+</ResponseField>
+<ResponseField name="--product-image">
+The product image.
+</ResponseField>
+<ResponseField name="--product-info-container">
+The containing `div` of the product info.
+</ResponseField>
+<ResponseField name="--product-name">
+The product name.
+</ResponseField>
+<ResponseField name="--product-price">
+The product price.
+</ResponseField>
+<ResponseField name="--product-description">
+The product description container.
+</ResponseField>
+<ResponseField name="--product-price-badge">
+The price badge (sale/subscriber) element.
+</ResponseField>
+<ResponseField name="--product-sale-price">
+The sale price display.
+</ResponseField>
+<ResponseField name="--product-subscriber-primary-price">
+The primary subscriber price (for logged-in subscribers).
+</ResponseField>
+<ResponseField name="--product-subscriber-price">
+The subscriber price information.
+</ResponseField>
+<ResponseField name="--product-subscriber-price-crossed">
+The crossed-out subscriber price.
+</ResponseField>
+<ResponseField name="--product-regular-price-crossed">
+The crossed-out regular price.
+</ResponseField>
+<ResponseField name="--product-original-price-crossed">
+The crossed-out original price.
+</ResponseField>
+<ResponseField name="--upsell-container-hover">
+The upsell product selection container (visible on hover).
+</ResponseField>
+<ResponseField name="--upsell-dropdown">
+The upsell product dropdown container.
+</ResponseField>
+<ResponseField name="--upsell-select-hover">
+The upsell product select dropdown (hover state).
+</ResponseField>
+<ResponseField name="--show-more-link">
+The "show more" link element.
+</ResponseField>
+
+The collection component uses the [add to cart](./add-to-cart) component to display the "add to cart" button for each product. If you have set styles for the add to cart component they will be applied to the "add to cart" button with this component.
+
+For products with upsell options, the component displays a dropdown selection that appears on hover, allowing customers to choose between different product variants before adding to cart.

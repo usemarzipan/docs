@@ -1,0 +1,324 @@
+---
+title: 'Product'
+description: 'The product component displays a single product in either mini or full view mode.'
+---
+
+### Component example
+```javascript
+<marzipan-product
+  product="product-slug"
+  view="mini"
+  show-cart-quantity="true"
+  show-collection-name="true"
+  show-more-link="false"
+  show-more-text="More"
+  redirect-to-cart="false"
+  show-subscriber-pricing="false"
+></marzipan-product>
+```
+
+### Props
+
+Props should be passed as attributes to the component element.
+
+<ResponseField name="product" required>
+The slug or ID of the specific product to display.
+</ResponseField>
+<ResponseField name="view">
+The display mode for the product component.
+
+Options: `mini`, `full`
+
+Defaults to `mini`
+</ResponseField>
+<ResponseField name="add-to-cart-text">
+The text to display on the "add to cart" button.
+
+Defaults to `Add to Cart`
+</ResponseField>
+<ResponseField name="bundle-text">
+The text to display after the price if the product type is `bundle`.
+
+E.g £99/case, where case is the bundle-text.
+
+Defaults to `bundle`
+</ResponseField>
+<ResponseField name="cart-path">
+The path to the cart page.
+
+Defaults to `/cart`
+</ResponseField>
+<ResponseField name="hide-add-to-cart-button" type="boolean">
+Whether to hide the "add to cart" button for the product.
+
+Defaults to `false`
+</ResponseField>
+<ResponseField name="redirect-to-cart" type="boolean">
+Whether to redirect to the cart page after adding the product to the cart.
+
+Defaults to `false`
+</ResponseField>
+<ResponseField name="show-cart-quantity" type="boolean">
+Whether to show the quantity field for the product.
+
+Defaults to `false`
+</ResponseField>
+<ResponseField name="show-collection-name" type="boolean">
+Whether to show the name of the collection.
+
+Defaults to `true`
+</ResponseField>
+<ResponseField name="show-more-link" type="boolean">
+Whether to show a "show more" link.
+
+Defaults to `false`
+</ResponseField>
+<ResponseField name="show-more-text">
+The text to display on the "show more" link.
+
+Defaults to `More`
+</ResponseField>
+<ResponseField name="sale-badge-text">
+The text to display on sale price badges.
+
+Defaults to `Sale`
+</ResponseField>
+<ResponseField name="subscriber-badge-text">
+The text to display on subscriber price badges.
+
+Defaults to `Subscribers`
+</ResponseField>
+<ResponseField name="subscriber-price-label">
+The label text for subscriber pricing.
+
+Defaults to `for subscribers`
+</ResponseField>
+<ResponseField name="show-subscriber-pricing" type="boolean">
+Whether to show subscriber pricing information.
+
+Defaults to `false`
+</ResponseField>
+
+### Views
+
+The product component supports two different view modes:
+
+#### Mini View
+The mini view displays the product in a compact format suitable for product grids or collections. It includes the product image, name, price, and add to cart functionality.
+
+#### Full View  
+The full view displays the product in an expanded format suitable for dedicated product pages. It includes:
+- Image gallery with thumbnails
+- Detailed product information
+- Product options and variants
+- Full description
+- Product attributes
+- Awards and reviews
+- Related products
+
+### Styling
+
+The following parts are available to style the product component:
+
+#### Mini View Parts
+<ResponseField name="--product-mini-view">
+The main container for mini view.
+</ResponseField>
+<ResponseField name="--product-mini-not-found">
+The not found state container for mini view.
+</ResponseField>
+<ResponseField name="--product-mini-not-found-text">
+The not found text for mini view.
+</ResponseField>
+<ResponseField name="--loading-item">
+The loading state container.
+</ResponseField>
+<ResponseField name="--loading-colour">
+The colour of the placeholder items that is shown while the product is loading.
+</ResponseField>
+<ResponseField name="--product-item">
+The main product container.
+</ResponseField>
+<ResponseField name="--product-image-container">
+The containing div of the product image.
+</ResponseField>
+<ResponseField name="--product-image">
+The product image.
+</ResponseField>
+<ResponseField name="--product-info-container">
+The containing div of the product info.
+</ResponseField>
+<ResponseField name="--product-name">
+The product name.
+</ResponseField>
+<ResponseField name="--product-price">
+The product price container.
+</ResponseField>
+<ResponseField name="--product-price-badge">
+The price badge (sale/subscriber) element.
+</ResponseField>
+<ResponseField name="--product-sale-price">
+The sale price display.
+</ResponseField>
+<ResponseField name="--product-subscriber-primary-price">
+The primary subscriber price (for logged-in subscribers).
+</ResponseField>
+<ResponseField name="--product-subscriber-price">
+The subscriber price information.
+</ResponseField>
+<ResponseField name="--product-subscriber-price-crossed">
+The crossed-out subscriber price.
+</ResponseField>
+<ResponseField name="--product-regular-price-crossed">
+The crossed-out regular price.
+</ResponseField>
+<ResponseField name="--product-original-price-crossed">
+The crossed-out original price.
+</ResponseField>
+<ResponseField name="--upsell-container">
+The upsell product selection container.
+</ResponseField>
+<ResponseField name="--upsell-select">
+The upsell product select dropdown.
+</ResponseField>
+<ResponseField name="--show-more-link">
+The "show more" link element.
+</ResponseField>
+
+#### Full View Parts
+<ResponseField name="--product-full-view">
+The main container for full view.
+</ResponseField>
+<ResponseField name="--product-not-found">
+The not found state container for full view.
+</ResponseField>
+<ResponseField name="--product-not-found-title">
+The not found title.
+</ResponseField>
+<ResponseField name="--product-not-found-message">
+The not found message text.
+</ResponseField>
+<ResponseField name="--product-not-found-link">
+The not found return link.
+</ResponseField>
+<ResponseField name="--product-full-image-container">
+The main image container.
+</ResponseField>
+<ResponseField name="--product-full-image-loading">
+The image loading state.
+</ResponseField>
+<ResponseField name="--product-full-image">
+The main product image.
+</ResponseField>
+<ResponseField name="--product-full-thumbnails">
+The image thumbnails container.
+</ResponseField>
+<ResponseField name="--product-full-thumbnail">
+Individual thumbnail button.
+</ResponseField>
+<ResponseField name="--product-full-thumbnail-active">
+Active thumbnail button state.
+</ResponseField>
+<ResponseField name="--product-full-details">
+The product details section.
+</ResponseField>
+<ResponseField name="--product-full-collection">
+The collection name display.
+</ResponseField>
+<ResponseField name="--product-full-name">
+The product name heading.
+</ResponseField>
+<ResponseField name="--product-full-price-container">
+The price section container.
+</ResponseField>
+<ResponseField name="--product-full-price">
+The product price.
+</ResponseField>
+<ResponseField name="--product-full-price-badge">
+The price badge for full view.
+</ResponseField>
+<ResponseField name="--product-full-sale-price">
+The sale price for full view.
+</ResponseField>
+<ResponseField name="--product-full-subscriber-primary-price">
+The primary subscriber price for full view.
+</ResponseField>
+<ResponseField name="--product-full-subscriber-price">
+The subscriber price for full view.
+</ResponseField>
+<ResponseField name="--product-full-subscriber-price-crossed">
+The crossed-out subscriber price for full view.
+</ResponseField>
+<ResponseField name="--product-full-regular-price-crossed">
+The crossed-out regular price for full view.
+</ResponseField>
+<ResponseField name="--product-full-original-price-crossed">
+The crossed-out original price for full view.
+</ResponseField>
+<ResponseField name="--product-full-actions">
+The actions section (add to cart, options).
+</ResponseField>
+<ResponseField name="--upsell-container-full">
+The upsell container for full view.
+</ResponseField>
+<ResponseField name="--upsell-select-full">
+The upsell select dropdown for full view.
+</ResponseField>
+<ResponseField name="--product-full-options">
+The product options section.
+</ResponseField>
+<ResponseField name="--product-full-description">
+The product description section.
+</ResponseField>
+<ResponseField name="--product-full-additional-details">
+The additional product details section.
+</ResponseField>
+<ResponseField name="--product-full-attributes">
+The product attributes section.
+</ResponseField>
+<ResponseField name="--product-full-attribute-name">
+Individual attribute name.
+</ResponseField>
+<ResponseField name="--product-full-attribute-value">
+Individual attribute value.
+</ResponseField>
+<ResponseField name="--product-full-awards">
+The awards section.
+</ResponseField>
+<ResponseField name="--product-full-reviews">
+The reviews section.
+</ResponseField>
+<ResponseField name="--product-full-related-products">
+The related products section.
+</ResponseField>
+
+### Features
+
+#### Subscription Products
+The product component automatically detects and handles subscription products, including pick-and-mix subscriptions. For subscription products, it integrates with the subscription configuration component to provide frequency selection and item management.
+
+#### Upsell Products
+When a product has upsell variants, the component displays a dropdown selection allowing customers to choose between different options before adding to cart.
+
+#### Pricing Display
+The component intelligently displays pricing based on:
+- Sale prices vs regular prices
+- Subscriber pricing for logged-in subscribers
+- Bundle pricing with custom text
+- Price badges for sales and subscriber discounts
+
+#### Image Gallery (Full View)
+The full view includes an image gallery with:
+- Main image display with loading states
+- Thumbnail navigation
+- Support for product images and label images
+- Fallback placeholder when no images are available
+
+#### SEO Features (Full View)
+The full view automatically injects:
+- Meta tags for social sharing
+- Structured data (JSON-LD) for search engines
+- Dynamic page titles
+- Product availability and pricing information
+
+The product component uses the [add to cart](./add-to-cart) component to handle cart functionality. If you have set styles for the add to cart component, they will be applied to the buttons within this component.
