@@ -3,11 +3,88 @@ title: 'Changelog'
 sidebarTitle: '2025'
 description: 'Updates and improvements to Marzipan'
 ---
-<Update label="1st July 2025">
+<Update label="8th August 2025">
+
+## Pick & Mix Subscriptions
+
+Introduced flexible pick-and-mix subscriptions with dynamic pricing, allowing customers to create custom subscription boxes.
+
+## Product Enhancements
+
+Added support for open graph images and bottle labels (front and back) on products for better social sharing and branding.
+
+## Full Product Component
+
+Added comprehensive single product support to web components with full-page display options.
+
+## Improvements
+- `App` Enhanced empty state buttons with better visual feedback
+- `App` Improved test and demo data generation for better development experience
+- `Web Components` Updated product component styling with better image dimensions and positioning
+- `App` Added EORI and AWRS number support for compliance requirements
+- `Web Components` Enhanced subscriber badge display and member pricing visibility
+- `Web Components` Subscription and sale pricing display improvements
+- `Web Components` Improved sale/subscription badge text display
+
 ## Bug Fixes
-- Capitalise billing and shipping names when creating a new order.
-- Fixed UK postcode validation.
-- Fixed spacing bug on the notification page.
-- London City Bond Integration: Fixed LCB delivery update not updating order status.
+- `App` Fixed notifications reshowing issue when polling for updates
+- `Web Components` Resolved product image sizing and positioning issues
+- `Web Components` Corrected product description HTML rendering
+- `Web Components` Fixed subscriber only notice taking precedence over out of stock notice
+- `Web Components` Fixed product image dimensions
+
+</Update>
+
+<Update label="22nd July 2025">
+
+## Cache Clearing for CMS
+
+Added flow for cache clearing operations in CMS for more responsive content management.
+
+## Product Tag Autocomplete
+
+Implemented autocomplete functionality for product tags, streamlining the tagging process.
+
+## Enhanced Customer Filtering
+
+Improved customer and subscription filters with multiple selection options for better data management.
+
+## Member Pricing Display
+
+Added member pricing display improvements to web components for better pricing visibility.
+
+## Bug Fixes
+- `App` Fixed dependency conflicts and trailing whitespace issues in API controllers
+- `App` Fixed effective pricing calculations in DiscountManager for subscriber customers
+- `Web Components` Fixed product title positioning issues
+
+</Update>
+
+<Update label="10th July 2025">
+
+## Add to Cart Component
+
+Introduced a new reusable add-to-cart button component with redirect functionality, making it easier to integrate shopping features across different parts of your application.
+
+## Improvements
+- `Web Components` Added subscription pricing frequency display options to web components.
+
+## Bug Fixes
+- `App` Fixed product component to properly handle required product IDs
+- `App` Resolved missing fields in product editing component
+- `App` Fixed customer payment method update errors
+- `App` Corrected tags autocomplete styling issues
+- `Web Components` Fixed product loading div sizing and image display issues
+
+</Update>
+
+<Update label="1st July 2025">
+
+## Bug Fixes
+- `App` Capitalise billing and shipping names when creating a new order
+- `App` Fixed UK postcode validation
+- `App` Fixed spacing bug on the notification page
+- `App` London City Bond Integration: Fixed LCB delivery update not updating order status
+
 </Update>
 
