@@ -8,18 +8,16 @@ description: "The Add to Cart component is a call to action button that adds a p
 ```javascript
 <marzipan-addtocart
   product-id="c66e6274-3a05-4b78-95ae-9451ac459f0b"
-  .show-quantity="true"
-  .redirect="true"
+  show-quantity="true"
+  redirect="true"
+  availability="all"
+  disabled="false"
 ></marzipan-addtocart>
 ```
 
 ### Props
 
 Props should be passed as attributes to the component element.
-
-<Note>
-Boolean props have a leading dot. This is to allow the boolean props to be passed as attributes to the component element.
-</Note>
 
 <ResponseField name="availability" type="string" >
 
@@ -40,7 +38,7 @@ Defaults to `Add to cart`
 
 </ResponseField>
 
-<ResponseField name=".out-of-stock" type="boolean">
+<ResponseField name="out-of-stock" type="boolean">
   Whether the product is out of stock. Setting this to `true` will disable the add to cart button and show an out of stock message.
 
   Defaults to `false`
@@ -64,13 +62,13 @@ Defaults to `physical`
 Defaults to `1`
 </ResponseField>
 
-<ResponseField name=".redirect" type="boolean">
+<ResponseField name="redirect" type="boolean">
   Whether to redirect to the cart page after adding the product to the cart.
 
   Defaults to `false`
 </ResponseField>
 
-<ResponseField name=".show-quantity" type="boolean">
+<ResponseField name="show-quantity" type="boolean">
   Whether to show the quantity of the product in the cart.
 
 Defaults to `false`
@@ -80,6 +78,49 @@ Defaults to `false`
   The message to display on the "view cart" link.
 
 Defaults to `View cart`
+
+</ResponseField>
+
+<ResponseField name="cart-path" type="string">
+  The path to the cart page.
+
+Defaults to `/cart`
+
+</ResponseField>
+
+<ResponseField name="login-path" type="string">
+  The path to the login page.
+
+Defaults to `/login`
+
+</ResponseField>
+
+<ResponseField name="button-classes" type="string">
+  CSS classes to apply to the button.
+
+Defaults to `w-28`
+
+</ResponseField>
+
+<ResponseField name="pick-and-mix-items" type="object">
+  Items for pick and mix subscriptions.
+
+</ResponseField>
+
+<ResponseField name="billing-frequency" type="string|number">
+  Billing frequency for subscription products.
+
+</ResponseField>
+
+<ResponseField name="disabled" type="boolean">
+  Whether to disable the button without showing out of stock message.
+
+Defaults to `false`
+
+</ResponseField>
+
+<ResponseField name="related-products" type="object">
+  Related products to add with the main product.
 
 </ResponseField>
 
@@ -109,4 +150,8 @@ The following parts are available to style the add to cart component:
 
 <ResponseField name="--view-cart-button">
   The "view cart" button element
+</ResponseField>
+
+<ResponseField name="--add-to-cart-subscription-required">
+  The "Members only" message container when product is subscriber-only
 </ResponseField>

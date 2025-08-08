@@ -153,7 +153,8 @@
               "web-components/cart-icon",
               "web-components/checkout",
               "web-components/contact-form",
-              "web-components/products"
+              "web-components/collection",
+              "web-components/product"
             ]
           },
           {
@@ -206,5 +207,11 @@
     "fathom": {
         "siteId": "MVCBOLNH"
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "/web-components/products",
+      "destination": "/web-components/collection"
+    }
+  ]
 }
