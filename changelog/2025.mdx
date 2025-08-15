@@ -3,6 +3,40 @@ title: 'Changelog'
 sidebarTitle: '2025'
 description: 'Updates and improvements to Marzipan'
 ---
+<Update label="15th August 2025">
+
+## Low Stock Badges
+
+Added low stock badges to provide clear inventory visibility and encourage purchases. Badges can be configured globally across all products or customised on a per-product basis. Web components will honour the low stock settings and display a badge if the stock level is below the threshold and can be styled to match your brand. Stock level settings are also available through the API to support custom implementations.
+
+<Frame>
+<img src="https://marzipan-cloud.b-cdn.net/0/docs/changelog/low-stock-notifications.png" />
+</Frame>
+
+## Media Management
+
+Added a new media management section where you can view all media uploaded to your account. We've added support for alt tags, made it easy to copy links to media. We've improved the media functionality in the editor to make it easier to add existing and new media to your content and to resize it. We've also laid the groundwork for future media management features including video support and image editing.
+<Frame>
+<img src="https://marzipan-cloud.b-cdn.net/0/docs/changelog/media-overview.png" />
+</Frame>
+
+## Improvements
+- `App` Added support to discounts for excluding sale and subscriber pricing and to apply discounts to customers with specific tags to allow for more targeted promotions
+- `App` Enhanced inventory holds integration with better low stock system calculations
+- `App` Shipping rate calculations for London City Bond integration
+- `App` Enhanced media deletion confirmation and sorting functionality
+- `Web Components` Improved sale and subscription badge text display
+- `Web Components` Enhanced subscriber pricing visibility in account subscription details
+
+## Bug Fixes
+- `App` Fixed inventory holds not updating correctly on quantity changes
+- `App` Resolved subscriber pricing issue during manual order creation
+- `App` Out of stock notices now take precedence over members-only notices
+- `Web Components` Corrected inventory holds calculations preventing cart overselling
+- `Web Components` Product image display in command palette search
+
+</Update>
+
 <Update label="8th August 2025">
 
 ## Pick & Mix Subscriptions
