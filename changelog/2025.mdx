@@ -3,6 +3,94 @@ title: 'Changelog'
 sidebarTitle: '2025'
 description: 'Updates and improvements to Marzipan'
 ---
+<Update label="29th October 2025">
+
+## Insights
+
+<Frame>
+<img src="https://cdn.marzipan.cloud/0/docs/changelog/insights-dashboard.png" />
+</Frame>
+
+Added a comprehensive insights and analytics section providing visibility into winery performance. The new Insights dashboard includes real-time metrics for revenue, orders, active subscriptions, and customer acquisition with sparkline visualizations. Features dedicated reporting pages for sales (revenue & geographic analysis), customer analytics with retention metrics and churn tracking, product performance tracking, event analytics, subscription metrics, and channel performance. Includes flexible date range comparison tools with multiple comparison periods (previous period, previous year, etc.). Dashboard reporting has been updated to show today's headline metrics with a trailing seven day overview.
+
+## Mailchimp Integration
+
+Completely rebuilt the Mailchimp integration with OAuth 2.0 authentication support, eliminating the need for manual API key management (now depreceated). Added comprehensive webhook support for real-time bi-directional sync, including subscription status changes, email updates, profile changes, and email deliverability status. Implemented intelligent batch syncing with rate limit handling for efficient bulk customer synchronization. Added detailed sync logging and status tracking with comprehensive error reporting. Features automatic customer profile updates from Mailchimp changes, prevention of sync loops, and smart handling of compliance states. Supports separate audience management for default customers and active subscribers with configurable merge field mapping.
+
+<Frame>
+<img src="https://cdn.marzipan.cloud/0/docs/changelog/mailchimp-field-mapping.png" />
+</Frame>
+
+## Events
+
+#### Waitlist System
+
+Implemented a waitlist management system for sold-out events. Customers can join waitlists with their desired quantity through a new dedicated waitlist dialog component. Features automatic promotion notifications when tickets become available via email with secure time-limited claim links. Includes position tracking showing customers their place in line, configurable expiration handling for unclaimed promotions, and seamless integration with the deposit payment system. Automatic inventory release and re-promotion of next customers when spots expire.
+
+#### Deposit & Balance Payments
+
+Added split payment support, allowing customers to secure tickets with a deposit and pay the balance later. Features configurable deposit amounts per event, customizable balance due dates, automatic payment request notifications at configured intervals, comprehensive ticket status tracking throughout the payment lifecycle (deposit paid, balance pending, balance paid), and clear messaging in checkout showing deposit vs. full payment amounts. Integrated throughout the web components with clear UI indicators for deposit requirements.
+
+#### Recurring Occurrences
+
+Introduced support for recurring events with multiple occurrences, perfect for ongoing workshops, tastings, and regular events. Supports daily, weekly, and monthly recurrence patterns with configurable end dates. Each occurrence maintains its own ticket inventory, attendee management, and waitlist. Customers can select their preferred date from a dropdown of available occurrences. Individual occurrence tracking for capacity, tickets sold, and revenue.
+
+#### Management
+
+Enhanced event capabilities with a comprehensive suite of management tools. Features include a full attendee management interface with detailed attendee lists and tracking, ticket cancellation workflow with automated partial or full refunds, event categorization and types (wine tasting, workshop, dinner, tour), check-in functionality for day-of event management, configurable ticket limits per order, location coordinates for mapping integration, and rich email notifications throughout the event lifecycle (ticket confirmation, cancellation, balance payments, reminders).
+
+## CMS Visual Editor & Preview System
+`BETA`
+
+Developed a visual page editor for the CMS system with real-time preview functionality. Added a complete preview environment (1,104 lines) supporting live rendering of CMS pages with functional web components and instant visual feedback. Enables content creators to see exactly how pages will appear before publishing, reducing errors and improving content quality.
+
+<Frame>
+<img src="https://cdn.marzipan.cloud/0/docs/changelog/cms-preview.png" />
+</Frame>
+
+## Customer Account Overview
+
+Redesigned the customer account interface with improved layout and better metric visualization. Added customer lifetime value tracking, order history with sparklines for trend visualization, subscription status overview, payment method management, and enhanced navigation between account sections. Implemented customer archiving functionality for better account lifecycle management, allowing soft deletion while preserving historical data.
+
+## Improvements
+- `App` Redesigned dashboard with new stats boxes using sparklines
+- `App` Updated filter bar with improved layout and usability
+- `App` Enhanced admin notifications with user-level notification settings
+- `App` Added order refund ability
+- `App` Added comprehensive activity logging across all major entities with improved old/new value display in activity feeds
+- `App` Improved search functionality across all admin pages with better indexing and faster results
+- `App` Performance optimisations with strategic database indexes specifically for insights queries
+- `App` Improved menu navigation with better focus management and keyboard accessibility
+- `App` Enhanced London City Bond integration with better error handling and carrier selection
+- `App` Better handling of inventory holds with improved low stock calculations and hold expiration
+- `App` Enhanced event attendee sorting and filtering capabilities
+- `App` Added more automated tests for critical systems including events, subscriptions, and payments
+- `Web Components` Added comprehensive event deposit support throughout cart and checkout flows with clear messaging
+- `Web Components` Integrated event waitlist UI with new WaitlistDialog component for sold-out events
+- `Web Components` Enhanced Product component with support for recurring event occurrences, deposit displays, and waitlist triggers
+- `Web Components` Improved Cart component with better event item display including deposit information
+- `Web Components` Enhanced Checkout component with deposit payment handling and balance due tracking
+- `Web Components` Added Collection component improvements for better product grid layouts
+
+## Bug Fixes
+- `App` Fixed handling of non-card payment methods (bank accounts, Klarna, etc.) when attaching to customer accounts in Stripe webhooks
+- `App` Fixed event deposit amount calculation when adding events to cart, ensuring correct pricing
+- `App` Fixed CMS editor preview rendering issues with nested components
+- `App` Fixed order status not updating to "completed" for event-only orders after ticket issuance
+- `App` Fixed event ticket cancellation notification delivery and timing
+- `App` Fixed activity log resource warning messages in newer Laravel versions
+- `App` Fixed attendee list sorting by various fields (name, date, status)
+- `App` Fixed menu focus states and overflow display issues on smaller screens
+- `App` Fixed customer tab navigation and display inconsistencies
+- `App` Fixed address update validation, geocoding triggers, and coordinate storage
+- `App` Fixed multiple frontend build compilation errors and TypeScript issues
+- `App` Fixed nullable refund amount fields in payments_refunds table to support partial refunds
+- `App` Fixed sidebar menu focus state management for better keyboard navigation
+- `Web Components` Fixed PayPal integration issues in checkout flow
+- `Web Components` Fixed country name display in checkout address fields
+
+</Update>
+
 <Update label="15th August 2025">
 
 ## Low Stock Badges
