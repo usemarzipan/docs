@@ -1,6 +1,202 @@
 ---
-title: 'Wordpress Plugin'
-description: 'Easily add the Marzipan web components to your Wordpress site.'
+title: 'WordPress Plugin'
+description: 'Easily add the Marzipan web components to your WordPress site.'
 ---
 
-Our Wordpress plugin is currently under development. Please sign up to our [newsletter](https://marzipan.co/newsletter) to be notified when it is available.
+The Marzipan for WordPress plugin integrates Marzipan's web components directly into your WordPress site, providing Gutenberg blocks, Elementor widgets, and shortcodes for displaying products, carts, and subscription management.
+
+## Requirements
+
+- WordPress 6.0 or higher
+- PHP 7.4 or higher
+- A Marzipan account with API access
+
+## Installation
+
+1. Download the plugin from your Marzipan dashboard
+2. Upload the `marzipan-for-wordpress` folder to `/wp-content/plugins/`
+3. Activate the plugin through the **Plugins** menu in WordPress
+4. Navigate to **Settings > Marzipan** to configure
+
+<Frame>
+  <img src="https://marzipan-cloud.b-cdn.net/0/docs/web-components/wordpress-plugin-page.png" alt="Activating the Marzipan plugin in WordPress" />
+</Frame>
+
+## Configuration
+
+After activation, go to **Settings > Marzipan** to enter your API token.
+
+### Getting Your API Token
+
+1. Log into your Marzipan dashboard
+2. Navigate to **Settings > API**
+3. Copy your API token
+
+<Frame>
+  <img src="https://marzipan-cloud.b-cdn.net/0/docs/web-components/wordpress-plugin-api-token.png" alt="Marzipan API token" />
+</Frame>
+
+### Settings Page
+
+The settings page displays:
+
+- **API Token** - Your Marzipan API token (required)
+- **Pages** - Links to view and edit the auto-generated pages
+
+<Frame>
+  <img src="https://marzipan-cloud.b-cdn.net/0/docs/web-components/wordpress-plugin-settings.png" alt="Entering your API token" />
+</Frame>
+
+## Auto-Generated Pages
+
+On activation, the plugin automatically creates five pages with locked Gutenberg blocks:
+
+| Page | URL | Purpose |
+|------|-----|---------|
+| Store | `/store` | Product collection display |
+| Product | `/product` | Individual product detail template |
+| Cart | `/cart` | Shopping cart |
+| Checkout | `/checkout` | Checkout form |
+| Account | `/account` | Customer account management |
+
+These pages contain locked blocks that cannot be accidentally deleted, ensuring your store functions correctly.
+
+<Frame>
+  <img src="https://marzipan-cloud.b-cdn.net/0/docs/web-components/wordpress-plugin-pages.png" alt="Auto-generated pages in WordPress" />
+</Frame>
+
+## Gutenberg Blocks
+
+The plugin provides 8 Gutenberg blocks in the **Marzipan** category:
+
+### Collection Block
+
+Display products from a specific collection with filtering options.
+
+<Frame>
+  <img src="https://marzipan-cloud.b-cdn.net/0/docs/web-components/wordpress-plugin-block.png" alt="Collection block in Gutenberg editor" />
+</Frame>
+
+### Product Block
+
+Display a single product with configurable view modes (mini or full).
+
+### Product Page Block
+
+Full product detail page template with all product information.
+
+### Add to Cart Block
+
+A dedicated add-to-cart button with quantity options.
+
+### Cart Block
+
+Shopping cart displaying line items and totals.
+
+### Checkout Block
+
+Complete checkout form for processing orders.
+
+### Account Block
+
+Customer account portal for managing subscriptions and orders.
+
+### Cart Icon Block
+
+Cart icon with item count badge, perfect for navigation menus.
+
+<Frame>
+  <img src="https://marzipan-cloud.b-cdn.net/0/docs/web-components/wordpress-plugin-add-block.png" alt="All Marzipan blocks in the block inserter" />
+</Frame>
+
+## Elementor Widgets
+
+If you use Elementor, the plugin provides 6 widgets:
+
+- Product
+- Collection
+- Add to Cart
+- Cart
+- Account
+- Cart Icon
+
+Find them in the Elementor widget panel under the **Marzipan** category.
+
+<Frame>
+  <img src="/images/wordpress/elementor-widgets.png" alt="Marzipan widgets in Elementor" />
+</Frame>
+
+## Shortcodes
+
+For use in classic editor or anywhere shortcodes are supported:
+
+| Shortcode | Description |
+|-----------|-------------|
+| `[marzipan_collection]` | Display a product collection |
+| `[marzipan_product]` | Display a single product |
+| `[marzipan_addtocart]` | Add to cart button |
+| `[marzipan_cart]` | Shopping cart |
+| `[marzipan_checkout]` | Checkout form |
+| `[marzipan_product_page]` | Full product page |
+| `[marzipan_account]` | Customer account portal |
+| `[marzipan_carticon]` | Cart icon with count |
+
+### Shortcode Example
+
+```html
+[marzipan_collection collection="featured-wines" columns="3"]
+```
+
+## Product URLs
+
+Product detail pages are automatically accessible at `/store/{product-slug}`. The plugin handles URL rewriting so visitors see the full product page when navigating to a product.
+
+For example, if you have a product with the slug `reserve-cabernet`, it will be accessible at:
+```
+https://yoursite.com/store/reserve-cabernet
+```
+
+## SEO Integration
+
+The plugin integrates with popular SEO plugins to ensure proper canonical URL handling on product pages:
+
+- Yoast SEO
+- RankMath
+- SEOPress
+- All in One SEO
+
+## Theme Compatibility
+
+The plugin works with any WordPress theme. All auto-generated pages use your active theme's templates, headers, and footers.
+
+<Tip>
+If you use a caching plugin, you may need to exclude the cart and checkout pages from caching to ensure real-time cart updates.
+</Tip>
+
+## Troubleshooting
+
+### Pages Not Displaying Correctly
+
+If a page was accidentally deleted, you can recreate it from the **Settings > Marzipan** page. Click the **Create** button next to the missing page.
+
+<Frame>
+  <img src="https://marzipan-cloud.b-cdn.net/0/docs/web-components/wordpress-plugin-recreate-page.png" alt="Recreating a missing page" />
+</Frame>
+
+### Products Not Loading
+
+Verify that:
+1. Your API token is entered correctly
+2. Your Marzipan account is active
+3. You have products configured in your Marzipan dashboard
+
+### Styling the Components
+
+See the [Styling guide](/web-components/styling) for customizing the appearance of components to match your branding.
+
+## Uninstalling
+
+When the plugin is uninstalled:
+- The API token setting is removed
+- Rewrite rules are flushed
+- Created pages are **not** automatically deleted (you can remove them manually if desired)

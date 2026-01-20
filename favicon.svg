@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="400px" height="400px" viewBox="0 0 400 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Favicon</title>
-    <g id="Favicon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Rectangle" fill="#FFFFFF" x="0" y="0" width="400" height="400" rx="200"></rect>
-        <path d="M116,242 L171.989289,184.662116 L212.077619,225.716041 C230.912401,198.027484 255.453518,174.911313 283.967866,158" id="Path" stroke="#272525" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"></path>
-    </g>
-</svg>
