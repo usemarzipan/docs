@@ -9,7 +9,7 @@
     "light": "#000000",
     "dark": "#000000"
   },
-  "favicon": "https://cdn.marzipan.co/svg/favicon.svg",
+  "favicon": "/favicon.svg",
   "fonts": {
     "body": {
       "family": "Inter",
