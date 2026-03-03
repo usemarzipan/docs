@@ -126,7 +126,7 @@ Find them in the Elementor widget panel under the **Marzipan** category.
   <img src="https://marzipan-cloud.b-cdn.net/0/docs/web-components/wordpress-plugin-elementor-widgets.png" alt="Marzipan widgets in Elementor" />
 </Frame>
 
-They can be easily dragged and dropped into any Elementor layout and then configureed via the widget settings.
+They can be easily dragged and dropped into any Elementor layout and then configured via the widget settings.
 
 <Frame>
   <img src="https://marzipan-cloud.b-cdn.net/0/docs/web-components/wordpress-plugin-elementor-collection-widget.png" alt="Marzipan widgets in Elementor" />
@@ -134,7 +134,7 @@ They can be easily dragged and dropped into any Elementor layout and then config
 
 ## Shortcodes
 
-For use in classic editor or anywhere shortcodes are supported:
+For use in the classic editor, template files, or anywhere WordPress shortcodes are supported. Shortcodes accept the same settings as the web component props, using underscores instead of hyphens.
 
 | Shortcode | Description |
 |-----------|-------------|
@@ -147,11 +147,128 @@ For use in classic editor or anywhere shortcodes are supported:
 | `[marzipan_account]` | Customer account portal |
 | `[marzipan_carticon]` | Cart icon with count |
 
-### Shortcode Example
+### Collection Shortcode
+
+Display products from a specific collection with full control over display options.
 
 ```html
-[marzipan_collection collection="featured-wines" columns="3"]
+[marzipan_collection
+  collection="red-wines"
+  show_description="true"
+  show_subscriber_pricing="true"
+  placeholder_items="12"
+  add_to_cart_text="Buy Now"
+  redirect_to_cart="false"
+]
 ```
+
+| Attribute | Description | Default |
+|-----------|-------------|---------|
+| `collection` | Collection slug (required) | — |
+| `show_collection_name` | Show the collection title | `true` |
+| `show_description` | Show product descriptions | `default` |
+| `show_more_link` | Show "view more" link on products | `false` |
+| `show_more_text` | Text for the "view more" link | `More` |
+| `placeholder_items` | Number of loading placeholders | `8` |
+| `hide_add_to_cart_button` | Hide the add to cart button | `false` |
+| `show_cart_quantity` | Show quantity selector | `default` |
+| `redirect_to_cart` | Redirect to cart after adding | `default` |
+| `add_to_cart_text` | Custom button text | `Add to Cart` |
+| `show_subscriber_pricing` | Show member pricing | `default` |
+| `sale_badge_text` | Text for sale badges | `Sale` |
+| `subscriber_badge_text` | Text for subscriber badges | `Subscribers` |
+| `subscriber_price_label` | Label for subscriber pricing | `for subscribers` |
+| `bundle_text` | Unit text for bundles | `bundle` |
+
+<Tip>
+Attributes set to `default` will use the value configured in your [web component settings](/web-components/customisation).
+</Tip>
+
+### Product Shortcode
+
+Display a single product in either mini (card) or full (page) view.
+
+```html
+[marzipan_product product="reserve-cabernet" view="full"]
+```
+
+| Attribute | Description | Default |
+|-----------|-------------|---------|
+| `product` | Product slug or ID (required) | — |
+| `view` | Display mode: `mini` or `full` | `mini` |
+| `show_collection_name` | Show the collection name | `true` |
+| `show_subscriber_pricing` | Show member pricing | `default` |
+| `hide_add_to_cart_button` | Hide the add to cart button | `false` |
+| `redirect_to_cart` | Redirect to cart after adding | `false` |
+| `add_to_cart_text` | Custom button text | `Add to Cart` |
+| `sale_badge_text` | Text for sale badges | `Sale` |
+| `subscriber_badge_text` | Text for subscriber badges | `Subscribers` |
+
+### Add to Cart Shortcode
+
+A standalone add-to-cart button for embedding anywhere on your site.
+
+```html
+[marzipan_addtocart
+  product_id="550e8400-e29b-41d4-a716-446655440000"
+  product_type="physical"
+  button_text="Add to Cart"
+  show_quantity="true"
+]
+```
+
+| Attribute | Description | Default |
+|-----------|-------------|---------|
+| `product_id` | Product UUID (required) | — |
+| `product_type` | `physical`, `bundle`, `event`, or `subscription` | `physical` |
+| `button_text` | Custom button text | `Add to Cart` |
+| `show_quantity` | Show quantity selector | `false` |
+| `quantity` | Default quantity | `1` |
+| `redirect` | Redirect to cart after adding | `false` |
+| `availability` | `all` or `subscribers` | `all` |
+| `out_of_stock` | Show as out of stock | `false` |
+| `disabled` | Disable the button | `false` |
+
+### Cart Shortcode
+
+```html
+[marzipan_cart empty_cart_message="Your cart is empty — browse our wines!"]
+```
+
+| Attribute | Description | Default |
+|-----------|-------------|---------|
+| `empty_cart_message` | Custom empty cart message | `You have nothing in your cart.` |
+
+### Cart Icon Shortcode
+
+A small cart icon with item count badge, ideal for navigation menus or headers.
+
+```html
+[marzipan_carticon icon_style="bag-outline" cart_path="/cart"]
+```
+
+| Attribute | Description | Default |
+|-----------|-------------|---------|
+| `cart_path` | Path to the cart page | `/cart` |
+| `icon_style` | `cart-outline`, `cart-solid`, `bag-outline`, or `bag-solid` | `bag-outline` |
+
+### Account Shortcode
+
+```html
+[marzipan_account disable_pick_mix_subscription_edit="false"]
+```
+
+| Attribute | Description | Default |
+|-----------|-------------|---------|
+| `disable_pick_mix_subscription_edit` | Prevent customers from editing pick & mix selections | `false` |
+
+### Checkout Shortcode
+
+```html
+[marzipan_checkout]
+```
+
+No attributes are required for the checkout shortcode.
 
 ## Product URLs
 

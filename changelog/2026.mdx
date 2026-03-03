@@ -1,0 +1,118 @@
+---
+title: 'Changelog'
+sidebarTitle: '2026'
+description: 'Updates and improvements to Marzipan'
+---
+<Update label="March 2026">
+
+## Rewards & Loyalty Programme
+
+Introduced a complete loyalty programme with tiered rewards, point earning, and checkout redemption.
+
+Customers earn points on every order based on configurable earning rates. Points accumulate towards reward tiers — each tier can offer perks like percentage discounts, free shipping, early access to products, and event invitations. Customers can see their current tier, points balance, and progress to the next tier from their account page.
+
+Points can be redeemed at checkout for a discount, with configurable redemption rates and maximum discount caps per currency. Tier membership is managed automatically based on lifetime spending, with optional notifications for tier upgrades and downgrades.
+
+Added a dedicated rewards insights dashboard showing tier distribution, revenue breakdown by tier, and programme performance trends.
+
+Rewards data (tier name, points balance) syncs to Mailchimp as merge fields for targeted email campaigns.
+
+## Multi-Currency & Markets
+
+Added support for selling in multiple currencies from a single store. Markets define regional pricing, currency, exchange rates, and payment provider availability.
+
+Products and subscription packages can have per-market pricing set manually, or prices can convert automatically using exchange rates. Shipping methods support per-market rates. Reports and insights can be filtered by market. The web components automatically display prices in the customer's local currency.
+
+## Inventory Locations
+
+Expanded stock management to support multiple inventory locations with a complete audit trail. Each location tracks stock independently, and every movement is recorded with a reason (order, received, write-off, stock take, transfer, return) and optional notes.
+
+Added bulk stock adjustment for updating many products at once, low stock alert emails with configurable thresholds, and inventory rules that determine which location fulfils orders based on conditions like shipping country.
+
+London City Bond stock levels now sync automatically to a dedicated inventory location.
+
+## Shipping Zones
+
+Shipping methods now support zone-based pricing for more accurate delivery charges. Built-in zones are available for the UK (Mainland, Highlands & Islands, Northern Ireland, Isle of Man, Channel Islands) and South Africa (Major Cities, Remote Areas). Rates are automatically determined based on the customer's postcode, with support for weight-based pricing bands.
+
+## PayFast Payment Gateway
+
+Added PayFast as a payment gateway option, supporting credit cards, instant EFT, and local South African payment methods. Includes sandbox mode for testing, webhook-based payment confirmations, and integration with the global test mode system.
+
+## ScrubBill Fulfilment Integration
+
+Added ScrubBill as a fulfilment provider for third-party logistics. Orders can be forwarded to ScrubBill automatically or manually from the order detail page. Webhook notifications automatically update order status when ScrubBill confirms dispatch.
+
+## Order Attribution & UTM Tracking
+
+Track where your orders come from with automatic UTM parameter capture (source, medium, campaign, content, term) and configurable referral source questions at checkout. A new Attribution insights page shows orders and revenue by traffic source, campaign, referral channel, and landing page with period comparison.
+
+## Fathom Analytics
+
+Connect your Fathom Analytics account to view website traffic data directly within the Marzipan insights section. See pageviews, unique visitors, and traffic breakdowns by page, referrer, country, browser, device, and UTM parameters — all without leaving your dashboard.
+
+## Global Test Mode
+
+Added a global test mode toggle under a new Developer Settings page. When enabled, all payment gateways automatically use their test/sandbox credentials. Store both live and test API keys for each gateway and switch between them with a single toggle. Turning off test mode automatically restores all live credentials.
+
+## Email Domain Management
+
+Added a new email settings section for registering and verifying custom sending domains. View required DNS records (MX, SPF, DKIM) and their verification status. Email delivery now uses dual SMTP providers for improved reliability, with automatic email suppression for bounces and complaints.
+
+## Web Component Customisation
+
+Significantly expanded the Settings > Web Components page with new options for customising your storefront without code:
+
+- **25+ colour settings** covering buttons, text, backgrounds, borders, badges, status messages, and account accents
+- **Product display** options including quick attributes on cards, configurable accordion sections on product pages, and related products
+- **Collection** options for card style (minimal, bordered, elevated, filled), text alignment, and image corners
+- **Cart** options for background/border styling, free shipping notifications, and related product recommendations
+- **Checkout** options for split-panel background colours, logo positioning and size, phone requirement, and referral source questions
+- **Account** options for subscription upsell sections
+
+See the [Web Components Customisation guide](/web-components/customisation) for full details.
+
+## Improvements
+- `App` Subscription packages now have per-market pricing tabs for setting prices in different currencies
+- `App` Admins can now edit the scheduled renewal date for a subscription
+- `App` Tasks now support @mentions linking to customers, orders, subscriptions, and events
+- `App` Tasks can be filtered by multiple assignees
+- `App` Task mentions appear as activity on linked records
+- `App` Pinned notes feature for important task notes
+- `App` Phone numbers are now automatically formatted to international E.164 standard
+- `App` Phone number can be required at checkout (configurable)
+- `App` Mailchimp integration now syncs customer address fields and reward data as merge fields
+- `App` Customer profiles in Mailchimp update automatically when addresses change in Marzipan
+- `App` New subscription orders within the LCB fulfilment cutoff window are no longer sent immediately
+- `App` LCB stock levels sync automatically to inventory locations
+- `App` Product attributes can now be marked as private (hidden from customers)
+- `App` Fulfilment actions are now restricted to the relevant shipping countries
+- `App` Free shipping display threshold is now applied server-side for accuracy
+- `App` Added tenant management to the admin panel
+- `Web Components` Cart displays free shipping progress notifications
+- `Web Components` Cart supports related product recommendations
+- `Web Components` Cart supports background colour and border customisation
+- `Web Components` Collection pages support background colour
+- `Web Components` Checkout supports split-panel background colours
+- `Web Components` Product cards show quick attributes
+- `Web Components` Product pages have configurable accordion sections
+- `Web Components` Referral source question available at checkout
+- `Web Components` what3words field support for events
+
+## Bug Fixes
+- `App` Fixed customer archive referencing non-existent subscribed column
+- `App` Fixed duplicate route names breaking route caching
+- `App` Fixed market pricing on event deposits
+- `App` Fixed subscription auto-renewal when no linked plan
+- `App` Fixed discount errors on checkout
+- `App` Fixed Apple Pay pickup order issues
+- `App` Fixed handling of duplicate order constraint on payment retry
+- `App` Fixed pick & mix renewal pricing calculations for per-item subscriptions
+- `App` Fixed subscription renewal items in cart price recalculation
+- `App` Fixed cart currency for shipping method price formatting
+- `App` Fixed Mailchimp webhook field mapping for subscription and address data
+- `Web Components` Fixed cart display threshold currency inputs
+- `Web Components` Fixed checkout customer mismatch when switching accounts
+- `Web Components` Fixed shipping method validation for flat rate methods
+
+</Update>

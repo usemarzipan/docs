@@ -1,0 +1,50 @@
+---
+title: 'Test Mode'
+description: 'Test your store without processing real payments.'
+---
+
+Test mode lets you test the complete shopping experience — including checkout and payment — without processing real charges. When enabled, all payment gateways automatically switch to their test/sandbox credentials.
+
+## How It Works
+
+Navigate to **Settings > Developer Settings** to access the test mode toggle.
+
+When test mode is **on**:
+- All payment gateways use their test API keys
+- Orders are processed normally but payments go through sandbox environments
+- You can test the full checkout flow with test card numbers
+- All other store functionality (inventory, emails, fulfilment) works as normal
+
+When test mode is **off**:
+- All payment gateways automatically switch back to their live API keys
+- All integrations are set to live mode
+- Real payments are processed
+
+<Warning>
+Always turn off test mode before making your store available to real customers. Orders placed in test mode use sandbox payment processing.
+</Warning>
+
+## Setting Up Test Credentials
+
+Each payment gateway has separate fields for live and test credentials:
+
+### Stripe
+Enter your Stripe test publishable key and test secret key. You can find these in your [Stripe Dashboard](https://dashboard.stripe.com/test/apikeys) under Developers > API keys (make sure "Test mode" is toggled on in Stripe).
+
+### PayPal
+Enter your PayPal sandbox client ID and secret from the [PayPal Developer Dashboard](https://developer.paypal.com/dashboard/applications/sandbox).
+
+### PayFast
+Enter your PayFast sandbox merchant ID, merchant key, and passphrase from the [PayFast Sandbox](https://sandbox.payfast.co.za).
+
+## Test Card Numbers
+
+When using Stripe in test mode, you can use these test card numbers:
+
+| Card | Number |
+|------|--------|
+| Visa (success) | `4242 4242 4242 4242` |
+| Visa (declined) | `4000 0000 0000 0002` |
+| 3D Secure | `4000 0027 6000 3184` |
+
+Use any future expiry date and any 3-digit CVC.

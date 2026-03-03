@@ -14,7 +14,41 @@ From their account your customers can manage their subscriptions, view their ord
 ```
 
 ### Props
-There are no props available for the account component.
+
+Props should be passed as attributes to the component element.
+
+<ResponseField name="disable-pick-mix-subscription-edit" type="boolean">
+Prevents customers from editing their pick & mix subscription selections from their account. Useful if you manage subscription contents manually.
+
+Defaults to `false`
+</ResponseField>
+
+### Features
+
+#### Rewards Dashboard
+
+If you have a rewards programme enabled, the account component automatically displays a rewards section where customers can view:
+
+- Their current reward tier and tier badge
+- Points balance and points history
+- Progress towards the next tier
+- Available perks for their current tier
+
+#### Subscription Upsell
+
+You can display a product grid within the account page encouraging customers to start or upgrade a subscription. Configure the collection, heading, message, and grid layout from your [web component settings](/web-components/customisation#subscription-upsell).
+
+#### Order History
+
+Customers can view their complete order history with order details, tracking information, and the ability to reorder previous purchases.
+
+#### Subscription Management
+
+Customers can manage their active subscriptions including:
+- Viewing upcoming renewal dates
+- Updating payment methods
+- Managing pick & mix selections (unless disabled)
+- Viewing subscription history
 
 ### Styling
 

@@ -115,7 +115,9 @@
           {
             "group": "Settings",
             "pages": [
-              "settings/overview"
+              "settings/overview",
+              "settings/email",
+              "settings/test-mode"
             ]
           }
         ]
@@ -141,6 +143,7 @@
             "group": "Get Started",
             "pages": [
               "web-components/introduction",
+              "web-components/customisation",
               "web-components/styling"
             ]
           },
@@ -169,6 +172,7 @@
       "tab": "Changelog",
       "icon": "history",
       "pages": [
+        "changelog/2026",
         "changelog/2025"
       ]
     },
