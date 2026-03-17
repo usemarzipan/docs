@@ -1,4 +1,56 @@
 ---
-title: 'Overview'
-description: 'Docs for the settings section will be added soon'
+title: 'Settings'
+description: 'Configure your store, payments, integrations, and web components.'
 ---
+
+The Settings section is where you configure your store's core options, payment providers, integrations, and appearance. Access it from the main navigation sidebar.
+
+## General
+
+Your store's basic information and preferences.
+
+- **Store name** — Your business name, displayed in emails and invoices
+- **Contact email** — Where customer enquiries and contact form submissions are sent
+- **Country** — Your store's primary country (used for default address formatting and tax)
+- **Currency** — Your base currency for pricing and reporting
+- **Timezone** — Used for order timestamps, scheduled tasks, and reporting
+
+## Payments
+
+Configure your payment gateways. Marzipan supports:
+
+- **Stripe** — Credit/debit cards, Apple Pay, Google Pay, Klarna, and more. Includes Stripe Connect for marketplace payments.
+- **PayPal** — PayPal checkout for customers who prefer it.
+- **PayFast** — Credit cards, instant EFT, and local South African payment methods.
+
+Each gateway can store both live and test credentials, which are toggled automatically by [test mode](/settings/test-mode).
+
+## Web Components
+
+Customise the appearance and behaviour of your customer-facing web components without writing code. See the [Web Components Customisation guide](/web-components/customisation) for full details.
+
+## Integrations
+
+Connect your store to third-party services:
+
+- **Mailchimp** — Sync customers and subscribers to your Mailchimp audience with configurable merge field mapping
+- **London City Bond** — Automatic order fulfilment through LCB's bonded warehouse
+- **ScrubBill** — Third-party logistics and fulfilment
+- **Fathom Analytics** — View website analytics directly in your Marzipan dashboard
+
+## Email
+
+Manage your email sending domains and delivery settings.
+
+- **Sending domains** — Register and verify custom sending domains with DNS records
+- **Delivery status** — Monitor email delivery with bounce and suppression tracking
+
+## API
+
+Generate API tokens for integrating with external systems or powering your web components. Each token has configurable permission scopes.
+
+## Developer Settings
+
+Tools for development and testing.
+
+- **Test Mode** — A global toggle that switches all payment gateways to their test/sandbox credentials. Use this to test the full purchase flow without processing real payments.

@@ -1,44 +1,54 @@
 ---
-title: 'Contact Form'
-description: 'The contact form component displays a contact form.'
+title: 'Form'
+description: 'The form component renders a dynamic form created in your Marzipan dashboard.'
 ---
 
-The form contains fields for name, company, email and message. The details are sent to the contact email address specified in Marzipan settings.
+Forms are created and configured in your Marzipan dashboard under **Forms**. The `<marzipan-form>` component fetches the form definition by slug and dynamically renders the fields you've configured.
+
+Supported field types: text, email, phone, textarea, select, checkbox, radio, date, and hidden.
 
 ### Code
 
 ```javascript
-<marzipan-contactform></marzipan-contactform>
+<marzipan-form slug="contact-us"></marzipan-form>
 ```
 
 ### Props
 
 Props should be passed as attributes to the component element.
 
+<ResponseField name="slug" required>
+
+The slug of the form as defined in your Marzipan dashboard.
+
+</ResponseField>
+
 <ResponseField name="button-text">
 
 The text to display on the submit button.
 
-Defaults to `Send`
-
-</ResponseField>
-
-<ResponseField name="company-label">
-
-The label to display for the company field.
-
-Defaults to `Company`
+Defaults to `Submit`
 
 </ResponseField>
 
 <ResponseField name="success-message">
 
-The message to display when the form is submitted successfully.
+The message to display when the form is submitted successfully. If not set, the success message configured in your Marzipan dashboard will be used.
 
-Defaults to `Your message has been sent.`
+Defaults to `Thank you for your submission!`
 
 </ResponseField>
 
 ### Styling
 
-It is not currently possible to style this component.
+The form component exposes the following CSS parts for styling:
+
+- `--form` - The form element
+- `--input` - All input, textarea, and select elements
+- `--form-submit-button` - The submit button (also targetable via `--primary-action-button`)
+- `--form-success` - The success message container
+- `--form-error` - The error message shown if the form fails to load
+
+<Note>
+The previous `<marzipan-contactform>` component is deprecated. Use `<marzipan-form>` with a form created in your dashboard instead.
+</Note>

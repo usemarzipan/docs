@@ -1,0 +1,53 @@
+---
+title: 'Email'
+description: 'Manage your email sending domains and delivery settings.'
+---
+
+The email settings page lets you register custom sending domains so that emails from your store (order confirmations, shipping notifications, marketing) are sent from your own domain rather than a shared address. This improves deliverability and builds trust with your customers.
+
+## Sending Domains
+
+Navigate to **Settings > Email** to manage your sending domains.
+
+### Registering a Domain
+
+1. Click **Add Domain** and enter your domain name (e.g. `yourbrand.com`)
+2. Marzipan will display the DNS records you need to add to your domain
+3. Add the records with your domain registrar or DNS provider
+4. Return to the email settings page to check verification status
+
+### Required DNS Records
+
+You'll need to add three types of DNS records:
+
+| Record | Purpose |
+|--------|---------|
+| **MX** | Routes bounce notifications back to Marzipan for suppression management |
+| **SPF** | Authorises Marzipan's mail servers to send email on behalf of your domain |
+| **DKIM** | Adds a digital signature to your emails, proving they haven't been tampered with |
+
+<Tip>
+DNS changes can take up to 48 hours to propagate, though most updates are visible within a few hours. You can check the verification status at any time from the email settings page.
+</Tip>
+
+### Verification Status
+
+Each DNS record shows one of two states:
+
+- **Verified** — The record has been detected and is configured correctly
+- **Pending** — The record has not yet been detected. Check that it was added correctly with your DNS provider.
+
+Once all records are verified, your domain is ready to use for sending.
+
+## Email Suppression
+
+Marzipan automatically manages an email suppression list to protect your sender reputation. Email addresses are added to the suppression list when:
+
+- An email bounces (the address doesn't exist or the mailbox is full)
+- A recipient marks your email as spam
+
+Suppressed addresses are automatically excluded from future sends. This happens behind the scenes — you don't need to manage the list manually.
+
+## Delivery
+
+Marzipan uses dual email providers for reliability. If the primary provider encounters an issue, emails are automatically routed through the backup provider. This ensures your transactional emails (order confirmations, shipping updates) are delivered reliably.

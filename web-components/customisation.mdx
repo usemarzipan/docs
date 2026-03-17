@@ -1,0 +1,240 @@
+---
+title: 'Customisation'
+description: 'Configure the appearance and behaviour of your web components from the Marzipan dashboard.'
+---
+
+You can customise how your web components look and behave directly from your Marzipan dashboard, without writing any code. Navigate to **Settings > Web Components** to access these options.
+
+<Tip>
+These settings apply globally to all web components on your site. If you need more granular control over individual elements, see the [Styling guide](/web-components/styling) for CSS-based customisation.
+</Tip>
+
+## Styling
+
+The Styling tab lets you set the colours, border radius, and other visual properties that all web components use by default.
+
+### Brand Colours
+
+| Setting | Description |
+| :-------- | :------------ |
+| Primary button background | The main colour for buttons like "Add to Cart" and "Checkout" |
+| Primary button hover | The colour buttons change to when hovered |
+| Secondary button background | Background for secondary actions like "Continue Shopping" |
+| Secondary button hover | Hover state for secondary buttons |
+| Secondary button text | Text colour on secondary buttons |
+| Button border | Border colour for primary buttons |
+| Button border hover | Border colour for primary buttons on hover |
+| Secondary button border | Border colour for secondary buttons |
+| Secondary button border hover | Border colour for secondary buttons on hover |
+
+### Text Colours
+
+| Setting | Description |
+| :-------- | :------------ |
+| Primary text | Main text colour across all components |
+| Secondary/muted text | Used for supporting text and descriptions |
+| Text on dark backgrounds | Text colour used on dark backgrounds (e.g. buttons) |
+
+### Backgrounds & Borders
+
+| Setting | Description |
+| :-------- | :------------ |
+| Page background | The background colour behind components |
+| Card & loading background | Background for cards and loading placeholders |
+| Modal overlay | The semi-transparent overlay behind modals |
+| Primary borders | Main border colour for cards and inputs |
+| Subtle borders | Lighter borders for internal dividers |
+| Input background | Background colour for form fields |
+| Disabled input background | Background for disabled form fields |
+
+### Status Colours
+
+| Setting | Description |
+| :-------- | :------------ |
+| Success | Colour for success messages and icons (e.g. "Added to cart") |
+| Warning | Colour for warnings (e.g. low stock notices) |
+| Error | Colour for error messages (e.g. validation errors) |
+
+Each status colour has a corresponding background colour for message containers.
+
+### Badge Colours
+
+| Setting | Description |
+| :-------- | :------------ |
+| Default badge | Background and text for standard badges |
+| Sale badge | Background and text for sale price badges |
+| Subscriber badge | Background and text for subscriber/member pricing badges |
+
+### Account Accents
+
+These accent colours are used as highlights on the customer account page sections:
+
+| Setting | Description |
+| :-------- | :------------ |
+| Rewards icon | Accent colour for the rewards/loyalty section |
+| Profile icon | Accent colour for the profile section |
+| Subscriptions icon | Accent colour for the subscriptions section |
+
+### Border Radius
+
+Control how rounded corners appear across your components:
+
+- **Buttons and inputs** — Choose from Sharp, XS, SM, MD, LG, XL, 2XL, or Full (pill shape)
+- **Cards and containers** — Choose from Sharp, SM, MD, LG, XL, 2XL, 3XL, or Full
+
+### Checkout Background
+
+Set separate background colours for the two panels in the checkout layout:
+
+- **Order summary (left)** — The background behind the order summary sidebar
+- **Checkout form (right)** — The background behind the customer details and payment form
+
+## Product
+
+The Product tab controls how individual products are displayed in both mini and full views.
+
+### Quick Attributes
+
+Display key product attributes (e.g. Region, Grape Variety, Vintage) directly on the product card without customers needing to open the full product page.
+
+- Toggle quick attributes on or off
+- Choose which attributes to display
+- Drag to reorder the attributes
+
+### Accordion Sections
+
+Configure which content sections appear on the full product page and in what order. Drag sections to reorder them. Available section types:
+
+| Section | Description |
+| :-------- | :------------ |
+| Description | The product's main description |
+| Attributes | A table of all product attributes |
+| Single Attribute | Display one specific attribute (e.g. Tasting Notes) |
+| Reviews | Customer reviews |
+| Awards | Product awards and accolades |
+| Press | Press mentions and quotes |
+| Related Products | A grid of related products (configurable title and count) |
+| Text | A custom text section with your own title and content |
+
+Each section can be set to open or collapsed by default.
+
+### Product Text
+
+| Setting | Description |
+| :-------- | :------------ |
+| Add to Cart text | Button text (default: "Add to Cart") |
+| Sale Badge text | Label on sale price badges (default: "Sale") |
+| Subscriber Badge text | Label on subscriber price badges (default: "Subscribers") |
+| Subscriber Price label | Text next to subscriber pricing (default: "for subscribers") |
+| Bundle text | Unit text for bundles (default: "bundle") |
+| Waitlist Button text | Text for waitlist buttons on sold-out items |
+| Show Subscriber Pricing | Whether to display subscriber/member pricing |
+| Show Quantity Selector | Whether to show a quantity picker |
+| Redirect to Cart | Whether to redirect to the cart page after adding a product |
+
+## Collection
+
+The Collection tab controls how product grids appear.
+
+### Background
+
+Set a background colour for collection pages.
+
+### Product Cards
+
+| Setting | Description |
+| :-------- | :------------ |
+| Card Style | Choose from **Minimal** (clean, no border), **Bordered** (subtle border), **Elevated** (shadow effect), or **Filled** (solid background) |
+| Text Alignment | Left-align or centre-align product card text |
+| Image Corners | Control the roundness of product image corners |
+| Show Quantity Selector | Whether to show quantity pickers on product cards |
+
+### Collection Text
+
+| Setting | Description |
+| :-------- | :------------ |
+| Add to Cart text | Button text for collection product cards |
+| Sale Badge text | Label on sale badges |
+| Subscriber Badge text | Label on subscriber badges |
+| Subscriber Price label | Text next to subscriber pricing |
+| Bundle text | Unit text for bundles |
+| Waitlist Button text | Text for waitlist buttons |
+| Show Subscriber Pricing | Display subscriber/member pricing |
+| Show Description | Show product descriptions on cards |
+| Show "More" Link | Show a link to the full product page |
+| "More" Link text | Text for the "More" link |
+| Redirect to Cart | Redirect to cart after adding a product |
+
+## Cart
+
+The Cart tab controls the shopping cart component.
+
+### Container Styling
+
+Add a background colour or border to the cart component to help it stand out on your page.
+
+- **Background** — Toggle on and select a colour
+- **Border** — Toggle on and select a border colour
+
+### Free Shipping Notification
+
+Show a message in the cart telling customers how much more they need to spend to qualify for free shipping.
+
+- **Enabled** — Toggle the notification on or off
+- **Message** — Customise the message text. Use `{amount}` as a placeholder for the remaining amount (e.g. "Spend {amount} more for free shipping!")
+- **Display Threshold** — Set a minimum cart value per market/currency. The notification only appears when the cart value is below this threshold.
+
+### Related Products
+
+Display product recommendations in the cart to encourage additional purchases.
+
+- **Enabled** — Toggle related products on or off
+- **Section Title** — Customise the heading (e.g. "You might also like")
+- **Number of Products** — Choose how many products to display (1–12)
+
+## Checkout
+
+The Checkout tab controls the checkout experience.
+
+### Background Colours
+
+The checkout uses a split-panel layout. You can set separate background colours for each side:
+
+- **Order summary (left)** — Customise the background behind the order review
+- **Checkout form (right)** — Customise the background behind the payment form
+
+### Logo
+
+Control how your logo appears at the top of the checkout:
+
+- **Position** — Left, Centre, or Right
+- **Height** — Small, Medium, Large, or Extra Large
+
+### Phone Field
+
+- **Require phone number** — When enabled, customers must enter a phone number to complete checkout
+
+### Referral Sources
+
+Ask customers how they heard about you during checkout. This data feeds into your Attribution insights.
+
+- **Enable dropdown** — Show or hide the "How did you hear about us?" question
+- **Allow "Other" option** — Let customers type a free-text answer
+- **Source options** — Add, remove, and reorder options. Each source can include:
+  - A display label
+  - An auto-tag (automatically applied to the customer record)
+  - An optional follow-up question (free text or dropdown) for more detail
+
+## Account
+
+The Account tab controls the customer account component.
+
+### Subscription Upsell
+
+Display a product grid within the customer account encouraging customers to start a subscription.
+
+- **Enable** — Toggle the upsell section on or off
+- **Product Collection** — Choose which collection to display products from
+- **Heading** — Customise the section heading
+- **Message** — Add a message encouraging customers to subscribe
+- **Grid Columns** — Set the number of columns for mobile, tablet, and desktop views
