@@ -47,9 +47,9 @@ Added ScrubBill as a fulfilment provider for third-party logistics. Orders can b
 
 Track where your orders come from with automatic UTM parameter capture (source, medium, campaign, content, term) and configurable referral source questions at checkout. A new Attribution insights page shows orders and revenue by traffic source, campaign, referral channel, and landing page with period comparison.
 
-## Fathom Analytics
+## Website Analytics
 
-Connect your Fathom Analytics account to view website traffic data directly within the Marzipan insights section. See pageviews, unique visitors, and traffic breakdowns by page, referrer, country, browser, device, and UTM parameters — all without leaving your dashboard.
+For Marzipan-hosted sites, web traffic stats are now available directly in the insights section. See pageviews, unique visitors, and traffic breakdowns by page, referrer, country, browser, device, and UTM parameters.
 
 ## Global Test Mode
 
@@ -57,7 +57,7 @@ Added a global test mode toggle under a new Developer Settings page. When enable
 
 ## Email Domain Management
 
-Added a new email settings section for registering and verifying custom sending domains. View required DNS records (MX, SPF, DKIM) and their verification status. Email delivery now uses dual SMTP providers for improved reliability, with automatic email suppression for bounces and complaints.
+Added a new email settings section for registering and verifying custom sending domains. View required DNS records (MX, SPF, DKIM) and their verification status. Email delivery now uses dual providers for improved reliability, with automatic email suppression for bounces and complaints.
 
 ## Web Component Customisation
 
@@ -71,6 +71,40 @@ Significantly expanded the Settings > Web Components page with new options for c
 - **Account** options for subscription upsell sections
 
 See the [Web Components Customisation guide](/web-components/customisation) for full details.
+
+## Forms
+
+Create custom forms directly in the dashboard with configurable field types including text, email, phone, textarea, select, checkbox, radio, date, and hidden fields. Form submissions trigger notifications and auto-reply emails.
+
+A new `<marzipan-form>` web component renders forms dynamically by slug, replacing the old hardcoded `<marzipan-contactform>` component. Fields, validation, and layout are all driven by the API — no code changes needed when forms are updated.
+
+## Bidirectional Messaging
+
+Two-way email conversations with customers via Lettermint inbound processing. Replies from customers are threaded into per-customer conversation threads in the messages inbox. An inbound email status banner and UX improvements make it easy to manage ongoing conversations.
+
+## Customer Segments
+
+Segment customers by conditions such as type, created date, order count, lifetime revenue, subscription status, reward tier, market, and form submissions. Segment membership is evaluated and cached for performance. Segments sync to Mailchimp as tags for targeted campaigns.
+
+## Back-in-Stock Notifications
+
+Customers can subscribe to out-of-stock products to receive email alerts when stock is replenished. Back-in-stock settings are configurable per market.
+
+## Free Checkout
+
+Carts with a zero total value can now complete checkout without requiring a payment step.
+
+## Roles & Permissions
+
+Granular access control for admin users. Assign roles with specific permissions to control who can view and manage different areas of the dashboard.
+
+## Per-Market Product Visibility
+
+Control which products are visible in each market, allowing you to tailor your catalogue by region.
+
+## LCB Blocked Items
+
+Added support for blocked items in the London City Bond integration, preventing specific products from being sent to LCB for fulfilment.
 
 ## Improvements
 - `App` Subscription packages now have per-market pricing tabs for setting prices in different currencies
@@ -98,6 +132,19 @@ See the [Web Components Customisation guide](/web-components/customisation) for 
 - `Web Components` Product pages have configurable accordion sections
 - `Web Components` Referral source question available at checkout
 - `Web Components` what3words field support for events
+- `App` Emails tab on customer detail page
+- `App` RGBA/hex-alpha color support and button border styling options
+- `App` Per-market free shipping messages
+- `App` Email log timelines show queued_at timestamps
+- `App` Domain change handling for store email with unverified domain warnings
+- `App` Cancellation email control
+- `App` Form submissions consolidated view
+- `Web Components` Dynamic form component with API-driven field rendering
+- `Web Components` Back-in-stock notification form on out-of-stock products
+- `Web Components` Themed button border CSS variables
+- `Web Components` Free checkout support
+- `Web Components` Bundle optimization with lazy loading and DOM-conditional loading
+- `Web Components` Market switcher (renamed from currency switcher)
 
 ## Bug Fixes
 - `App` Fixed customer archive referencing non-existent subscribed column
@@ -114,5 +161,19 @@ See the [Web Components Customisation guide](/web-components/customisation) for 
 - `Web Components` Fixed cart display threshold currency inputs
 - `Web Components` Fixed checkout customer mismatch when switching accounts
 - `Web Components` Fixed shipping method validation for flat rate methods
+- `App` Fixed case-insensitive email uniqueness enforcement
+- `App` Fixed invalid UUID route parameters returning 500 instead of 404
+- `App` Fixed Stripe charge using incorrect stripe_id field
+- `App` Fixed message compose state, unassigned filter, and select all toggle
+- `App` Fixed loading button size shift during loading state
+- `App` Fixed Fathom API rate limiting
+- `App` Fixed tenant context in queued jobs
+- `Web Components` Fixed account modals overflowing viewport on smaller screens
+- `Web Components` Fixed billing details showing "same as shipping" for event-only carts
+- `Web Components` Fixed white background on AddToCart component
+- `Web Components` Fixed Rewards tab showing when rewards aren't enabled
+- `Web Components` Fixed back-in-stock form layout below out-of-stock button
+- `Web Components` Fixed cart member pricing, buy again button, and subscription date modals
+- `Web Components` Fixed MarketSwitcher dropdown showing empty
 
 </Update>
