@@ -1556,38 +1556,6 @@
           }
         }
       },
-      "BillingPlan": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "The Stripe price id for the plan."
-          },
-          "name": {
-            "type": "string"
-          },
-          "price": {
-            "type": "string",
-            "description": "Formatted price in major currency units (no decimals), e.g. \"10\" or \"1,200\"."
-          },
-          "currency": {
-            "type": "object",
-            "properties": {
-              "symbol": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string",
-                "description": "Currency code, e.g. \"GBP\"."
-              }
-            }
-          },
-          "interval": {
-            "type": "string",
-            "description": "Billing interval, e.g. \"month\" or \"year\"."
-          }
-        }
-      },
       "Address": {
         "type": "object",
         "properties": {
@@ -3636,10 +3604,6 @@
     {
       "name": "Analytics",
       "description": "Storefront visit and attribution tracking."
-    },
-    {
-      "name": "Billing",
-      "description": "Tenant billing and subscription plans."
     },
     {
       "name": "Rewards",
@@ -6528,65 +6492,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/ValidationError"
                 }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/billing/plans": {
-      "get": {
-        "tags": [
-          "Billing"
-        ],
-        "summary": "List billing plans",
-        "description": "List the available billing/subscription plans for the tenant, ordered by price. This endpoint is publicly accessible and does not require authentication.",
-        "security": [],
-        "parameters": [
-          {
-            "name": "currency",
-            "in": "query",
-            "required": false,
-            "description": "Currency code to filter plans by. Defaults to GBP.",
-            "schema": {
-              "type": "string",
-              "default": "GBP"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/BillingPlan"
-                  }
-                },
-                "example": [
-                  {
-                    "id": "price_1QabcDEFghIJklMN",
-                    "name": "Starter",
-                    "price": "0",
-                    "currency": {
-                      "symbol": "£",
-                      "name": "GBP"
-                    },
-                    "interval": "month"
-                  },
-                  {
-                    "id": "price_1QxyzWVUtsRQponM",
-                    "name": "Pro",
-                    "price": "49",
-                    "currency": {
-                      "symbol": "£",
-                      "name": "GBP"
-                    },
-                    "interval": "month"
-                  }
-                ]
               }
             }
           }
