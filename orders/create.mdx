@@ -26,6 +26,10 @@ To access the manual order form, follow these steps:
 <img src="https://marzipan-cloud.b-cdn.net/0/docs/orders/create-order.png" />
 </Frame>
 
+<Note>
+POS (till) orders are created in the Marzipan mobile app, not this form. See [Point of Sale](/orders/pos) for in-person selling.
+</Note>
+
 <Steps titleSize="p">
    <Step title="Select customer">
       You can either select an existing customer by typing their name or email address in the lookup box, or create a new customer by clicking the **create a customer** button.
@@ -45,12 +49,16 @@ To access the manual order form, follow these steps:
    </Step>
    <Step title="Select a billing address for the customer">
       Select the appropriate billing address for the customer from the dropdown menu.
+
+      For multi-market stores, a **Market** is auto-detected from the billing address country and a note is shown to confirm which market applies. The market determines the pricing currency for the order.
    </Step>
    <Step title="Select a shipping option">
-      Select either **Pickup** or **Delivery**.
+      Select either **Delivery** or **Collection**.
    </Step>
    <Step title="Select a shipping method">
       Select the appropriate shipping method for the order from the dropdown menu.
+
+      If a delivery address has no phone number and the shipping method requires one, you'll see a warning prompting you to add a phone number.
    </Step>
    <Step title="Gift options">
       If the order is a gift, click the down arrow and complete the relevant fields.
@@ -59,10 +67,10 @@ To access the manual order form, follow these steps:
    <Step title="Add items">
       Use the product selector to add products to the order. You can enter the product name or SKU.
 
-      Once you have selected a product update the quantity
+      Once you have selected a product, update the quantity. Some products have **options** (for example size) that you can choose per line. Product lines also show sale and subscriber price badges where they apply.
    </Step>
    <Step title="Add discounts">
-      Any relevent auto applied discounts should get applied when you select the first product. If you need to add a manual discount to the order you can do this by clicking the add discount button.
+      Any relevant automatic discounts are applied live as you add items. If you need to add a manual discount to the order you can do this by clicking the add discount button.
    </Step>
    <Step title="Save the order">
       Review the order details and click the **Save** button at the bottom of the screen to save the order.

@@ -49,13 +49,20 @@
             ]
           },
           {
+            "group": "Insights",
+            "pages": [
+              "insights/overview"
+            ]
+          },
+          {
             "group": "Orders",
             "pages": [
               "orders/overview",
               "orders/create",
               "orders/details",
               "orders/fulfilment",
-              "orders/payments"
+              "orders/payments",
+              "orders/pos"
             ]
           },
           {
@@ -73,7 +80,32 @@
           {
             "group": "Customers",
             "pages": [
-              "customers/overview"
+              "customers/overview",
+              "customers/segments"
+            ]
+          },
+          {
+            "group": "Rewards",
+            "pages": [
+              "rewards/overview"
+            ]
+          },
+          {
+            "group": "Tasks",
+            "pages": [
+              "tasks/overview"
+            ]
+          },
+          {
+            "group": "Forms",
+            "pages": [
+              "forms/overview"
+            ]
+          },
+          {
+            "group": "Messages",
+            "pages": [
+              "messages/overview"
             ]
           },
           {
@@ -92,6 +124,12 @@
             "group": "Collections",
             "pages": [
               "collections/overview"
+            ]
+          },
+          {
+            "group": "Media",
+            "pages": [
+              "media/overview"
             ]
           },
           {
@@ -116,6 +154,11 @@
             "group": "Settings",
             "pages": [
               "settings/overview",
+              "settings/roles-and-team",
+              "settings/markets",
+              "settings/inventory",
+              "settings/shipping",
+              "settings/integrations",
               "settings/email",
               "settings/test-mode"
             ]

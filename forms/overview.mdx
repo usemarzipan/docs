@@ -1,0 +1,77 @@
+---
+title: 'Overview'
+description: 'Build custom forms and embed them on your site'
+---
+
+Forms let you build custom forms - contact forms, newsletter sign-ups and more - in your dashboard and embed them on your website. Submissions are collected in Marzipan, and depending on the form type they can notify your team, start a conversation in your inbox, or add someone to a marketing list.
+
+To view your forms, click **Forms** in the main navigation menu.
+
+### Forms list
+
+The list shows each form and how it is performing.
+
+<Frame>
+<img src="https://marzipan-cloud.b-cdn.net/0/docs/forms/forms-list.png" alt="Forms list" />
+</Frame>
+
+- **Name** - the form's name, with its slug
+- **Status** - whether the form is active
+- **Submissions** - how many submissions the form has received
+- **Type** - `Contact`, `Newsletter` or `Custom`
+- **Created** - when the form was created
+
+The header also has two actions: **Create form** to build a new form, and **All submissions** to view every submission across all forms.
+
+### Building a form
+
+When you create or edit a form you set:
+
+- **Name** - the form's name
+- **Slug** - used in the embed code and API URL
+- **Type** - determines the form's built-in behaviour:
+  - **Contact** - notifies your staff and creates a message in the inbox
+  - **Newsletter** - subscribes the person to a marketing list
+  - **Custom** - no built-in behaviour
+- **Status** - whether the form is active
+
+#### Fields
+
+Add the fields you want to collect. Each field has:
+
+- **Label** - what the customer sees
+- **Name** - the field's identifier
+- **Type** - `text`, `email`, `phone`, `textarea`, `select`, `checkbox`, `radio`, `date` or `hidden`
+- **Placeholder** - example text shown in the field
+- **Required** - whether the field must be filled in
+- **Options** - the choices offered, for `select`, `radio` and `checkbox` fields
+
+Drag fields to reorder them.
+
+### Notifications
+
+Decide what happens when someone submits the form:
+
+- **Submission notification** - notify specific team members, or all opted-in admins
+- **External notification email** - an optional extra address to notify
+- **Auto-reply** - an optional confirmation sent to the person who submitted, with a subject and body you customise. The auto-reply uses an editable notification template
+- **Success message** - the message shown to the person after they submit
+
+### Submissions
+
+View submissions for a single form, or all submissions together via **All submissions**.
+
+<Frame>
+<img src="https://marzipan-cloud.b-cdn.net/0/docs/forms/submissions.png" alt="Form submissions" />
+</Frame>
+
+The list shows the submitter's **Name** and **Email**, the **Form**, the **Source** and when it was **Submitted**. You can filter by form. Open a submission to see every field value and the linked customer.
+
+<Note>
+Contact-form submissions create a thread in [Messages](/messages/overview), so you can reply and keep the whole conversation in one place.
+</Note>
+
+### Embedding a form
+
+Forms render on your site through the `<marzipan-form>` web component, using the form's slug. See [Contact form](/web-components/contact-form) for how to embed it.
+</content>

@@ -3,29 +3,51 @@ title: 'Payments'
 description: 'Process and manage payments for orders'
 ---
 
-### Order Processing
+Marzipan tracks the payment status of every order and lets you take payment, record offline payments, and issue refunds from the order details page.
 
-From the order details page, you can:
+### Payment status
 
-- Update order status
-- Process refunds
-- Add order notes
-- Send order notifications to customers
-- Print invoices and packing slips
+Each order has a payment status:
 
-## Order Types
+- `pending` - payment has not yet been taken
+- `paid` - payment has been received in full
+- `failed` - a payment attempt was unsuccessful
+- `refunded` - the order has been refunded (fully or partially)
+- `free` - a zero-value order that has been completed
 
-Marzipan supports various order types:
+### Process payment
 
-- **Standard Orders** - Regular purchases through your store
-- **Subscription Orders** - Recurring orders from subscription products
-- **Manual Orders** - Orders created by store administrators
-- **Draft Orders** - Incomplete orders saved for later processing
+On an unpaid order, click **Process payment** to take payment. You can either:
+
+- **Charge a saved card** - charge a payment method the customer has on file
+- **Record a manual payment** - log a payment taken offline, for example cash, bank transfer, phone, or other
+
+Use a manual payment when the customer has already paid you outside of Marzipan and you just need to record it against the order.
+
+### Mark as free
+
+For zero-value orders, use **Mark as free** to complete the order without taking payment.
+
+<Warning>
+Marking an order as free triggers the same automations as a paid order, so a warning is shown before you confirm.
+</Warning>
+
+### Refunds
+
+You can refund an order in full or in part. When you issue a refund you add a reason, and the refund is shown against the original payment as a nested row on the order.
+
+### Redeem points
+
+When rewards are enabled, you can **Redeem points** at the order level to apply the customer's rewards points to the order total.
+
+### Tap to Pay and card-present payments
+
+Card payments taken in person appear on the order with a Tap to Pay indicator, along with the card brand and the last 4 digits of the card. These are taken through the Marzipan mobile app — see [Point of Sale](/orders/pos).
 
 ## Related Documentation
 
 <CardGroup cols={1}>
-  <Card title="Order Fulfillment" icon="truck" href="/orders/fulfillment">
+  <Card title="Fulfilment" icon="truck" href="/orders/fulfilment">
     Process and ship orders to your customers
   </Card>
 </CardGroup>

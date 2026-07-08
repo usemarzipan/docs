@@ -1,0 +1,60 @@
+---
+title: 'Shipping'
+sidebarTitle: 'Shipping'
+description: 'Set up shipping methods, rates, and delivery zones.'
+---
+
+Shipping methods control how much your customers pay for delivery and where each option is available.
+
+Navigate to **Settings > Shipping Methods** to manage your methods.
+
+<Frame>
+<img src="https://marzipan-cloud.b-cdn.net/0/docs/settings/shipping-methods.png" alt="Shipping methods list" />
+</Frame>
+
+## Shipping methods
+
+Each shipping method has the following core options.
+
+- **Name** — The name customers see at checkout, such as `Standard Delivery`
+- **Description** — Optional detail about the method
+- **Enabled** — Whether the method is available at checkout
+- **Method** — The type of method, which determines how the rate is calculated
+
+The **Method** type can be one of:
+
+- **Flat rate** — A fixed **Amount** for every order
+- **Free shipping** — No charge
+- **Pickup** — Collection in person, with no delivery charge
+- **Custom rate** — A rate calculated from bands (see below)
+
+### Custom rate bands
+
+A **Custom rate** method works out the charge from **bands**. First choose how bands are measured:
+
+- **Weight based (kg)** — Bands are based on the order's total weight
+- **Volume based (number of items)** — Bands are based on the number of items
+
+Then add rows of **From** / **To** / **Amount**. Set the last row's **To** to **Unlimited** to cover everything above the previous band.
+
+## Countries and zones
+
+Select the **countries** a method applies to, and optionally restrict it to specific **zones**. Rates apply based on the customer's postcode.
+
+Marzipan includes the following built-in zones:
+
+| Country | Zones |
+|---------|-------|
+| **UK** | UK Mainland, Scottish Highlands & Islands, Northern Ireland, Isle of Man, Channel Islands |
+| **South Africa** | Major Cities, Remote Areas |
+
+## Conditions
+
+You can gate when a method is offered.
+
+- **Minimum order value** — Require a minimum subtotal (before discounts) for the method to be available
+- **Cart conditions** — Restrict a method to carts that only contain items from certain collections
+
+<Note>
+The currency for a method's amounts is resolved from the destination country's [market](/settings/markets).
+</Note>

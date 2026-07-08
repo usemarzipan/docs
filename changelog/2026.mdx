@@ -3,6 +3,104 @@ title: 'Changelog'
 sidebarTitle: '2026'
 description: 'Updates and improvements to Marzipan'
 ---
+<Update label="July 2026">
+
+## Going Live Clears Test Data
+
+Turning off [test mode](/settings/test-mode) to go live now clears test-mode customers and their test artifacts, so you start selling with a clean slate. Going live is a one-way switch.
+
+## All-Day Event Improvements
+
+All-day events now carry their all-day setting and recurrence days through to the storefront and API, so listings display correctly.
+
+</Update>
+
+<Update label="June 2026">
+
+## All-Day & Multi-Day Events
+
+Events can now be marked as **all-day**, and weekly recurring events can span **multiple days**. Editing a recurring event propagates your changes across occurrences while **preserving any occurrence times you've customised**. See the [Events guide](/events/overview).
+
+## Product Barcodes (GTIN)
+
+Physical and bundle products now have a **barcode / GTIN** field, accepting EAN-13, UPC-A, EAN-8 and ITF-14 with live format validation. See [Products](/products/overview).
+
+## Web Component Labels Tab
+
+Storefront text labels are now consolidated into a single **Labels** tab in Settings > Web Components, including new **Sales Closed** and **Back in Stock** button labels. You can also choose how subscription frequencies read — worded ("quarterly") or interval ("every 3 months"). See the [Customisation guide](/web-components/customisation).
+
+## Customisable Button Text Colour
+
+Set the text colour for primary buttons, including a separate hover colour, from the Web Components styling settings.
+
+## Product Image Options
+
+New product-image settings let you position thumbnails to the side or bottom and enable a zoom overlay, with a separate corner radius for product images.
+
+## Order Improvements
+
+- The order page now updates its **activity feed live**, so entries written by background jobs appear automatically.
+- Editing an order now shows **bundle constituent items** when you add a bundle.
+
+## Markets
+
+Carts now follow the resolved [market](/settings/markets) precedence (customer choice, then saved market, then location) instead of forcing a single assigned market.
+
+## Forms
+
+Form **auto-reply** emails are now sent from a customisable notification template, so you can tailor the subject and message per form. See [Forms](/forms/overview).
+
+</Update>
+
+<Update label="May 2026">
+
+## Point of Sale — Walk-In Customers & Receipts
+
+[Point of Sale](/orders/pos) sales can now be taken for a shared **walk-in customer** and turned into a named customer later. Email a **POS receipt** after a sale — sending it links the walk-in order to that customer — or assign a walk-in order to a customer from the order's Actions menu. Tap to Pay payments now capture and display the card brand and last four digits.
+
+## Event Attendees Export
+
+The event **Attendees** tab now has a **CSV export**, a price column, and clickable links back to each attendee's order. See [Events](/events/overview).
+
+## Subscriptions — Cancelled/Expired Filter
+
+Filter the [subscriptions](/subscriptions/overview) list by when subscriptions were **cancelled or expired** using a date range.
+
+## Order Shipping Dates
+
+The order shipping-date picker now blocks past dates, and changing the date on an order held for London City Bond dispatch reschedules and logs that hold.
+
+## Customers
+
+Set a customer's **default payment method**, and archived customers are now hidden from the main list by default.
+
+</Update>
+
+<Update label="April 2026">
+
+## Marzipan Mobile App (Beta)
+
+Introduced the Marzipan **mobile companion app** for managing your store on the go, backed by a new admin API. It covers orders, customers, subscriptions, tasks, and dashboard metrics, with a secure sign-in flow and **push notifications** to your device. See the [API introduction](/api-reference/introduction).
+
+## Point of Sale & Tap to Pay (Beta)
+
+Added **in-person selling** through the mobile app: build a sale with **Quick Pay** and take card payments with **Tap to Pay on iPhone** via Stripe Terminal. In-person sales appear in the web app under the **POS** channel. See [Point of Sale](/orders/pos).
+
+## Subscription Payment Safeguards
+
+Marzipan now detects blocked Stripe payments and halts renewal retries, with team notifications for blocked payments and renewal errors that members can opt into.
+
+## Order Improvements
+
+- Added a **Free** payment-status filter and excluded free orders from the pending total.
+- Bulk shipment CSV import can now capture a comments column.
+
+## Platform
+
+Upgraded the underlying platform to Laravel 12.
+
+</Update>
+
 <Update label="March 2026">
 
 ## Rewards & Loyalty Programme
