@@ -65,6 +65,8 @@ The placeholders will render as broken images until you upload a file to the mat
 | `customers/customers-list.png` | The customers list table (Name, Email, Orders, Last order, Registered). |
 | `customers/customer-filter.png` | The customer filter panel (narrow UI). |
 | `customers/customer-profile.png` | A customer profile with its tabs and the Overview highlight cards / details panel. |
+| `customers/segments.png` | The Segments panel on the Customers page (opened via the **Segments** button). |
+| `customers/condition-builder.png` | The segment condition builder — rows of [condition] [modifier] [value] with Match all / Match any grouping. |
 
 ## Rewards
 | Path | Screenshot |
@@ -80,14 +82,7 @@ The placeholders will render as broken images until you upload a file to the mat
 | Path | Screenshot |
 |------|-----------|
 | `forms/forms-list.png` | The forms list (Name/slug, Status, Submissions, Type, Created). |
-| `forms/submissions.png` | The submissions list (Name, Email, Form, Source, Submitted). |
-
-## Marketing
-| Path | Screenshot |
-|------|-----------|
-| `marketing/segments.png` | The Segments list on the Customers page, showing existing customer segments. |
-| `marketing/condition-builder.png` | The segment condition builder — rows of [condition] [modifier] [value] with Match all / Match any grouping. |
-| `marketing/email-templates.png` | The drag-and-drop email template editor with a template name and preview. |
+| `forms/submissions.png` | The submissions list (Name, Form, Source, Submitted — emails redacted). |
 
 ## Messages
 | Path | Screenshot |

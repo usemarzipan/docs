@@ -80,7 +80,8 @@
           {
             "group": "Customers",
             "pages": [
-              "customers/overview"
+              "customers/overview",
+              "customers/segments"
             ]
           },
           {
@@ -99,12 +100,6 @@
             "group": "Forms",
             "pages": [
               "forms/overview"
-            ]
-          },
-          {
-            "group": "Marketing",
-            "pages": [
-              "marketing/overview"
             ]
           },
           {

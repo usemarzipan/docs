@@ -1,32 +1,28 @@
 ---
-title: 'Overview'
-description: 'Organise your customers into segments and reach them through Mailchimp and email templates.'
+title: 'Segments'
+description: 'Group your customers into dynamic segments based on their behaviour and attributes.'
 ---
-
-Marzipan's marketing tools help you group your customers and reach them with the right message. From here you can build dynamic **customer segments**, sync them to **Mailchimp**, and design reusable **email templates**.
-
-## Customer segments
 
 A segment is a dynamic group of customers built from conditions you choose. Membership updates automatically as customers meet or stop meeting those conditions, so you never have to maintain a list by hand.
 
-You manage segments from the **Customers** page via **Segments**.
+You manage segments from the **Customers** page — click **Segments** in the top-right.
 
 <Frame>
-<img src="https://marzipan-cloud.b-cdn.net/0/docs/marketing/segments.png" alt="Customer segments list" />
+<img src="https://marzipan-cloud.b-cdn.net/0/docs/customers/segments.png" alt="Customer segments list" />
 </Frame>
 
-### Building a segment
+## Building a segment
 
 Each segment has:
 
 - **Name** — a label for the segment.
-- **Sync to Mailchimp** — an optional toggle to keep the segment in step with a Mailchimp tag (see [Mailchimp](#mailchimp) below).
+- **Sync to Mailchimp** — an optional toggle to keep the segment in step with a Mailchimp tag (see [Mailchimp sync](#mailchimp-sync) below).
 - **Condition builder** — the rules that decide who belongs to the segment.
 
 The condition builder uses rows of **[condition] [modifier] [value]**. Within a group, choose **Match all** to require every row (AND) or **Match any** to require just one (OR). If you add multiple groups, the groups always combine with AND.
 
 <Frame>
-<img src="https://marzipan-cloud.b-cdn.net/0/docs/marketing/condition-builder.png" alt="Segment condition builder" />
+<img src="https://marzipan-cloud.b-cdn.net/0/docs/customers/condition-builder.png" alt="Segment condition builder" />
 </Frame>
 
 ### Available conditions
@@ -47,7 +43,7 @@ The condition builder uses rows of **[condition] [modifier] [value]**. Within a 
 | **Reward tier** | is / is not |
 | **Reward points** | greater than / less than / equal to |
 
-### Managing a segment
+## Managing a segment
 
 Membership is evaluated and cached, so a segment's customers are ready to view at any time. From a segment you can:
 
@@ -56,24 +52,10 @@ Membership is evaluated and cached, so a segment's customers are ready to view a
 - **Export** — download the members as a CSV file.
 - Delete the segment.
 
-## Mailchimp
+## Mailchimp sync
 
-Connect Mailchimp under **Settings > Integrations**. Once connected, customers can be subscribed to your Mailchimp audience through the consent toggles on their profile.
-
-When you sync a **segment** to Mailchimp, Marzipan creates a tag named `Segment: {name}` on your default audience and syncs only the subscribed members, pushing their tag and membership. Customers who aren't subscribed are left out.
+Connect Mailchimp under **Settings > Integrations**. When you turn on **Sync to Mailchimp** for a segment, Marzipan creates a tag named `Segment: {name}` on your default audience and syncs only the subscribed members, pushing their tag and membership. Customers who aren't subscribed are left out.
 
 <Note>
 Reward and address data reach Mailchimp as **merge fields** through the separate per-customer sync, not through segment syncing.
 </Note>
-
-## Email templates
-
-Build reusable email templates in a drag-and-drop editor. Each template has a name and a preview so you can see how it looks before you use it.
-
-<Frame>
-<img src="https://marzipan-cloud.b-cdn.net/0/docs/marketing/email-templates.png" alt="Email template editor" />
-</Frame>
-
-<Info>
-Sending campaigns from your templates is coming soon.
-</Info>
