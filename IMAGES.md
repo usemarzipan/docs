@@ -18,8 +18,10 @@ The placeholders will render as broken images until you upload a file to the mat
 ## Orders & POS
 | Path | Screenshot |
 |------|-----------|
-| `orders/pos-quick-pay.png` | The Quick Pay sale-building screen in the mobile app. |
-| `orders/pos-tap-to-pay.png` | Taking a Tap to Pay card payment on iPhone. |
+| `orders/pos-quick-pay.png` | The Quick Pay sale-building screen in the mobile app. **(Provided.)** |
+| `orders/pos-receipt.png` | The receipt / "Payment approved" screen in the mobile app. **(Provided.)** |
+
+> **No Tap to Pay screenshot.** Tap to Pay runs only on the phone hardware and Apple blocks screenshotting the payment flow, so there is no `pos-tap-to-pay.png`. The POS page describes it in text instead.
 
 ## Products
 | Path | Screenshot |
