@@ -3,7 +3,7 @@ title: 'Fulfilment'
 description: 'Ship orders to your customers'
 ---
 
-Fulfilling orders is the process of preparing and sending orders to customers. Marzipan provides a simple and easy way to orders as shipped.
+Fulfilling orders is the process of preparing and sending orders to customers. Marzipan provides a simple and easy way to mark orders as shipped.
 
 ### Manual Fulfilment
 
@@ -13,11 +13,23 @@ It is easy to fulfil orders manually in Marzipan. To fulfil an order, click the 
 <img src="https://marzipan-cloud.b-cdn.net/0/docs/orders/order-fulfil.png" alt="Order detail screenshot" />
 </Frame>
 
-When you click the **Fulfil** button, you will be shown a modal where you can select the fulfilment method and add any notes to the order. The fulfilment method is the method you will use to ship the order to the customer.
+Clicking **Fulfil** opens the **Ship order** modal, where you record how the order was sent.
 
 <Frame>
-<img src="https://marzipan-cloud.b-cdn.net/0/docs/orders/order-fulfil-modal.png" alt="Order detail screenshot" />
+<img src="https://marzipan-cloud.b-cdn.net/0/docs/orders/order-fulfil-modal.png" alt="Ship order modal" />
 </Frame>
+
+The modal supports:
+
+- **Partial shipment** - set a shipped quantity per item, so you can ship part of an order now and the rest later
+- **Courier** - choose from APC Overnight, DHL, DPD, FedEx, London City Bond, Parcelforce, Royal Mail, Delivered by hand, Collected, or Other
+- **Tracking reference** - the courier's tracking number
+- **Shipping cost** - the cost of the shipment
+- **Comments** - any notes about the shipment
+
+### Updating a shipment
+
+Clicking an existing shipment opens the **Update shipment** modal, where you can edit its status and tracking details.
 
 ### Automatic Fulfilment
 
@@ -26,3 +38,7 @@ If you are using the London City Bond integration and have set up a flow to auto
 <Frame>
 <img src="https://marzipan-cloud.b-cdn.net/0/docs/orders/order-fulfilled.png" alt="Order detail screenshot" />
 </Frame>
+
+### Bulk shipment update
+
+If you need to update tracking and status for many orders at once, use **Bulk shipment update** from the [Orders](/orders/overview) page. Upload a CSV to set tracking and status across many orders in one go. A downloadable template is provided so your file is in the right format.

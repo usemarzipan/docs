@@ -19,6 +19,8 @@ The Styling tab lets you set the colours, border radius, and other visual proper
 | :-------- | :------------ |
 | Primary button background | The main colour for buttons like "Add to Cart" and "Checkout" |
 | Primary button hover | The colour buttons change to when hovered |
+| Primary button text | Text colour on primary buttons |
+| Primary button text (hover) | Text colour on primary buttons when hovered |
 | Secondary button background | Background for secondary actions like "Continue Shopping" |
 | Secondary button hover | Hover state for secondary buttons |
 | Secondary button text | Text colour on secondary buttons |
@@ -81,6 +83,7 @@ Control how rounded corners appear across your components:
 
 - **Buttons and inputs** — Choose from Sharp, XS, SM, MD, LG, XL, 2XL, or Full (pill shape)
 - **Cards and containers** — Choose from Sharp, SM, MD, LG, XL, 2XL, 3XL, or Full
+- **Product image corners** — Set a separate radius for product images
 
 ### Checkout Background
 
@@ -118,19 +121,31 @@ Configure which content sections appear on the full product page and in what ord
 
 Each section can be set to open or collapsed by default.
 
-### Product Text
+### Product images
+
+Control how product images are displayed on the full product page:
+
+- **Thumbnail position** — Show thumbnails to the **side** of the main image or along the **bottom**
+- **Zoom / lightbox** — Toggle an image zoom and lightbox overlay so customers can view images full-screen
+
+### Event display
+
+For event products, choose how upcoming occurrences are presented:
+
+- **Default view** — Show occurrences as a **list** or a **calendar**
+- **Upcoming occurrences** — Set how many upcoming occurrences to show (1–60)
+
+### Product behaviour
 
 | Setting | Description |
 | :-------- | :------------ |
-| Add to Cart text | Button text (default: "Add to Cart") |
-| Sale Badge text | Label on sale price badges (default: "Sale") |
-| Subscriber Badge text | Label on subscriber price badges (default: "Subscribers") |
-| Subscriber Price label | Text next to subscriber pricing (default: "for subscribers") |
-| Bundle text | Unit text for bundles (default: "bundle") |
-| Waitlist Button text | Text for waitlist buttons on sold-out items |
 | Show Subscriber Pricing | Whether to display subscriber/member pricing |
 | Show Quantity Selector | Whether to show a quantity picker |
 | Redirect to Cart | Whether to redirect to the cart page after adding a product |
+
+<Note>
+Text labels such as Add to Cart, Sale badge and Subscriber badge now live on the [Labels](#labels) tab.
+</Note>
 
 ## Collection
 
@@ -149,21 +164,41 @@ Set a background colour for collection pages.
 | Image Corners | Control the roundness of product image corners |
 | Show Quantity Selector | Whether to show quantity pickers on product cards |
 
-### Collection Text
+### Collection Behaviour
 
 | Setting | Description |
 | :-------- | :------------ |
-| Add to Cart text | Button text for collection product cards |
-| Sale Badge text | Label on sale badges |
-| Subscriber Badge text | Label on subscriber badges |
-| Subscriber Price label | Text next to subscriber pricing |
-| Bundle text | Unit text for bundles |
-| Waitlist Button text | Text for waitlist buttons |
 | Show Subscriber Pricing | Display subscriber/member pricing |
 | Show Description | Show product descriptions on cards |
 | Show "More" Link | Show a link to the full product page |
-| "More" Link text | Text for the "More" link |
 | Redirect to Cart | Redirect to cart after adding a product |
+
+<Note>
+Text labels such as Add to Cart, badges and the "More" link text now live on the [Labels](#labels) tab.
+</Note>
+
+## Labels
+
+The Labels tab consolidates the storefront text labels used across your components in one place. These previously lived under the Product and Collection tabs.
+
+| Setting | Description |
+| :-------- | :------------ |
+| Add to Cart text | Button text (default: "Add to Cart") |
+| Sale Badge text | Label on sale price badges (default: "Sale") |
+| Subscriber Badge text | Label on subscriber price badges (default: "Subscribers") |
+| Subscriber Price label | Text next to subscriber pricing (default: "for subscribers") |
+| Bundle text | Unit text for bundles (default: "bundle") |
+| Waitlist Button text | Text for waitlist buttons on sold-out items |
+| Sales Closed text | Text shown when sales are closed |
+| Back in Stock Button text | Text for the back-in-stock button |
+| "More" Link text | Text for the link to the full product page |
+
+### Subscription frequency wording
+
+Choose how subscription frequencies are described:
+
+- **Worded** — e.g. "quarterly"
+- **Interval** — e.g. "every 3 months"
 
 ## Cart
 

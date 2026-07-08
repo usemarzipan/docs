@@ -3,29 +3,87 @@ title: 'Details'
 description: 'View and manage order details'
 ---
 
-The order details screen provides a comprehensive view of an order and allows you to process the order. The left side of the screen contains the order details and any logged order activity, while the right side contains the customer and shipping details.
+The order details screen provides a comprehensive view of an order and lets you process it. The left column holds the order items and any logged order activity, while the right column holds the customer, shipping and billing details.
 
 <Frame>
 <img src="https://marzipan-cloud.b-cdn.net/0/docs/orders/order-detail-overview.png" alt="Order detail screenshot" />
 </Frame>
 
+### Actions menu
+
+The **Actions** menu in the top-right corner gives you quick access to common tasks:
+
+- **Resend email confirmation** - send the order confirmation email to the customer again
+- **Cancel** - cancel the order
+- **Refund** - refund all or part of the order
+- **Duplicate order** - create a new draft order with the same items
+- **Assign customer** - only shown for POS walk-in orders, this links a walk-in sale to a real customer (see [Point of Sale](/orders/pos))
+
+### Order items
+
+The order items section lists everything in the order. Each line shows:
+
+- The product image, name and SKU
+- Any selected **options** (for example size)
+- The unit price, quantity and line total
+
+For bundles, the **constituent items** that make up the bundle are listed beneath the bundle line.
+
+Beneath the items, the footer shows the order totals:
+
+- Subtotal
+- Discounts
+- **Points redeemed** - shown when the customer has used rewards points
+- Shipping
+- Tax
+- Total
+
 ### Payments
-The payments section below the order details contains the payment status for the order and any payment activity that has been logged. If the order is still in has a `processing` status then you can mark the payment as `paid` either manually (eg if you have received payment offline) or by selecting a saved payment method.
+
+The payments section shows the payment status for the order and any payment activity that has been logged.
+
+- Each payment shows the provider and card brand with the last 4 digits of the card
+- **Tap to Pay / card-present** payments taken in person show a Tap to Pay indicator (see [Point of Sale](/orders/pos))
+- Failed payments show the failure reason
+- Refunds appear as nested rows beneath the original payment, each with a reason
+
+If the order is unpaid, you can take payment or complete it from here — see [Draft, unpaid and hold order actions](#draft-unpaid-and-hold-order-actions) below. For more on payments and refunds, see [Payments](/orders/payments).
+
+### Draft, unpaid and hold order actions
+
+When an order is not yet paid, or is on `hold`, extra actions are available:
+
+- **Process payment** - charge a saved card or record a manual payment (for example if the customer paid offline)
+- **Mark as free** - complete a zero-value order. This triggers the same automations as a paid order, so a warning is shown before you confirm
+- **Redeem points** - apply the customer's rewards points to the order, when rewards are enabled
+- **Edit items** - available on draft and pending orders only. Add or remove items and adjust quantities; at least one item must remain on the order
+- **Release order** - release an order that is on `hold`
 
 ### Order Fulfilment
-The fulfilment section contains the fulfilment status for the order and any fulfilment activity that has been logged. If the order is still in has a `processing` status then you can fulfil the order. This will update the order status to `Shipped`.
 
+The fulfilment section shows the fulfilment status for the order and any fulfilment activity that has been logged. If the order still has a `processing` status you can fulfil it, which updates the order status to `Shipped`. See [Fulfilment](/orders/fulfilment) for details.
+
+### Attribution
+
+When attribution data is available, an attribution panel shows where the order came from:
+
+- The referral source
+- UTM source, medium and campaign
+- The landing page the customer arrived on
 
 ### Tagging Orders
+
 You can add tags to an order to help you identify and manage orders. Tags are useful for filtering orders and can be used to group orders by customer, channel, or any other criteria.
 
 ### Shipping Details
 
-The shipping details section contains the shipping address for the order and the shipping method that has been applied. If the order is still in has a `processing` status then you can edit these details. Orders that are for collection will not have a shipping address.
+The shipping details section contains the shipping address for the order and the shipping method that has been applied. If the order still has a `processing` status you can edit these details. Orders that are for collection will not have a shipping address.
 
 ### Shipping Date
 
 You can optionally set a shipping date for the order. This is the date that the order is expected to be shipped. This can be useful when the customer has requested a specific delivery date or you are expecting the customer to collect the order on a specific date.
+
+The date picker blocks past dates. If the order is currently held for London City Bond dispatch, changing the shipping date reschedules that hold and logs the change to the order activity.
 
 <Info>
   The shipping date is not the same as the delivery date. The shipping date is the date that the order is expected to be shipped.
@@ -34,3 +92,5 @@ You can optionally set a shipping date for the order. This is the date that the 
 ### Order Activity
 
 This is where you can view a history of actions taken on the order (either manually or by the app) and any notes that have been added.
+
+The activity feed updates automatically, polling every few seconds. Some activity is written by background jobs, so an entry may appear a moment after you take an action.

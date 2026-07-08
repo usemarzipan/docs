@@ -1,4 +1,44 @@
 ---
 title: 'Overview'
-description: 'Docs for the attributes section will be added soon'
+description: 'Create reusable properties to describe your products and collections'
 ---
+
+Attributes are reusable properties you attach to products and collections, for example Region, Grape Variety, Vintage, or Tasting Notes. Define an attribute once and reuse it across your catalogue.
+
+To view your attributes:
+
+1. Log in to your Marzipan account
+2. Click on **Attributes** in the main navigation menu
+
+## Attributes list
+
+<Frame>
+<img src="https://marzipan-cloud.b-cdn.net/0/docs/attributes/attributes-list.png" alt="Attributes list" />
+</Frame>
+
+The list shows each attribute's **name**, **slug**, **type**, and when it was **last updated**. Click **Add attribute** to create a new one.
+
+## Creating an attribute
+
+- **Name** — the attribute name, which auto-generates the slug
+- **API slug** — the identifier used in the API, editable
+- **Type** — how values are entered:
+  - **Text** — a single line of text
+  - **Textarea** — a longer block of text
+  - **Select/Dropdown** — a choice from a fixed list of options
+  - **Number** — a numeric value
+- **Required** — when on, the attribute must be given a value wherever it's used
+- **Private** — when on, the attribute is hidden from the storefront and the API
+- **Options** — for a Select attribute, the list of choices, each with a **name** and a **value**
+
+## Deleting an attribute
+
+If an attribute is in use, deleting it warns you how many products use it and removes it from those products.
+
+## Assigning values
+
+You add attribute values inline on a product or collection, sometimes called **quick attributes**. Add an attribute and set its value there and then — the input matches the attribute's type: a text box, a number field, a dropdown, or a textarea with an optional rich-text toggle.
+
+<Note>
+Private attributes still show to you here so you can set their values, but they never appear on the storefront or in the API.
+</Note>

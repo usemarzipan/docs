@@ -1,0 +1,58 @@
+---
+title: 'Point of Sale & Tap to Pay'
+sidebarTitle: 'Point of Sale'
+description: 'Sell in person with the Marzipan mobile app and take card payments with Tap to Pay'
+---
+
+Point of Sale lets you sell in person — at your cellar door, at events, or on the road — using the **Marzipan mobile companion app**. In-person sales appear in the web app under the **POS** channel, where you review and manage them alongside your other orders.
+
+<Note>
+POS setup and selling happen in the Marzipan mobile app. The web app is where POS orders are reviewed and managed.
+</Note>
+
+### Permissions
+
+Selling through POS requires staff permissions, set via Roles:
+
+- `pos.charge` - required to take POS sales
+- `payments.collect` - required to take card payments
+
+### Quick Pay
+
+Quick Pay is the fastest way to build a sale. Add products from your catalogue, or add **custom line items** by entering a free-text name, price and quantity for anything that isn't in your catalogue.
+
+<Frame>
+<img src="https://marzipan-cloud.b-cdn.net/0/docs/orders/pos-quick-pay.png" alt="Quick Pay screen in the Marzipan mobile app" />
+</Frame>
+
+### Walk-in customer
+
+Sales default to a shared "walk-in" placeholder customer, so you can sell quickly without stopping to capture customer details.
+
+### Identify a customer at the till
+
+You can look a customer up by email to attach the sale to them. Identifying a customer surfaces **subscriber pricing** for members, which is useful when selling to members at events.
+
+### Tap to Pay on iPhone
+
+Take card payments in person with Tap to Pay on iPhone, powered by Stripe Terminal on your Stripe Connect account. This requires the card-present capability on your Stripe account.
+
+**Terminal locations** can be created automatically from your business address, or added manually. A card-present payment shows on the order with a Tap to Pay indicator, along with the card brand and the last 4 digits of the card.
+
+<Frame>
+<img src="https://marzipan-cloud.b-cdn.net/0/docs/orders/pos-tap-to-pay.png" alt="Taking a Tap to Pay card payment on iPhone" />
+</Frame>
+
+### Receipts
+
+After a sale, you can email a POS receipt to the customer. Capture the customer's email (and an optional name) to send it. Sending the receipt also **links the walk-in order to that customer**.
+
+You can **Skip** the email to link a customer to the order without sending a receipt.
+
+### Assign a walk-in order later
+
+If a sale went through as a walk-in, you can assign it to a real customer afterwards. From the order's **Actions** menu in the web app, choose **Assign customer**. This re-links the order only — it does not re-price the order.
+
+### Order lifecycle
+
+POS orders start as a draft. Once paid, they become `processing` and then completed. If stock is oversold, the order goes on `hold` until it can be resolved.

@@ -1,4 +1,101 @@
 ---
 title: 'Overview'
-description: 'Docs for the events section will be added soon'
+description: 'Create and sell tickets for tastings, tours and events'
 ---
+
+Events let you sell tickets to tastings, tours, workshops, classes and courses. An event can be a one-off or recurring. Recurring events create **occurrences** — individual dated instances that customers book onto.
+
+## Creating an event
+
+When you create an event you can set the following:
+
+- **Name** and **description**
+- **Event type** — Tasting, Tour, Workshop, Class, Course or Other
+- **Recurrence** — None, Daily, Weekly or Monthly. Weekly lets you pick the weekdays to repeat on, and you can set a recurrence end date
+- **All-day** toggle, or a start and end date and time (multi-day events are supported)
+- **Location** — a text address, plus an optional **what3words** address
+- **Email instructions** — included in the ticket emails sent to attendees
+- **Max tickets per order**
+- **Price** — the ticket price, with optional sale, subscriber and wholesale prices
+- **Capacity** — the quantity of tickets available
+
+<Frame>
+<img src="https://marzipan-cloud.b-cdn.net/0/docs/events/create-event.png" alt="Create event form" />
+</Frame>
+
+### Deposits
+
+You can optionally take a **deposit** rather than the full price upfront. The balance falls due after a set number of days, and you can choose to **auto-charge** it when it does. You can also set a **sales cut-off** to close ticket sales a set number of days before the event.
+
+### Check-in and waitlist
+
+- **Check-in** — enable QR check-in so attendees can be checked in at the door.
+- **Waitlist** — enable a waitlist to capture demand once tickets sell out. A waitlist requires a capacity.
+
+## The events list
+
+The events list shows one row per occurrence for recurring events.
+
+<Frame>
+<img src="https://marzipan-cloud.b-cdn.net/0/docs/events/events-list.png" alt="Events list" />
+</Frame>
+
+Each row shows:
+
+- A **recurring badge** for recurring events
+- The **next date**
+- **Tickets sold** out of the total
+- **Sold-out** or **waitlist** indicators
+
+You can filter and sort the list:
+
+- Filter by **Status** — Upcoming, Past or Cancelled
+- Filter by **Event type**
+- Filter by **Recurrence**
+- Filter by **Availability**
+- Sort by **date** or **tickets sold**
+
+## Recurring events and occurrences
+
+Recurring events give you fine control over each occurrence:
+
+- **Edit one occurrence** — change its date, time, location override or max tickets without affecting the others, so customised occurrence times are preserved
+- **Edit all occurrences** — apply changes across the whole series
+- **Generate more occurrences** — extend the series with additional dates
+- **Cancel a single occurrence** — call off one date while leaving the rest in place
+
+## Managing an event
+
+The event detail screen is organised into tabs.
+
+<Frame>
+<img src="https://marzipan-cloud.b-cdn.net/0/docs/events/event-detail.png" alt="Event detail screen with tabs" />
+</Frame>
+
+- **Overview** — tickets sold, revenue and waitlist figures
+- **Attendees** — a table of everyone booked on, with a **CSV export**. Columns include customer, tickets, price, deposit/balance, order, checked-in and status. You can filter by status and **bulk check-in** attendees
+- **Activity** — the history of actions on the event
+- **Waitlist** — position, name, tickets and status; you can add and remove entries
+
+### Attendee actions
+
+From an attendee's panel you can:
+
+- **Check in** the attendee
+- **Resend the ticket email**
+- **Request balance payment** — for deposit bookings with an outstanding balance
+- **Cancel or refund** the booking
+
+The ticket links back to its originating order.
+
+## Tickets and QR check-in
+
+Ticket emails include a **QR code**. At the door, open the QR scanner in the Marzipan app and scan each attendee's code to check them in.
+
+## Deposits and balances
+
+For bookings taken on a deposit, you can request or process the outstanding **balance payment** directly from the event.
+
+## Event Insights
+
+For reporting on attendance, revenue and demand, use **Event Insights**. See [Insights](/insights/overview) for more.

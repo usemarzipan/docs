@@ -5,52 +5,92 @@ description: 'Configure your store, payments, integrations, and web components.'
 
 The Settings section is where you configure your store's core options, payment providers, integrations, and appearance. Access it from the main navigation sidebar.
 
+## Settings areas
+
+Use the links below to jump to each area of your store's settings.
+
+<CardGroup cols={2}>
+  <Card title="General" href="#general">Store and business details</Card>
+  <Card title="Roles & Team" href="/settings/roles-and-team">Users, roles, and permissions</Card>
+  <Card title="Tax">Tax rates and rules</Card>
+  <Card title="Payments" href="#payments">Payment gateways</Card>
+  <Card title="Markets" href="/settings/markets">Currencies and regional pricing</Card>
+  <Card title="Inventory" href="/settings/inventory">Stock and locations</Card>
+  <Card title="Shipping" href="/settings/shipping">Shipping methods and zones</Card>
+  <Card title="Discounts" href="/discounts/overview">Discount codes and automatic offers</Card>
+  <Card title="Integrations" href="/settings/integrations">Third-party services</Card>
+  <Card title="Notifications">Team notification preferences</Card>
+  <Card title="Rewards">Loyalty and rewards</Card>
+  <Card title="Cart & Checkout">Cart and checkout behaviour</Card>
+  <Card title="Web Components" href="/web-components/customisation">Customise your storefront components</Card>
+  <Card title="Email" href="/settings/email">Sending domains and delivery</Card>
+  <Card title="Test Mode" href="/settings/test-mode">Test without real payments</Card>
+  <Card title="API tokens">Tokens for external systems</Card>
+</CardGroup>
+
 ## General
 
-Your store's basic information and preferences.
+Navigate to **Settings > General** to manage your store and business details.
+
+### Store details
 
 - **Store name** — Your business name, displayed in emails and invoices
+- **Store URL** — The web address of your storefront
+- **Store slug** — The short identifier used in your store's Marzipan links
+- **Subscriptions slug** — The slug used for your subscriptions pages
+- **Account slug** — The slug used for customer account pages
 - **Contact email** — Where customer enquiries and contact form submissions are sent
-- **Country** — Your store's primary country (used for default address formatting and tax)
-- **Currency** — Your base currency for pricing and reporting
-- **Timezone** — Used for order timestamps, scheduled tasks, and reporting
+- **Contact number** — Your customer-facing phone number
+- **Logo** — Your store logo, shown in emails and on hosted pages
+- **Open Graph image** — The default image shown when your links are shared on social media
+- **Favicon** — The small icon shown in browser tabs
+
+### Business details
+
+- **Legal name** — Your registered legal business name
+- **Trading name** — The name you trade under, if different
+- **Address** — Your business street address
+- **City** — Your business city or town
+- **State/Province** — Your business state, province, or county
+- **Post code** — Your business postal code
+- **Country** — The country your business is registered in
+- **EORI number** — Your Economic Operators Registration and Identification number, used for customs
+- **AWRS number** — Your Alcohol Wholesaler Registration Scheme number
+
+<Note>
+Your store's currency is not set here. Currency is governed by [Markets](/settings/markets), where you can sell in more than one currency.
+</Note>
 
 ## Payments
 
-Configure your payment gateways. Marzipan supports:
+Navigate to **Settings > Payments** to configure your payment gateways. Marzipan supports three gateways:
 
-- **Stripe** — Credit/debit cards, Apple Pay, Google Pay, Klarna, and more. Includes Stripe Connect for marketplace payments.
+- **Stripe** — Card payments and wallets, connected through **Stripe Connect**. You connect your Stripe account directly, and you can have separate **live and test connected accounts**, each with its own connection status.
 - **PayPal** — PayPal checkout for customers who prefer it.
-- **PayFast** — Credit cards, instant EFT, and local South African payment methods.
+- **PayFast** — Card payments, instant EFT, and local South African payment methods.
 
-Each gateway can store both live and test credentials, which are toggled automatically by [test mode](/settings/test-mode).
+Each gateway shows a status of `active`, `test mode`, or `inactive`.
+
+<Tip>
+You can set a different **payment provider per market**, so customers in each region check out with the gateway that suits them. See [Markets](/settings/markets).
+</Tip>
 
 ## Web Components
 
-Customise the appearance and behaviour of your customer-facing web components without writing code. See the [Web Components Customisation guide](/web-components/customisation) for full details.
+Customise the appearance and behaviour of your customer-facing web components without writing code. See the [Web Components customisation guide](/web-components/customisation) for full details.
 
 ## Integrations
 
-Connect your store to third-party services:
-
-- **Mailchimp** — Sync customers and subscribers to your Mailchimp audience with configurable merge field mapping
-- **London City Bond** — Automatic order fulfilment through LCB's bonded warehouse
-- **ScrubBill** — Third-party logistics and fulfilment
-- **Fathom Analytics** — View website analytics directly in your Marzipan dashboard
+Connect your store to third-party services such as **London City Bond**, **Robert Guy**, **Mailchimp**, **ScrubBill**, **DPD**, **APC Overnight**, and **Fathom Analytics**. See [Integrations](/settings/integrations).
 
 ## Email
 
-Manage your email sending domains and delivery settings.
-
-- **Sending domains** — Register and verify custom sending domains with DNS records
-- **Delivery status** — Monitor email delivery with bounce and suppression tracking
+Manage your email sending domains and delivery settings. See [Email](/settings/email).
 
 ## API
 
 Generate API tokens for integrating with external systems or powering your web components. Each token has configurable permission scopes.
 
-## Developer Settings
+## Test Mode
 
-Tools for development and testing.
-
-- **Test Mode** — A global toggle that switches all payment gateways to their test/sandbox credentials. Use this to test the full purchase flow without processing real payments.
+Test the full purchase flow without processing real payments. A global toggle switches your payment gateways and integrations to their test/sandbox mode. See [Test Mode](/settings/test-mode).

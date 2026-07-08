@@ -1,4 +1,59 @@
 ---
 title: 'Overview'
-description: 'Docs for the CMS section will be added soon'
+description: 'Marzipan includes a lightweight CMS for building and managing content on Marzipan-hosted sites.'
 ---
+
+Marzipan includes a lightweight CMS for managing the content on Marzipan-hosted sites. You can build pages, publish posts, group content into collections, and manage the templates and files that power your site, all from your dashboard.
+
+<Frame>
+<img src="https://marzipan-cloud.b-cdn.net/0/docs/cms/pages-list.png" alt="The CMS Pages list in the Marzipan dashboard" />
+</Frame>
+
+## Pages
+
+Pages are content pages built from **templates**. You edit a page's content through **sections** and **fields**, so you're never editing raw code. Field types include:
+
+- **Simple text**
+- **Rich text** (WYSIWYG)
+- **HTML**
+- **Image**
+
+Each page also has:
+
+- A **slug** for its URL
+- **SEO** meta title and description, plus a share image
+- A **publish status**, with the option to **schedule** publishing for a future date
+
+You can **duplicate** a page to reuse its layout, and generate a **preview link** to review changes before they go live.
+
+## Posts
+
+Posts are blog-style articles. Each post has:
+
+- A **title** and **slug**
+- An **excerpt** and **content**
+- An **author**
+- **Featured** and **social** images
+- **Meta** title and description
+- A **draft** or **published** status
+
+## Collections
+
+Collections are ordered groupings of pages and posts, useful for building navigation menus and listings. Each item in a collection can have its own **title**, **link** and **description**.
+
+## Website
+
+The Website area is where you manage the building blocks of your site:
+
+- **Templates** — with their own CSS and JS. You can preview and validate templates before using them.
+- **Files** — shared assets used across your site.
+
+## Headless CMS API
+
+All of your content is also available over the **headless CMS API**, so you can pull pages, posts and collections into other front ends:
+
+- `/v1/cms/pages`
+- `/v1/cms/posts`
+- `/v1/cms/collections`
+
+See the [API reference](/api-reference/introduction) to get started.

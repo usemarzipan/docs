@@ -1,5 +1,47 @@
 ---
 title: 'Overview'
-description: 'Docs for the flows section will be added soon'
+description: 'Flows let you automate work in your store, triggering actions when something happens.'
 tag: 'BETA'
 ---
+
+<Note>
+Flows is in **beta** and is enabled per store. Contact Marzipan to switch it on for your account.
+</Note>
+
+Flows let you automate work in your store. Each flow is built as a **graph**: a **trigger** starts the flow, **conditions** decide whether it continues, and **actions** do the work.
+
+## Triggers
+
+A trigger is the event that starts a flow. There are currently two:
+
+- `order.paid` — an order is marked paid
+- `cms.page_updated` — a CMS page is updated
+
+## Actions
+
+Actions are the steps a flow runs. You can:
+
+- Send a webhook
+- Send an email
+- Update an order's status
+
+Integrations can add their own actions too, for example **London City Bond** and **ScrubBill**.
+
+## Conditions
+
+Conditions let a flow decide whether to continue. For example, you can check:
+
+- Order total
+- Order type
+- Order market
+- Order shipping country
+- Number of items
+- Case-only
+- Contains a product type
+- Customer type
+
+## Versions and executions
+
+Every edit you make to a flow is **versioned**, so you always have a history of how it has changed.
+
+You can also view the **execution history** for a flow, including each run's status, result and timing. If an execution didn't complete as expected, you can **retry** it.

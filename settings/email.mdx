@@ -18,16 +18,17 @@ Navigate to **Settings > Email** to manage your sending domains.
 
 ### Required DNS Records
 
-You'll need to add three types of DNS records:
+You'll need to add the following DNS records:
 
 | Record | Purpose |
 |--------|---------|
-| **MX** | Routes bounce notifications back to Marzipan for suppression management |
+| **MX** | Routes bounce notifications and inbound replies back to Marzipan |
 | **SPF** | Authorises Marzipan's mail servers to send email on behalf of your domain |
 | **DKIM** | Adds a digital signature to your emails, proving they haven't been tampered with |
+| **DMARC** | Tells receiving servers how to handle mail that fails SPF or DKIM checks, improving deliverability |
 
 <Tip>
-DNS changes can take up to 48 hours to propagate, though most updates are visible within a few hours. You can check the verification status at any time from the email settings page.
+DNS changes can take up to 48 hours to propagate, though most updates are visible within a few hours. While records are pending, the page **auto-checks verification roughly every 60 seconds**, so you don't need to refresh manually.
 </Tip>
 
 ### Verification Status
@@ -38,6 +39,18 @@ Each DNS record shows one of two states:
 - **Pending** — The record has not yet been detected. Check that it was added correctly with your DNS provider.
 
 Once all records are verified, your domain is ready to use for sending.
+
+<Warning>
+No emails are sent from a domain until it's verified. Add and verify your records before you rely on the domain for order confirmations or marketing.
+</Warning>
+
+## Inbound Email
+
+Adding the **MX records** for your domain lets customer replies to your emails arrive in your Marzipan [Messages](/messages/overview) inbox, so you can respond to enquiries without leaving the app.
+
+<Warning>
+Putting MX records on your **root domain** (e.g. `yourdomain.com`) captures **all** email for that domain, including mail sent to your normal mailboxes. To avoid this, use a dedicated subdomain such as `mail.yourdomain.com` for sending and inbound replies.
+</Warning>
 
 ## Email Suppression
 
@@ -50,4 +63,4 @@ Suppressed addresses are automatically excluded from future sends. This happens 
 
 ## Delivery
 
-Marzipan uses dual email providers for reliability. If the primary provider encounters an issue, emails are automatically routed through the backup provider. This ensures your transactional emails (order confirmations, shipping updates) are delivered reliably.
+Marzipan delivers your email through provider **routing rules** with automatic failover. If a provider encounters an issue, mail is routed through an alternative so your transactional emails (order confirmations, shipping updates) are delivered reliably.

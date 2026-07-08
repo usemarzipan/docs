@@ -10,15 +10,20 @@ Test mode lets you test the complete shopping experience — including checkout 
 Navigate to **Settings > Developer Settings** to access the test mode toggle.
 
 When test mode is **on**:
-- All payment gateways use their test API keys
+- All payment gateways use their test/sandbox credentials
+- All integrations switch to their test/sandbox mode, not just payment gateways
 - Orders are processed normally but payments go through sandbox environments
 - You can test the full checkout flow with test card numbers
 - All other store functionality (inventory, emails, fulfilment) works as normal
 
 When test mode is **off**:
-- All payment gateways automatically switch back to their live API keys
+- All payment gateways automatically switch back to their live credentials
 - All integrations are set to live mode
 - Real payments are processed
+
+<Note>
+For Stripe, test mode uses a **separate test Connect account** rather than stored test API keys. Connect your test account in **Settings > Payments** alongside your live one.
+</Note>
 
 <Warning>
 Always turn off test mode before making your store available to real customers. Orders placed in test mode use sandbox payment processing.
@@ -26,10 +31,10 @@ Always turn off test mode before making your store available to real customers. 
 
 ## Setting Up Test Credentials
 
-Each payment gateway has separate fields for live and test credentials:
+Set up test access for each gateway you use:
 
 ### Stripe
-Enter your Stripe test publishable key and test secret key. You can find these in your [Stripe Dashboard](https://dashboard.stripe.com/test/apikeys) under Developers > API keys (make sure "Test mode" is toggled on in Stripe).
+Connect a **separate test Connect account** in **Settings > Payments**. Stripe test mode uses this connected account rather than stored test API keys, so there are no keys to copy across.
 
 ### PayPal
 Enter your PayPal sandbox client ID and secret from the [PayPal Developer Dashboard](https://developer.paypal.com/dashboard/applications/sandbox).
@@ -48,3 +53,12 @@ When using Stripe in test mode, you can use these test card numbers:
 | 3D Secure | `4000 0027 6000 3184` |
 
 Use any future expiry date and any 3-digit CVC.
+
+## Clearing Test Data
+
+Testing your store creates real records — test-mode orders and customers — that you won't want cluttering your data when you go live. When you're ready to launch, you can **purge test data** to remove them.
+
+- **Preview purge** — See what would be removed before you commit to anything
+- **Purge test data** — Permanently delete test-mode orders and customers
+
+Run a purge once you've finished testing and before you open your store to real customers.

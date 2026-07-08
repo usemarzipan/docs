@@ -9,6 +9,17 @@ The Marzipan REST API enables you to interact with the Marzipan platform, retrie
 The API is currently in beta and subject to change.
 </Note>
 
+## Two APIs
+
+Marzipan has two separate APIs:
+
+- **Storefront API** (`/v1/…`) — the API this reference and the scopes below cover. It powers our [web components](/web-components/introduction) and headless storefronts. Requests authenticate with a tenant API token, plus a customer bearer token for actions taken on behalf of a logged-in account.
+- **Admin / mobile app API** (`/admin/v1/…`) — powers the Marzipan mobile companion app, covering orders, POS, customers, subscriptions, tasks, device push notifications, and Stripe Terminal / Tap to Pay. It uses a two-factor authentication login flow.
+
+<Note>
+The Admin / mobile app API is in **beta** and is used by the official Marzipan mobile app.
+</Note>
+
 ## Getting Started
 
 To get started with the Marzipan API, you will need to create an API key with the right permissions in your Marzipan [account settings](https://app.marzipan.co/settings/api).
