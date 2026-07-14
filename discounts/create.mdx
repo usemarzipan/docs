@@ -1,0 +1,71 @@
+---
+title: 'Create a discount'
+sidebarTitle: 'Create'
+description: 'Set up a discount, with its type, validity, limits and conditions'
+---
+
+To create a discount:
+
+1. Log in to your Marzipan account
+2. Navigate to **Discounts** in the main menu
+3. Click the **Add discount** button in the top-right corner
+
+<Frame>
+<img src="https://marzipan-cloud.b-cdn.net/0/docs/discounts/create-discount.png" alt="Create discount form" />
+</Frame>
+
+## The basics
+
+- **Discount code** - the code customers enter at checkout. Use **Generate code** to create one automatically.
+- **Description** - a short description shown to the customer at checkout.
+- **Automatically apply** - when enabled, the discount applies on its own without the customer needing to enter a code.
+
+### Type
+
+Choose how the discount reduces the price:
+
+- **Fixed amount** - takes a set amount off the order.
+- **Percentage** - takes a percentage off the order.
+- **Free shipping** - removes shipping costs.
+- **Free item** - adds a product to the order for free. Choose the product to add and set a label prefix (such as `FREE`).
+
+### Market
+
+For multi-market stores, choose the market the discount applies to. A market is **required for fixed-amount** discounts; for all other types it's optional and the discount applies to all markets when left unset.
+
+<Note>
+A fixed amount is a sum of money, so it needs a market to tell it which currency to use. Percentage and free-shipping discounts work in any currency, so they don't.
+</Note>
+
+### Validity
+
+Set **valid-from** and **valid-until** dates to control when the discount is active. Leave a date blank for no start limit or no expiry.
+
+### Minimum spend
+
+Set a minimum spend the cart must reach for the discount to apply. This is measured **before discounts and shipping**.
+
+### Limits
+
+- A **total usage limit** caps how many times the discount can be used across all customers.
+- A **one-use-per-customer** option limits each customer to a single use.
+
+### Conditions
+
+Restrict when a discount applies:
+
+- The cart must contain a given item type (for example, a **Subscription**).
+- The customer must have an active subscription, or one of certain **tags**.
+- The discount applies only to specific products or product types (**Physical**, **Bundle**, **Subscription**, or **Event**).
+- The discount applies only to certain shipping methods.
+
+### Pricing exclusions
+
+Optionally stop a discount from stacking on already-reduced prices:
+
+- Don't apply to sale pricing.
+- Don't apply to subscriber pricing.
+
+<Tip>
+Use pricing exclusions when you run a broad promotion but don't want it compounding on items that are already discounted.
+</Tip>

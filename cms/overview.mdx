@@ -5,48 +5,24 @@ description: 'Marzipan includes a lightweight CMS for building and managing cont
 
 Marzipan includes a lightweight CMS for managing the content on Marzipan-hosted sites. You can build pages, publish posts, group content into collections, and manage the templates and files that power your site, all from your dashboard.
 
-<Frame>
-<img src="https://marzipan-cloud.b-cdn.net/0/docs/cms/pages-list.png" alt="The CMS Pages list in the Marzipan dashboard" />
-</Frame>
+To open the CMS:
 
-## Pages
+1. Log in to your Marzipan account
+2. Find the **Content** section in the main navigation menu
+3. Click **Pages**, **Posts**, **Collections** or **Media** to work on that part of your site
 
-Pages are content pages built from **templates**. You edit a page's content through **sections** and **fields**, so you're never editing raw code. Field types include:
+## How content is structured
 
-- **Simple text**
-- **Rich text** (WYSIWYG)
-- **HTML**
-- **Image**
+The CMS is built from four pieces that work together.
 
-Each page also has:
+| Area | What it holds |
+| --- | --- |
+| [**Pages**](/cms/pages) | Content pages built from templates, edited through sections and fields |
+| [**Posts**](/cms/posts) | Blog-style articles with an excerpt, content, author and images |
+| [**Collections**](/cms/collections) | Ordered groupings of pages and posts, used to build navigation and listings |
+| [**Website**](/cms/website) | The templates and shared files that your pages are built from |
 
-- A **slug** for its URL
-- **SEO** meta title and description, plus a share image
-- A **publish status**, with the option to **schedule** publishing for a future date
-
-You can **duplicate** a page to reuse its layout, and generate a **preview link** to review changes before they go live.
-
-## Posts
-
-Posts are blog-style articles. Each post has:
-
-- A **title** and **slug**
-- An **excerpt** and **content**
-- An **author**
-- **Featured** and **social** images
-- **Meta** title and description
-- A **draft** or **published** status
-
-## Collections
-
-Collections are ordered groupings of pages and posts, useful for building navigation menus and listings. Each item in a collection can have its own **title**, **link** and **description**.
-
-## Website
-
-The Website area is where you manage the building blocks of your site:
-
-- **Templates** — with their own CSS and JS. You can preview and validate templates before using them.
-- **Files** — shared assets used across your site.
+Pages and posts hold the content. Collections organise that content into menus and listings. The Website area holds the building blocks — the templates a page is built from, and the files shared across your site.
 
 ## Headless CMS API
 
@@ -57,3 +33,12 @@ All of your content is also available over the **headless CMS API**, so you can 
 - `/v1/cms/collections`
 
 See the [API reference](/api-reference/introduction) to get started.
+
+## In this section
+
+<CardGroup cols={2}>
+  <Card title="Pages" href="/cms/pages">Build and publish content pages</Card>
+  <Card title="Posts" href="/cms/posts">Write blog-style articles</Card>
+  <Card title="Collections" href="/cms/collections">Group content for navigation and listings</Card>
+  <Card title="Website" href="/cms/website">Manage templates and shared files</Card>
+</CardGroup>

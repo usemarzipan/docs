@@ -25,7 +25,7 @@ The main list shows key information for each customer.
 - **Last order** - when they last ordered
 - **Registered** - when they created their account
 
-Click any customer to open their [profile](#customer-profile).
+Click any customer to open their [profile](/customers/details).
 
 You can sort the list by **Registered**, **Last order**, **Name**, **Email** or **Orders**.
 
@@ -34,9 +34,9 @@ You can sort the list by **Registered**, **Last order**, **Name**, **Email** or 
 The top-right corner of the list has a few actions:
 
 - **Customer Insights** - opens the customers report so you can review your customer base (see [Insights](/insights/overview))
-- **Segments** - view and manage your customer segments
+- **Segments** - view and manage your customer [segments](/customers/segments)
 - **Export** - download the customers in the list as a CSV file
-- **Add customer** - open the [new customer form](#adding-a-customer)
+- **Add customer** - open the [new customer form](/customers/create)
 
 ### Filtering
 
@@ -57,79 +57,20 @@ You can narrow the list using the following filters:
 <img width="300" noZoom src="https://marzipan-cloud.b-cdn.net/0/docs/customers/customer-filter.png" alt="Customer filter options" />
 </Frame>
 
-### Adding a customer
+<Tip>
+Apply filters _before_ clicking the **Export** button to only export the customers you need.
+</Tip>
 
-Click **Add customer** to create a customer record manually. You will be asked for:
+## Next steps
 
-- **First name** and **Last name**
-- **Company**
-- **Email**
-- **Phone**
-- **Customer type** - `Direct` or `Wholesale`
-- A default **address**
-
-<Note>
-The customer type is set here, when the customer is created. It cannot be changed later from the profile.
-</Note>
-
-### Customer profile
-
-Opening a customer takes you to their profile, organised into tabs.
-
-<Frame>
-<img src="https://marzipan-cloud.b-cdn.net/0/docs/customers/customer-profile.png" alt="Customer profile" />
-</Frame>
-
-#### Overview
-
-The Overview tab gives you an at-a-glance picture of the customer:
-
-- **Highlight cards** - total and average spend, how long they have been a customer for, and their number of orders, subscriptions and events
-- **Activity feed** - a running history of the customer, including any notes you add. It updates automatically
-- **Latest orders and subscriptions** - their most recent records
-- **Details panel** - name, email (with a verified/email-status indicator), phone, company, date of birth, registered date, market, source and tags
-- **Addresses** - saved addresses with delivery instructions. You can manage them and set a default
-- **Payment methods** - saved cards, including which is the default. You can manage these
-- **Mailing-list consent** - toggles for the customer's marketing consent
-- **Rewards** - when rewards are enabled, a block showing the customer's tier, points and progress (see [Rewards](/rewards/overview))
-
-#### Activity
-
-The full activity timeline for the customer, with the option to add a note.
-
-#### Orders, Subscriptions and Events
-
-Each of these tabs lists the customer's records of that type, so you can see everything they have ordered, subscribed to or attended.
-
-#### Emails
-
-A record of every email sent to the customer, each with a delivery status:
-
-- `Queued`
-- `Sent`
-- `Delivered`
-- `Bounced`
-- `Spam`
-- `Failed`
-
-Open any email to see its detail view.
-
-#### Rewards
-
-When rewards are enabled, this tab shows the customer's points and tier history. You can **Adjust** their points or set their tier here (see [Rewards](/rewards/overview)).
-
-### Actions
-
-From a customer's profile you can:
-
-- **Edit details** - update their name, contact details and other information
-- **Archive / Unarchive** - archive a customer you no longer deal with, or restore them. Archiving can also unsubscribe them from all mailing lists
-- **Verify email** - manually mark the customer's email address as verified
-- **Manage addresses and payment methods**
-- **Manage marketing consent**
-- **Manage tags**
-
-### Tags
-
-Tags are free-form labels you can add to a customer to help you group and filter them. When rewards are enabled, the customer's reward tier also appears as a tag.
-</content>
+<CardGroup cols={2}>
+  <Card title="Add a customer" icon="user-plus" href="/customers/create">
+    Create a customer record manually, including their type and default address.
+  </Card>
+  <Card title="Customer profile" icon="id-card" href="/customers/details">
+    Explore a customer's orders, subscriptions, emails, rewards and activity.
+  </Card>
+  <Card title="Segments" icon="filter" href="/customers/segments">
+    Group customers into dynamic segments based on their behaviour and attributes.
+  </Card>
+</CardGroup>
