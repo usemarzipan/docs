@@ -3,7 +3,7 @@ title: 'Overview'
 description: 'Create and manage the products in your catalogue'
 ---
 
-Products are the items you sell in your Marzipan store, typically your wines. This page covers the products list, how to create and edit a product, and every setting on the product form.
+Products are the items you sell in your Marzipan store, typically your wines. This section covers the products list and every setting on the product form.
 
 To view your products:
 
@@ -36,96 +36,34 @@ The products list gives you an overview of your catalogue. You can:
 - **Filter** by Status (Active, Draft, Out of Stock, Archived) and Type (Physical, Bundle)
 - **Sort** by Name, Price, SKU, or Created
 
+### Statuses
+
 Products can have the following statuses: `active`, `draft`, `out of stock`, `archived`, and `unavailable`.
-
-## Creating and editing a product
-
-To create a product, click **Add product** and choose a type. To edit an existing product, click it in the list. Both open the same form.
-
-### Details
-
-- **Name** — the product name shown to customers
-- **Slug** — the URL-friendly version of the name, generated automatically and editable
-- **Type** — Physical or Bundle (set at creation, can't be changed)
-- **Summary** — a short rich-text introduction
-- **Description** — the full rich-text product description
-- **SKU** — your stock-keeping reference
-- **Barcode / GTIN** — accepts an EAN-13, UPC-A, EAN-8, or ITF-14 code, validated live as you type
-- **Collections** — the [collections](/collections/overview) this product belongs to
-- **Availability** — who can buy the product: **Everyone** or **Subscribers only**
-- **Status** — the product's current status
-
-### Market visibility
-
-For multi-market stores, choose which markets show the product. If you don't select any markets, the product is visible everywhere.
-
-### Images and bottle labels
-
-<Frame>
-<img src="https://marzipan-cloud.b-cdn.net/0/docs/products/product-images.png" alt="Product images and bottle labels" />
-</Frame>
-
-- **Images** — add multiple product images and drag to reorder them. The first image is used as the main image.
-- **Bottle labels** — add front and back label images for the product.
-
-### Pricing
-
-<Frame>
-<img src="https://marzipan-cloud.b-cdn.net/0/docs/products/product-pricing.png" alt="Product pricing fields" />
-</Frame>
-
-- **Price** — the standard selling price
-- **Sale price** — a reduced price; applies when it's lower than the standard price
-- **Subscriber price** — the price for active subscribers, with quick **−10%**, **−15%**, and **−20%** buttons to set it from the standard price
-- **Wholesale price** — the price for wholesale customers
-- **Item cost** — what the product costs you, used for reporting
-
-The **effective price** a customer pays depends on who they are: the subscriber price applies to active subscribers, and the sale price applies whenever it's lower.
-
-Multi-market stores get **per-market pricing tabs** — a **Default** tab plus one tab per market where you can set optional price overrides in that market's currency. Where you don't set an override, prices convert from the default by exchange rate.
-
-### Inventory
-
-- **Quantity** — a single stock quantity, or per-location quantities if [location-based inventory](/settings/inventory) is enabled
-- **Limit per customer** — cap how many of this product a single customer can buy
-- **Allow overselling** — let customers buy the product even when it's out of stock
-- **Low-stock badge** — control whether a low-stock badge shows, its threshold, and its text, or fall back to your global default
-
-### Tier exclusivity
-
-If you use reward tiers, you can restrict a product to specific membership tiers, so only members of those tiers can buy it.
-
-### Bundle items
-
-For a bundle product, choose the products included in the bundle and the quantity of each.
-
-### Attributes
-
-Assign [attribute](/attributes/overview) values, such as Region, Grape Variety, or Vintage, to describe the product.
-
-### Options
-
-Define product options, for example size, as a list of choices. You can mark an option as required so the customer must pick a choice before adding the product to their cart.
-
-### Upsell and related products
-
-- **Upsell products** — alternatives a customer can choose instead of this product, for example a gift box
-- **Related products** — products shown alongside this one
-
-### Awards and reviews
-
-- **Awards** — add awards with an award, event, class, and year
-- **Reviews** — add customer reviews with an author, review, type, and date
-
-Each award and review can be set to **published** or **private**.
-
-### SEO
-
-- **Meta title** — the title shown in search results
-- **Meta description** — the description shown in search results
-- **Share image** — the Open Graph image used when the product is shared
 
 ## Actions
 
 - **Duplicate product** — create a copy of a product to use as a starting point
-- When location-based inventory is on, you can also **manage inventory** and **view history** for a product
+- When [location-based inventory](/settings/inventory) is on, you can also **manage inventory** and **view history** for a product
+
+## In this section
+
+<CardGroup cols={2}>
+  <Card title="Create a product" icon="plus" href="/products/create">
+    Add a product, set its details, market visibility, images, and bottle labels.
+  </Card>
+  <Card title="Pricing" icon="tag" href="/products/pricing">
+    Standard, sale, subscriber, and wholesale prices, plus per-market pricing.
+  </Card>
+  <Card title="Inventory" icon="boxes-stacked" href="/products/inventory">
+    Stock quantities, purchase limits, overselling, and low-stock badges.
+  </Card>
+  <Card title="Bundles & options" icon="layer-group" href="/products/bundles-and-options">
+    Bundle items, options, upsell and related products, and tier exclusivity.
+  </Card>
+  <Card title="Reviews & awards" icon="award" href="/products/reviews-and-awards">
+    Add awards and reviews, and set the product's SEO fields.
+  </Card>
+  <Card title="Attributes" icon="tags" href="/attributes/overview">
+    Describe your products with values such as Region, Grape Variety, or Vintage.
+  </Card>
+</CardGroup>

@@ -29,10 +29,10 @@
   },
   "navigation": {
     "tabs": [
-    {
-      "tab": "Documentation",
-      "icon": "book",
-      "groups": [
+      {
+        "tab": "Documentation",
+        "icon": "book",
+        "groups": [
           {
             "group": "Get Started",
             "pages": [
@@ -51,7 +51,12 @@
           {
             "group": "Insights",
             "pages": [
-              "insights/overview"
+              "insights/overview",
+              "insights/sales",
+              "insights/customers",
+              "insights/subscriptions",
+              "insights/attribution",
+              "insights/web-analytics"
             ]
           },
           {
@@ -68,26 +73,36 @@
           {
             "group": "Subscriptions",
             "pages": [
-              "subscriptions/overview"
+              "subscriptions/overview",
+              "subscriptions/packages",
+              "subscriptions/details",
+              "subscriptions/shipments"
             ]
           },
           {
             "group": "Events",
             "pages": [
-              "events/overview"
+              "events/overview",
+              "events/create",
+              "events/details",
+              "events/recurring"
             ]
           },
           {
             "group": "Customers",
             "pages": [
               "customers/overview",
+              "customers/create",
+              "customers/details",
               "customers/segments"
             ]
           },
           {
             "group": "Rewards",
             "pages": [
-              "rewards/overview"
+              "rewards/overview",
+              "rewards/tiers-and-perks",
+              "rewards/earning-and-redemption"
             ]
           },
           {
@@ -99,19 +114,28 @@
           {
             "group": "Forms",
             "pages": [
-              "forms/overview"
+              "forms/overview",
+              "forms/create",
+              "forms/notifications",
+              "forms/submissions"
             ]
           },
           {
             "group": "Messages",
             "pages": [
-              "messages/overview"
+              "messages/overview",
+              "messages/setup"
             ]
           },
           {
             "group": "Products",
             "pages": [
-              "products/overview"
+              "products/overview",
+              "products/create",
+              "products/pricing",
+              "products/inventory",
+              "products/bundles-and-options",
+              "products/reviews-and-awards"
             ]
           },
           {
@@ -135,13 +159,18 @@
           {
             "group": "Discounts",
             "pages": [
-              "discounts/overview"
+              "discounts/overview",
+              "discounts/create"
             ]
           },
           {
             "group": "CMS",
             "pages": [
-              "cms/overview"
+              "cms/overview",
+              "cms/pages",
+              "cms/posts",
+              "cms/collections",
+              "cms/website"
             ]
           },
           {
@@ -164,24 +193,24 @@
             ]
           }
         ]
-    },
-    {
-      "tab": "API Reference",
-      "icon": "terminal",
-      "groups": [
-        {
-          "group": "Get Started",
-          "pages": [
-            "api-reference/introduction"
-          ]
-        }
-      ],
-      "openapi": "api-reference/openapi.json"
-    },
-    {
-      "tab": "Web Components",
-      "icon": "puzzle",
-      "groups": [
+      },
+      {
+        "tab": "API Reference",
+        "icon": "terminal",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "api-reference/introduction"
+            ]
+          }
+        ],
+        "openapi": "api-reference/openapi.json"
+      },
+      {
+        "tab": "Web Components",
+        "icon": "puzzle",
+        "groups": [
           {
             "group": "Get Started",
             "pages": [
@@ -210,34 +239,33 @@
             ]
           }
         ]
-    },
-    {
-      "tab": "Changelog",
-      "icon": "history",
-      "pages": [
-        "changelog/2026",
-        "changelog/2025"
-      ]
-    },
-    {
-      "tab": "Blog",
-      "icon": "square-library",
-      "href": "https://marzipan.co/blog"
-    },
-    {
-      "tab": "Service status",
-      "icon": "radio-tower",
-      "href": "https://status.marzipan.co"
-    }
-  ]
+      },
+      {
+        "tab": "Changelog",
+        "icon": "history",
+        "pages": [
+          "changelog/2026",
+          "changelog/2025"
+        ]
+      },
+      {
+        "tab": "Blog",
+        "icon": "square-library",
+        "href": "https://marzipan.co/blog"
+      },
+      {
+        "tab": "Service status",
+        "icon": "radio-tower",
+        "href": "https://status.marzipan.co"
+      }
+    ]
   },
   "logo": {
     "light": "https://cdn.marzipan.cloud/0/docs/logo.png",
     "dark": "https://cdn.marzipan.cloud/0/docs/logo-white.png"
   },
   "navbar": {
-    "links": [
-    ],
+    "links": [],
     "primary": {
       "type": "button",
       "label": "Login",
@@ -252,7 +280,7 @@
   },
   "integrations": {
     "fathom": {
-        "siteId": "MVCBOLNH"
+      "siteId": "MVCBOLNH"
     }
   },
   "redirects": [

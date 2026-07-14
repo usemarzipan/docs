@@ -1,0 +1,63 @@
+---
+title: 'Create a form'
+sidebarTitle: 'Create'
+description: 'Build a form, add the fields you want to collect, and embed it on your site'
+---
+
+Forms are built in your dashboard and embedded on your website, so you can change the fields without touching your site's code.
+
+To create a form:
+
+1. Log in to your Marzipan account
+2. Navigate to **Forms** in the main menu
+3. Click the **Create form** button in the top-right corner
+
+## Building a form
+
+<Steps titleSize="p">
+   <Step title="Name the form">
+      Give the form a **Name** so you can find it in the forms list.
+   </Step>
+   <Step title="Set the slug">
+      The **Slug** identifies the form and is used in the embed code and the API URL. Keep it short and stable - changing it later means updating anywhere you have embedded the form.
+   </Step>
+   <Step title="Choose a type">
+      The **Type** determines the form's built-in behaviour:
+
+      - **Contact** - notifies your staff and creates a thread in [Messages](/messages/overview)
+      - **Newsletter** - subscribes the person to a marketing list
+      - **Custom** - no built-in behaviour
+   </Step>
+   <Step title="Add your fields">
+      Add the fields you want to collect. Each field has:
+
+      - **Label** - what the customer sees
+      - **Name** - the field's identifier
+      - **Type** - `text`, `email`, `phone`, `textarea`, `select`, `checkbox`, `radio`, `date` or `hidden`
+      - **Placeholder** - example text shown in the field
+      - **Required** - whether the field must be filled in
+      - **Options** - the choices offered, for `select`, `radio` and `checkbox` fields
+
+      Drag fields to reorder them.
+   </Step>
+   <Step title="Write the success message">
+      The **Success message** is shown to the person after they submit the form.
+   </Step>
+   <Step title="Set the status">
+      Set the **Status** to active when you are ready for the form to accept submissions, then save.
+   </Step>
+</Steps>
+
+<Note>
+Decide who gets notified when someone submits the form, and whether to send a confirmation, on the [Notifications](/forms/notifications) page.
+</Note>
+
+## Embedding a form
+
+Forms render on your site through the `<marzipan-form>` web component, using the form's slug:
+
+```html
+<marzipan-form slug="contact-us"></marzipan-form>
+```
+
+See [Contact form](/web-components/contact-form) for the full embed options.

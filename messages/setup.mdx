@@ -1,0 +1,42 @@
+---
+title: 'Receiving customer replies'
+sidebarTitle: 'Inbound setup'
+description: 'Set up inbound email so customer replies arrive in your inbox.'
+---
+
+Sending email from Marzipan works as soon as your domain is verified. Receiving replies takes one extra step: **inbound email**, which routes messages sent to your domain back into your [Messages](/messages/overview) inbox.
+
+## Setting up inbound email
+
+For customer replies to arrive in Messages, you need to add **MX records** to your sending domain.
+
+<Steps titleSize="p">
+   <Step title="Open your email settings">
+      Navigate to **Settings > Email**, where your sending domains are listed.
+   </Step>
+   <Step title="Add the MX records">
+      Marzipan displays the DNS records for your domain, including the MX records that route inbound replies back to Marzipan. Add them with your domain registrar or DNS provider.
+   </Step>
+   <Step title="Wait for verification">
+      Return to the email settings page to check the verification status. Each record shows as **Verified** or **Pending**, and the page auto-checks roughly every 60 seconds while records are pending.
+   </Step>
+</Steps>
+
+See [Settings > Email](/settings/email) for the full list of DNS records and how verification works.
+
+## Use a subdomain
+
+<Warning>
+Putting MX records on your **root domain** (e.g. `yourdomain.com`) captures **all** email for that domain, including mail sent to your normal mailboxes. To avoid this, use a dedicated subdomain such as `mail.yourdomain.com` for sending and inbound replies.
+</Warning>
+
+## The inbound email banner
+
+Messages shows a banner at the top of the inbox until inbound email is working. There are two versions, depending on where you've got to:
+
+| When | What it tells you |
+| --- | --- |
+| Inbound email **isn't configured** | Customer replies will be delivered to your store email address instead of appearing in Messages |
+| Configured, but **MX records aren't verified** | Messages will still be sent to customers, but their replies won't appear in Messages until the DNS records have been verified |
+
+In both cases you can carry on sending messages and replying from Marzipan - it's only the customer's response that doesn't thread back into the inbox.

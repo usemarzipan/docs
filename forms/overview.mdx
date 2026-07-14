@@ -5,9 +5,13 @@ description: 'Build custom forms and embed them on your site'
 
 Forms let you build custom forms - contact forms, newsletter sign-ups and more - in your dashboard and embed them on your website. Submissions are collected in Marzipan, and depending on the form type they can notify your team, start a conversation in your inbox, or add someone to a marketing list.
 
-To view your forms, click **Forms** in the main navigation menu.
+To view your forms:
 
-### Forms list
+1. Log in to your Marzipan account
+2. Click on **Forms** in the main navigation menu
+3. The overview page will display all of your forms
+
+### Forms
 
 The list shows each form and how it is performing.
 
@@ -21,57 +25,34 @@ The list shows each form and how it is performing.
 - **Type** - `Contact`, `Newsletter` or `Custom`
 - **Created** - when the form was created
 
-The header also has two actions: **Create form** to build a new form, and **All submissions** to view every submission across all forms.
+Click on any form in the list to edit it, or to view the [submissions](/forms/submissions) it has received.
 
-### Building a form
+### Header actions
 
-When you create or edit a form you set:
+The top-right corner of the forms list has two actions:
 
-- **Name** - the form's name
-- **Slug** - used in the embed code and API URL
-- **Type** - determines the form's built-in behaviour:
-  - **Contact** - notifies your staff and creates a message in the inbox
-  - **Newsletter** - subscribes the person to a marketing list
-  - **Custom** - no built-in behaviour
-- **Status** - whether the form is active
+- **Create form** - build a new form (see [Create](/forms/create))
+- **All submissions** - view every submission across all of your forms
 
-#### Fields
+### Form types
 
-Add the fields you want to collect. Each field has:
+Every form has a **type**, which determines what happens after someone submits it:
 
-- **Label** - what the customer sees
-- **Name** - the field's identifier
-- **Type** - `text`, `email`, `phone`, `textarea`, `select`, `checkbox`, `radio`, `date` or `hidden`
-- **Placeholder** - example text shown in the field
-- **Required** - whether the field must be filled in
-- **Options** - the choices offered, for `select`, `radio` and `checkbox` fields
+| Type | Built-in behaviour |
+| --- | --- |
+| **Contact** | Notifies your staff and creates a thread in [Messages](/messages/overview) |
+| **Newsletter** | Subscribes the person to a marketing list |
+| **Custom** | No built-in behaviour - the submission is simply recorded |
 
-Drag fields to reorder them.
+<Tip>
+Whatever the type, you can still notify your team and send an auto-reply. See [Notifications](/forms/notifications).
+</Tip>
 
-### Notifications
+## In this section
 
-Decide what happens when someone submits the form:
-
-- **Submission notification** - notify specific team members, or all opted-in admins
-- **External notification email** - an optional extra address to notify
-- **Auto-reply** - an optional confirmation sent to the person who submitted, with a subject and body you customise. The auto-reply uses an editable notification template
-- **Success message** - the message shown to the person after they submit
-
-### Submissions
-
-View submissions for a single form, or all submissions together via **All submissions**.
-
-<Frame>
-<img src="https://marzipan-cloud.b-cdn.net/0/docs/forms/submissions.png" alt="Form submissions" />
-</Frame>
-
-The list shows the submitter's **Name** and **Email**, the **Form**, the **Source** and when it was **Submitted**. You can filter by form. Open a submission to see every field value and the linked customer.
-
-<Note>
-Contact-form submissions create a thread in [Messages](/messages/overview), so you can reply and keep the whole conversation in one place.
-</Note>
-
-### Embedding a form
-
-Forms render on your site through the `<marzipan-form>` web component, using the form's slug. See [Contact form](/web-components/contact-form) for how to embed it.
-</content>
+<CardGroup cols={2}>
+  <Card title="Create" href="/forms/create">Build a form, add fields, and embed it on your site</Card>
+  <Card title="Notifications" href="/forms/notifications">Choose who is notified and set up an auto-reply</Card>
+  <Card title="Submissions" href="/forms/submissions">View and filter the submissions your forms receive</Card>
+  <Card title="Contact form" href="/web-components/contact-form">Embed a form with the web component</Card>
+</CardGroup>
