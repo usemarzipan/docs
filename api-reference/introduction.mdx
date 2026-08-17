@@ -3,22 +3,15 @@ title: 'Introduction'
 description: 'Welcome to the Marzipan API documentation.'
 ---
 
-The Marzipan REST API enables you to interact with the Marzipan platform, retrieve data, and allow customers to manage their and accounts. You may wan to use our [web components](/web-components/introduction) instead of the API.
+The Marzipan REST API enables you to interact with the Marzipan platform, retrieve data, and allow customers to manage their orders and accounts. You may want to use our [web components](/web-components/introduction) instead of the API.
 
 <Note>
 The API is currently in beta and subject to change.
 </Note>
 
-## Two APIs
+## The Storefront API
 
-Marzipan has two separate APIs:
-
-- **Storefront API** (`/v1/…`) — the API this reference and the scopes below cover. It powers our [web components](/web-components/introduction) and headless storefronts. Requests authenticate with a tenant API token, plus a customer bearer token for actions taken on behalf of a logged-in account.
-- **Admin / mobile app API** (`/admin/v1/…`) — powers the Marzipan mobile companion app, covering orders, POS, customers, subscriptions, tasks, device push notifications, and Stripe Terminal / Tap to Pay. It uses a two-factor authentication login flow.
-
-<Note>
-The Admin / mobile app API is in **beta** and is used by the official Marzipan mobile app.
-</Note>
+The Storefront API (`/v1/…`) is the API this reference and the scopes below cover. It powers our [web components](/web-components/introduction) and headless storefronts. Requests authenticate with a tenant API token, plus a customer bearer token for actions taken on behalf of a logged-in account.
 
 ## Getting Started
 
@@ -38,7 +31,7 @@ You will be able to choose the permissions you need for your API key. The curren
 
 ## Authentication
 
-The Marizpan API uses Bearer authentication. Include your generated api key in the `Authorization` header of your HTTP requests.
+The Marzipan API uses Bearer authentication. Include your generated API key in the `Authorization` header of your HTTP requests.
 
 ```http
 Authorization: Bearer YOUR_API_KEY

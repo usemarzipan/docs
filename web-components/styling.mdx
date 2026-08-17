@@ -17,7 +17,7 @@ We use TailwindCSS to style the web components, which are isolated from your glo
 
 There are two ways to customise the styling:
 
-1. **CSS Variables** - For simple changes like colors, border radius, and font size. Override a few variables and all components update automatically. This is the quickest way to match your brand colors.
+1. **CSS Variables** - For simple changes like colours, border radius, and font size. Override a few variables and all components update automatically. This is the quickest way to match your brand colours.
 
 2. **CSS Parts** - For more in-depth control over individual elements within components. Use the `::part()` selector to target specific buttons, icons, text, and other elements with full CSS flexibility.
 
@@ -25,7 +25,7 @@ Most sites only need CSS variables. Use parts when you need fine-grained control
 
 ## CSS Variables
 
-You can override the default colors, border radius, and font size used by all web components by setting CSS custom properties (variables) on your page. These variables are defined on the `:host` selector and can be overridden globally.
+You can override the default colours, border radius, and font size used by all web components by setting CSS custom properties (variables) on your page. These variables are defined on the `:host` selector and can be overridden globally.
 
 ### Example
 
@@ -37,21 +37,21 @@ You can override the default colors, border radius, and font size used by all we
 }
 ```
 
-### Color Variables - Primary
+### Colour Variables - Primary
 
 | Variable | Default | Description |
 | :--------- | :-------- | :------------ |
-| `--marzipan-color-primary` | `#3b82f6` | Primary brand color |
-| `--marzipan-color-primary-hover` | `#60a5fa` | Primary color on hover state |
+| `--marzipan-color-primary` | `#3b82f6` | Primary brand colour |
+| `--marzipan-color-primary-hover` | `#60a5fa` | Primary colour on hover state |
 
-### Color Variables - Secondary
+### Colour Variables - Secondary
 
 | Variable | Default | Description |
 | :--------- | :-------- | :------------ |
-| `--marzipan-color-secondary` | `#e5e7eb` | Secondary background color |
-| `--marzipan-color-secondary-hover` | `#d1d5db` | Secondary color on hover state |
+| `--marzipan-color-secondary` | `#e5e7eb` | Secondary background colour |
+| `--marzipan-color-secondary-hover` | `#d1d5db` | Secondary colour on hover state |
 
-### Color Variables - Button Borders
+### Colour Variables - Button Borders
 
 | Variable | Default | Description |
 | :--------- | :-------- | :------------ |
@@ -60,53 +60,53 @@ You can override the default colors, border radius, and font size used by all we
 | `--marzipan-color-secondary-border` | `transparent` | Border colour for secondary buttons |
 | `--marzipan-color-secondary-border-hover` | `transparent` | Border colour for secondary buttons on hover |
 
-### Color Variables - Text
+### Colour Variables - Text
 
 | Variable | Default | Description |
 | :--------- | :-------- | :------------ |
-| `--marzipan-color-text` | `#111827` | Primary text color |
-| `--marzipan-color-text-muted` | `#6b7280` | Muted/secondary text color |
-| `--marzipan-color-text-inverse` | `#ffffff` | Inverse text color for dark backgrounds |
+| `--marzipan-color-text` | `#111827` | Primary text colour |
+| `--marzipan-color-text-muted` | `#6b7280` | Muted/secondary text colour |
+| `--marzipan-color-text-inverse` | `#ffffff` | Inverse text colour for dark backgrounds |
 
-### Color Variables - Backgrounds
+### Colour Variables - Backgrounds
 
 | Variable | Default | Description |
 | :--------- | :-------- | :------------ |
-| `--marzipan-color-bg` | `#ffffff` | Primary background color |
-| `--marzipan-color-bg-muted` | `#f9fafb` | Muted background color |
+| `--marzipan-color-bg` | `#ffffff` | Primary background colour |
+| `--marzipan-color-bg-muted` | `#f9fafb` | Muted background colour |
 | `--marzipan-color-bg-overlay` | `rgba(107, 114, 128, 0.4)` | Overlay background with transparency |
 
-### Color Variables - Borders
+### Colour Variables - Borders
 
 | Variable | Default | Description |
 | :--------- | :-------- | :------------ |
-| `--marzipan-color-border` | `#d1d5db` | Standard border color |
-| `--marzipan-color-border-muted` | `#e5e7eb` | Muted border color |
+| `--marzipan-color-border` | `#d1d5db` | Standard border colour |
+| `--marzipan-color-border-muted` | `#e5e7eb` | Muted border colour |
 
-### Color Variables - Status
-
-| Variable | Default | Description |
-| :--------- | :-------- | :------------ |
-| `--marzipan-color-error` | `#ef4444` | Error state color |
-| `--marzipan-color-error-bg` | `#fef2f2` | Error background color |
-| `--marzipan-color-success` | `#22c55e` | Success state color |
-| `--marzipan-color-success-bg` | `#f0fdf4` | Success background color |
-| `--marzipan-color-warning` | `#f59e0b` | Warning state color |
-| `--marzipan-color-warning-bg` | `#fffbeb` | Warning background color |
-
-### Color Variables - Badges
+### Colour Variables - Status
 
 | Variable | Default | Description |
 | :--------- | :-------- | :------------ |
-| `--marzipan-color-badge-bg` | `#ffedd5` | Badge background color |
-| `--marzipan-color-badge-text` | `#9a3412` | Badge text color |
+| `--marzipan-color-error` | `#ef4444` | Error state colour |
+| `--marzipan-color-error-bg` | `#fef2f2` | Error background colour |
+| `--marzipan-color-success` | `#22c55e` | Success state colour |
+| `--marzipan-color-success-bg` | `#f0fdf4` | Success background colour |
+| `--marzipan-color-warning` | `#f59e0b` | Warning state colour |
+| `--marzipan-color-warning-bg` | `#fffbeb` | Warning background colour |
 
-### Color Variables - Inputs
+### Colour Variables - Badges
 
 | Variable | Default | Description |
 | :--------- | :-------- | :------------ |
-| `--marzipan-color-input-bg` | `#ffffff` | Input field background color |
-| `--marzipan-color-input-disabled-bg` | `#f9fafb` | Disabled input background color |
+| `--marzipan-color-badge-bg` | `#ffedd5` | Badge background colour |
+| `--marzipan-color-badge-text` | `#9a3412` | Badge text colour |
+
+### Colour Variables - Inputs
+
+| Variable | Default | Description |
+| :--------- | :-------- | :------------ |
+| `--marzipan-color-input-bg` | `#ffffff` | Input field background colour |
+| `--marzipan-color-input-disabled-bg` | `#f9fafb` | Disabled input background colour |
 
 ### Border Radius Variables
 
