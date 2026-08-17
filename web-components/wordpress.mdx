@@ -160,7 +160,7 @@ Display products from a specific collection with full control over display optio
 
 ```html
 [marzipan_collection
-  collection="red-wines"
+  collection="featured"
   show_description="true"
   show_subscriber_pricing="true"
   placeholder_items="12"
@@ -196,7 +196,7 @@ Attributes set to `default` will use the value configured in your [web component
 Display a single product in either mini (card) or full (page) view.
 
 ```html
-[marzipan_product product="reserve-cabernet" view="full"]
+[marzipan_product product="signature-product" view="full"]
 ```
 
 | Attribute | Description | Default |
@@ -239,7 +239,7 @@ A standalone add-to-cart button for embedding anywhere on your site.
 ### Cart Shortcode
 
 ```html
-[marzipan_cart empty_cart_message="Your cart is empty — browse our wines!"]
+[marzipan_cart empty_cart_message="Your cart is empty — browse our products!"]
 ```
 
 | Attribute | Description | Default |
@@ -295,9 +295,9 @@ No attributes are required for the checkout shortcode.
 
 Product detail pages are automatically accessible at `/store/{product-slug}`. The plugin handles URL rewriting so visitors see the full product page when navigating to a product.
 
-For example, if you have a product with the slug `reserve-cabernet`, it will be accessible at:
+For example, if you have a product with the slug `signature-product`, it will be accessible at:
 ```
-https://yoursite.com/store/reserve-cabernet
+https://yoursite.com/store/signature-product
 ```
 
 ## SEO Integration
