@@ -111,7 +111,7 @@
                 }
               }
             },
-            "description": "Product images organized by type"
+            "description": "Product images organised by type"
           },
           "primaryImage": {
             "$ref": "#/components/schemas/ProductImage",
@@ -230,7 +230,7 @@
             "items": {
               "type": "object"
             },
-            "description": "Product attributes like color, size, etc."
+            "description": "Product attributes like colour, size, etc."
           },
           "options": {
             "type": "array",
@@ -2408,7 +2408,7 @@
           "nextTier": {
             "type": "object",
             "nullable": true,
-            "description": "Progress toward the next tier",
+            "description": "Progress towards the next tier",
             "properties": {
               "id": {
                 "type": "string",
@@ -2433,7 +2433,7 @@
               },
               "progressPercent": {
                 "type": "number",
-                "description": "Percentage progress toward the next tier"
+                "description": "Percentage progress towards the next tier"
               }
             }
           },
@@ -3579,7 +3579,7 @@
     },
     {
       "name": "Products",
-      "description": "Product catalog and search endpoints"
+      "description": "Product catalogue and search endpoints"
     },
     {
       "name": "Subscriptions",
@@ -5177,7 +5177,7 @@
             "name": "attr",
             "in": "query",
             "required": false,
-            "description": "Filter products by attributes using deep object notation. Each attribute filter accepts comma-separated values for OR matching.\n\nFormat: attr[attribute_slug]=value1,value2\n\nExample: attr[color]=red,blue&attr[size]=large\nThis returns products that are (red OR blue) AND large.",
+            "description": "Filter products by attributes using deep object notation. Each attribute filter accepts comma-separated values for OR matching.\n\nFormat: attr[attribute_slug]=value1,value2\n\nExample: attr[colour]=red,blue&attr[size]=large\nThis returns products that are (red OR blue) AND large.",
             "schema": {
               "type": "object",
               "additionalProperties": {
@@ -5187,7 +5187,7 @@
             "style": "deepObject",
             "explode": true,
             "example": {
-              "color": "red,blue",
+              "colour": "red,blue",
               "size": "large"
             }
           },
@@ -6068,7 +6068,7 @@
                           "description": "Subscription package search results"
                         }
                       },
-                      "description": "Search results organized by content type"
+                      "description": "Search results organised by content type"
                     }
                   }
                 },
@@ -7484,7 +7484,7 @@
           "Account"
         ],
         "summary": "Create PayFast setup identifier",
-        "description": "Generate a PayFast tokenization identifier so the authenticated customer can save a payment method, optionally linked to a subscription.",
+        "description": "Generate a PayFast tokenisation identifier so the authenticated customer can save a payment method, optionally linked to a subscription.",
         "security": [
           {
             "accountAuth": []
