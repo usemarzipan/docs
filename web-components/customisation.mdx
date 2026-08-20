@@ -160,6 +160,7 @@ Set a background colour for collection pages.
 | Setting | Description |
 | :-------- | :------------ |
 | Card Style | Choose from **Minimal** (clean, no border), **Bordered** (subtle border), **Elevated** (shadow effect), or **Filled** (solid background) |
+| Product Background | The background behind each product card. Follows the collection background until you pick a colour here, and **Reset** goes back to following it. |
 | Text Alignment | Left-align or centre-align product card text |
 | Image Corners | Control the roundness of product image corners |
 | Show Quantity Selector | Whether to show quantity pickers on product cards |
@@ -248,6 +249,47 @@ Control how your logo appears at the top of the checkout:
 ### Phone Field
 
 - **Require phone number** — When enabled, customers must enter a phone number to complete checkout
+
+### Newsletter
+
+Configure the newsletter sign-up checkbox shown to guests during checkout.
+
+- **Message** — The wording shown next to the checkbox. Leave blank to use "Subscribe to our newsletter".
+- **Pre-tick the checkbox** — When enabled, the checkbox starts ticked. Customers can still untick it before continuing.
+
+<Warning>
+Pre-ticked consent is **not valid consent** in the UK or EU. UK GDPR and PECR both require a clear affirmative action, so a box the customer did not tick themselves does not count as consent to marketing. Addresses collected this way may not be lawfully mailable. Only turn this on if you have taken your own legal advice.
+</Warning>
+
+<Note>
+Marzipan records the wording each customer was actually shown, and whether the box was pre-ticked, against their cart and order. Editing the wording later never rewrites consent already given.
+</Note>
+
+### Create an Account
+
+Guests are always offered a password field on the order confirmation, so the order they just placed becomes an account. Only the wording is configurable — anyone who already has a password never sees it.
+
+- **Label** — The only line of copy in the block. Leave blank to use "Enter a password to create an account".
+- **Button** — Leave blank to use "Create account".
+- **Confirmation heading** — Shown in place of the form once the account is made.
+- **Confirmation message** — Use `{email}` where the customer's address should appear.
+
+### Ask "How did you hear about us?"
+
+Asks the referral question again on the confirmation page when the customer skipped it at checkout. Asking there costs no conversion, so it usually fills in a good share of the gaps.
+
+Needs the [referral sources](#referral-sources) below to be configured, and it never appears on an order that already has an answer.
+
+### Reward Points Banner
+
+The band on the order confirmation showing what the order earned. It only appears when rewards are switched on.
+
+- **Banner colour**
+- **Text colour**
+- **Icon colour**
+- **Corners**
+
+A preview shows how the band will look as you change it.
 
 ### Referral Sources
 

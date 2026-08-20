@@ -25,7 +25,21 @@ Actions are the steps a flow runs. You can:
 - Send an email
 - Update an order's status
 
-Integrations can add their own actions too, for example **London City Bond** and **ScrubBill**.
+Integrations can add their own actions too, for example **Fulfil order via LCB** ([London City Bond](/settings/integrations#london-city-bond)) and **ScrubBill**.
+
+## Building a flow
+
+Add a step from a node's own handle to append it to the end of a branch. To put a step **in the middle** of a flow, hover the line between two nodes and click the **+** at its midpoint, then choose an action or a condition. The new step is spliced in, both sides are rewired, and the layout tidies itself up.
+
+## POS orders
+
+Flows on the `order.paid` trigger **skip point-of-sale orders by default**. A till sale uses the shared walk-in customer, carries no delivery address, and closes as soon as it's paid, so a delivery-shaped flow would otherwise email a placeholder record or push a counter sale to a third-party logistics provider.
+
+Turn on **Include POS orders** next to **Active** in the flow editor for flows that genuinely want every sale, such as an accounting webhook or a sales dashboard.
+
+<Note>
+An order placed on **hold** — because it oversold, for example — doesn't run its `order.paid` flows straight away. It runs them once, when the hold is released.
+</Note>
 
 ## Conditions
 

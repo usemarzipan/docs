@@ -14,15 +14,57 @@ Navigate to **Settings > Integrations**, which shows two lists: **Installed** in
 
 ## Available integrations
 
-- **London City Bond** — Bonded-warehouse fulfilment. Stock also syncs into a dedicated [inventory](/settings/inventory) location.
+- **London City Bond** — Bonded-warehouse fulfilment. Stock also syncs into a dedicated [inventory](/settings/inventory) location, and orders are submitted over the API. See [London City Bond](#london-city-bond) below.
 - **Robert Guy** — Third-party logistics
 - **Mailchimp** — Sync customers and subscribers to your Mailchimp audience
 - **ScrubBill** — Third-party logistics and fulfilment
 - **DPD** — Courier integration
 - **APC Overnight** — Courier integration
+- **Google Merchant Center** — List your products on Google Shopping, with prices, stock and availability kept up to date automatically. See [Google Merchant Center](/settings/google-merchant).
 - **Fathom Analytics** — View website analytics directly in your Marzipan dashboard
 - **Labls** — Create compliant electronic wine labels (e-labels). Connect your Labls account, then link a product to generate its e-label — the QR code and ingredient and nutritional information required on your physical label. Product details sync to Labls automatically, and a QR-code icon appears on linked products.
 
 ## Managing an integration
 
 Each integration has its own settings page once installed, where you configure its options. Open it from the **Installed** list at any time.
+
+## London City Bond
+
+London City Bond (LCB) handles bonded-warehouse fulfilment. Once installed, its settings page covers stock, orders and transfers.
+
+### Stock sync
+
+Stock syncs daily into a dedicated [inventory location](/settings/inventory), which requires location-based inventory to be initialised first.
+
+Every sync is recorded, whether or not any figure moved, so a run that agreed with LCB throughout is still visible. The integration page lists the **last ten runs**, each showing how many products were updated, how many were unchanged, and any failures with their reason.
+
+Runs also flag **unmatched SKUs** — stock LCB hold that no product in your store matches. Those never sync, so it's worth checking the named SKUs and correcting the product they should belong to.
+
+### Orders
+
+Orders are submitted to LCB over the API, with many orders batched into a single call. Subscription renewals are included: orders shipping later are held and released by a sweep that runs through the day, so a late-settling renewal payment doesn't wait until the next day.
+
+<Note>
+The [flow](/flows/overview) action is called **Fulfil order via LCB**. It sends orders due now and holds the rest until their shipping date.
+</Note>
+
+### Stock transfers
+
+Transfers request stock from a source warehouse into your LCB location. Two separate toggles control them:
+
+- **Enable stock transfers** — Makes transfers available to raise by hand
+- **Request transfers automatically** — Runs the overnight check that raises transfers on its own. This depends on stock syncing, since that's what triggers the check.
+
+<Tip>
+Keep **Request transfers automatically** off until LCB have signed off your test paperwork. Enabling manual transfers alone lets you produce a transfer for sign-off without the nightly job also running.
+</Tip>
+
+### Minimum stock levels
+
+A transfer is raised when stock falls below a minimum. Set a default minimum for everything, then add **per-item overrides** for the lines that move at a different rate — a fast-selling line and a slow allocation wine rarely want the same trigger.
+
+- Anything without an override uses the default
+- Setting an item's minimum to **0** excludes it from transfers entirely
+- Overrides work with no default at all, which restricts transfers to a named list
+
+The manual transfer modal shows which minimum produced each line, so a prefilled list can be checked rather than taken on trust.

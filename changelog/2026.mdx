@@ -3,6 +3,77 @@ title: 'Changelog'
 sidebarTitle: '2026'
 description: 'Updates and improvements to Marzipan'
 ---
+<Update label="August 2026">
+
+## Custom Checkout Questions
+
+Ask your own questions on the checkout details step — a reciprocal club's membership number, for example. Set them up in **Settings > Cart & Checkout**, optionally restricted to particular markets, and choose whether each one is required. Answers appear on the order and the customer, fill themselves in for a returning customer, and can be added to the orders CSV export. A question can carry an **auto-tag** applied to the customer once it's answered. See [Cart & Checkout](/settings/cart-and-checkout).
+
+## Create an Account from the Order Confirmation
+
+Guests are now offered a single password field on the order confirmation, turning the order they just placed into an account without retyping anything. A verification code is emailed straight away. The wording is editable in **Settings > Web Components > Checkout**. See [Checkout](/web-components/checkout#create-an-account).
+
+The confirmation page has been rebuilt to match the checkout's split layout, with an order summary alongside the receipt and reward points shown as a banded statement.
+
+## Referral Question on the Confirmation
+
+The "how did you hear about us?" question can now be asked again on the confirmation page when a customer skipped it at checkout, which costs no conversion and fills in a good share of the gaps. Off by default. See [Customisation](/web-components/customisation#ask-how-did-you-hear-about-us).
+
+## Newsletter Opt-In Wording
+
+Set the wording shown beside the checkout newsletter checkbox, and whether it starts ticked. Marzipan records what each customer was actually shown, so editing the wording later never rewrites consent already given.
+
+<Warning>
+Pre-ticked consent is not valid consent in the UK or EU. Only turn the pre-tick on if you have taken your own legal advice.
+</Warning>
+
+## Stock Valuation Report
+
+A new Insights report values the stock you hold at cost price, with a headline total, a breakdown per location and a sortable product table. It's market aware, exports to CSV, and counts products holding stock with no cost price separately so an understated total is visible rather than silent. See [Sales reports](/insights/sales#stock-valuation).
+
+## Inventory
+
+- **Adjust stock** in bulk from a slide-over panel, correcting several products in one go with one location, reason and note across the batch. See [Inventory settings](/settings/inventory#adjusting-stock).
+- **Export** the inventory list to CSV, with a column per location.
+- The **Trade** adjustment reason is now called **Wholesale**, and an adjustment can name the trade customer it was made for.
+- Bundles can **derive their stock from constituent items**, so a case assembled from bottles you already hold stays accurate on its own. See [Product inventory](/products/inventory#stock-source).
+- **Overselling** now takes an optional limit, so you can sell a set number beyond the figure on screen rather than sell indefinitely.
+
+## Per-Market Product Images
+
+Individual product images can be scoped to the markets they belong in, for the same SKU needing different imagery per market — usually because the physical label differs. An image with no markets set shows everywhere. Historical orders keep showing the image the customer actually bought. See [Markets](/settings/markets#per-market-images).
+
+## Stripe Processing Fees
+
+Marzipan now captures what Stripe charged you to take each payment. **Processing fee** and **Net amount** are available as opt-in columns on the orders CSV export. See [Orders](/orders/overview#exporting-orders).
+
+## Explaining a Restricted Collection
+
+A collection restricted to certain markets can carry a message and a page to link to, so a storefront can say why there's nothing to show instead of rendering an empty grid. See [Collections](/collections/overview#market-visibility).
+
+## Tasks and Roles
+
+[Tasks](/tasks/overview) now sit behind role permissions, including who can assign work to someone else and who can see other people's tasks. Reading the task list and completing your own tasks stay open to everyone.
+
+## Free Shipping Minimums
+
+A shipping method's **minimum order value** is measured on the goods total after discounts, with no shipping and no tax. Previously the shipping charge itself counted towards the minimum that would remove it. Both shipping screens now describe the rule as it actually works. See [Shipping](/settings/shipping#conditions).
+
+## Flows and POS Orders
+
+Flows on the `order.paid` trigger now skip point-of-sale orders by default, since a till sale has no delivery address and uses the shared walk-in customer. Flows that want every sale opt back in with **Include POS orders**. See [Flows](/flows/overview#pos-orders).
+
+## Google Merchant Center Improvements
+
+Product categories are now picked from Google's own taxonomy, each sync is recorded with a browsable history, and disconnecting offers to take your catalogue down at the same time. The default sync interval is twice a day. See [Google Merchant Center](/settings/google-merchant).
+
+## London City Bond
+
+- Every stock sync is now recorded, including runs where nothing moved, with the last ten shown on the integration page and unmatched SKUs named.
+- **Per-item minimum stock levels** let you set transfer triggers for the lines that move at a different rate, with `0` excluding an item entirely. See [Integrations](/settings/integrations#london-city-bond).
+
+</Update>
+
 <Update label="July 2026">
 
 ## Going Live Clears Test Data
@@ -12,6 +83,54 @@ Turning off [test mode](/settings/test-mode) to go live now clears test-mode cus
 ## All-Day Event Improvements
 
 All-day events now carry their all-day setting and recurrence days through to the storefront and API, so listings display correctly.
+
+## Recurring Events Reorganised
+
+Everything about a recurring event except its shared details belongs to a **date**, and the app now reflects that. A recurring event's own page is about the series — the dates it runs on and a way into them — while attendees, activity, the waitlist and ticket counts live on each date. Dates can be marked **out of stock** or **unavailable** so they stay listed but can't be bought, and a series is only finished once its last date has passed. See [Recurring events](/events/recurring).
+
+## Waitlists per Date
+
+Each date of a recurring event keeps its own waitlist, and a customer can wait on **more than one date** of the same event. Seats freed on a date are offered to that date's queue, and a claimed place produces a ticket for the right day. See [Events](/events/details#waitlist).
+
+## Subscription Shipment Windows
+
+Variable packages can now date their shipments as an **availability window** instead of fixed processing and shipping dates. Subscribers bill on their own anniversary and receive whichever window covers that date, so a package that sends "whatever is in the box right now" no longer needs a dated shipment for every renewal. See [Packages](/subscriptions/packages#shipment-dating).
+
+## Cheapest Item Free
+
+A new discount type takes the cheapest qualifying item already in the cart off the total — one unit, not the whole line. Discounts also gain a **minimum number of items** condition, for offers framed by count rather than value. See [Create a discount](/discounts/create#type).
+
+## Checkout Requirements
+
+Set a **minimum item count** for the cart, and optionally require **full case quantities** so physical items are ordered in whole multiples of it. Both are enforced everywhere a cart can be paid for, including express checkout and any storefront built on the API. Bundles count the items inside them. See [Cart & Checkout](/settings/cart-and-checkout#checkout-requirements).
+
+## Market-Aware Collections
+
+Product collections can now be restricted to particular markets, and ordered differently in each one — so each region leads with what sells there. See [Collections](/collections/overview#market-visibility).
+
+## Google Merchant Center
+
+A new integration lists your products on Google Shopping, pushing prices, stock and availability automatically whenever a product changes. Each market becomes its own feed with its own currency and target countries. See [Google Merchant Center](/settings/google-merchant).
+
+## Referral Sources on Orders
+
+The referral source a customer gives is now snapshotted onto the order, shown on both the customer and the order, and available to Mailchimp as an acquisition-source merge field.
+
+## Point of Sale
+
+The till can now search for a member by **name or email**, apply a **percentage or fixed discount** to the sale, and offer a **newsletter opt-in** when taking the customer's email. See [Point of Sale](/orders/pos).
+
+## Flows
+
+Add a step **into the middle** of a flow by hovering the line between two nodes and clicking the **+** at its midpoint. See [Flows](/flows/overview#building-a-flow).
+
+## London City Bond
+
+Subscription shipments are now submitted to London City Bond over the API, batched into a single call, replacing the bulk order spreadsheet. Orders shipping later are held and released through the day.
+
+## Team Management
+
+Administrators can now manage the **Team** by default. Editing roles stays owner-only.
 
 </Update>
 

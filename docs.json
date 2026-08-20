@@ -187,7 +187,9 @@
               "settings/markets",
               "settings/inventory",
               "settings/shipping",
+              "settings/cart-and-checkout",
               "settings/integrations",
+              "settings/google-merchant",
               "settings/email",
               "settings/test-mode"
             ]

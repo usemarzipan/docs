@@ -77,6 +77,16 @@ You can export orders to a CSV file by clicking the **Export** button in the top
 
 When you click the **Export** button, you will be shown a modal where you can select the fields you want to export. The app will remember your selection for the next time you export orders.
 
+Alongside the standard fields, you can opt into:
+
+- **Processing fee** — what Stripe charged you to take the payment
+- **Net amount** — the order total less that fee
+- Answers to any [custom checkout fields](/settings/cart-and-checkout#custom-checkout-fields) you ask
+
+<Note>
+Processing fee and net amount are summed across every payment on the order, since an order can be settled by more than one. They stay blank rather than showing `0.00` where no fee has come back from Stripe yet.
+</Note>
+
 <Frame>
 <img width="300" noZoom src="https://marzipan-cloud.b-cdn.net/0/docs/orders/order-export.png" alt="Orders export options" />
 </Frame>
