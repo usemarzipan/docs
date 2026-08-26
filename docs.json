@@ -67,6 +67,7 @@
               "orders/details",
               "orders/fulfilment",
               "orders/payments",
+              "orders/payment-links",
               "orders/pos"
             ]
           },

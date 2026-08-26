@@ -5,13 +5,27 @@ description: 'Updates and improvements to Marzipan'
 ---
 <Update label="August 2026">
 
+## Payment Links
+
+Send a customer a link to pay an order themselves, rather than taking their card details over the phone. **Send payment link** sits alongside Process payment on any draft or held order that settles through Stripe, and emails the customer a link to a secure Marzipan payment page.
+
+While a link is out the order is locked — its items can't be edited and payment can't be taken another way — so it can't be paid twice or paid for something that has since moved. **Resend** issues a fresh link, and **Cancel** hands the order back to you.
+
+Links expire after seven days by default, set under **Settings > Payments** and overridable per send. The payment page carries your button colours and corner radius, works whatever your website is built with, and handles collection orders by showing where to collect from.
+
+Payment links can also be sent and cancelled from the Marzipan mobile app. See [Payment links](/orders/payment-links).
+
+## Branding & Web Components
+
+**Settings > Web Components** is now **Settings > Branding & Web Components**, since those settings brand the payment page as well as your storefront components. Nothing has moved — only the name has changed.
+
 ## Custom Checkout Questions
 
 Ask your own questions on the checkout details step — a reciprocal club's membership number, for example. Set them up in **Settings > Cart & Checkout**, optionally restricted to particular markets, and choose whether each one is required. Answers appear on the order and the customer, fill themselves in for a returning customer, and can be added to the orders CSV export. A question can carry an **auto-tag** applied to the customer once it's answered. See [Cart & Checkout](/settings/cart-and-checkout).
 
 ## Create an Account from the Order Confirmation
 
-Guests are now offered a single password field on the order confirmation, turning the order they just placed into an account without retyping anything. A verification code is emailed straight away. The wording is editable in **Settings > Web Components > Checkout**. See [Checkout](/web-components/checkout#create-an-account).
+Guests are now offered a single password field on the order confirmation, turning the order they just placed into an account without retyping anything. A verification code is emailed straight away. The wording is editable in **Settings > Branding & Web Components > Checkout**. See [Checkout](/web-components/checkout#create-an-account).
 
 The confirmation page has been rebuilt to match the checkout's split layout, with an order summary alongside the receipt and reward points shown as a banded statement.
 
