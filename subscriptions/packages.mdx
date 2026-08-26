@@ -37,7 +37,11 @@ To view your packages:
   <Step title="Choose the billing frequency">
     Choose the billing frequencies you want to allow, each expressed as every N months.
 
-    If you offer more than one frequency, set a **default** so customers start on your preferred cycle.
+    If you offer more than one frequency, set a **default**. Customers pick their frequency on the storefront, shown as boxes or a dropdown, with your default pre-selected — see [Product](/web-components/product#billing-frequency). The default is also what's used anywhere the choice isn't offered.
+
+    <Note>
+    The frequency a customer chooses is recorded on their cart, so the subscription is created on the terms they were shown rather than on whatever the package defaults to by the time the order lands.
+    </Note>
   </Step>
   <Step title="Configure the renewal options">
     Renewal options control how and when subscriptions renew. See [Renewal options](#renewal-options) below.

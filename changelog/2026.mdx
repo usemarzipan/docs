@@ -15,6 +15,42 @@ Links expire after seven days by default, set under **Settings > Payments** and 
 
 Payment links can also be sent and cancelled from the Marzipan mobile app. See [Payment links](/orders/payment-links).
 
+## EzyPro
+
+A new integration exports your orders to **EzyPro** on a schedule, as a CSV delivered over SFTP. Each market gets its own file, folder and product-code mapping, since EzyPro keeps a separate database per market. Runs are logged with a downloadable copy of every file sent, so you can answer whether a particular day's export went. See [EzyPro](/settings/ezypro).
+
+## Manual Orders
+
+The [create order](/orders/create) form has been reordered so items are added before delivery, which means shipping rates and free-shipping thresholds are quoted against a basket that actually has something in it.
+
+- **One-off items** — sell something your catalogue has never held, such as corkage or a delivery surcharge, without creating a product for it
+- **No shipping needed** — a third option beside Delivery and Collection, for orders that are digital, comped, or handed over across the counter
+- **Discount suggestions** — the discount section now lists the discounts an order already qualifies for, best first, with what each is worth against that basket
+
+## Purchase Options on Product Pages
+
+A product with upsells can now offer them as **priced boxes** showing every option's price at once, rather than a dropdown that hides all but the selected one. Collection cards show a **See options** button opening the same chooser, where each option reports its own stock so a shopper can't pick a sold-out case. See [Product](/web-components/product#purchase-options).
+
+## Shoppers Pick Their Billing Frequency
+
+A subscription package sold at more than one billing frequency now asks the shopper which they want, as boxes or a dropdown, with your default pre-selected. Previously only pick & mix offered the choice. See [Packages](/subscriptions/packages).
+
+## Add-to-Cart Confirmation
+
+Adding to the cart without redirecting now shows a short confirmation where the shopper is, rather than relying on a cart icon that may be scrolled out of view. Choose **Redirect**, **Notify** or **Nothing** per storefront, and set the confirmation's style and position under [Branding & Web Components](/web-components/customisation#add-to-cart-notification).
+
+<Note>
+Stores that never set a redirect preference pick up **Notify** as the new default. Stores that did set one keep what they had.
+</Note>
+
+## London City Bond — Goods Received
+
+Turn on **Record goods received** to add stock as soon as London City Bond book goods in, at midday and 7pm, rather than waiting for the nightly sync. It also closes off the stock transfer the goods were for, and covers supplier deliveries as well as your own transfers. See [Integrations](/settings/integrations#goods-received).
+
+## Cancelled Orders Return Their Stock
+
+Cancelling an order now puts its stock back, to the location it came off. Previously the units were simply gone, except where a London City Bond sync happened to paper over it.
+
 ## Branding & Web Components
 
 **Settings > Web Components** is now **Settings > Branding & Web Components**, since those settings brand the payment page as well as your storefront components. Nothing has moved — only the name has changed.

@@ -20,6 +20,7 @@ Navigate to **Settings > Integrations**, which shows two lists: **Installed** in
 - **ScrubBill** — Third-party logistics and fulfilment
 - **DPD** — Courier integration
 - **APC Overnight** — Courier integration
+- **EzyPro** — Finance. Export your orders to EzyPro on a schedule, as a CSV delivered over SFTP, with a separate file per market. See [EzyPro](/settings/ezypro).
 - **Google Merchant Center** — List your products on Google Shopping, with prices, stock and availability kept up to date automatically. See [Google Merchant Center](/settings/google-merchant).
 - **Fathom Analytics** — View website analytics directly in your Marzipan dashboard
 - **Labls** — Create compliant electronic wine labels (e-labels). Connect your Labls account, then link a product to generate its e-label — the QR code and ingredient and nutritional information required on your physical label. Product details sync to Labls automatically, and a QR-code icon appears on linked products.
@@ -39,6 +40,18 @@ Stock syncs daily into a dedicated [inventory location](/settings/inventory), wh
 Every sync is recorded, whether or not any figure moved, so a run that agreed with LCB throughout is still visible. The integration page lists the **last ten runs**, each showing how many products were updated, how many were unchanged, and any failures with their reason.
 
 Runs also flag **unmatched SKUs** — stock LCB hold that no product in your store matches. Those never sync, so it's worth checking the named SKUs and correcting the product they should belong to.
+
+### Goods received
+
+Turn on **Record goods received** to add stock as soon as London City Bond book goods in, at midday and 7pm, rather than waiting for the next nightly sync. It also closes off any linked [stock transfer](#stock-transfers) request raised through Marzipan.
+
+This covers supplier deliveries as well as your own transfers, so it's worth having on even if you never raise a transfer.
+
+<Note>
+London City Bond send this information **once only**. If anyone at your end currently receives these notices by email, switching this on takes them instead.
+</Note>
+
+A part delivery credits what actually arrived and leaves the rest counting as still on its way.
 
 ### Orders
 

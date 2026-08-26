@@ -1,0 +1,85 @@
+---
+title: 'EzyPro'
+sidebarTitle: 'EzyPro'
+description: 'Export your orders to EzyPro on a schedule, as a CSV file delivered over SFTP.'
+---
+
+The EzyPro integration sends your orders to EzyPro as a CSV file on a schedule, delivered to a folder EzyPro collects from. It saves keying orders in twice, and runs on its own once set up.
+
+Navigate to **Settings > Integrations** and choose **EzyPro**.
+
+<Frame>
+<img src="https://marzipan-cloud.b-cdn.net/0/docs/settings/ezypro.png" alt="EzyPro integration settings showing the connection and per-market sections" />
+</Frame>
+
+<Note>
+EzyPro keeps a **separate database per market**, and collects each one's file from its own folder. A single install here covers every market — you configure each market separately below rather than installing the integration more than once.
+</Note>
+
+## Connection
+
+EzyPro is reached over **SFTP**. Plain FTP isn't supported.
+
+- **Host** and **Port** — Where to deliver the file
+- **Username**
+- **Authentication** — **Password**, or a **Private key** with an optional **Passphrase**
+
+<Tip>
+Use **Test connection** to check the credentials before you rely on the schedule. The result is shown straight away, so you don't have to wait for an export time to come round to find out something is wrong.
+</Tip>
+
+## Schedule
+
+- **Export times** — Up to two times a day. Each market's file is written at these times.
+- **Timezone** — The timezone the export times are read in
+- **Order statuses** — Which order statuses to include in the export
+
+A run missed because something was down is picked up on the next hourly check rather than waiting a whole day.
+
+## Each market
+
+Every market has its own section, with its own toggle beside the heading. Turning one off doesn't affect the others, and a market that fails to export never stalls another.
+
+- **Remote folder** — The folder on the EzyPro server this market's file goes to. Limited to 30 characters, which is EzyPro's own limit.
+- **File prefix** — The start of the filename. The resulting filename is shown beneath, for example `orders-2026-08-25-0600.csv`.
+- **Export orders from** — The date to start exporting from. Use **Include every order** to set this from the market's first order.
+- **SKU matching** — Map your products to the product codes EzyPro holds for this market
+
+<Warning>
+The **remote folder** decides which EzyPro market database a file lands in. Getting it wrong puts one market's orders into another market's records.
+</Warning>
+
+### SKU matching
+
+EzyPro keeps its own product codes, and because each market is a separate EzyPro database, the codes differ per market. Pick the product and give its EzyPro code for that market.
+
+Matching ignores capitalisation, so a code pasted straight out of EzyPro works as it is. A product you haven't mapped is exported under the SKU you hold rather than being left out, so nothing goes missing quietly.
+
+### Locked settings
+
+Once a market has exported, its **remote folder** and **export orders from** date lock, since changing either after orders have gone affects what EzyPro has already taken.
+
+Both can be unlocked by an **owner or administrator**:
+
+- **Start again** clears the market's progress and unlocks the date, so every order from the start date goes again
+- Unlocking the **remote folder** is a separate action, so correcting a folder doesn't mean resending orders
+
+<Warning>
+**Start again** can't be undone, and EzyPro may already hold the orders it resends — they could be received twice. It doesn't remove files EzyPro has already collected.
+</Warning>
+
+## Export history
+
+Open **Export history** to see recent runs: when each started, which market it was for, the result, and how many orders went. Expand a run for its filename and any error, and **download the file** that was sent.
+
+History is kept for 30 days. A file EzyPro has already archived says so rather than failing to download.
+
+<Tip>
+The history answers "did Tuesday's file go?", which the current status alone can't. Check here before assuming an order never reached EzyPro.
+</Tip>
+
+## What's in the file
+
+The export is the **Commerce 7 order export** format EzyPro already ingests: one row per order line, with the order-level values repeated on each row. The shipping total sits on the order's first row only, so it can't be counted twice.
+
+Each order is sent exactly once, so an order number never appears in two files.

@@ -12,7 +12,7 @@ Manual orders are ideal for:
 - Processing in-person sales at events
 - Creating orders for customers with special requirements
 - Testing your order processing workflow
-- Creating orders with custom pricing or discounts
+- Creating orders with custom pricing, one-off items, or discounts
 
 ## Creating a manual order
 
@@ -31,51 +31,50 @@ POS (till) orders are created in the Marzipan mobile app, not this form. See [Po
 </Note>
 
 <Steps titleSize="p">
-   <Step title="Select customer">
-      You can either select an existing customer by typing their name or email address in the lookup box, or create a new customer by clicking the **create a customer** button.
+   <Step title="Order details">
+      Select an existing customer by typing their name or email address in the lookup box, or click **create a customer** to add a new one in a panel to the right.
 
-      The create a customer button will open a panel to the right of the screen where you can create a new customer.
-   </Step>
-   <Step title="Pick a channel">
-      Select the appropriate channel for the order from the dropdown menu.
+      Then set:
 
-      - **Cellar Door** - The order was placed at your cellar door
-      - **Event** - The order was placed at an event
-      - **Email** - The order was placed via email
-      - **Manual** - The order was created manually by you or a member of your team
-      - **Website** - The order should have been placed through your website
-      - **Phone** - The order was placed over the phone
-      - **Tasting** - The order was placed at a tasting
-   </Step>
-   <Step title="Select a billing address for the customer">
-      Select the appropriate billing address for the customer from the dropdown menu.
+      - **Channel** — where the order came from: **Cellar Door**, **Event**, **Email**, **Manual**, **Website**, **Phone** or **Tasting**
+      - **Billing address** — chosen from the customer's addresses
 
-      For multi-market stores, a **Market** is auto-detected from the billing address country and a note is shown to confirm which market applies. The market determines the pricing currency for the order.
-   </Step>
-   <Step title="Select a shipping option">
-      Select either **Delivery** or **Collection**.
-   </Step>
-   <Step title="Select a shipping method">
-      Select the appropriate shipping method for the order from the dropdown menu.
-
-      If a delivery address has no phone number and the shipping method requires one, you'll see a warning prompting you to add a phone number.
-   </Step>
-   <Step title="Gift options">
-      If the order is a gift, click the down arrow and complete the relevant fields.
-
+      For multi-market stores, a **Market** is auto-detected from the billing address country and a note confirms which one applies. The market sets the currency the order is priced in.
    </Step>
    <Step title="Add items">
-      Use the product selector to add products to the order. You can enter the product name or SKU.
+      Use the product selector to add products, by name or SKU. Once a product is on the order, set its quantity. Some products have **options** (for example size) you can choose per line, and lines show sale and subscriber price badges where they apply.
 
-      Once you have selected a product, update the quantity. Some products have **options** (for example size) that you can choose per line. Product lines also show sale and subscriber price badges where they apply.
+      To sell something your catalogue has never held — corkage, a delivery surcharge, a bottle from the back room — type its name and add it as a **one-off item**. Set the item's name and price directly on the line. A one-off item doesn't touch your stock.
    </Step>
-   <Step title="Add discounts">
-      Any relevant automatic discounts are applied live as you add items. If you need to add a manual discount to the order you can do this by clicking the add discount button.
+   <Step title="Choose how it gets to the customer">
+      Pick one of:
+
+      - **Delivery** — take a delivery address and a shipping method
+      - **Collection** — the customer collects, so no delivery address
+      - **No shipping needed** — for an order that's digital, comped, or handed over across the counter. No address, no method, no delivery phone.
+
+      For a delivery, choose the **shipping method**. If the address has no phone number and the method requires one, a warning prompts you to add it. You can also add **delivery instructions**.
    </Step>
-   <Step title="Save the order">
-      Review the order details and click the **Save** button at the bottom of the screen to save the order.
+   <Step title="Apply a discount">
+      Automatic discounts apply on their own as you add items. To add one yourself, open the discount section and pick from the discounts the order **already qualifies for** — listed best first, each showing what it's actually worth against this basket.
+
+      Picking one fills in the discount fields rather than bypassing them, so you can see exactly what's being applied and adjust it before saving. You can still enter a discount by hand instead.
+   </Step>
+   <Step title="Gift options">
+      If the order is a gift, open the gift options and complete the relevant fields.
+   </Step>
+   <Step title="Review the summary and save">
+      The summary shows the order's totals, including shipping, in the market's currency. Click **Save** to create the order.
    </Step>
 
 </Steps>
 
 After creating an order you will be taken to the [order details](/orders/details) page where the order will have a **processing** status and a **pending** payment status.
+
+<Note>
+An order containing something you don't have the stock for is saved on **hold** instead. It stays held until you release it, even once it's been paid.
+</Note>
+
+<Tip>
+Rather than taking the customer's card over the phone, you can send them a [payment link](/orders/payment-links) to settle the order themselves.
+</Tip>

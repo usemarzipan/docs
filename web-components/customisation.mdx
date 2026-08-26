@@ -87,7 +87,17 @@ Control how rounded corners appear across your components:
 
 - **Buttons and inputs** — Choose from Sharp, XS, SM, MD, LG, XL, 2XL, or Full (pill shape)
 - **Cards and containers** — Choose from Sharp, SM, MD, LG, XL, 2XL, 3XL, or Full
+- **Modals and popups** — The radius used for dialogs, drawers and the upsell option chooser
 - **Product image corners** — Set a separate radius for product images
+
+### Add-to-Cart Notification
+
+The confirmation shown when a customer adds something to their cart without being redirected. See [After adding to cart](#product-behaviour).
+
+- **Style** — **Dark** or **Light**. Two fixed looks, so it stays readable over whatever your page puts behind it.
+- **Position** — Bottom centre, bottom left, bottom right, top centre, top left or top right
+
+Its corners follow the **Modals and popups** radius above.
 
 ### Checkout Background
 
@@ -145,7 +155,9 @@ For event products, choose how upcoming occurrences are presented:
 | :-------- | :------------ |
 | Show Subscriber Pricing | Whether to display subscriber/member pricing |
 | Show Quantity Selector | Whether to show a quantity picker |
-| Redirect to Cart | Whether to redirect to the cart page after adding a product |
+| Upsell Options | How a product with upsells offers them — **Boxes** show every price at once, a **Dropdown** takes less room |
+| Billing Frequency Options | How a subscription sold at more than one frequency offers the choice — **Boxes** or **Dropdown** |
+| After Adding to Cart | **Redirect** goes straight to the cart, **Notify** shows a short confirmation and leaves the shopper where they are, **Nothing** relies on the cart icon's count |
 
 <Note>
 Text labels such as Add to Cart, Sale badge and Subscriber badge now live on the [Labels](#labels) tab.
@@ -176,7 +188,7 @@ Set a background colour for collection pages.
 | Show Subscriber Pricing | Display subscriber/member pricing |
 | Show Description | Show product descriptions on cards |
 | Show "More" Link | Show a link to the full product page |
-| Redirect to Cart | Redirect to cart after adding a product |
+| After Adding to Cart | **Redirect**, **Notify** or **Nothing**, as on the Product tab |
 
 <Note>
 Text labels such as Add to Cart, badges and the "More" link text now live on the [Labels](#labels) tab.
@@ -197,6 +209,10 @@ The Labels tab consolidates the storefront text labels used across your componen
 | Sales Closed text | Text shown when sales are closed |
 | Back in Stock Button text | Text for the back-in-stock button |
 | "More" Link text | Text for the link to the full product page |
+| Configure Button (pick and mix) | The button that opens a configurator rather than adding anything (default: "Configure") |
+| Base Option Label | Names the product's own row in the upsell chooser, beside options like "Case of 6" (default: "Single") |
+| Upsell Picker Heading | An optional heading above a product's upsell options. Leave blank for no heading at all. |
+| Frequency Picker Heading | The heading above the billing frequency options (default: "Delivery frequency") |
 
 ### Subscription frequency wording
 
