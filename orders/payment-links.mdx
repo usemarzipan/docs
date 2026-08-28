@@ -83,10 +83,12 @@ An order that needs no delivery at all shows neither.
 
 ### Payment methods
 
-The page offers card payments, plus anything else enabled in your Stripe payment method configuration — **Link** appears inline in the card row where your account has it switched on.
+**Apple Pay** and **Google Pay** are offered as buttons above the card form, on the devices and browsers that support them — Safari shows Apple Pay, Chrome shows Google Pay. Where a device offers neither, the row doesn't appear at all rather than leaving a gap.
+
+Beneath them the card form takes card payments. **Link** may also be offered, where Stripe judges the customer has an account.
 
 <Note>
-Apple Pay and Google Pay aren't offered on the payment page, and nor are methods that would take the customer away to another site to pay.
+Payment methods that would take the customer away to another site to pay aren't offered, since nothing on the page is set up to receive them back.
 </Note>
 
 ### Branding
@@ -116,7 +118,3 @@ The expiry sentence disappears by itself when a link never expires, so you can w
 ## From the mobile app
 
 Payment links can be sent and cancelled from the Marzipan mobile app as well as the web app, so you can hand an order over while you're with the customer.
-
-<Note>
-The mobile app passes the link to your phone's share sheet rather than emailing it, so you choose how it reaches the customer. Sending from the web app emails it for you.
-</Note>
