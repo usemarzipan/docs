@@ -1,10 +1,10 @@
 ---
 title: 'Integrations'
-sidebarTitle: 'Integrations'
-description: 'Connect your store to fulfilment, courier, marketing, analytics, and labelling services.'
+sidebarTitle: 'Overview'
+description: 'Connect your store to fulfilment, courier, marketing, finance, and labelling services.'
 ---
 
-Integrations connect your store to third-party services for fulfilment, couriers, marketing, analytics, and labelling.
+Integrations connect your store to third-party services for fulfilment, couriers, marketing, finance, and labelling.
 
 Navigate to **Settings > Integrations**, which shows two lists: **Installed** integrations and **Available** integrations. To install one, click it. Each integration shows whether it's `active` or `inactive`, along with a test-mode badge that follows the global [test mode](/settings/test-mode) toggle.
 
@@ -14,25 +14,40 @@ Navigate to **Settings > Integrations**, which shows two lists: **Installed** in
 
 ## Available integrations
 
-- **London City Bond** — Bonded-warehouse fulfilment. Stock syncs into a dedicated [inventory](/settings/inventory) location, and orders are submitted over the API. See [London City Bond](/integrations/london-city-bond).
-- **Robert Guy** — Third-party logistics
-- **Mailchimp** — Sync customers and subscribers to your Mailchimp audience
-- **ScrubBill** — Third-party logistics and fulfilment
-- **DPD** — Courier integration
-- **APC Overnight** — Courier integration
-- **EzyPro** — Finance. Export your orders to EzyPro on a schedule, as a CSV delivered over SFTP, with a separate file per market. See [EzyPro](/integrations/ezypro).
-- **Google Merchant Center** — List your products on Google Shopping, with prices, stock and availability kept up to date automatically. See [Google Merchant Center](/integrations/google-merchant).
-- **Fathom Analytics** — View website analytics directly in your Marzipan dashboard
-- **Labls** — Create compliant electronic wine labels (e-labels). Connect your Labls account, then link a product to generate its e-label — the QR code and ingredient and nutritional information required on your physical label. Product details sync to Labls automatically, and a QR-code icon appears on linked products.
+<CardGroup cols={2}>
+  <Card title="London City Bond" href="/integrations/london-city-bond">
+    Bonded-warehouse fulfilment. Stock syncs into a dedicated [inventory](/settings/inventory) location, orders are submitted over the API, and stock transfers can be raised automatically.
+  </Card>
+  <Card title="Google Merchant Center" href="/integrations/google-merchant">
+    List your products on Google Shopping, with prices, stock and availability kept up to date automatically.
+  </Card>
+  <Card title="EzyPro" href="/integrations/ezypro">
+    Export your orders on a schedule, as a CSV delivered over SFTP, with a separate file per market.
+  </Card>
+  <Card title="Labls">
+    Compliant electronic wine labels. Link a product to generate its e-label, carrying the QR code and the ingredient and nutritional information required on your physical label.
+  </Card>
+  <Card title="Mailchimp">
+    Sync customers and subscribers to your Mailchimp audience.
+  </Card>
+  <Card title="Robert Guy">
+    Third-party logistics.
+  </Card>
+  <Card title="ScrubBill">
+    Third-party logistics and fulfilment.
+  </Card>
+  <Card title="DPD">
+    Courier.
+  </Card>
+  <Card title="APC Overnight">
+    Courier.
+  </Card>
+</CardGroup>
+
+<Note>
+The integrations above without a link are configured on their own settings page in the app, with no further setup to explain here.
+</Note>
 
 ## Managing an integration
 
 Each integration has its own settings page once installed, where you configure its options. Open it from the **Installed** list at any time.
-
-The integrations with the most to configure have a guide of their own:
-
-<CardGroup cols={3}>
-  <Card title="London City Bond" href="/integrations/london-city-bond">Bonded-warehouse fulfilment</Card>
-  <Card title="Google Merchant Center" href="/integrations/google-merchant">Products on Google Shopping</Card>
-  <Card title="EzyPro" href="/integrations/ezypro">Scheduled order export</Card>
-</CardGroup>
