@@ -1,0 +1,86 @@
+---
+title: 'Cart & Checkout'
+sidebarTitle: 'Cart & Checkout'
+description: 'Recover abandoned carts, set the rules a cart must meet, and ask your own questions at checkout.'
+---
+
+Cart & Checkout settings cover what happens to carts customers leave behind, the rules a cart must meet before it can be checked out, and any extra questions you want to ask on the way through.
+
+Navigate to **Settings > Cart & Checkout** to manage these options.
+
+<Frame>
+<img src="https://marzipan-cloud.b-cdn.net/0/docs/settings/cart-and-checkout.png" alt="Cart and checkout settings page" />
+</Frame>
+
+## Abandoned carts
+
+When a customer adds items and leaves without checking out, Marzipan can create a task for your team, email the customer, or both.
+
+### Task creation
+
+- **Enable task creation** — Create a [task](/tasks/overview) when a cart is abandoned
+- **Default assignee** — The team member the task goes to
+- **Default priority** — The priority new tasks are created at
+- **Task due in** — How long the assignee has before the task is due
+
+### Email notification
+
+- **Email notification** — Email the customer about the cart they left
+- **Send after** — How long to wait before the email goes out
+
+### Minimum cart value
+
+Set a minimum cart value per market. Recovery emails are only sent for carts above that value, so you don't chase a single low-value line. Leave a market blank for no minimum.
+
+## Checkout requirements
+
+Rules a cart must meet before a customer can check out.
+
+<Note>
+These rules are enforced everywhere a cart can be paid for, including express checkout and any storefront built directly on the API. A customer is stopped before a payment sheet appears rather than after it.
+</Note>
+
+- **Minimum items** — The total quantity a cart must reach. Leave empty for no minimum.
+- **Require full case quantities** — Physical items must be ordered in whole multiples of the minimum. With a minimum of 6, a cart of 6 or 12 is allowed but 7 is not.
+- **Message** — The wording shown when the cart is below the minimum. Use `{minimum}` for the required number and `{shortfall}` for how many more are needed. Leave empty for the default wording.
+
+Gift cards, event tickets and subscriptions aren't counted towards either rule, so they never change how many bottles make a case. Bundles count the items inside them rather than as a single line, so a case of six sold as one bundle counts as six.
+
+<Tip>
+**Require full case quantities** only means something alongside a minimum, so it clears when the minimum does. Set the minimum first.
+</Tip>
+
+## Custom checkout fields
+
+Ask your own questions on the details step at checkout, such as a reciprocal club's membership number. Answers are stored against the order and the customer.
+
+Click **Add field** to add a question. Each one has:
+
+- **Label** — The question as the customer sees it
+- **Name** — The identifier the answer is stored under. It's set from the label and **fixed once saved**, because answers already collected are keyed on it.
+- **Type** — **Text** or **Checkbox**
+- **Placeholder** — Optional placeholder text for the field
+- **Help text** — Optional guidance shown under the field
+- **Auto-tag** — An optional tag applied to the customer once the question is answered
+- **Markets** — Restrict the question to particular markets, or leave unset to ask it everywhere
+- **Required** — Whether the customer must answer before continuing
+
+<Warning>
+Answers are recorded but never checked, so don't use custom fields to collect payment details or other sensitive information.
+</Warning>
+
+<Note>
+A **required** question can only be answered on the checkout page, so the Apple Pay and Google Pay shortcut at the top of checkout is hidden in any market where one applies. Apple Pay and Google Pay are still offered at the payment step as normal.
+</Note>
+
+### Where answers appear
+
+- On the **order**, in the customer box alongside the rest of their details
+- On the **customer**, where the latest answer is kept and used to pre-fill the question next time they order
+- In the **orders CSV export**, as extra columns you opt into through the [column picker](/orders/overview#exporting-orders)
+
+Renaming a question later never rewrites past orders. Each order keeps the label it was placed under.
+
+<Tip>
+Set an **auto-tag** on a question you intend to segment on. The tag is only applied when the question is actually answered, so a blank answer or an unticked checkbox tags nobody.
+</Tip>

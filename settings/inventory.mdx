@@ -16,6 +16,8 @@ Navigate to **Settings > Inventory** to manage your inventory.
 
 Location-based inventory is **off by default**. To start tracking stock per location, **initialise** it once. This copies your current stock to your default location, after which stock is managed on each product.
 
+Until you initialise it, a banner on this page prompts you to do so, with a default-location picker if you haven't set one yet, and the inventory page shows a callout with its inputs disabled.
+
 <Warning>
 Initialising location-based inventory **can't be undone**. Make sure your current stock figures are correct before you start.
 </Warning>
@@ -38,14 +40,34 @@ Every change to stock is recorded as a movement with a reason, so you always hav
 - **Transfer** (in or out)
 - **Return**
 - **Order**
+- **Wholesale**
 - **Initial stock**
+- **Derived**
 - **Other**
 
 You can add optional notes to any movement.
 
-## Bulk stock adjustment
+A **Wholesale** adjustment can name the trade customer it was made for. When you name one, the adjustment also appears on that customer's activity feed. The picker only offers wholesale accounts, and naming a customer is optional.
 
-Adjust many products at once rather than editing them one by one. You can also **import a CSV** with one row per SKU per location.
+**Derived** movements are recorded automatically for bundles taking their stock from [constituent items](/products/inventory#stock-source).
+
+Cancelling an order returns its stock automatically, to the location it originally came off, recorded as a **Return**.
+
+## Adjusting stock
+
+Use **Adjust stock** on the inventory page to correct several products in one go, which is what a wholesale order with multiple lines needs. Add products by search, give each line its own quantity up or down, then set one location, reason, note and optional trade customer across the whole batch. The current stock at the chosen location is shown against each line as you go.
+
+The batch is applied together, so a single bad line can't leave an adjustment half applied.
+
+You can also **import a CSV** with one row per SKU per location.
+
+## Exporting inventory
+
+Click **Export** on the inventory page to download the current filtered view as a CSV, with one column per inventory location plus a total. Filter the list first to export only the products you need.
+
+<Tip>
+The inventory page also links straight to the [stock valuation report](/insights/sales#stock-valuation), so you can go from the figures to what they're worth.
+</Tip>
 
 ## Low-stock badges
 
@@ -70,4 +92,4 @@ Only team members who have opted into the low-stock notification receive these a
 
 ## London City Bond
 
-If you use the [London City Bond](/settings/integrations) integration, stock syncs automatically into a dedicated inventory location. This requires location-based inventory to be initialised first.
+If you use the [London City Bond](/integrations/overview) integration, stock syncs automatically into a dedicated inventory location. This requires location-based inventory to be initialised first.

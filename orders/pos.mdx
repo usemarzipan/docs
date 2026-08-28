@@ -31,7 +31,15 @@ Sales default to a shared "walk-in" placeholder customer, so you can sell quickl
 
 ### Identify a customer at the till
 
-You can look a customer up by email to attach the sale to them. Identifying a customer surfaces **subscriber pricing** for members, which is useful when selling to members at events.
+Search for a customer by **name or email** to attach the sale to them. Identifying a customer surfaces **subscriber pricing** for members, which is useful when selling to members at events, and the cart re-prices as soon as you identify or clear them.
+
+### Discounts
+
+Apply a **percentage or fixed-amount discount** to the whole sale at the till. Any automatic discounts you run apply to POS orders too, so the customer is charged the discounted total.
+
+### Newsletter opt-in
+
+If you have a default mailing list, the till can offer a **newsletter opt-in** when you take the customer's email. It applies whether you send the receipt or skip it.
 
 ### Tap to Pay on iPhone
 
@@ -52,6 +60,10 @@ You can **Skip** the email to link a customer to the order without sending a rec
 ### Assign a walk-in order later
 
 If a sale went through as a walk-in, you can assign it to a real customer afterwards. From the order's **Actions** menu in the web app, choose **Assign customer**. This re-links the order only — it does not re-price the order.
+
+### POS orders and flows
+
+[Flows](/flows/overview) on the `order.paid` trigger skip POS orders unless the flow opts in with **Include POS orders**. A till sale has no delivery address and uses the walk-in customer, so a delivery-shaped flow shouldn't treat it like a web order.
 
 ### Order lifecycle
 

@@ -13,10 +13,30 @@ Stock for a product is managed in the **Inventory** section of the product form.
 With location-based inventory on, you can also **manage inventory** and **view history** for a product from the products list.
 </Note>
 
+## Stock source
+
+**Bundles** choose how their available quantity is worked out:
+
+- **Managed** — the bundle holds a stock figure of its own
+- **Derived from constituent items** — the figure comes from the items the bundle contains
+
+A derived bundle updates on its own as its parts move. Each item limits the bundle by how many whole bundles it can supply, worked out at each inventory location, so a mixed case is bounded by its scarcest item. Restocking a part makes every bundle containing it available again.
+
+<Tip>
+Use **Derived** for a case you assemble from stock you already hold, and **Managed** for a pre-pack the warehouse holds under its own SKU.
+</Tip>
+
 ## Purchase rules
 
 - **Limit per customer** — cap how many of this product a single customer can buy
 - **Allow overselling** — let customers buy the product even when it's out of stock
+- **Overselling limit** — extra units that can be sold on top of the stock level. Leave blank for no limit.
+
+The overselling limit is an allowance **on top of** the current stock figure rather than a total, so it rebases whenever stock is resynced. Use it when you hold stock somewhere Marzipan can't see, such as a second warehouse, and want to sell a set number beyond the figure on screen rather than sell forever.
+
+<Note>
+Overselling doesn't apply to events, untracked products, or bundles taking their stock from constituent items, none of which carry a figure for an allowance to sit on.
+</Note>
 
 ## Low-stock badge
 
@@ -30,3 +50,7 @@ The **low-stock badge** tells customers when stock is running low. On the produc
 <Tip>
 Set the badge once under [Inventory settings](/settings/inventory) and only override it on the products that need something different.
 </Tip>
+
+## Valuing your stock
+
+To see what the stock you hold is worth at cost, use the [stock valuation report](/insights/sales#stock-valuation) in Insights.

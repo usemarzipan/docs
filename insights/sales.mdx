@@ -1,7 +1,7 @@
 ---
 title: 'Sales reports'
 sidebarTitle: 'Sales'
-description: 'Revenue, channels, geographic, orders, products, cart recovery and event reports.'
+description: 'Revenue, channels, geographic, orders, products, stock valuation, cart recovery and event reports.'
 ---
 
 The sales reports cover your trading performance — what you sold, where it sold, and how well it converted. Each one shares the same [date range, comparison and market controls](/insights/overview) as every other report in Insights.
@@ -45,6 +45,26 @@ The order side of the same trading, rather than the money.
 
 - Revenue, units sold and average price
 - Drill down into any individual product
+
+## Stock valuation
+
+What the stock you hold is worth at cost price.
+
+- A headline total
+- A breakdown per inventory location
+- A sortable table of products, which you can filter by status
+
+Stock recorded before you started using [locations](/settings/inventory) can't be attributed to one, so it's reported as **Unassigned**. The location rows still add up to the headline total.
+
+Products holding stock with no cost price count as zero. They're counted separately and you can filter to them, so an understated total is visible rather than silent.
+
+Click **Export** to download the report as a CSV, honouring the filters you've set.
+
+<Note>
+Stock valuation is a **point-in-time snapshot** and has no date range. No cost basis is stored against historic stock movements, so a date picker would only mislead.
+</Note>
+
+With no market selected, stock is valued at base cost in your store's default currency. Select a [market](/settings/markets) to value it at that market's cost in that market's currency, using an explicit per-market cost override where one is set and converting the base cost at the market's rate where it isn't. Quantities don't change with the market, since stock is physical and held at a location.
 
 ## Cart recovery
 

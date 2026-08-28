@@ -1,0 +1,84 @@
+---
+title: 'Google Merchant Center'
+sidebarTitle: 'Google Merchant'
+description: 'List your products on Google Shopping and keep prices, stock and availability up to date.'
+---
+
+The Google Merchant Center integration keeps your product listings on Google Shopping up to date. Prices, stock and availability are pushed automatically whenever a product changes.
+
+Navigate to **Settings > Integrations** and choose **Google Merchant Center**.
+
+<Frame>
+<img src="https://marzipan-cloud.b-cdn.net/0/docs/settings/google-merchant.png" alt="Google Merchant Center integration settings" />
+</Frame>
+
+## Before you connect
+
+You need a Google Merchant Center account with your store's website **verified and claimed**. Google won't show your products otherwise, and this is something only you can do from your own Merchant Center account.
+
+<Warning>
+Verifying and claiming your website is done in Google Merchant Center, not in Marzipan. Connect once that's in place.
+</Warning>
+
+## Connecting
+
+Click **Connect Google Merchant Center** and sign in with the Google account that has access to your Merchant Center. Once connected, the settings below become available.
+
+## Settings
+
+- **Merchant Center account** — The account to publish to. If no accounts are listed, check that the Google account you connected with has access to a Merchant Center account, then reconnect.
+- **Default Google product category** — The category used for any product without one of its own, chosen from Google's own taxonomy
+- **Sync every** — How often your whole catalogue is swept and re-sent
+- **Sync automatically** — Turn off to stop scheduled syncing. You can still sync by hand.
+
+<Note>
+Google allows roughly **two updates per product per day**, counted against your own Merchant Center account. The settings page estimates how many updates a day your interval works out at across your markets, and warns you when that's likely over your allowance. Syncing more often than your catalogue needs risks exhausting it.
+</Note>
+
+### Product categories
+
+A product can override the default category from its own **Google product category** field on the product form. Set the default here and only override the products that need something different.
+
+## Markets
+
+Each active [market](/settings/markets) becomes its own feed in Merchant Center, with its own currency and target countries. The feed is labelled with the market's slug, and is created on the first sync.
+
+## Status
+
+Once connected, four tiles show where your catalogue stands:
+
+- **Listed** — Products currently on Google
+- **Pending** — Products queued to be sent
+- **Failed** — Products Google rejected
+- **Not eligible** — Products Marzipan didn't send
+
+## Actions
+
+The **Actions** menu in the top-right offers:
+
+- **Sync all products** — Queue an immediate sweep of the whole catalogue
+- **Sync history** — See the most recent sweeps
+- **Refresh accounts** — Re-read the list of Merchant Center accounts from Google
+- **Remove all from Google** — Withdraw every product from your Merchant Center account
+- **Disconnect** — Disconnect the integration
+
+When you disconnect, Marzipan offers to take your catalogue down at the same time. Leave the listings in place if you plan to reconnect.
+
+## Sync history
+
+**Sync history** lists recent runs, each showing when it started, what triggered it, the result and how long it took. A run reports how many products **synced**, **failed** and were **not eligible**. Expand a run to see the products that didn't make it.
+
+## Products not listed
+
+Products that were skipped or rejected are listed with the market and the reason. A product isn't sent when:
+
+- Its **type** isn't eligible. Physical, bundle and subscription products are listed; event tickets are not, because Google Shopping rejects them and disapprovals count against your account.
+- Its **status** isn't active
+- It's **restricted to subscribers**, so it has no publicly visible price
+- It's **not visible** in that market
+- It has **no image**. Google requires one.
+- It has **no price** in that market
+
+<Note>
+Google's own diagnostics screen in Merchant Center is the source of truth for policy disapprovals. This list covers what Marzipan sent and what it held back.
+</Note>

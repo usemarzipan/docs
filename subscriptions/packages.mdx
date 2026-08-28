@@ -37,7 +37,11 @@ To view your packages:
   <Step title="Choose the billing frequency">
     Choose the billing frequencies you want to allow, each expressed as every N months.
 
-    If you offer more than one frequency, set a **default** so customers start on your preferred cycle.
+    If you offer more than one frequency, set a **default**. Customers pick their frequency on the storefront, shown as boxes or a dropdown, with your default pre-selected. See [Product](/web-components/product#billing-frequency). The default is also what's used anywhere the choice isn't offered.
+
+    <Note>
+    The frequency a customer chooses is recorded on their cart, so the subscription is created on the terms they were shown rather than on whatever the package defaults to by the time the order lands.
+    </Note>
   </Step>
   <Step title="Configure the renewal options">
     Renewal options control how and when subscriptions renew. See [Renewal options](#renewal-options) below.
@@ -46,6 +50,25 @@ To view your packages:
     Review the package and save it. Set the **Status** to `active` when you are ready for customers to subscribe.
   </Step>
 </Steps>
+
+## Shipment dating
+
+**Variable** packages choose how their shipments are dated:
+
+- **Scheduled dates** — each shipment carries a processing and shipping date. Every subscriber on the plan renews against the shipment dated for that day.
+- **Availability window** — each shipment carries an available-from date and an optional available-to date. Subscribers renew on their own anniversary and receive whichever window covers that date.
+
+Use an availability window when what you send is "whatever is in the box right now" rather than a dated release. Leave the available-to date empty and the window stays current until a later one supersedes it, so you simply open a new window when the contents change.
+
+<Note>
+Windows for the same product may not overlap, and an open-ended window blocks any later one. Marzipan rejects an overlapping window when you enter it rather than picking between them at renewal.
+</Note>
+
+Windowed packages drop the parts of the scheduled flow that have no meaning without a processing date: the **first-order cut-off window** and the **initial shipment**. A new subscriber simply gets whichever window is current, the same box a renewal would get.
+
+<Tip>
+Editing a window never moves anyone's billing date, so you can correct or extend one without disturbing your subscribers.
+</Tip>
 
 ## Renewal options
 
@@ -73,7 +96,7 @@ The package detail screen shows key metrics:
 
 Depending on the package type, extra tabs are available:
 
-- **Variable** packages have a **Shipments** tab for scheduling changing shipments. See [Shipments](/subscriptions/shipments).
+- **Variable** packages have a **Shipments** tab for scheduling changing shipments, and choose how those shipments are dated. See [Shipment dating](#shipment-dating) below and [Shipments](/subscriptions/shipments).
 - **Pick & Mix** packages have an **Available items** tab, where you set the default, minimum and maximum quantities per item.
 
 ### Available items

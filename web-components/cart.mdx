@@ -34,6 +34,12 @@ Defaults to `/shop`
 
 The cart can display a progress message showing how much more a customer needs to spend to qualify for free shipping. This is configured in your [web component settings](/web-components/customisation#free-shipping-notification) and includes a customisable message with an `{amount}` placeholder and per-market display thresholds.
 
+The amount remaining is measured on the goods total after discounts, matching how the [shipping method's minimum order value](/settings/shipping#conditions) is applied. The banner is hidden once there's nothing left to add, so it never tells a customer they're £0.00 away.
+
+#### Checkout Requirements
+
+If you've set a [minimum item count or full-case requirement](/settings/cart-and-checkout#checkout-requirements), the cart tells the customer what's missing and won't let them continue until it's met. A customer who reaches checkout below the minimum is sent back to the cart.
+
 #### Related Products
 
 Display product recommendations within the cart to encourage additional purchases. Configure the section title, number of products, and toggle visibility from your [web component settings](/web-components/customisation#related-products).

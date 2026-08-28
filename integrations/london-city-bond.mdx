@@ -1,0 +1,56 @@
+---
+title: 'London City Bond'
+sidebarTitle: 'London City Bond'
+description: 'Bonded-warehouse fulfilment, with stock syncing, order submission and stock transfers.'
+---
+
+London City Bond (LCB) handles bonded-warehouse fulfilment. Once installed, its settings page covers stock, orders and transfers.
+
+## Stock sync
+
+Stock syncs daily into a dedicated [inventory location](/settings/inventory), which requires location-based inventory to be initialised first.
+
+Every sync is recorded, whether or not any figure moved, so a run that agreed with LCB throughout is still visible. The integration page lists the **last ten runs**, each showing how many products were updated, how many were unchanged, and any failures with their reason.
+
+Runs also flag **unmatched SKUs**: stock LCB hold that no product in your store matches. Those never sync, so it's worth checking the named SKUs and correcting the product they should belong to.
+
+## Goods received
+
+Turn on **Record goods received** to add stock as soon as London City Bond book goods in, at midday and 7pm, rather than waiting for the next nightly sync. It also closes off any linked [stock transfer](#stock-transfers) request raised through Marzipan.
+
+This covers supplier deliveries as well as your own transfers, so it's worth having on even if you never raise a transfer.
+
+<Note>
+London City Bond send this information **once only**. If anyone at your end currently receives these notices by email, switching this on takes them instead.
+</Note>
+
+A part delivery credits what actually arrived and leaves the rest counting as still on its way.
+
+## Orders
+
+Orders are submitted to LCB over the API, with many orders batched into a single call. Subscription renewals are included: orders shipping later are held and released by a sweep that runs through the day, so a late-settling renewal payment doesn't wait until the next day.
+
+<Note>
+The [flow](/flows/overview) action is called **Fulfil order via LCB**. It sends orders due now and holds the rest until their shipping date.
+</Note>
+
+## Stock transfers
+
+Transfers request stock from a source warehouse into your LCB location. Two separate toggles control them:
+
+- **Enable stock transfers** — Makes transfers available to raise by hand
+- **Request transfers automatically** — Runs the overnight check that raises transfers on its own. This depends on stock syncing, since that's what triggers the check.
+
+<Tip>
+Keep **Request transfers automatically** off until LCB have signed off your test paperwork. Enabling manual transfers alone lets you produce a transfer for sign-off without the nightly job also running.
+</Tip>
+
+## Minimum stock levels
+
+A transfer is raised when stock falls below a minimum. Set a default minimum for everything, then add **per-item overrides** for the lines that move at a different rate, since a fast-selling line and a slow allocation wine rarely want the same trigger.
+
+- Anything without an override uses the default
+- Setting an item's minimum to **0** excludes it from transfers entirely
+- Overrides work with no default at all, which restricts transfers to a named list
+
+The manual transfer modal shows which minimum produced each line, so a prefilled list can be checked rather than taken on trust.

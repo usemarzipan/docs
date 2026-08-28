@@ -189,8 +189,18 @@ You can choose from four product card styles in your [web component settings](/w
 
 Set a custom background colour for your collection pages from [web component settings](/web-components/customisation#background).
 
-#### Upsell Products
+You can also give the product cards their own background, separate from the collection behind them. See [Product Cards](/web-components/customisation#product-cards).
 
-For products with upsell options, the component displays a dropdown selection that appears on hover, allowing customers to choose between different product variants before adding to cart.
+#### Restricted Collections
+
+A collection can be [restricted to certain markets](/collections/overview#market-visibility). When a shopper is in a market the collection isn't available in, the component explains why there's nothing to show rather than rendering an empty grid, using the message and page you set on the collection.
+
+#### Purchase Options
+
+A product with upsells shows a **See options** button rather than an add-to-cart button, opening a chooser that lists every purchase option as a priced row: the product itself alongside its upsells, each with its own price and a quantity to multiply it by.
+
+Each option carries a short label, such as `Case of 6`, set on the product. Options that are out of stock report their own availability, so a shopper can't pick a sold-out case and find out at the cart.
+
+The button's wording and the label used for the product's own row are set on the [Labels tab](/web-components/customisation#labels).
 
 The collection component uses the [add to cart](./add-to-cart) component to display the "add to cart" button for each product. If you have set styles for the add to cart component they will be applied to the "add to cart" button with this component.

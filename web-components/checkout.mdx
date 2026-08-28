@@ -36,12 +36,22 @@ The slug of the page to return to when the user clicks the cart icon.
 
 Defaults to `/cart`
 </ResponseField>
+<ResponseField name="guest-checkout-message" type="string">
+The message shown to guests explaining they can create an account later.
+
+Defaults to `You can create an account once you have ordered`
+</ResponseField>
+<ResponseField name="shoppath" type="string">
+The path the "continue shopping" button goes to from the order confirmation.
+
+Defaults to `/`
+</ResponseField>
 
 ### Features
 
 #### Background Colours
 
-The checkout uses a split-panel layout. You can set separate background colours for the order summary (left) and checkout form (right) from your [web component settings](/web-components/customisation#background-colours-1).
+The checkout uses a split-panel layout. You can set separate background colours for the order summary (left) and checkout form (right) from your [web component settings](/web-components/customisation#background-colours).
 
 #### Logo
 
@@ -54,6 +64,32 @@ You can require customers to enter a phone number during checkout. This is usefu
 #### Referral Sources
 
 Ask customers "How did you hear about us?" during checkout. You can configure the list of options, add follow-up questions, and auto-tag customers based on their response. This data feeds into your Attribution insights. Set up in [web component settings](/web-components/customisation#referral-sources).
+
+#### Custom Questions
+
+If you've set up [custom checkout fields](/settings/cart-and-checkout#custom-checkout-fields), they're asked on the details step and stored against the order and the customer. A returning customer's previous answers are filled in for them.
+
+<Note>
+A **required** custom question hides the Apple Pay and Google Pay shortcut at the top of checkout in any market where it applies, since the question can only be answered on the checkout page itself. Both are still offered at the payment step.
+</Note>
+
+#### Order Confirmation
+
+Once an order is placed, the checkout renders the confirmation in the same split layout as the checkout itself: the receipt on one side and an order summary on the other. It can also carry:
+
+- **Rewards** — a band showing what the order earned, when rewards are switched on. Its colours and corners are set in [web component settings](/web-components/customisation#reward-points-banner).
+- **Create an account** — guests are offered a single password field that turns the order they just placed into an account. See below.
+- **How did you hear about us?** — asked here when the order has no answer yet, if you've turned it on. See [Referral Sources](/web-components/customisation#referral-sources).
+
+#### Create an Account
+
+Guest checkout already attaches the order to a customer record, but without a password the shopper can't sign in to see it. The confirmation page offers a password field to finish the job. Everything else is already on the order, so nothing is retyped.
+
+A verification code is emailed straight away, and the account area stays closed until it's entered. The wording is editable in [web component settings](/web-components/customisation#create-an-account).
+
+<Note>
+The block doesn't appear for a shopper who checked out signed in, or whose email address already has an account.
+</Note>
 
 #### Rewards Redemption
 
@@ -119,6 +155,75 @@ The select element.
 </ResponseField>
 <ResponseField name="--shipping-option">
 The options for the selected shipping method
+</ResponseField>
+
+The order confirmation adds the following parts:
+
+<ResponseField name="--confirmation">
+The confirmation container.
+</ResponseField>
+<ResponseField name="--confirmation-main">
+The receipt column.
+</ResponseField>
+<ResponseField name="--confirmation-aside">
+The order summary column.
+</ResponseField>
+<ResponseField name="--confirmation-heading">
+The confirmation heading.
+</ResponseField>
+<ResponseField name="--confirmation-order-number">
+The order number element.
+</ResponseField>
+<ResponseField name="--confirmation-contact">
+The contact details block.
+</ResponseField>
+<ResponseField name="--confirmation-delivery">
+The delivery details block.
+</ResponseField>
+<ResponseField name="--confirmation-actions">
+The container around the confirmation's actions.
+</ResponseField>
+<ResponseField name="--continue-shopping-button">
+The "continue shopping" button.
+</ResponseField>
+<ResponseField name="--order-summary">
+The order summary container.
+</ResponseField>
+<ResponseField name="--order-summary-heading">
+The order summary heading.
+</ResponseField>
+<ResponseField name="--order-summary-item">
+A line item in the order summary.
+</ResponseField>
+<ResponseField name="--order-summary-total">
+The order summary total.
+</ResponseField>
+<ResponseField name="--create-account-form">
+The create-account form.
+</ResponseField>
+<ResponseField name="--create-account-heading">
+The create-account heading.
+</ResponseField>
+<ResponseField name="--create-account-button">
+The create-account button.
+</ResponseField>
+<ResponseField name="--referral-prompt">
+The "how did you hear about us?" block.
+</ResponseField>
+<ResponseField name="--referral-prompt-form">
+The referral prompt's form.
+</ResponseField>
+<ResponseField name="--referral-prompt-heading">
+The referral prompt's heading.
+</ResponseField>
+<ResponseField name="--referral-prompt-button">
+The referral prompt's button.
+</ResponseField>
+<ResponseField name="--discount-code-label">
+The discount code label.
+</ResponseField>
+<ResponseField name="--label">
+A form label element.
 </ResponseField>
 
 
