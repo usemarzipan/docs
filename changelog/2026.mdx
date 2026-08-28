@@ -17,7 +17,7 @@ Payment links can also be sent and cancelled from the Marzipan mobile app. See [
 
 ## EzyPro
 
-A new integration exports your orders to **EzyPro** on a schedule, as a CSV delivered over SFTP. Each market gets its own file, folder and product-code mapping, since EzyPro keeps a separate database per market. Runs are logged with a downloadable copy of every file sent, so you can answer whether a particular day's export went. See [EzyPro](/settings/ezypro).
+A new integration exports your orders to **EzyPro** on a schedule, as a CSV delivered over SFTP. Each market gets its own file, folder and product-code mapping, since EzyPro keeps a separate database per market. Runs are logged with a downloadable copy of every file sent, so you can answer whether a particular day's export went. See [EzyPro](/integrations/ezypro).
 
 ## Manual Orders
 
@@ -45,7 +45,7 @@ Stores that never set a redirect preference pick up **Notify** as the new defaul
 
 ## London City Bond — Goods Received
 
-Turn on **Record goods received** to add stock as soon as London City Bond book goods in, at midday and 7pm, rather than waiting for the nightly sync. It also closes off the stock transfer the goods were for, and covers supplier deliveries as well as your own transfers. See [Integrations](/settings/integrations#goods-received).
+Turn on **Record goods received** to add stock as soon as London City Bond book goods in, at midday and 7pm, rather than waiting for the nightly sync. It also closes off the stock transfer the goods were for, and covers supplier deliveries as well as your own transfers. See [Integrations](/integrations/london-city-bond#goods-received).
 
 ## Cancelled Orders Return Their Stock
 
@@ -115,12 +115,12 @@ Flows on the `order.paid` trigger now skip point-of-sale orders by default, sinc
 
 ## Google Merchant Center Improvements
 
-Product categories are now picked from Google's own taxonomy, each sync is recorded with a browsable history, and disconnecting offers to take your catalogue down at the same time. The default sync interval is twice a day. See [Google Merchant Center](/settings/google-merchant).
+Product categories are now picked from Google's own taxonomy, each sync is recorded with a browsable history, and disconnecting offers to take your catalogue down at the same time. The default sync interval is twice a day. See [Google Merchant Center](/integrations/google-merchant).
 
 ## London City Bond
 
 - Every stock sync is now recorded, including runs where nothing moved, with the last ten shown on the integration page and unmatched SKUs named.
-- **Per-item minimum stock levels** let you set transfer triggers for the lines that move at a different rate, with `0` excluding an item entirely. See [Integrations](/settings/integrations#london-city-bond).
+- **Per-item minimum stock levels** let you set transfer triggers for the lines that move at a different rate, with `0` excluding an item entirely. See [Integrations](/integrations/london-city-bond).
 
 </Update>
 
@@ -160,7 +160,7 @@ Product collections can now be restricted to particular markets, and ordered dif
 
 ## Google Merchant Center
 
-A new integration lists your products on Google Shopping, pushing prices, stock and availability automatically whenever a product changes. Each market becomes its own feed with its own currency and target countries. See [Google Merchant Center](/settings/google-merchant).
+A new integration lists your products on Google Shopping, pushing prices, stock and availability automatically whenever a product changes. Each market becomes its own feed with its own currency and target countries. See [Google Merchant Center](/integrations/google-merchant).
 
 ## Referral Sources on Orders
 

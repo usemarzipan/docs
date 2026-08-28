@@ -1,39 +1,12 @@
 ---
-title: 'Integrations'
-sidebarTitle: 'Integrations'
-description: 'Connect your store to fulfilment, courier, marketing, analytics, and labelling services.'
+title: 'London City Bond'
+sidebarTitle: 'London City Bond'
+description: 'Bonded-warehouse fulfilment, with stock syncing, order submission and stock transfers.'
 ---
-
-Integrations connect your store to third-party services for fulfilment, couriers, marketing, analytics, and labelling.
-
-Navigate to **Settings > Integrations**, which shows two lists: **Installed** integrations and **Available** integrations. To install one, click it. Each integration shows whether it's `active` or `inactive`, along with a test-mode badge that follows the global [test mode](/settings/test-mode) toggle.
-
-<Frame>
-<img src="https://marzipan-cloud.b-cdn.net/0/docs/settings/integrations.png" alt="Integrations page showing installed and available integrations" />
-</Frame>
-
-## Available integrations
-
-- **London City Bond** — Bonded-warehouse fulfilment. Stock also syncs into a dedicated [inventory](/settings/inventory) location, and orders are submitted over the API. See [London City Bond](#london-city-bond) below.
-- **Robert Guy** — Third-party logistics
-- **Mailchimp** — Sync customers and subscribers to your Mailchimp audience
-- **ScrubBill** — Third-party logistics and fulfilment
-- **DPD** — Courier integration
-- **APC Overnight** — Courier integration
-- **EzyPro** — Finance. Export your orders to EzyPro on a schedule, as a CSV delivered over SFTP, with a separate file per market. See [EzyPro](/settings/ezypro).
-- **Google Merchant Center** — List your products on Google Shopping, with prices, stock and availability kept up to date automatically. See [Google Merchant Center](/settings/google-merchant).
-- **Fathom Analytics** — View website analytics directly in your Marzipan dashboard
-- **Labls** — Create compliant electronic wine labels (e-labels). Connect your Labls account, then link a product to generate its e-label — the QR code and ingredient and nutritional information required on your physical label. Product details sync to Labls automatically, and a QR-code icon appears on linked products.
-
-## Managing an integration
-
-Each integration has its own settings page once installed, where you configure its options. Open it from the **Installed** list at any time.
-
-## London City Bond
 
 London City Bond (LCB) handles bonded-warehouse fulfilment. Once installed, its settings page covers stock, orders and transfers.
 
-### Stock sync
+## Stock sync
 
 Stock syncs daily into a dedicated [inventory location](/settings/inventory), which requires location-based inventory to be initialised first.
 
@@ -41,7 +14,7 @@ Every sync is recorded, whether or not any figure moved, so a run that agreed wi
 
 Runs also flag **unmatched SKUs**: stock LCB hold that no product in your store matches. Those never sync, so it's worth checking the named SKUs and correcting the product they should belong to.
 
-### Goods received
+## Goods received
 
 Turn on **Record goods received** to add stock as soon as London City Bond book goods in, at midday and 7pm, rather than waiting for the next nightly sync. It also closes off any linked [stock transfer](#stock-transfers) request raised through Marzipan.
 
@@ -53,7 +26,7 @@ London City Bond send this information **once only**. If anyone at your end curr
 
 A part delivery credits what actually arrived and leaves the rest counting as still on its way.
 
-### Orders
+## Orders
 
 Orders are submitted to LCB over the API, with many orders batched into a single call. Subscription renewals are included: orders shipping later are held and released by a sweep that runs through the day, so a late-settling renewal payment doesn't wait until the next day.
 
@@ -61,7 +34,7 @@ Orders are submitted to LCB over the API, with many orders batched into a single
 The [flow](/flows/overview) action is called **Fulfil order via LCB**. It sends orders due now and holds the rest until their shipping date.
 </Note>
 
-### Stock transfers
+## Stock transfers
 
 Transfers request stock from a source warehouse into your LCB location. Two separate toggles control them:
 
@@ -72,7 +45,7 @@ Transfers request stock from a source warehouse into your LCB location. Two sepa
 Keep **Request transfers automatically** off until LCB have signed off your test paperwork. Enabling manual transfers alone lets you produce a transfer for sign-off without the nightly job also running.
 </Tip>
 
-### Minimum stock levels
+## Minimum stock levels
 
 A transfer is raised when stock falls below a minimum. Set a default minimum for everything, then add **per-item overrides** for the lines that move at a different rate, since a fast-selling line and a slow allocation wine rarely want the same trigger.
 

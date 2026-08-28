@@ -181,6 +181,15 @@
             ]
           },
           {
+            "group": "Integrations",
+            "pages": [
+              "integrations/overview",
+              "integrations/london-city-bond",
+              "integrations/google-merchant",
+              "integrations/ezypro"
+            ]
+          },
+          {
             "group": "Settings",
             "pages": [
               "settings/overview",
@@ -189,9 +198,6 @@
               "settings/inventory",
               "settings/shipping",
               "settings/cart-and-checkout",
-              "settings/integrations",
-              "settings/google-merchant",
-              "settings/ezypro",
               "settings/email",
               "settings/test-mode"
             ]
@@ -291,6 +297,18 @@
     {
       "source": "/web-components/products",
       "destination": "/web-components/collection"
+    },
+    {
+      "source": "/settings/integrations",
+      "destination": "/integrations/overview"
+    },
+    {
+      "source": "/settings/google-merchant",
+      "destination": "/integrations/google-merchant"
+    },
+    {
+      "source": "/settings/ezypro",
+      "destination": "/integrations/ezypro"
     }
   ]
 }
