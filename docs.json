@@ -197,9 +197,9 @@
             "group": "Integrations",
             "pages": [
               "integrations/overview",
-              "integrations/london-city-bond",
+              "integrations/ezypro",
               "integrations/google-merchant",
-              "integrations/ezypro"
+              "integrations/london-city-bond"
             ]
           }
         ]
