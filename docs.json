@@ -181,15 +181,6 @@
             ]
           },
           {
-            "group": "Integrations",
-            "pages": [
-              "integrations/overview",
-              "integrations/london-city-bond",
-              "integrations/google-merchant",
-              "integrations/ezypro"
-            ]
-          },
-          {
             "group": "Settings",
             "pages": [
               "settings/overview",
@@ -200,6 +191,15 @@
               "settings/cart-and-checkout",
               "settings/email",
               "settings/test-mode"
+            ]
+          },
+          {
+            "group": "Integrations",
+            "pages": [
+              "integrations/overview",
+              "integrations/london-city-bond",
+              "integrations/google-merchant",
+              "integrations/ezypro"
             ]
           }
         ]
