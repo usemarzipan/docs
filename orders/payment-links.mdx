@@ -4,7 +4,7 @@ sidebarTitle: 'Payment links'
 description: 'Send a customer a link to pay an order themselves, without handling their card details.'
 ---
 
-A payment link hands an order to the customer to pay. It suits an order you've taken over the phone, written up after a tasting, or built by hand — the customer settles it with their own card on a secure page, so you never take their details down yourself.
+A payment link hands an order to the customer to pay. It suits an order you've taken over the phone, written up after a tasting, or built by hand. The customer settles it with their own card on a secure page, so you never take their details down yourself.
 
 The customer pays the order you built, at the price you quoted, and it stays the same order with the same number throughout.
 
@@ -25,7 +25,7 @@ A payment link can be sent on an order that is:
 - Settled through **Stripe**
 
 <Note>
-The payment page takes money through Stripe only, so an order whose market settles through PayPal or PayFast isn't offered a link. Where a market points at a provider you've since turned off, Marzipan falls back to your first active card provider.
+The payment page takes money through Stripe, so an order whose market settles through PayFast or PayPal isn't offered a link at the moment. Support for PayFast is planned. Where a market points at a provider you've since turned off, Marzipan falls back to your first active card provider.
 </Note>
 
 ## While a link is out
@@ -44,7 +44,7 @@ While a link is outstanding the order is locked: its **items can't be edited**, 
 
 ### Cancelling
 
-**Cancel link** hands the order back to you. The link stops working, and the order becomes an ordinary draft again — editable, and chargeable however you like.
+**Cancel link** hands the order back to you. The link stops working, and the order becomes an ordinary draft again: editable, and chargeable however you like.
 
 Cancel the link first whenever you need to change an order a customer is holding.
 
@@ -61,11 +61,11 @@ New stores start at 7 days. You can override the default for any individual send
 Prices and stock move. A link that never expires can be paid weeks later at a price you no longer offer.
 </Warning>
 
-An expired link leaves the order itself untouched — only the link dies. The order shows a notice saying so, and **Payment link expired** is recorded in the order's activity, so a draft nobody paid can be told apart from one where the email never arrived. **Resend link** gives the customer a new one.
+An expired link leaves the order itself untouched. Only the link dies. The order shows a notice saying so, and **Payment link expired** is recorded in the order's activity, so a draft nobody paid can be told apart from one where the email never arrived. **Resend link** gives the customer a new one.
 
 ## The payment page
 
-Payment links are served from Marzipan's own payment page rather than your storefront, so they work whatever your website is built with — or if you don't have one at all.
+Payment links are served from Marzipan's own payment page rather than your storefront, so they work whatever your website is built with, or if you don't have one at all.
 
 <Frame>
 <img src="https://marzipan-cloud.b-cdn.net/0/docs/orders/payment-link-page.png" alt="The customer-facing payment page showing the order summary and payment form" />
@@ -83,7 +83,7 @@ An order that needs no delivery at all shows neither.
 
 ### Payment methods
 
-**Apple Pay** and **Google Pay** are offered as buttons above the card form, on the devices and browsers that support them — Safari shows Apple Pay, Chrome shows Google Pay. Where a device offers neither, the row doesn't appear at all rather than leaving a gap.
+**Apple Pay** and **Google Pay** are offered as buttons above the card form, on the devices and browsers that support them: Safari shows Apple Pay, Chrome shows Google Pay. Where a device offers neither, the row doesn't appear at all rather than leaving a gap.
 
 Beneath them the card form takes card payments. **Link** may also be offered, where Stripe judges the customer has an account.
 
@@ -95,7 +95,7 @@ Payment methods that would take the customer away to another site to pay aren't 
 
 The payment page picks up your **button colours** and **corner radius** from **Settings > Branding & Web Components**, so a store that has themed its shop gets a matching payment page without setting it up twice.
 
-Backgrounds and text colours are deliberately left alone — this is a page people type card numbers into, and it needs to read as trustworthy above all.
+Backgrounds and text colours are deliberately left alone. This is a page people type card numbers into, and it needs to read as trustworthy above all.
 
 ## After payment
 
