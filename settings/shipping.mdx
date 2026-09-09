@@ -16,24 +16,24 @@ Navigate to **Settings > Shipping Methods** to manage your methods.
 
 Each shipping method has the following core options.
 
-- **Name** — The name customers see at checkout, such as `Standard Delivery`
-- **Description** — Optional detail about the method
-- **Enabled** — Whether the method is available at checkout
-- **Method** — The type of method, which determines how the rate is calculated
+- **Name** - The name customers see at checkout, such as `Standard Delivery`
+- **Description** - Optional detail about the method
+- **Enabled** - Whether the method is available at checkout
+- **Method** - The type of method, which determines how the rate is calculated
 
 The **Method** type can be one of:
 
-- **Flat rate** — A fixed **Amount** for every order
-- **Free shipping** — No charge
-- **Pickup** — Collection in person, with no delivery charge
-- **Custom rate** — A rate calculated from bands (see below)
+- **Flat rate** - A fixed **Amount** for every order
+- **Free shipping** - No charge
+- **Pickup** - Collection in person, with no delivery charge
+- **Custom rate** - A rate calculated from bands (see below)
 
 ### Custom rate bands
 
 A **Custom rate** method works out the charge from **bands**. First choose how bands are measured:
 
-- **Weight based (kg)** — Bands are based on the order's total weight
-- **Volume based (number of items)** — Bands are based on the number of items
+- **Weight based (kg)** - Bands are based on the order's total weight
+- **Volume based (number of items)** - Bands are based on the number of items
 
 Then add rows of **From** / **To** / **Amount**. Set the last row's **To** to **Unlimited** to cover everything above the previous band.
 
@@ -52,8 +52,8 @@ Marzipan includes the following built-in zones:
 
 You can gate when a method is offered.
 
-- **Minimum order value** — Require a minimum order value for the method to be available. This is measured on the **goods total after discounts** — the subtotal minus any discount, with no shipping and no tax.
-- **Cart conditions** — Restrict a method to carts that only contain items from certain collections
+- **Minimum order value** - Require a minimum order value for the method to be available. This is measured on the **goods total after discounts** — the subtotal minus any discount, with no shipping and no tax.
+- **Cart conditions** - Restrict a method to carts that only contain items from certain collections
 
 <Note>
 A discount counts against the minimum, so what the customer pays for the goods is what earns free shipping. The shipping charge itself is never counted, which would otherwise let the rate being charged close the gap towards removing it.

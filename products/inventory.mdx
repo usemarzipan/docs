@@ -7,7 +7,7 @@ Stock for a product is managed in the **Inventory** section of the product form.
 
 ## Quantity
 
-- **Quantity** — a single stock quantity, or per-location quantities if [location-based inventory](/settings/inventory) is enabled
+- **Quantity** - a single stock quantity, or per-location quantities if [location-based inventory](/settings/inventory) is enabled
 
 <Note>
 With location-based inventory on, you can also **manage inventory** and **view history** for a product from the products list.
@@ -17,8 +17,8 @@ With location-based inventory on, you can also **manage inventory** and **view h
 
 **Bundles** choose how their available quantity is worked out:
 
-- **Managed** — the bundle holds a stock figure of its own
-- **Derived from constituent items** — the figure comes from the items the bundle contains
+- **Managed** - the bundle holds a stock figure of its own
+- **Derived from constituent items** - the figure comes from the items the bundle contains
 
 A derived bundle updates on its own as its parts move. Each item limits the bundle by how many whole bundles it can supply, worked out at each inventory location, so a mixed case is bounded by its scarcest item. Restocking a part makes every bundle containing it available again.
 
@@ -28,9 +28,9 @@ Use **Derived** for a case you assemble from stock you already hold, and **Manag
 
 ## Purchase rules
 
-- **Limit per customer** — cap how many of this product a single customer can buy
-- **Allow overselling** — let customers buy the product even when it's out of stock
-- **Overselling limit** — extra units that can be sold on top of the stock level. Leave blank for no limit.
+- **Limit per customer** - cap how many of this product a single customer can buy
+- **Allow overselling** - let customers buy the product even when it's out of stock
+- **Overselling limit** - extra units that can be sold on top of the stock level. Leave blank for no limit.
 
 The overselling limit is an allowance **on top of** the current stock figure rather than a total, so it rebases whenever stock is resynced. Use it when you hold stock somewhere Marzipan can't see, such as a second warehouse, and want to sell a set number beyond the figure on screen rather than sell forever.
 
