@@ -55,6 +55,7 @@
               "insights/sales",
               "insights/customers",
               "insights/subscriptions",
+              "insights/gift-vouchers",
               "insights/attribution",
               "insights/web-analytics"
             ]
@@ -65,6 +66,7 @@
               "orders/overview",
               "orders/create",
               "orders/details",
+              "orders/gifts",
               "orders/fulfilment",
               "orders/payments",
               "orders/payment-links",
@@ -77,7 +79,8 @@
               "subscriptions/overview",
               "subscriptions/packages",
               "subscriptions/details",
-              "subscriptions/shipments"
+              "subscriptions/shipments",
+              "subscriptions/gifts"
             ]
           },
           {
@@ -165,6 +168,16 @@
             ]
           },
           {
+            "group": "Gift Vouchers",
+            "pages": [
+              "gift-vouchers/overview",
+              "gift-vouchers/products",
+              "gift-vouchers/issue",
+              "gift-vouchers/details",
+              "gift-vouchers/redeeming"
+            ]
+          },
+          {
             "group": "CMS",
             "pages": [
               "cms/overview",
@@ -189,6 +202,7 @@
               "settings/inventory",
               "settings/shipping",
               "settings/cart-and-checkout",
+              "settings/gift-vouchers",
               "settings/email",
               "settings/test-mode"
             ]

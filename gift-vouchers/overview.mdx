@@ -1,0 +1,84 @@
+---
+title: 'Overview'
+description: 'Sell and manage gift vouchers, and keep track of the balance your customers are still holding.'
+---
+
+A gift voucher is **stored value**: a code worth a set amount that a customer can spend with you later. Marzipan issues each one with its own balance, takes value off as it's spent, and keeps a full ledger of every movement.
+
+Vouchers are not discounts. A discount reduces what an order is worth; a voucher settles a bill you have already been paid for. That difference runs through the whole feature — an order paid by voucher keeps its full value in your sales reporting, and the unspent balance is carried as a [liability](/insights/gift-vouchers) rather than as revenue.
+
+To view your vouchers:
+
+1. Log in to your Marzipan account
+2. Click on **Gift Vouchers** in the main navigation menu
+3. The overview page will display every voucher you've issued
+
+<Frame>
+<img src="https://marzipan-cloud.b-cdn.net/0/docs/gift-vouchers/vouchers-list.png" alt="Gift vouchers list showing headline figures and issued vouchers" />
+</Frame>
+
+Three buttons sit in the top-right corner: **Gift voucher products** for the [products you sell vouchers from](/gift-vouchers/products), **Issue voucher** to [issue one by hand](/gift-vouchers/issue), and a chart icon opening [Gift Voucher Insights](/insights/gift-vouchers).
+
+### Headline figures
+
+Four boxes sit above the list:
+
+- **Unspent balance** — everything still out there, across every voucher
+- **Issued this month**
+- **Redeemed this month**
+- **Expiring in 30 days**
+
+### The list
+
+Each voucher in the list shows:
+
+- **Code** — shown as `•••• BNVD`, its **last four characters only**, so a full spendable code is never on screen
+- **Sent to** — the recipient's name and email address, or `Not sent` where nobody has been emailed
+- **Value** — what the voucher was worth when it was issued
+- **Balance** — what's left on it
+- **Expires** — the expiry date, where the voucher has one
+- **Status**
+
+Click on any voucher to open its [details](/gift-vouchers/details).
+
+### Statuses
+
+| Status | What it means |
+| --- | --- |
+| **Still redeemable** | Active, with a balance left and not past its expiry date |
+| **Unclaimed** | Issued but not yet sent, because the buyer chose a future send date |
+| **Fully redeemed** | Every penny has been spent |
+| **Expired** | Past its expiry date, so the balance has lapsed |
+| **Voided** | Stopped by hand, and no longer spendable |
+
+### Filtering and searching
+
+- Filter by **Status**. Ticking more than one box widens the list rather than narrowing it, so **Still redeemable** and **Fully redeemed** together means either.
+- Filter by an **issue date** range
+- **Sort** by issued date, expiry date, balance or value
+- **Search** by code, recipient name or recipient email
+
+<Tip>
+Searching by code matches **anywhere** in the code, not just the start. Since every screen shows a voucher by its last four characters, those four are usually all a customer can read out to you — and they're enough to find it.
+</Tip>
+
+<Note>
+Vouchers are never deleted. A voucher is money somebody paid for, so a code that shouldn't be spent is [voided](/gift-vouchers/details#void-a-voucher) and keeps its history.
+</Note>
+
+## Codes
+
+A voucher code is 16 characters, shown in four groups of four, for example `4KTP-9WM2-HXQ7-BNVD`.
+
+The alphabet leaves out every character a person could misread — no `0` or `O`, no `1`, `I` or `L` — and the last character is a checksum, so a mistyped code is rejected before it ever reaches a balance. Case and separators are ignored, so `4ktp 9wm2-hxq7 bnvd` is the same code.
+
+## In this section
+
+<CardGroup cols={2}>
+  <Card title="Selling vouchers" href="/gift-vouchers/products">Create a voucher product so customers can buy vouchers from your shop</Card>
+  <Card title="Issuing by hand" href="/gift-vouchers/issue">Issue a voucher yourself, for goodwill or a phone order</Card>
+  <Card title="Voucher details" href="/gift-vouchers/details">The detail page, its ledger, and the actions available on a voucher</Card>
+  <Card title="Redeeming" href="/gift-vouchers/redeeming">How a customer spends a voucher, and the rules that apply</Card>
+  <Card title="Settings" href="/settings/gift-vouchers">Amounts, expiry and whether vouchers are sold at all</Card>
+  <Card title="Insights" href="/insights/gift-vouchers">The liability report, for your accounts</Card>
+</CardGroup>

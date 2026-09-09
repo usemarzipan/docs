@@ -1,0 +1,41 @@
+---
+title: 'Gift Vouchers'
+sidebarTitle: 'Gift Vouchers'
+description: 'Whether vouchers are sold, the amounts offered, and how long a voucher lasts.'
+---
+
+These are the shop-wide defaults for [gift vouchers](/gift-vouchers/overview). Individual [voucher products](/gift-vouchers/products) can override the amounts and the expiry.
+
+Navigate to **Settings > Gift Vouchers** to manage these options.
+
+<Frame>
+<img src="https://marzipan-cloud.b-cdn.net/0/docs/settings/gift-vouchers.png" alt="Gift voucher settings page" />
+</Frame>
+
+## Selling
+
+- **Sell vouchers** — whether customers can buy vouchers from your shop
+
+Turning this off stops new vouchers being sold. Vouchers people already hold keep working, and where any are still unspent Marzipan tells you how many there are and what they're worth before you turn the switch off.
+
+## Amounts
+
+- **Set amounts** — the amounts offered on the voucher product page. Add and remove as many as you like.
+- **Let customers choose their own** — adds a free-entry amount, bounded by a **Lowest** and a **Highest**
+
+## Expiry
+
+- **Vouchers last for** — a number of months. Leave it blank so vouchers never expire, which is what we recommend.
+- **Warn the holder** — how many days before expiry the **Voucher expiring soon** email goes out. Set it to 0 to send no warning.
+
+<Note>
+There's a floor on how short an expiry you can set, and the field tells you what it is. The warning only applies to vouchers that expire at all.
+</Note>
+
+<Warning>
+Changing the expiry policy only affects vouchers sold **from now on**. Vouchers already issued keep the expiry they were sold with.
+</Warning>
+
+## What happens at expiry
+
+A nightly sweep expires vouchers that have reached their date, and sends the warning email ahead of it. Expiry moves the balance to zero **through the ledger** rather than just changing a status, so the value can be seen leaving in the [liability report](/insights/gift-vouchers), where it's recognised as breakage.

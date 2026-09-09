@@ -1,0 +1,80 @@
+---
+title: 'Details'
+sidebarTitle: 'Details'
+description: 'The voucher detail page: its balance, its ledger, and the actions available on it.'
+---
+
+Click any voucher in the list to open it. The detail page is where you answer a customer's question about their voucher — what's on it, where it went, and what's been spent.
+
+<Frame>
+<img src="https://marzipan-cloud.b-cdn.net/0/docs/gift-vouchers/voucher-details.png" alt="Gift voucher detail page showing highlights, transactions and activity" />
+</Frame>
+
+## Highlights
+
+Three figures sit at the top:
+
+- **Balance** — what's left to spend
+- **Issued for** — what the voucher was worth when it was issued
+- **Expires** — the expiry date, or that it never expires
+
+## Voucher Details
+
+- **Code** — masked to its last four characters. Use the eye icon to [reveal it](#reveal-code).
+- **Purchased** and **Order no** — where the voucher was bought, linking to the order
+- **Issued**, **Issued by** and **Reason** — for a voucher [issued by hand](/gift-vouchers/issue)
+- **Voided** and **Void reason** — where the voucher has been stopped
+
+Alongside it, the people: the **Purchaser** who paid for it and the **Recipient** it was sent to, or a single **Customer** where they're the same person.
+
+<Note>
+Marzipan tells you when a code has been spent by someone other than the person it was sent to, or by several different customers. Vouchers get passed on, so this is information rather than a problem — the orders are listed under Transactions.
+</Note>
+
+## Transactions
+
+The ledger. Every movement of value on the voucher, newest first, with the amount added or taken and a link to the order it belongs to:
+
+| Entry | What it means |
+| --- | --- |
+| **Issued** | The voucher was created and its value put on |
+| **Redeemed** | Value was spent against an order |
+| **Refunded back** | An order that spent the voucher was refunded, so the value went back on |
+| **Adjusted manually** | Somebody on your team changed the balance |
+| **Expired** | The balance lapsed at the expiry date |
+
+## Activity
+
+The account of what happened, alongside the ledger — including notes your team has added. Use it to record a phone call or the background to an adjustment.
+
+## Actions
+
+The **Actions** menu holds everything you can do to a voucher.
+
+### Reveal code
+
+Shows the full, spendable code, and offers to copy it. You're asked why first — "Customer rang, cannot find the email", say — and the reveal is recorded in the activity log.
+
+<Note>
+Revealing is deliberately a step of its own, and never happens by accident. Everywhere else in Marzipan a code appears masked, including the email preview.
+</Note>
+
+### Resend or change address
+
+Sends the code again, straight away. Change the **Send to** address first if it went to the wrong place, and the greeting name with it where the code is being passed to somebody else.
+
+Every resend asks for a reason, and says on the voucher why it was sent again.
+
+### Adjust balance
+
+Enter an amount to add, or a negative amount to take value off. An adjustment always carries a note and always names who made it, and lands in both the ledger and the activity log.
+
+### Void a voucher
+
+Stops the code being spent, straight away.
+
+The balance is **left where it is** rather than zeroed — what a code was worth when it was stopped is exactly what a later support conversation needs to know. You're asked for a reason, such as `Chargeback on the purchasing order`.
+
+<Warning>
+Voiding can't be undone, and a voided voucher can't be spent. It does still accept a refund, though: if an order that spent the code is refunded, the value goes back on, because the money went out and has to be able to come back.
+</Warning>
