@@ -323,6 +323,14 @@
     {
       "source": "/settings/ezypro",
       "destination": "/integrations/ezypro"
+    },
+    {
+      "source": "/api-reference/events/check-event-availability",
+      "destination": "/api-reference/events/check-occurrence-availability"
+    },
+    {
+      "source": "/api-reference/events/check-event-dates",
+      "destination": "/api-reference/events/get-recurring-event-dates"
     }
   ]
 }

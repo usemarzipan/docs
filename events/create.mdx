@@ -30,6 +30,8 @@ To create an event:
 
     Weekly lets you pick the weekdays to repeat on, and you can set a **recurrence end date**.
 
+    A recurring event can also run in [separate date ranges](/events/recurring#date-ranges), so a series can pause and pick up again without becoming a second event.
+
     Recurring events create **occurrences**: individual dated instances that customers book onto. See [Recurring events](/events/recurring).
   </Step>
   <Step title="Set the date and time">
@@ -62,6 +64,10 @@ You can optionally take a **deposit** rather than the full price upfront:
 - **Auto-charge** - charge the balance automatically when it falls due
 
 You can also set a **sales cut-off** to close ticket sales a set number of days before the event.
+
+<Note>
+On a recurring event the cut-off is counted from **each date**, so it closes sales for a date a set number of days before that date rather than before the first in the series. A series only reports its sales as closed once every remaining date has passed its own cut-off.
+</Note>
 
 <Note>
 Outstanding balances can be requested or processed from the event detail screen. See [Details](/events/details#deposits-and-balances).

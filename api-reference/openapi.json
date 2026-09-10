@@ -3124,32 +3124,6 @@
           }
         }
       },
-      "EventAvailability": {
-        "type": "object",
-        "description": "Ticket availability for an event.",
-        "properties": {
-          "available": {
-            "type": "boolean",
-            "description": "Whether tickets are currently available."
-          },
-          "ticketsAvailable": {
-            "type": "integer",
-            "description": "The number of tickets available."
-          },
-          "waitlistEnabled": {
-            "type": "boolean",
-            "description": "Whether the waitlist is enabled for the event."
-          },
-          "waitlistCount": {
-            "type": "integer",
-            "description": "The number of entries currently on the waitlist."
-          },
-          "message": {
-            "type": "string",
-            "description": "An explanatory message, present when the event is unavailable or does not occur on the requested date."
-          }
-        }
-      },
       "EventStats": {
         "type": "object",
         "description": "Aggregate statistics for an event. Revenue values are in the store's major currency unit.",
@@ -10974,177 +10948,6 @@
         }
       }
     },
-    "/events/{event}/availability": {
-      "parameters": [
-        {
-          "name": "event",
-          "in": "path",
-          "required": true,
-          "description": "The unique identifier of the event.",
-          "schema": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "example": "b7a4c2e1-8f3d-4a6b-9c2e-1d5f7a8b3c4d"
-        }
-      ],
-      "get": {
-        "tags": [
-          "Events"
-        ],
-        "summary": "Check Event Availability",
-        "description": "Check ticket availability for an event, optionally for a specific date. For recurring events, an invalid date returns `available: false` with a message. Includes waitlist status and count.",
-        "parameters": [
-          {
-            "name": "date",
-            "in": "query",
-            "required": false,
-            "description": "The date to check availability for (YYYY-MM-DD). Defaults to the event's start date. Used to validate a date against a recurring event's schedule.",
-            "schema": {
-              "type": "string",
-              "format": "date"
-            },
-            "example": "2026-08-15"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Availability details for the event.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/EventAvailability"
-                },
-                "example": {
-                  "available": true,
-                  "ticketsAvailable": 42,
-                  "waitlistEnabled": true,
-                  "waitlistCount": 3
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Event not found.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "example": {
-                  "message": "No query results for model [Event]."
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/events/{event}/check-dates": {
-      "parameters": [
-        {
-          "name": "event",
-          "in": "path",
-          "required": true,
-          "description": "The unique identifier of the event.",
-          "schema": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "example": "b7a4c2e1-8f3d-4a6b-9c2e-1d5f7a8b3c4d"
-        }
-      ],
-      "get": {
-        "tags": [
-          "Events"
-        ],
-        "summary": "Check Event Dates",
-        "description": "Check whether an event is available on a specific search date. For non-recurring events the search date is matched against the event's start date; for recurring events it is validated against the recurrence pattern. Returns the availability details along with the requested and scheduled dates.",
-        "parameters": [
-          {
-            "name": "searchDate",
-            "in": "query",
-            "required": true,
-            "description": "The date to check (YYYY-MM-DD).",
-            "schema": {
-              "type": "string",
-              "format": "date"
-            },
-            "example": "2026-08-15"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Availability for the requested date.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/EventAvailability"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "searchDate": {
-                          "type": "string",
-                          "format": "date",
-                          "description": "The date that was searched."
-                        },
-                        "eventDate": {
-                          "type": "string",
-                          "format": "date",
-                          "description": "The event's scheduled start date."
-                        }
-                      }
-                    }
-                  ]
-                },
-                "example": {
-                  "available": true,
-                  "ticketsAvailable": 42,
-                  "waitlistEnabled": true,
-                  "waitlistCount": 3,
-                  "searchDate": "2026-08-15",
-                  "eventDate": "2026-08-15"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Event not found.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "example": {
-                  "message": "No query results for model [Event]."
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ValidationError"
-                },
-                "example": {
-                  "message": "The search date field is required.",
-                  "errors": {
-                    "searchDate": [
-                      "The search date field is required."
-                    ]
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/events/{event}/stats": {
       "parameters": [
         {
@@ -11224,7 +11027,7 @@
           "Events"
         ],
         "summary": "Get Recurring Event Dates",
-        "description": "List the upcoming active occurrences for a recurring event product within an optional date range. If the product is not a recurring event, an empty list is returned with an explanatory message.",
+        "description": "List the upcoming active occurrences for a recurring event product within an optional date range. If the product is not a recurring event, an empty list is returned with an explanatory message. An event can be confined to one or more date ranges, and this endpoint reads the materialised occurrences, so no dates are returned for the gaps between them. Treat the returned dates as authoritative rather than re-deriving them from `recurrenceType` and a start date.",
         "parameters": [
           {
             "name": "startDate",
@@ -11383,7 +11186,7 @@
           "Events"
         ],
         "summary": "List Event Occurrences",
-        "description": "List the occurrences of a recurring event, optionally filtered by date range and status. When no start date or status filter is supplied, only upcoming occurrences are returned. If the event is not recurring, an empty list is returned with an explanatory message.",
+        "description": "List the occurrences of a recurring event, optionally filtered by date range and status. When no start date or status filter is supplied, only upcoming occurrences are returned. If the event is not recurring, an empty list is returned with an explanatory message. An event can be confined to one or more date ranges, and this endpoint reads the materialised occurrences, so no dates are returned for the gaps between them. Treat the returned dates as authoritative rather than re-deriving them from `recurrenceType` and a start date.",
         "parameters": [
           {
             "name": "startDate",

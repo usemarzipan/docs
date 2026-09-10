@@ -25,6 +25,30 @@ To open the series from a date, use **View parent event** in the date's **Action
 A recurring event is only finished once its **last** date has passed, not its first.
 </Note>
 
+<Tip>
+Your storefront and the [API](/api-reference/introduction) both read the dates Marzipan has generated, so they never show a date in a gap between ranges. Treat those dates as authoritative rather than working them out from the recurrence type and a start date.
+</Tip>
+
+## Date ranges
+
+A recurring event can run in **separate date ranges** while keeping one weekday pattern and one set of times. A venue that only opens during school holidays sets a range per holiday, rather than creating a separate event for each one and splitting its ticketing, waitlist and reporting across events that are really one product.
+
+Ranges are set under **Dates** on the event form. The first row is the event's own first and last date, so it reads as one list with the rest. Use **Add date range** for each additional window, and **Remove date range** to take one out.
+
+- The **end** of a range must be on or after its start
+- Ranges can't **overlap**
+- You can add up to **24** ranges
+
+<Note>
+Once a second range exists, the first has to be closed with an end date. Leaving it open means it never finishes, so nothing after it could ever be reached. A single range with a blank end still means the event runs on indefinitely.
+</Note>
+
+A range **masks** the pattern rather than restarting it. A monthly event keeps its day of the month across a gap, and a weekly event still lands on the weekdays you picked inside each window. The dates simply stop in the gaps and pick up again.
+
+<Warning>
+Removing a range reconciles like any other change to the pattern: dates in it that haven't sold are removed, and dates that have sold tickets are kept and stay in your reporting.
+</Warning>
+
 ## Occurrence status
 
 Each date carries its own status, using the same vocabulary as the event itself:

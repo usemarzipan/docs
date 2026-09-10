@@ -42,6 +42,24 @@ Cancelling a gift stops the renewal, not the deliveries. Six new email templates
 
 See [Gift subscriptions](/subscriptions/gifts).
 
+## Recurring Events in Separate Date Ranges
+
+A recurring event can now run in **separate date ranges** while keeping one weekday pattern and one set of times. A venue that only opens during school holidays previously had to create an event per holiday, which split its ticketing, waitlist and reporting across events that were really one product.
+
+Set the ranges under **Dates** on the event form. A range masks the pattern rather than restarting it, so a monthly event keeps its day of the month across a gap and a weekly one still lands on the weekdays you picked. Removing a range keeps any dates that have already sold tickets.
+
+See [Recurring events](/events/recurring#date-ranges).
+
+## Ticket Sales Cut-Off on Recurring Events
+
+The sales cut-off was measured from a recurring event's **first** date, so once that date passed the gate stayed shut: every later date reported sales as closed and refused to add to the cart, however far off it was and however many tickets were left.
+
+The cut-off now counts from the date being bought. A series is only closed once every remaining date has passed its own cut-off. See [Create](/events/create#deposits).
+
+<Note>
+Two API endpoints have been **removed**: `GET /v1/events/{event}/availability` and `GET /v1/events/{event}/check-dates`. Both were served by a second recurrence generator that ignored the weekday selection and never matched a date on a recurring event, so they only ever worked for one-off events. Use [Check Occurrence Availability](/api-reference/events/check-occurrence-availability) instead, which is scoped to a single date.
+</Note>
+
 ## Reward Points and Vouchers
 
 Buying a gift voucher never earns points, and by default neither does the part of an order a voucher paid for. Turn **Exclude voucher payments** off under Settings > Rewards to let redemptions earn. See [Earning and redemption](/rewards/earning-and-redemption).
