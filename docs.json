@@ -331,6 +331,42 @@
     {
       "source": "/api-reference/events/check-event-dates",
       "destination": "/api-reference/events/get-recurring-event-dates"
+    },
+    {
+      "source": "/api-reference/carts/create-express-checkout-intent",
+      "destination": "/api-reference/introduction"
+    },
+    {
+      "source": "/api-reference/carts/get-free-shipping-upsell",
+      "destination": "/api-reference/introduction"
+    },
+    {
+      "source": "/api-reference/carts/switch-cart-market",
+      "destination": "/api-reference/introduction"
+    },
+    {
+      "source": "/api-reference/carts/generate-payfast-checkout-identifier",
+      "destination": "/api-reference/introduction"
+    },
+    {
+      "source": "/api-reference/carts/check-payfast-payment-status",
+      "destination": "/api-reference/introduction"
+    },
+    {
+      "source": "/api-reference/carts/redeem-reward-points",
+      "destination": "/api-reference/introduction"
+    },
+    {
+      "source": "/api-reference/carts/remove-reward-points",
+      "destination": "/api-reference/introduction"
+    },
+    {
+      "source": "/api-reference/carts/get-related-products",
+      "destination": "/api-reference/introduction"
+    },
+    {
+      "source": "/api-reference/carts/update-payment-intent-amount",
+      "destination": "/api-reference/introduction"
     }
   ]
 }
