@@ -3,6 +3,69 @@ title: 'Changelog'
 sidebarTitle: '2026'
 description: 'Updates and improvements to Marzipan'
 ---
+<Update label="September 2026">
+
+## Gift Vouchers
+
+Marzipan now sells and manages **gift vouchers**: stored-value codes a customer buys and somebody else spends later.
+
+Sell them from a **voucher product**, which behaves like any other product but issues a code instead of shipping something. Set the amounts on offer, let buyers enter their own, choose an expiry, and optionally restrict what a voucher can be spent on. A voucher belongs to one market, and the buyer picks who it goes to, what the message says and the day it should arrive.
+
+A new **Gift Vouchers** area lists every code you've issued, with the unspent balance, what was issued and redeemed this month, and what's expiring in the next 30 days. Every voucher has a full ledger of its movements alongside an activity trail, and can be resent, adjusted or voided. Codes are masked to their last four characters everywhere, and revealing one is a deliberate step that asks why and records it.
+
+Customers spend a voucher in the same box as a discount code. It can pay for goods, delivery and subscriptions, in part or in full, over as many orders as it takes, though never for another voucher. Refunding an order puts the value back on the code.
+
+- **Issue by hand** - for goodwill or a phone order, emailed to the recipient or handed over yourself
+- **Liability report** - issued, redeemed, lapsed and outstanding, month by month, under Insights
+- **Emails** - four new templates under **Settings > Notifications**, in a **Gift Vouchers** group
+- **Expiry** - off by default, with a warning email before a balance lapses
+
+See [Gift Vouchers](/gift-vouchers/overview) and [Settings > Gift Vouchers](/settings/gift-vouchers).
+
+## Gift Checkout
+
+Customers can now send an order to somebody else. Checkout asks **who the order is for**, and a gift adds a step for the message, the recipient's details, a date not to deliver before, and a date to tell them on.
+
+The reveal date is a real promise: nothing reaches the recipient before it, and the email goes out at eight in the morning in your own timezone. **Deliver after** now holds the parcel itself rather than only showing on the order page, so a gift bought in September for Christmas stays put.
+
+Billing stays with the buyer and delivery goes to the recipient. Where a gift needs an account, as a subscription does, the recipient is created as an ordinary customer, and an existing customer gifted something at their office never has their own delivery address repointed.
+
+Turn it on with **Let customers buy gifts** under [Settings > Cart & Checkout](/settings/cart-and-checkout#gifting), and reword every question under Branding & Web Components. See [Gift orders](/orders/gifts).
+
+## Gift Subscriptions
+
+A subscription can now be sold as a prepaid gift: a fixed number of deliveries, charged once, that never auto-renews.
+
+The giver and the recipient are held separately, so billing email stays with the person who paid and the person receiving it is never charged. At the end of the term the giver chooses what happens (hand it over, stop, or keep gifting it), and both people are told at different times, the giver first so they get the chance to renew before the recipient hears anything.
+
+Cancelling a gift stops the renewal, not the deliveries. Six new email templates cover the whole life of a gift, under **Settings > Notifications** in a **Gift** group.
+
+See [Gift subscriptions](/subscriptions/gifts).
+
+## Recurring Events in Separate Date Ranges
+
+A recurring event can now run in **separate date ranges** while keeping one weekday pattern and one set of times. A venue that only opens during school holidays previously had to create an event per holiday, which split its ticketing, waitlist and reporting across events that were really one product.
+
+Set the ranges under **Dates** on the event form. A range masks the pattern rather than restarting it, so a monthly event keeps its day of the month across a gap and a weekly one still lands on the weekdays you picked. Removing a range keeps any dates that have already sold tickets.
+
+See [Recurring events](/events/recurring#date-ranges).
+
+## Ticket Sales Cut-Off on Recurring Events
+
+The sales cut-off was measured from a recurring event's **first** date, so once that date passed the gate stayed shut: every later date reported sales as closed and refused to add to the cart, however far off it was and however many tickets were left.
+
+The cut-off now counts from the date being bought. A series is only closed once every remaining date has passed its own cut-off. See [Create](/events/create#deposits).
+
+<Note>
+Two API endpoints have been **removed**: `GET /v1/events/{event}/availability` and `GET /v1/events/{event}/check-dates`. Both were served by a second recurrence generator that ignored the weekday selection and never matched a date on a recurring event, so they only ever worked for one-off events. Use [Check Occurrence Availability](/api-reference/events/check-occurrence-availability) instead, which is scoped to a single date.
+</Note>
+
+## Reward Points and Vouchers
+
+Buying a gift voucher never earns points, and by default neither does the part of an order a voucher paid for. Turn **Exclude voucher payments** off under Settings > Rewards to let redemptions earn. See [Earning and redemption](/rewards/earning-and-redemption).
+
+</Update>
+
 <Update label="August 2026">
 
 ## Payment Links
@@ -23,9 +86,9 @@ A new integration exports your orders to **EzyPro** on a schedule, as a CSV deli
 
 The [create order](/orders/create) form has been reordered so items are added before delivery, which means shipping rates and free-shipping thresholds are quoted against a basket that actually has something in it.
 
-- **One-off items** — sell something your catalogue has never held, such as corkage or a delivery surcharge, without creating a product for it
-- **No shipping needed** — a third option beside Delivery and Collection, for orders that are digital, comped, or handed over across the counter
-- **Discount suggestions** — the discount section now lists the discounts an order already qualifies for, best first, with what each is worth against that basket
+- **One-off items** - sell something your catalogue has never held, such as corkage or a delivery surcharge, without creating a product for it
+- **No shipping needed** - a third option beside Delivery and Collection, for orders that are digital, comped, or handed over across the counter
+- **Discount suggestions** - the discount section now lists the discounts an order already qualifies for, best first, with what each is worth against that basket
 
 ## Purchase Options on Product Pages
 
@@ -43,7 +106,7 @@ Adding to the cart without redirecting now shows a short confirmation where the 
 Stores that never set a redirect preference pick up **Notify** as the new default. Stores that did set one keep what they had.
 </Note>
 
-## London City Bond — Goods Received
+## London City Bond - Goods Received
 
 Turn on **Record goods received** to add stock as soon as London City Bond book goods in, at midday and 7pm, rather than waiting for the nightly sync. It also closes off the stock transfer the goods were for, and covers supplier deliveries as well as your own transfers. See [Integrations](/integrations/london-city-bond#goods-received).
 
@@ -196,7 +259,7 @@ Physical and bundle products now have a **barcode / GTIN** field, accepting EAN-
 
 ## Web Component Labels Tab
 
-Storefront text labels are now consolidated into a single **Labels** tab in Settings > Web Components, including new **Sales Closed** and **Back in Stock** button labels. You can also choose how subscription frequencies read — worded ("quarterly") or interval ("every 3 months"). See the [Customisation guide](/web-components/customisation).
+Storefront text labels are now consolidated into a single **Labels** tab in Settings > Web Components, including new **Sales Closed** and **Back in Stock** button labels. You can also choose how subscription frequencies read: worded ("quarterly") or interval ("every 3 months"). See the [Customisation guide](/web-components/customisation).
 
 ## Customisable Button Text Colour
 
@@ -223,15 +286,15 @@ Form **auto-reply** emails are now sent from a customisable notification templat
 
 <Update label="May 2026">
 
-## Point of Sale — Walk-In Customers & Receipts
+## Point of Sale - Walk-In Customers & Receipts
 
-[Point of Sale](/orders/pos) sales can now be taken for a shared **walk-in customer** and turned into a named customer later. Email a **POS receipt** after a sale — sending it links the walk-in order to that customer — or assign a walk-in order to a customer from the order's Actions menu. Tap to Pay payments now capture and display the card brand and last four digits.
+[Point of Sale](/orders/pos) sales can now be taken for a shared **walk-in customer** and turned into a named customer later. Email a **POS receipt** after a sale (sending it links the walk-in order to that customer), or assign a walk-in order to a customer from the order's Actions menu. Tap to Pay payments now capture and display the card brand and last four digits.
 
 ## Event Attendees Export
 
 The event **Attendees** tab now has a **CSV export**, a price column, and clickable links back to each attendee's order. See [Events](/events/overview).
 
-## Subscriptions — Cancelled/Expired Filter
+## Subscriptions - Cancelled/Expired Filter
 
 Filter the [subscriptions](/subscriptions/overview) list by when subscriptions were **cancelled or expired** using a date range.
 
@@ -276,7 +339,7 @@ Upgraded the underlying platform to Laravel 12.
 
 Introduced a complete loyalty programme with tiered rewards, point earning, and checkout redemption.
 
-Customers earn points on every order based on configurable earning rates. Points accumulate towards reward tiers — each tier can offer perks like percentage discounts, free shipping, early access to products, and event invitations. Customers can see their current tier, points balance, and progress to the next tier from their account page.
+Customers earn points on every order based on configurable earning rates. Points accumulate towards reward tiers, and each tier can offer perks like percentage discounts, free shipping, early access to products, and event invitations. Customers can see their current tier, points balance, and progress to the next tier from their account page.
 
 Points can be redeemed at checkout for a discount, with configurable redemption rates and maximum discount caps per currency. Tier membership is managed automatically based on lifetime spending, with optional notifications for tier upgrades and downgrades.
 
@@ -343,7 +406,7 @@ See the [Web Components Customisation guide](/web-components/customisation) for 
 
 Create custom forms directly in the dashboard with configurable field types including text, email, phone, textarea, select, checkbox, radio, date, and hidden fields. Form submissions trigger notifications and auto-reply emails.
 
-A new `<marzipan-form>` web component renders forms dynamically by slug, replacing the old hardcoded `<marzipan-contactform>` component. Fields, validation, and layout are all driven by the API — no code changes needed when forms are updated.
+A new `<marzipan-form>` web component renders forms dynamically by slug, replacing the old hardcoded `<marzipan-contactform>` component. Fields, validation, and layout are all driven by the API, so no code changes are needed when forms are updated.
 
 ## Bidirectional Messaging
 

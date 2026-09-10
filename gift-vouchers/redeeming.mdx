@@ -1,0 +1,68 @@
+---
+title: 'Redeeming'
+sidebarTitle: 'Redeeming'
+description: 'How a customer spends a gift voucher, and the rules that apply when they do.'
+---
+
+A customer spends a voucher by entering its code in the **discount code box** at checkout. There's no second field to find: Marzipan recognises a voucher code by its checksum, so anything that passes it and matches a code you issued is treated as stored value, and everything else is treated as a promotion.
+
+The amount the voucher covers is shown against the order, and the card is charged the difference.
+
+## What a voucher can pay for
+
+- **Goods**, including subscriptions
+- **Delivery**, but only where the goods being delivered are themselves something the voucher may pay for
+- **Part of an order**. A £50 voucher against a £120 basket takes £50 off what's charged and leaves £70 on the card.
+
+A voucher can be spent over several orders until the balance runs out, and more than one voucher can be applied to a single order.
+
+<Warning>
+**A voucher can't buy a voucher.** Voucher lines aren't payable by voucher, though the rest of a mixed basket still is. Without that rule, a code restricted to one shop's events, or a month from expiring, would launder into a fresh unrestricted one that never expires.
+</Warning>
+
+## Restrictions
+
+Where the voucher was sold with a **Spendable on** restriction, it only pays for the lines that match: the products, collections or events it was sold against. For an event, scoping to the series covers every occurrence; scoping to a single date covers that date.
+
+Restrictions are fixed at the point of sale, so changing a voucher product later never narrows a voucher somebody already holds.
+
+## Markets and currency
+
+A balance is money in the market it was sold in, and there's no exchange rate to carry it into another. A voucher bought in one market can't be spent on an order in a different one, and a voucher in one currency can't be spent against a cart in another.
+
+## Subscriptions
+
+A voucher can pay for a subscription, including the first delivery in full.
+
+Where it covers the whole basket, nothing is charged, so no card would normally be saved, and every renewal afterwards would have nothing to bill. Checkout therefore **still asks for a card** for the deliveries after the first, and explains why. Set that wording under **Settings > Branding & Web Components > Checkout**.
+
+## How the money moves
+
+Applying a code at checkout is only intent: it records what the voucher is expected to cover. Nothing comes off the voucher itself until the order is paid.
+
+If the basket changes in between, every applied voucher is measured again: a code applied to a £120 basket won't still claim £50 of a £30 one.
+
+<Note>
+The full order value stays in your sales reporting. A voucher settles a liability you were already paid for, so the amount actually taken on the card and the value of the order can differ without either being wrong. This is the opposite of [reward points](/rewards/earning-and-redemption), which genuinely are a discount and do reduce the order.
+</Note>
+
+## Refunds
+
+Refunding an order that was paid with a voucher **puts the value back on the code**, because a voucher is a tender like any other. This works even on a voided voucher: the money went out, so it has to be able to come back.
+
+## Emails
+
+Two emails reach the holder as they spend:
+
+- **Voucher balance remaining** - after part of a voucher is spent, so they know there's still something on it
+- **Voucher expiring soon** - before a balance lapses, while there's still time to spend it
+
+Both are edited under **Settings > Notifications**, in the **Gift Vouchers** group.
+
+## Reward points
+
+By default, no points are earned on the part of an order a voucher paid for, and **buying** a voucher never earns points whatever the setting says. Turn **Exclude Voucher Payments** off under [Settings > Rewards](/rewards/earning-and-redemption) to let redemptions earn.
+
+## Guessing attempts
+
+Guessing against stored value is a real attack, so attempts to apply a voucher code are rate-limited by IP address whether or not they find anything. A customer who mistypes a code a few times will be asked to try again shortly.

@@ -1,0 +1,80 @@
+---
+title: 'Selling vouchers'
+sidebarTitle: 'Selling vouchers'
+description: 'Create a voucher product so customers can buy gift vouchers from your shop.'
+---
+
+Customers buy vouchers from a **voucher product**, which behaves like any other product on your storefront: it has a name, a description, images, collections and SEO. What makes it a voucher product is that it sells value rather than goods: nothing ships, and paying for it issues a code.
+
+From the **Gift Vouchers** page, click **Gift voucher products** to see the ones you have, and **Add voucher product** to create one.
+
+Each product in that list shows its **Name**, **Amounts** (or `Shop default`), what it's **Spendable on**, and its **Status**.
+
+<Frame>
+<img src="https://marzipan-cloud.b-cdn.net/0/docs/gift-vouchers/voucher-product.png" alt="The voucher product form" />
+</Frame>
+
+<Note>
+The **Sell vouchers** switch under [Settings > Gift Vouchers](/settings/gift-vouchers) has to be on. With it off, voucher products aren't purchasable however they're set up.
+</Note>
+
+## Details
+
+- **Name**, **Slug**, **Summary** and **Description** - as on any product
+- **Collections** - the collections the voucher appears in on your storefront
+- **Status** - `active`, `draft` or `unavailable`
+- **SKU** - used in reporting and exports. Nothing ships, so it's never picked.
+- **Sold in** - the market the voucher belongs to. Only shown when you sell in more than one.
+- **Expiry** - how long vouchers sold from this product last
+- **Spendable on** - an optional restriction on what the voucher can buy
+
+### Sold in
+
+A voucher carries a currency, and that currency is fixed when the voucher is bought. A voucher product therefore belongs to **one market**, and the amounts on it are in that market's currency.
+
+To sell vouchers in another currency, add a second voucher product for that market.
+
+### Expiry
+
+Choose the shop default set in [Settings > Gift Vouchers](/settings/gift-vouchers), or override it for this product with **12**, **24** or **36 months**.
+
+<Warning>
+Changing expiry only affects vouchers sold **from now on**. A voucher already in a customer's hands keeps the expiry it was sold with.
+</Warning>
+
+### Spendable on
+
+Leave this empty and the voucher can be spent on anything. Add products, collections or events to restrict it, such as a tour voucher that only buys tour tickets.
+
+Restrictions are **copied onto the voucher when it's bought**, so editing the product later never shrinks a voucher somebody already holds.
+
+## Amount
+
+**Amount is** sets how the value is chosen:
+
+- **Fixed** - every voucher sold from this product is worth the same. Set a **Price**.
+- **Chosen by the buyer** - the buyer picks from the amounts you offer, and optionally enters their own.
+
+### Amounts offered
+
+List the amounts shown on the product page. Leave the list empty to fall back to the shop defaults from [Settings > Gift Vouchers](/settings/gift-vouchers).
+
+### Let buyers enter their own
+
+Turn this on to add a free-entry amount, bounded by a **Lowest** and **Highest**.
+
+## What the buyer fills in
+
+On the storefront, buying a voucher collects the recipient's name and email, an optional message, and the date to send it. The buyer gets a **Voucher purchased** email confirming when it will go; the recipient gets a **Voucher issued** email carrying the code on the chosen day.
+
+<Note>
+A voucher-only order takes no shipping date and no delivery address, because there's nothing to post. Where the buyer picked a future date, the voucher defers itself and the order isn't held.
+</Note>
+
+## After the sale
+
+Every code an order sold is listed on the order under **Vouchers issued**, and each one links to its [voucher details](/gift-vouchers/details).
+
+<Warning>
+Refunding a voucher order in full **voids the codes it sold**, recovering whatever is left on them. Anything the recipient already spent stands: that value was honoured in good faith and isn't chased.
+</Warning>

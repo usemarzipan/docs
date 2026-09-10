@@ -1,0 +1,90 @@
+---
+title: 'Gift orders'
+sidebarTitle: 'Gift orders'
+description: 'Let customers send an order to someone else, with a message, a delivery date and a reveal date.'
+---
+
+With gifting turned on, a customer can send an order to somebody else, with a message, a date not to deliver before, and a date the recipient is told about it.
+
+Turn it on with **Let customers buy gifts** under [Settings > Cart & Checkout](/settings/cart-and-checkout#gifting).
+
+## At checkout
+
+The delivery step opens with **Who is this for?**, offering **Myself** or **Someone else**. Choosing Someone else collects the recipient's delivery address, then asks **This is a gift**.
+
+Answering yes adds a step for:
+
+- **The recipient's name**, and who the gift is **from**
+- **A gift message**
+- **Their email address**, where the gift is something the recipient needs to hear about
+- **Tell them on** - the date the recipient is contacted
+- **Deliver after** - the earliest date the parcel may go
+
+All of the wording on these steps is yours to change, under **Settings > Branding & Web Components > Checkout**.
+
+<Note>
+"Who is this for?" is deliberately broader than "is this a gift?", because it also covers sending something to your own office. The gift question comes second, and only once the customer has said the order is for someone else.
+</Note>
+
+### What's collected, and when
+
+- **A gift of physical goods alone** needs no recipient email. Nothing is sent to the recipient and no account is created for them. The message travels in the box.
+- **A gift subscription** does need one, because an account is created for the recipient so they can manage their deliveries. Checkout refuses a gift subscription with nobody to send it to.
+- **A gift voucher** carries its own recipient and send date on the voucher itself. See [Selling vouchers](/gift-vouchers/products).
+
+### Billing and delivery
+
+Billing stays with the **buyer** and delivery goes to the **recipient**. The buyer is the order's customer, so your order list, exports and reporting still show who actually paid.
+
+<Note>
+An order goes to one destination. The recipient details and the end-of-term choice are asked once, for the whole order, rather than per line.
+</Note>
+
+## The recipient as a customer
+
+Where a gift needs one, the recipient is created as an ordinary customer, with the delivery address attached to them.
+
+An existing customer gifted a case at their office **never** has their own default delivery address repointed. The gift address is only made their default when they had none at all.
+
+## Deliver after
+
+**Deliver after** becomes the order's shipping date, so it holds the parcel everywhere a shipping date is honoured: order processing, courier submission and held-order releases.
+
+<Warning>
+Only physical dispatch is held. A gift voucher defers itself through its own send date, so a voucher-only order takes no shipping date at all.
+</Warning>
+
+Where a gift subscription's first shipment already has a dispatch day, the **later** of the two dates wins. The shipment schedule says the soonest a parcel *can* go, and the gift date says the soonest it *may*.
+
+## Tell them on
+
+The reveal date is when the recipient hears about the gift, and nothing reaches them before it: not at purchase, and not when the order is confirmed. A gift bought in November for Christmas stays quiet for six weeks.
+
+The email goes out at **eight in the morning** in the shop's own timezone, rather than whenever the overnight jobs happen to run.
+
+<Note>
+A reveal date can't land after the delivery date. There's no point telling somebody about a gift that has already turned up on their doorstep, so checkout refuses the combination.
+</Note>
+
+## On the order
+
+A gift order carries a **Gift options** block on its [detail page](/orders/details):
+
+- **For** and **From**
+- **Their email**
+- **Tell them on**
+- **Deliver after**
+- **When it ends** - for a gift subscription, what the giver chose to happen at the end of the prepaid term
+- **Gift message**
+
+## Turning gifting off
+
+Turning **Let customers buy gifts** off only stops new gifts being bought. Gift subscriptions already running keep delivering for the rest of their term, and the people receiving them still get their emails.
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Gift subscriptions" href="/subscriptions/gifts">Prepaid terms, reveal dates and what happens when a gift runs out</Card>
+  <Card title="Gift vouchers" href="/gift-vouchers/overview">Sell stored-value codes customers can spend later</Card>
+  <Card title="Cart & Checkout" href="/settings/cart-and-checkout#gifting">Turn gifting on and set the delivery date option</Card>
+</CardGroup>

@@ -1,0 +1,85 @@
+---
+title: 'Gift subscriptions'
+sidebarTitle: 'Gift subscriptions'
+description: 'Sell a subscription as a prepaid gift, and manage what happens when the term runs out.'
+---
+
+A gift subscription is bought by one person and received by another. It's **prepaid for a fixed number of deliveries** and charged once, so it never auto-renews. A recurring charge against a gift is the single biggest source of chargebacks, and prepaying sidesteps dunning entirely.
+
+## How a gift plan works
+
+A gift plan sells a set number of shipments for one payment. The buyer chooses the **term** (three, four or six deliveries, say) from the options the plan offers.
+
+An ordinary subscription package can point at a gift counterpart, so the product page offers **for me** or **as a gift** without the shopper having to find two separate products.
+
+<Note>
+Gift plan settings (whether a package is a gift plan, the terms it offers, and the ordinary package it pairs with) are configured through the API rather than the package form in the admin. Speak to us if you'd like one set up.
+</Note>
+
+## Who pays and who receives
+
+A gift subscription separates the two:
+
+- The **giver** paid for it and owns it
+- The **recipient** receives the deliveries and, when the time comes, may take it over
+
+Billing email stays with the giver, so the person being given a gift never receives billing correspondence for it. The giver keeps a route to the subscription they paid for.
+
+An account is created for the recipient so they can manage their deliveries, which is why a gift subscription needs the recipient's email address at checkout.
+
+<Tip>
+A recipient who later signs up with the gifted address inherits the subscription, rather than ending up with a duplicate account.
+</Tip>
+
+## The reveal date
+
+Nothing reaches the recipient before the date the giver chose. See [Tell them on](/orders/gifts#tell-them-on) for how the timing works.
+
+The giver is sent a **Gift Subscription Scheduled** email at the point of purchase, confirming that nothing reaches the recipient until then, which is otherwise the first thing they write in to ask.
+
+## When the term runs out
+
+The giver chooses this at checkout, under a heading you can rename in **Settings > Branding & Web Components > Checkout**:
+
+| Choice | What happens |
+| --- | --- |
+| **Hand over** | The recipient is invited to continue on their own card |
+| **Stop** | Deliveries end |
+| **Keep gifting** | The giver is reminded, then charged again for another term |
+
+Both people are told, separately and at different times. The **giver hears first**, 30 days out, so they get the chance to gift it again before the recipient is told anything. The recipient hears at 14 days, and only where there's something for them to do. Telling someone their gift is ending when the giver has already chosen to renew it would be both confusing and untrue.
+
+<Note>
+Where the giver chose to keep gifting it, their card is used **only** to charge a fresh term. It's never used for ordinary renewal, and it's kept separate from the recipient's own payment methods.
+</Note>
+
+## On the subscription
+
+A gift subscription carries a **Gift** block on its [detail page](/subscriptions/details):
+
+- **Paid for by** - the giver, linking to their customer record
+- **Received by** - the recipient
+- **Deliveries left** - for example `2 of 6`
+- **Paid up to**
+- **When it runs out** - spelled out, so you can answer "so what happens in March?" without knowing the stored values
+
+There's no card on a gift subscription by design, and nothing is ever charged to the person receiving it.
+
+## Cancelling
+
+Cancelling a gift **stops the renewal, not the deliveries**. The recipient keeps everything that was paid for; what the giver has cancelled is the fresh term that would otherwise have followed.
+
+This is different from an ordinary subscription, which still ends immediately when cancelled.
+
+## Emails
+
+Six emails cover the life of a gift, all editable under **Settings > Notifications** in the **Gift** group:
+
+| Email | Who gets it | When |
+| --- | --- | --- |
+| **Gift Subscription Scheduled** | Giver | At purchase |
+| **Gift Subscription Revealed** | Recipient | On the reveal date, the first they hear of it |
+| **Gift Ending (Giver)** | Giver | 30 days before the last delivery |
+| **Gift Ending (Recipient)** | Recipient | 14 days before the last delivery, where the gift hands over |
+| **Gift Renewal Upcoming** | Giver | Before their card is charged for another term |
+| **Gift Ended** | Recipient | After the final delivery, where nobody continued it |
