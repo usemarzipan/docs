@@ -337,3 +337,55 @@ Display a product grid within the customer account encouraging customers to star
 - **Heading** - Customise the section heading
 - **Message** - Add a message encouraging customers to subscribe
 - **Grid Columns** - Set the number of columns for mobile, tablet, and desktop views
+
+### Account Copy
+
+Most of the wording in the customer account can be rewritten in your own voice, under the subscription upsell on the same tab. Every field is optional: leave one blank and it shows the Marzipan wording you can see greyed out in the box, so a shop that edits nothing keeps what it has today, and clearing a field you have changed puts the default back.
+
+<Frame>
+<img src="https://marzipan-cloud.b-cdn.net/0/docs/web-components/account-copy.png" alt="The Account tab of Branding & Web Components, showing the editable account wording grouped into sign in and register, empty states, and subscription messages" />
+</Frame>
+
+#### Sign in and register
+
+Wording on the sign in, register, email verification and password reset screens.
+
+| Setting | Description |
+| :-------- | :------------ |
+| Sign in message | Sits under the sign in heading (default: "Manage your subscriptions, orders and rewards.") |
+| Referral question help | Sits under "How did you hear about us?" on the register form |
+| Verify email message | Explains why a six digit code has been sent |
+| Password reset message | Shown on the form asking for an email address |
+| Password reset sent message | Shown once the link has gone out. `{email}` is replaced with the address it went to |
+
+#### Empty states
+
+Shown when a customer has nothing to see yet in one of the account tabs. Titles and messages are separate, so you can change a headline without losing the explanation under it.
+
+| Setting | Description |
+| :-------- | :------------ |
+| Subscriptions empty title and message | A customer with no subscriptions at all |
+| Subscriptions empty title (active only) | Used instead of the title above when the list is filtered to active subscriptions |
+| Nothing running title and message | A customer who has subscribed before but has nothing running now, which is a different thing from never having had one |
+| Orders empty title and message | A customer with no orders |
+| Rewards activity empty title and message | A rewards account with no points history |
+| Addresses empty title and message | A profile with no saved addresses |
+
+#### Subscription messages
+
+Explanations shown to a customer managing a subscription.
+
+| Setting | Description |
+| :-------- | :------------ |
+| Items not decided yet | Shown in place of the item list before the contents are picked |
+| Extras closed title and message | Shown once the next delivery is being prepared and nothing more can go in it |
+| Extras hint (repeating) | Shown when the extras already added repeat on every delivery |
+| Extras hint (delivery scheduled) | Shown when there is a delivery to add extras to |
+| Extras hint (nothing scheduled) | Shown when nothing is scheduled yet |
+| Skip message (one) and (several) | What the customer is told before confirming a skip. Asked for separately rather than derived, the same way the shipment labels are |
+| Cancel reason title and message | The first step of the cancel flow, which asks why |
+| Cancel confirmation title and message | The last step, which states the consequence |
+
+<Note>
+Write `{shipment}` and `{shipments}` rather than your own word for a delivery, and they are replaced with the [shipment labels](#labels) you set. That way a shop that renames a shipment later does not end up with a message contradicting the rest of the account. A token that is not recognised is left on screen exactly as you typed it, so a typo is visible rather than quietly eating half a sentence.
+</Note>
