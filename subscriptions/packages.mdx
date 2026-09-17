@@ -46,6 +46,9 @@ To view your packages:
   <Step title="Configure the renewal options">
     Renewal options control how and when subscriptions renew. See [Renewal options](#renewal-options) below.
   </Step>
+  <Step title="Choose what subscribers can do">
+    Decide whether customers can skip, move or bring forward a delivery from their account. See [What subscribers can do](#what-subscribers-can-do) below.
+  </Step>
   <Step title="Save the package">
     Review the package and save it. Set the **Status** to `active` when you are ready for customers to subscribe.
   </Step>
@@ -83,6 +86,21 @@ Renewal options control how and when subscriptions renew:
 
 <Note>
 If a renewal payment fails, Marzipan retries it before cancelling the subscription. See [Failed renewals](/subscriptions/details#failed-renewals).
+</Note>
+
+## What subscribers can do
+
+Each package decides what a customer may do to their own subscription from the [account area](/web-components/account). Not every club can honour every action: a twice-yearly club has no stock to send early, while a monthly one does.
+
+- **Customers can skip a box** - miss the next delivery, with the payment moving on with it. On by default
+- **Boxes they can skip at once** - how far ahead they can skip before one has to come, from 1 to 12. One at a time unless you say otherwise
+- **Customers can move a delivery** - push the next one back to a later date. Off by default
+- **Customers can send a box early** - charge and send the next one immediately. Only worth offering where there is stock to send. Off by default
+
+Cancelling is deliberately not on the list. It is always available, and an account that cannot cancel is a trap. The account asks for a reason before it confirms, and offers whichever of the above answers what the customer said, so it never offers a save this package would then refuse. See [Cancelling and reactivating](/subscriptions/details#cancelling-and-reactivating).
+
+<Note>
+Pausing has been withdrawn in favour of skipping. Subscriptions already paused come back on the day they said.
 </Note>
 
 ## Package metrics and tabs
