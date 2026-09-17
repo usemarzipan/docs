@@ -25,30 +25,59 @@ Defaults to `false`
 
 ### Features
 
-#### Rewards Dashboard
+The account opens on the tab that has something to say: a live subscription, failing that the customer's orders, failing that the invitation to start a subscription. A URL that names a tab wins over that, so you can link straight to `#orders` or to a subscription at `#subscriptions/123`.
 
-If you have a rewards programme enabled, the account component automatically displays a rewards section where customers can view:
+The tabs are **Subscriptions**, **Orders** and **Profile**, with **Rewards** added when your rewards programme is on. On a phone they scroll sideways rather than collapsing into a dropdown.
+
+#### Subscriptions
+
+Each live subscription is a card carrying its status, when the next shipment is due and what can be done about it. Past subscriptions are listed beneath. Opening one gives the customer:
+
+- **Skip** - hold back one or several shipments, up to the allowance the package sets, with the date everything resumes. **Undo skip** replaces it while a skip is in effect. Skipping asks why, optionally, and the answer appears on the subscription's activity trail
+- **Move a delivery** - push the next one back a week, a fortnight, or to a date of their own, counted from the day it is currently due. A delivery cannot be moved past the one after it, and only that shipment moves: the payment and the shipments after it keep their dates
+- **Send now** - charge and send the next shipment immediately, offered once it is within a fortnight and there is something scheduled
+- **Change frequency** - where the package sells at more than one billing frequency, using [your own wording](/web-components/customisation#subscription-frequency-wording) for it
+- **Extras** - add items to the next shipment, or to every shipment. Extras close while a shipment is being prepared
+- **Pick & mix selections** - unless disabled with the prop below
+- **Payment and delivery details** - the card on file and where the shipments go
+- **Cancel** - always available, after asking why and offering whatever answers it
+
+Packages with dated shipments also show what is **coming up**, and a shipment further out can be skipped from there.
+
+Which of skip, move and send now appear is set per package. See [What subscribers can do](/subscriptions/packages#what-subscribers-can-do).
+
+<Note>
+"Shipment" is the default word throughout. Set your own, singular and plural, under [Labels](/web-components/customisation#labels), and the account follows.
+</Note>
+
+#### Gift Subscriptions
+
+A gifted subscription carries a box of its own under the header with the giver's message, who it came from and how many deliveries are left of the term, and is marked as a gift in the list.
+
+While the giver is still paying, the recipient sees neither the price nor the payment card, and cannot add extras. Where a gift hands over at the end of its term, the recipient is told before the day, since it needs a card of their own to carry on. See [Gift subscriptions](/subscriptions/gifts).
+
+#### Orders
+
+Customers can view their order history with order details, tracking information, and the ability to reorder. An order that owes money is flagged on the list with **Add payment**, and is paid from the order itself. A declined payment says so, with the provider's reason where there is one.
+
+#### Rewards
+
+If you have a rewards programme enabled, a **Rewards** tab appears where customers can view:
 
 - Their current reward tier and tier badge
-- Points balance and points history
+- Points balance and what it is worth
 - Progress towards the next tier
-- Available perks for their current tier
+- The tiers on offer and the perks of each
+
+A summary also sits at the top of the account, beside the greeting.
 
 #### Subscription Upsell
 
-You can display a product grid within the account page encouraging customers to start or upgrade a subscription. Configure the collection, heading, message, and grid layout from your [web component settings](/web-components/customisation#subscription-upsell).
+You can display a product grid within the account page encouraging customers to start a subscription. It shows whenever the customer has nothing running, and sits inside the subscriptions list so past subscriptions stay reachable. Configure the collection, heading, message, and grid layout from your [web component settings](/web-components/customisation#subscription-upsell).
 
-#### Order History
+#### Status Messages
 
-Customers can view their complete order history with order details, tracking information, and the ability to reorder previous purchases.
-
-#### Subscription Management
-
-Customers can manage their active subscriptions including:
-- Viewing upcoming renewal dates
-- Updating payment methods
-- Managing pick & mix selections (unless disabled)
-- Viewing subscription history
+Saving, skipping, cancelling and the rest confirm with a toast that takes the position and the dark or light style you set for the [add-to-cart notification](/web-components/customisation#add-to-cart-notification), so the storefront and the account agree. A failure takes your error colour.
 
 ### Styling
 
@@ -70,7 +99,7 @@ The following parts are available to style the account component:
   The navigation links displayed in the account component when they are active.
 </ParamField>
 
-<ParamField body="--form-container" >
+<ParamField body="--formContainer" >
   The containing div around the login and register forms.
 </ParamField>
 
@@ -106,8 +135,28 @@ The following parts are available to style the account component:
   The styling applied to form input fields, including the `<textarea>` element.
 </ParamField>
 
+<ParamField body="--input-checkbox" >
+  Checkboxes, such as "set as default" on the address form.
+</ParamField>
+
 <ParamField body="--marzipan-spinner">
   The loading spinner displayed when various actions are loading.
+</ParamField>
+
+<ParamField body="subscription-hero">
+  The panel at the top of a subscription, and `subscription-title` for its heading.
+</ParamField>
+
+<ParamField body="order-hero">
+  The panel at the top of an order, and `order-title` for its heading.
+</ParamField>
+
+<ParamField body="profile-hero">
+  The panel at the top of the profile tab.
+</ParamField>
+
+<ParamField body="rewards-hero">
+  The points panel on the rewards tab.
 </ParamField>
 
 <Info>

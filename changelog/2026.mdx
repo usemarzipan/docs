@@ -42,6 +42,69 @@ Cancelling a gift stops the renewal, not the deliveries. Six new email templates
 
 See [Gift subscriptions](/subscriptions/gifts).
 
+## The Customer Account Area
+
+The account component has been rebuilt. It used to open on a dashboard of links; it now opens on the tab that has something to say: a live subscription, failing that your orders, failing that the invitation to start one. A link that names a tab still wins, and it resolves before the first render so nothing flashes.
+
+Each subscription is a card carrying its status, when the next shipment is due and what can be done about it, with past subscriptions listed quietly beneath. Orders, rewards, profile and the sign-in screens have had the same treatment.
+
+- **On a phone** - tabs scroll sideways rather than collapsing into a dropdown, **Log out** sits beside the heading, and pages hold their height while they load so your footer stays put
+- **Subscription upsell** - shown whenever nothing is running, rather than only to somebody who has never subscribed, and it sits inside the list so past subscriptions stay reachable
+- **Status messages** - the toast takes the position and the dark or light style you set for the cart notification, so the storefront and the account agree, and a failure takes your error colour
+- **Dates** - read as "Monday 15th March 2027", with the year always shown
+- **Frequencies** - follow the [wording you chose](/web-components/customisation#subscription-frequency-wording) throughout, rather than the account saying "quarterly" while the storefront says "every 3 months"
+
+See [Account](/web-components/account).
+
+## Managing a Subscription from the Account
+
+A subscriber can now do more than look at one. Each package decides which of these it offers, so a twice-yearly club need not offer to send a shipment early while a monthly one does.
+
+- **Skip** - hold back several shipments at once, up to the allowance the package sets, with the date everything resumes stated rather than discovered by pressing Skip repeatedly. **Undo skip** sits where Skip stood for as long as a skip is holding something back
+- **Move a delivery** - push the next one back a week, a fortnight, or to a date of their own, counted from the day it is currently due. Only that shipment moves: the payment stays on its date and the shipments after it keep theirs
+- **Send now** - charge and send the next shipment immediately, offered only once it is within a fortnight and there is something scheduled to bring forward
+- **Change frequency** - where the package sells at more than one billing frequency, offered in the same rows the storefront uses
+
+Packages with dated shipments also list what is coming up, and a shipment further out can be skipped from that list rather than waiting for it to come round. Skipping optionally asks why, from a short list, and the answer is written to the subscription's activity trail, so you can see why a delivery was missed rather than only that it was.
+
+Set what each package allows under **Subscriptions > Packages**. See [What subscribers can do](/subscriptions/packages#what-subscribers-can-do).
+
+<Note>
+**Pausing has been withdrawn** in favour of skipping. The two were doing the same job, and a skip says plainly how long for. Subscriptions already paused come back on the day they said.
+</Note>
+
+## Cancelling Asks Why
+
+Cancelling was a single confirmation. It now asks the reason first, offers the one thing that answers it, and only then confirms. Somebody cutting down is offered the next shipment skipped; somebody who finds it expensive is offered a less frequent schedule; somebody who would rather not say goes straight through without being stopped.
+
+The offers are limited to what the package permits and what the subscriber has left, so nobody is offered a save that would then be refused. The reason is written to the subscription and named in its activity trail. See [Cancelling and reactivating](/subscriptions/details#cancelling-and-reactivating).
+
+## Gifts in the Account
+
+A gifted subscription now says so properly: a box of its own under the header, with the message the giver wrote, who it came from, and how many deliveries are left of the term. The list carries the same mark, so which of several subscriptions is the present can be seen without opening each one.
+
+While the giver is still paying, the recipient sees neither the price nor the payment card, and cannot add extras to a shipment somebody else is paying for. Where a gift hands over at the end of its term, the recipient is told before the day rather than after, since it needs a card of their own to carry on.
+
+See [Gift subscriptions](/subscriptions/gifts).
+
+## Paying an Order from the Account
+
+An order that owes money now says so on the list, with **Add payment** beside it, and is paid from the order itself.
+
+- **While the bank catches up** - the order says the payment is being processed and re-reads itself until it settles, rather than falling back to "payment is due" at the moment somebody has paid
+- **A declined payment** - reads as a decline, with the provider's reason where there is one. It was being laid out exactly as money that arrived, which read as proof of a payment never taken
+- **A missing order** - says the order could not be found, rather than repeating the URL back at somebody
+
+## Extras on Every Shipment
+
+Extras added to a subscription can be set to go with every shipment rather than only the next one, with a single checkbox on the extras box. Left unticked, which is how every existing set reads, they go with the next shipment and are cleared once it has gone out.
+
+The figure above the extras is now what the next shipment will actually cost with them included, since the price on the plan is the plan's and stays that. Extras close while a shipment is being prepared, and the account says so plainly, along with when they open again.
+
+## Your Own Word for a Shipment
+
+"Shipment" is Marzipan's word for it. A shop that says box, case or delivery can set its own, singular and plural asked for separately, and the account follows throughout. Set them under **Settings > Branding & Web Components > Labels**. See [Labels](/web-components/customisation#labels).
+
 ## Recurring Events in Separate Date Ranges
 
 A recurring event can now run in **separate date ranges** while keeping one weekday pattern and one set of times. A venue that only opens during school holidays previously had to create an event per holiday, which split its ticketing, waitlist and reporting across events that were really one product.
