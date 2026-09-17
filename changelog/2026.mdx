@@ -119,10 +119,6 @@ The sales cut-off was measured from a recurring event's **first** date, so once 
 
 The cut-off now counts from the date being bought. A series is only closed once every remaining date has passed its own cut-off. See [Create](/events/create#deposits).
 
-<Note>
-Two API endpoints have been **removed**: `GET /v1/events/{event}/availability` and `GET /v1/events/{event}/check-dates`. Both were served by a second recurrence generator that ignored the weekday selection and never matched a date on a recurring event, so they only ever worked for one-off events. Use [Check Occurrence Availability](/api-reference/events/check-occurrence-availability) instead, which is scoped to a single date.
-</Note>
-
 ## Reward Points and Vouchers
 
 Buying a gift voucher never earns points, and by default neither does the part of an order a voucher paid for. Turn **Exclude voucher payments** off under Settings > Rewards to let redemptions earn. See [Earning and redemption](/rewards/earning-and-redemption).
