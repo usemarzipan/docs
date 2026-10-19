@@ -36,7 +36,8 @@ Each live subscription is a card carrying its status, when the next shipment is 
 - **Skip** - hold back one or several shipments, up to the allowance the package sets, with the date everything resumes. **Undo skip** replaces it while a skip is in effect. Skipping asks why, optionally, and the answer appears on the subscription's activity trail
 - **Move a delivery** - push the next one back a week, a fortnight, or to a date of their own, counted from the day it is currently due. A delivery cannot be moved past the one after it, and only that shipment moves: the payment and the shipments after it keep their dates
 - **Send now** - charge and send the next shipment immediately, offered once it is within a fortnight and there is something scheduled
-- **Change frequency** - where the package sells at more than one billing frequency, using [your own wording](/web-components/customisation#subscription-frequency-wording) for it
+- **Change frequency** - where the package sells at more than one billing frequency, using [your own wording](/web-components/customisation#subscription-frequency-wording) for it. Only the frequencies the package sells are accepted
+- **Change package** - on the Plan card, where the package lists others its subscribers [can switch to](/subscriptions/packages#switching-package). Each is shown with its image, its price per shipment and how that compares with what they pay now, and the chooser says when the new package starts and whether their frequency will change
 - **Extras** - add items to the next shipment, or to every shipment. Extras close while a shipment is being prepared
 - **Pick & mix selections** - unless disabled with the prop below
 - **Payment and delivery details** - the card on file and where the shipments go
@@ -52,9 +53,9 @@ Which of skip, move and send now appear is set per package. See [What subscriber
 
 #### Gift Subscriptions
 
-A gifted subscription carries a box of its own under the header with the giver's message, who it came from and how many deliveries are left of the term, and is marked as a gift in the list.
+A gifted subscription carries a box of its own under the header with the giver's message, who it came from and how many of the giver's deliveries are left, and is marked as a gift in the list.
 
-While the giver is still paying, the recipient sees neither the price nor the payment card, and cannot add extras. Where a gift hands over at the end of its term, the recipient is told before the day, since it needs a card of their own to carry on. See [Gift subscriptions](/subscriptions/gifts).
+While the giver is still paying, the recipient sees neither the price nor the payment card, and cannot add extras. Nor can they change its package. Where the giver chose to hand it over, the recipient is told a fortnight before it becomes theirs, so they can add a card of their own. Without one, the first renewal they pay for comes to them as a payment link, as it would for any subscriber. See [Gift subscriptions](/subscriptions/gifts).
 
 #### Orders
 
