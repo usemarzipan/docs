@@ -47,7 +47,7 @@ To view your packages:
     Renewal options control how and when subscriptions renew. See [Renewal options](#renewal-options) below.
   </Step>
   <Step title="Choose what subscribers can do">
-    Decide whether customers can skip, move or bring forward a delivery from their account. See [What subscribers can do](#what-subscribers-can-do) below.
+    Decide whether customers can skip, move or bring forward a delivery from their account, and which packages they can switch to. See [What subscribers can do](#what-subscribers-can-do) and [Switching package](#switching-package) below.
   </Step>
   <Step title="Save the package">
     Review the package and save it. Set the **Status** to `active` when you are ready for customers to subscribe.
@@ -101,6 +101,31 @@ Cancelling is deliberately not on the list. It is always available, and an accou
 
 <Note>
 Pausing has been withdrawn in favour of skipping. Subscriptions already paused come back on the day they said.
+</Note>
+
+## Switching package
+
+**Customers can switch to** lists the packages a subscriber on this package may move to from their [account](/web-components/account). Leave it empty and switching isn't offered, which is where every package starts.
+
+Any other subscription package can be listed, including drafts, so you can line up a new package before it goes live. Subscribers are only ever offered the ones that are `active`.
+
+<Tip>
+List packages in both directions if you want subscribers to be able to move back. Listing a smaller package on your larger one doesn't offer the larger one to subscribers of the smaller.
+</Tip>
+
+When a subscriber switches:
+
+- **Nothing is charged on the day.** The change applies from their next payment, at the new package's price, and that payment is never brought forward: it falls a whole billing period after their last one, at the new frequency
+- **Their frequency is kept** where the new package sells it. Otherwise it moves to the new package's default, and they're told so before they confirm
+- **A variable package** with scheduled dates starts on its first shipment from that date. Where it has a shipment sooner, the subscriber may choose to start with that one instead, which brings their payment forward to it
+- **Extras** follow onto the next shipment, and **pick & mix choices** are cleared when they leave a pick & mix package
+
+Switching isn't offered on a [gift subscription](/subscriptions/gifts), or while the next shipment is already being processed.
+
+The customer is sent a **Subscription Package Changed** email, editable under **Settings > Notifications**, saying what their next payment will be and when. Team members can opt into a **Customer changed subscription package** notification under [Settings > Team](/settings/roles-and-team).
+
+<Note>
+The account also offers a switch when a customer goes to cancel: a cheaper package where they say it costs too much or they're cutting down, and any listed package where they don't enjoy it. See [Cancelling and reactivating](/subscriptions/details#cancelling-and-reactivating).
 </Note>
 
 ## Package metrics and tabs
