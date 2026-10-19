@@ -12,11 +12,17 @@ The giver pays for **one shipment at a time**, on their own card, the first at c
 
 At checkout the giver chooses how the gift is paid for, under a heading you can rename in **Settings > Branding & Web Components > Checkout**:
 
-| Choice | What the giver pays for | What happens after |
-| --- | --- | --- |
-| **They take it over** | The first shipment, at checkout | It becomes the recipient's, and they pay from the next renewal |
-| **Gift a set number** | A number of shipments from your list, each charged as it is sent | It stops |
-| **Keep gifting it** | Every shipment, each charged as it is sent | It carries on until somebody cancels |
+<CardGroup cols={3}>
+  <Card title="They take it over" icon="hand-holding-heart">
+    The giver pays for the first shipment at checkout. Then it becomes the recipient's, and they pay from the next renewal.
+  </Card>
+  <Card title="Gift a set number" icon="list-ol">
+    The giver pays for a number of shipments from your list, each as it's sent. Then it stops.
+  </Card>
+  <Card title="Keep gifting it" icon="repeat">
+    The giver pays for every shipment, each as it's sent, until somebody cancels.
+  </Card>
+</CardGroup>
 
 <Frame>
 <img src="https://marzipan-cloud.b-cdn.net/0/docs/subscriptions/gift-checkout-choice.png" alt="The checkout choice of how a gift subscription is paid for" />
