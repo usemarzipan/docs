@@ -3,6 +3,167 @@ title: 'Changelog'
 sidebarTitle: '2026'
 description: 'Updates and improvements to Marzipan'
 ---
+<Update label="Version 2.0">
+
+## Product Variants
+
+A product can now be sold in **variants**: the same product in a different size, colour or pack size, each with its own SKU, barcode, stock and picture.
+
+Open a physical product and press **Manage variants**. Name what varies ("Size") and list its values ("Small, Medium, Large"), and every combination becomes a variant. Two axes give you the full grid, so three sizes in two colours is six variants. To stop selling one combination, remove a value rather than deleting a row, which keeps the axes and the grid from disagreeing.
+
+Each variant carries its own SKU, barcode, image and stock, counted per location where you count stock that way, with its own adjustment history. They are all sold at the product's price, and the product keeps everything a shopper reads: the page, the description, the photographs, the collections and the SEO.
+
+- **The shopper picks** - the product page shows a selector, and the price, picture and stock follow the choice. A size that is made but sold out stays pickable and struck through, so somebody can ask to be told when it is back. A combination that does not exist is never offered
+- **Cards ask too** - a collection card has nowhere to put a selector, so it opens the choice in a popup or sends the shopper to the page rather than offering a button the basket would refuse
+- **Back in stock is per variant** - somebody waiting for a Large is written to when a Large arrives, not when a Small does
+- **The stock badge follows what is on offer** - on a card it is the total a shopper could buy, and on a page with a size selected it is that size
+- **Inventory, transfers, bulk adjust and the CSVs** all count per variant. An export writes a line per variant, and an import takes a variant's own SKU, or the product's with a `variant` column
+- **Google Shopping lists one item per variant**, tied together so Merchant Center shows them as one listing a shopper picks within, and the page marks each one up for crawlers
+
+Only physical products are sold in variants. A different wine, or the same wine in a magnum, is its own product rather than a variant: people search for it, it can carry its own tasting note and its own price, so it keeps its own page. A variant product cannot be a bundle component, a pick and mix choice or a fixed shipment item, because "put the Chardonnay in" stops being a complete instruction once there are three of them.
+
+<Note>
+Saving the first variant on a product that already held stock takes that stock off through a write-off movement, with the figure named in the message, and asks you to assign stock to each variant. The parent has no stock once its variants do, and a stocktake months later needs the movement to reconcile to.
+</Note>
+
+See [Variants](/products/variants).
+
+## Allocations
+
+Marzipan now sells wine people want more of than exists. An **allocation** is a release: a window, an audience, and a line per product saying how many each customer may buy.
+
+Set a product's availability to **Allocation only** and it leaves the shop: it is hidden from every listing, and its own page answers not found, for everybody. A release is claimed from the customer's account rather than bought from the storefront, which is the whole point of allocating it.
+
+Build the audience from customer tags, marketing segments, clubs or people by name, all choosable together and saved once. Everybody in the release is offered the line's maximum of each product, and one customer can be given a different number by hand without a later change to the maximum undoing it. A reward tier is already a tag, so an audience of "Gold" needs no selector of its own.
+
+- **The customer chooses within their allocation** - "you may buy up to 6" rather than a payment link for a fixed six, so somebody who only wants two can say so
+- **Promised against held** - the release screen shows what has been promised beside the stock you actually hold, by location, and says plainly when you have promised more than you have
+- **Holding orders** - a release selling wine that has not landed holds its orders, and you let them all go for fulfilment in one action when the pallet arrives. A date never releases them, because a ship date set in October is a guess
+- **The invitation** - one email, sent when you are ready, listing each customer's own numbers. Sending is what records who has been told, so adding forty more people next week reaches only the forty
+- **Performance** - the funnel, take-up per product, and the people who were told and took nothing, which is the part you can act on. An export carries one row per customer per product
+- **Across releases** - an Allocations report under Insights answers "how do our releases do?", by product, by how people got in, and who never claims
+
+Lower of the two limits always wins, so a shop-wide limit of two is not widened by an allocation of six. Somebody who has taken their whole share is told what they spent rather than that it is unavailable to them.
+
+<Note>
+A general discount no longer reaches a product sold through an allocation unless the discount names that product. A release is priced deliberately and offered to chosen people, so a blanket "cheapest item free" is not allowed to take a bottle off it. Putting the product back to ordinary availability brings the discounts back with it.
+</Note>
+
+See [Allocations](/allocations/overview).
+
+## Attribute Groups and Data Sheets
+
+Attributes can now be arranged into **groups**, so a product screen shows "Technical Info" as a block of six fields rather than six loose ones, and a storefront can render a proper data sheet.
+
+A group holds attributes, not values. A product's values belong to the attribute, so moving an attribute between groups changes where it is shown and touches no product's data, and deleting a group sets its attributes loose rather than taking them with it.
+
+- **The attributes list** is sectioned by group, in the groups' own order, with everything ungrouped last. A group nothing is in leaves no empty heading
+- **A Groups panel** adds, renames, reorders and deletes groups, and assigns attributes in bulk
+- **The product screen** shows the same sections, with ungrouped attributes under "Other"
+- **A field added to a group** turns up on products already stamped with that heading, because a group is a set of fields and a product showing three of its four is not that group any more
+- **The storefront API** sends each attribute's group with it, which is what a data sheet is built from. Private attributes still never leave the dashboard
+
+See [Attribute groups](/attributes/groups).
+
+## Your Own Address, and Your Own Domain
+
+Every store now has a **handle**, and `{handle}.marzipan.host` serves its storefront. It works on its own as a live address, and it is what a custom domain points at.
+
+A **custom domain** is now connected in three steps, each with the records to add shown as copyable rows and a tick when it is satisfied: prove you own it with a TXT record, point it with a CNAME (or ALIAS at the apex), then wait for the certificate. Nothing is registered with our edge until the TXT record is seen, so nobody can claim a domain they do not own and leave its real owner unable to connect it.
+
+- **Apex domains get the right instruction** - ALIAS or ANAME where your DNS provider supports it, and the `www` host with a redirect where it does not. A CNAME at the apex is invalid, and that is exactly where people got stuck
+- **Check now** - run the check yourself rather than waiting for the next sweep, with the reason shown when something is wrong
+- **A domain another store has connected** is refused with a message saying so, rather than failing silently
+- **Handles are held forever** - change yours and the old one is kept out of anyone else's hands, so your old links can never land on somebody else's shop
+- **Reserved and filtered** - names the platform uses, and names nobody should publish under our domain, are refused
+
+A handle is three to thirty characters, lower case letters, numbers and hyphens. Set it under [Settings > Website](/settings/website).
+
+## Outbound Webhooks
+
+Marzipan can now tell your own systems when something happens, rather than being asked.
+
+Add an endpoint under [Settings > Webhooks](/settings/webhooks), choose the events it should receive, and every delivery is signed, logged, retried and visible.
+
+- **Twelve events** across orders, customers, products and subscriptions, each with a line saying what it means
+- **Signed** with a secret per endpoint, with the timestamp inside the signature, so a captured delivery cannot be replayed later. The secret can be viewed and rolled without deleting the endpoint
+- **Thin or full** - thin sends an envelope and a pointer, so you fetch the current state yourself and nothing you receive can be out of date. Full adds the resource as it was, saving a round trip. Thin is the recommendation
+- **Retries** - nine attempts over about three days, front-loaded so a brief outage recovers in minutes. A 4xx is not retried, because a payload that is wrong now will be wrong in six hours
+- **A delivery log** with the request and the response as foldable JSON, searchable and filterable by status, and a **Send again** on every delivery for fifteen days
+- **Switched off automatically** after nine failures in a row, with an email, and brought back by saving the endpoint again
+
+A webhook is written in the same transaction as the change it describes, so one can never fire for something that was rolled back.
+
+See [Webhooks](/settings/webhooks).
+
+## API Keys, Scopes and the Management API
+
+API access has been rebuilt around two kinds of key.
+
+A **publishable key** (`pk_`) is for a browser or a static site. It is public by design, so it reaches the storefront endpoints and nothing else. A **secret key** (`sk_`) is for your own servers: it reaches the management endpoints as well, is shown once, and is stored hashed.
+
+- **48 management scopes and 16 storefront ones**, each described in plain words on the key screen. Read and write are separate, and refunds, voucher issuing and subscription cancellation are kept out of a general write
+- **Some scopes are never issuable** to a key, whatever your own permissions say: team, roles, payment settings, till operations and integration credentials. A key that could edit your team could grant itself more access
+- **Replace rather than regenerate** - a replacement key is minted alongside the old one, which keeps working for seven days so a deploy does not have to be instant, or immediately if you ask
+- **A publishable key can be read again** from the dashboard, since it was never a secret. A secret one cannot
+- **Switch a key off** without deleting it, and see when each was last used
+
+The **Management API** is new and **beta**: products, their markets and their prices, attributes, inventory, collections, discounts, shipments, events, markets and webhook endpoints. Beta is the honest label rather than a hedge. It works and it is tested, but its shape may still change, so the twelve months' notice that covers a stable endpoint does not apply to it yet. Every response says which it is in an `X-Api-Stability` header.
+
+Also new across the whole API: published rate limits with the remaining allowance in every response, `Idempotency-Key` on every write so a retried payment cannot make a second order, and a deprecation policy with twelve months' notice on anything stable.
+
+See [the API introduction](/api-reference/introduction) and [API keys](/settings/api-keys).
+
+## Pages Are Blocks Now
+
+A CMS page is now an **ordered list of blocks**, and the block types come from your storefront rather than from us.
+
+Your storefront registers a schema saying what blocks it can render and what fields each one has. Marzipan stores it, builds the editor from it, and serves your content in that shape. A block type your theme no longer has is marked as such in the editor and still returned by the API, so nothing is deleted by a theme change.
+
+- **Drag to reorder**, and **Add block** offers the types your storefront declared for that page type
+- **Required blocks are a floor, not a fence** - choosing a page type creates its required blocks and locks them against deletion, while every other type the schema declares stays addable. They can still be moved
+- **Field values are typed** - an image is an object with its dimensions, a link is a label and a href, and a reference names what it points at
+- **A store with no schema** keeps the free-form fields it has today, and can adopt a schema later
+
+The API gains a `blocks` array on a page and a new `GET /v1/cms/schema`. The existing `fields` and `sections` are unchanged and still served.
+
+<Note>
+The **Website** area under CMS has gone with the in-app renderer. Templates and shared files belonged to pages Marzipan rendered itself, and a storefront now owns its own layout and assets. Your store's address and its domains moved to [Settings > Website](/settings/website).
+</Note>
+
+See [Pages](/cms/pages).
+
+## Wine Is a Module Now
+
+Marzipan started as wine software and the product said so in places it should not have. Wine is now one module among others rather than the framing.
+
+- **Clubs are subscriptions and memberships** throughout the dashboard. The models never were wine-specific; the wording was
+- **Winery name is business name** on registration and in settings
+- **Sales channels** are a proper list, and the wine-specific ones (cellar door, tastings) are offered only to a store that sells wine. An order placed through one keeps its channel and still reads correctly, because hiding a choice must never blank out history
+- **The age check** belongs to regulated goods rather than being on for everybody, so a coffee roaster never sees it
+- **London City Bond** is an integration like any other rather than something in the core
+
+Wine stays as an example throughout the documentation, alongside size charts and ingredients. It is no longer the assumption.
+
+## Deprecations and Removals
+
+Four API operations the reference described no longer exist. All four were taken out on 6 to 8 October 2026 and answer not found today, so they have been removed from the reference rather than marked as deprecated, which would have described them as something they are not.
+
+- **`GET /v1/events/{event}/stats`** has been **removed**, as a security fix: a storefront key could read an event's takings. A security removal is the standard exception to the notice period, since twelve months' notice here would have meant twelve months of exposure. An event's figures are on the management API, behind a secret key
+- **`POST /v1/messages`** has been **removed**. It was the hard-coded contact form, and it is replaced by a form you build yourself: `POST /v1/forms/{slug}/submit`, rendered by the `<marzipan-form>` component
+- **`POST /v1/cms/pages/{page}/purge-cache`** has been **removed**. It never worked. A page that changes now sends a `cms.page_updated` webhook on save, which is what a statically hosted storefront actually wants
+- **`PUT /v1/events/occurrences/{occurrence}`** has **moved** to `PUT /v1/event-occurrences/{occurrence}` and now needs a **secret key**. Cancelling or retiming a date is not something a credential printed in a page should be able to do
+- **`PATCH /v1/carts/{cart}/items/{item}`** has been **removed**, alongside the move to explicit cart routes on 6 October 2026. It was never documented. Use `PUT /v1/carts/{cart}/items/{item}`, which is unchanged
+- **`/v1/account/membership/*`** is **deprecated** in favour of `/v1/account/rewards/*`, which answers the same thing. The old paths still work, and no removal date has been set; a stable endpoint gets at least twelve months' notice when one is
+
+<Note>
+Adding a product sold in variants to a basket now needs a `variant_id` on the line. Asked for without one, the line is not added and the response explains why in a `messages` array, with a 200. Nothing is guessed on the shopper's behalf.
+</Note>
+
+See [the API introduction](/api-reference/introduction).
+
+</Update>
+
 <Update label="October 2026">
 
 ## Changing Package
