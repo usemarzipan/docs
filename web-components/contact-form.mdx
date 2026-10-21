@@ -50,5 +50,5 @@ The form component exposes the following CSS parts for styling:
 - `--form-error` - The error message shown if the form fails to load
 
 <Note>
-The previous `<marzipan-contactform>` component is deprecated. Use `<marzipan-form>` with a form created in your dashboard instead.
+The old `<marzipan-contactform>` component has been **removed**, along with the hard-coded `POST /v1/messages` endpoint behind it. Use `<marzipan-form>` with a form created in your dashboard, which posts to `POST /v1/forms/{slug}/submit`.
 </Note>
