@@ -367,6 +367,22 @@
     {
       "source": "/api-reference/carts/update-payment-intent-amount",
       "destination": "/api-reference/introduction"
+    },
+    {
+      "source": "/api-reference/messaging/send-a-message",
+      "destination": "/api-reference/forms/submit-a-form"
+    },
+    {
+      "source": "/api-reference/cms/purge-a-pages-cache",
+      "destination": "/api-reference/introduction"
+    },
+    {
+      "source": "/api-reference/events/get-event-statistics",
+      "destination": "/api-reference/introduction"
+    },
+    {
+      "source": "/api-reference/events/update-event-occurrence",
+      "destination": "/api-reference/introduction"
     }
   ]
 }
