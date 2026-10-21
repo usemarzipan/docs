@@ -1,0 +1,70 @@
+---
+title: 'API keys'
+description: 'Create keys for your storefront and your own software, and choose what each one can reach'
+---
+
+An API key is how something outside Marzipan reads or changes your store. Manage them under **Settings > API keys**.
+
+There are two kinds, and which one you need depends on where the key will live.
+
+| Key | Starts with | Where it lives | What it reaches |
+| --- | --- | --- | --- |
+| **Publishable** | `pk_` | In a browser, in a page, in a static site | Your storefront: products, content, baskets, checkout and the customer's own account |
+| **Secret** | `sk_` | On your own server, never in a browser | The storefront, and the management endpoints as well |
+
+A publishable key is public by design. It is printed in your page source where anybody can read it, so it is given storefront access and nothing more. That is why it is safe there.
+
+A secret key is not. It reaches the endpoints that change your catalogue, your prices, your stock and your markets, so it belongs on a server you control.
+
+## Creating a key
+
+Press **Create key** and choose **where it will live**:
+
+- **In a browser (publishable)** - for a storefront or a site. It is visible in the page, so it reaches storefront endpoints only
+- **On a server (secret)** - for your own software. It reaches management endpoints, so it must never appear in a browser
+
+Give it a name you will recognise in six months, then choose its permissions.
+
+<Warning>
+A secret key is shown **once**, when you create it. It is stored hashed after that, so nobody, including us, can read it back. Copy it somewhere safe before you leave the screen. If you lose it, replace the key.
+</Warning>
+
+A publishable key can be read again from this screen whenever you like, because it was never a secret.
+
+## Permissions
+
+Every key carries a list of permissions, called scopes, and every endpoint names the one it needs. A key without it is refused with a message naming the scope that was missing, so a mistake here is obvious rather than mysterious.
+
+A publishable key chooses from sixteen storefront scopes: reading the catalogue, content and events, opening and changing a basket, taking a checkout, submitting a form, and signing a customer in.
+
+A secret key chooses from forty eight management scopes, grouped as catalogue, selling, people, content and events, and automation and insight. Each is listed with a line saying what it covers.
+
+Three rules are worth knowing before you pick:
+
+- **Read and write are separate.** Grant `products:read` to something that only needs to look
+- **Money and anything irreversible is kept out of a general write.** Refunding an order, issuing a gift voucher and cancelling a subscription each need a permission of their own, so none of them can hide inside "write"
+- **Some things are never issuable to a key**, however your own permissions read: your team, your roles, your payment settings, till operations and integration credentials. A key that could edit your team could grant itself more access, and a stolen key must not be able to redirect your money
+
+A new publishable key starts with every storefront scope ticked, which is what a storefront needs. A new secret key starts with none, so you grant only what the integration actually does.
+
+## Replacing a key
+
+**Replace** mints a new key with the same name and the same permissions, and gives the old one **seven days** to keep working. That window is there so a deploy does not have to be instant: put the new key live, then let the old one lapse.
+
+Choose to replace it immediately instead and the old key stops at once.
+
+Replace a key whenever you think it has got out, and whenever somebody who had it leaves.
+
+## Switching a key off
+
+**Switch off** stops a key working without deleting it, so you can see what breaks and turn it back on if the answer is "the wrong thing". Deleting is permanent.
+
+Each key shows when it was **last used**, which is the quickest way to find the ones nothing needs any more.
+
+## Which endpoints a key reaches
+
+See [the API introduction](/api-reference/introduction) for the full reference, the rate limits that apply to each kind of key, and how to make a write safe to retry.
+
+<Note>
+The management endpoints are **beta**. They work and they are tested, but their shape may still change, so the twelve months' notice that covers a stable endpoint does not apply to them yet. Every response says which it is.
+</Note>

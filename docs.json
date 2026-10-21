@@ -207,12 +207,15 @@
               "settings/overview",
               "settings/roles-and-team",
               "settings/markets",
+              "settings/website",
               "settings/inventory",
               "settings/shipping",
               "settings/cart-and-checkout",
               "settings/gift-vouchers",
               "settings/email",
-              "settings/test-mode"
+              "settings/test-mode",
+              "settings/api-keys",
+              "settings/webhooks"
             ]
           },
           {

@@ -1,0 +1,99 @@
+---
+title: 'Webhooks'
+description: 'Have Marzipan tell your own systems when something happens, rather than asking'
+---
+
+A webhook is Marzipan telling your software that something happened, as it happens, instead of your software asking over and over. Manage them under **Settings > Webhooks**.
+
+## Adding an endpoint
+
+Press **Add endpoint**.
+
+### Where to send it
+
+- **URL** - where to send deliveries. It must be `https`
+- **Name** and **Description** - optional, for your own benefit when there are several
+
+### What to send
+
+Tick the events this endpoint should receive. Marzipan sends twelve:
+
+| Event | When it fires |
+| --- | --- |
+| `order.created` | An order has been placed |
+| `order.paid` | An order has been paid for |
+| `order.fulfilled` | Everything on an order has gone out |
+| `order.cancelled` | An order has been cancelled |
+| `customer.created` | Somebody has created an account |
+| `customer.updated` | A customer's details have changed |
+| `customer.deleted` | A customer has been deleted |
+| `product.updated` | A product has changed |
+| `product.deleted` | A product has been deleted |
+| `subscription.created` | A subscription has started |
+| `subscription.paused` | A subscription has been paused |
+| `subscription.cancelled` | A subscription has been cancelled |
+
+An endpoint subscribed to nothing that happened gets no delivery at all, rather than a skipped one, so an empty log reads as "nothing happened" and never as a fault.
+
+### How much to send
+
+- **Thin** - the envelope and a pointer to what changed. Your software then fetches the current state itself, so nothing it acts on can be out of date. This is the recommendation
+- **Full** - the envelope plus the resource as it was when the event happened, which saves a round trip
+
+Full is the resource **as it was**, not a record of what changed. It carries no previous values, so if you need to know what a field used to be, keep your own copy rather than reading it from here.
+
+## The signing secret
+
+Each endpoint gets its own secret, shown once when you create it. Every delivery is signed with it, so your receiver can tell a real delivery from anything else that finds the URL.
+
+```http
+Marzipan-Signature: t=1792915200,v1=<hex hmac sha256>
+```
+
+The signature is over the timestamp and the body joined by a full stop, so the timestamp is inside what was signed and a captured delivery cannot be replayed at you later. To verify one: reject it if `t` is more than five minutes old, then compute the same HMAC with your secret and compare the two in constant time.
+
+Each delivery also carries:
+
+- `Marzipan-Event` - the event type, so you can route without parsing the body
+- `Marzipan-Delivery` - an id for this delivery, which is what to deduplicate on
+
+The secret can be **viewed** and **rolled** from the endpoint's page. It is a shared secret rather than a credential, so a receiver that has lost it does not have to delete the endpoint and start again.
+
+<Warning>
+Rolling a secret takes effect at once. There is no overlap, so deploy the new secret to your receiver as soon as you have it.
+</Warning>
+
+Each endpoint has its own secret, so a staging endpoint and a production one can be rolled independently.
+
+## Delivery, retries, and what gets given up on
+
+- **Nine attempts over about three days**, front-loaded: straight away, then after a minute, five minutes, half an hour, two hours, six, twelve, and twice at a day apart. A brief outage recovers in minutes rather than hours
+- **Any 2xx is a success.** A **5xx**, a timeout, a refused connection, a **408** or a **429** is retried
+- **Any other 4xx is not retried.** A payload your endpoint says is wrong now will be just as wrong in six hours, so retrying it wastes three days to reach the same answer
+- **Nine failures in a row switches the endpoint off**, with an email and the reason on screen. A dead endpoint should not burn capacity indefinitely. Any success resets the count, so a quiet endpoint is never switched off by one bad day
+
+Saving the endpoint again switches it back on and clears its failure count. That is how you bring one back once the receiver is fixed.
+
+## The delivery log
+
+Every delivery is listed with the response code that came back, grouped under date headings and timed by when it was **sent**.
+
+- **Search and filter** by status, several at once
+- **Open a delivery** to see the request and the response as foldable JSON
+- **Send again** is offered on every delivery, not only the failed ones, for **fifteen days** after the event. It replays what was stored, which is the fact as it was rather than as your store is now
+
+A resend records what it came from, and the panel shows both sides, so a resend is never mistaken for a second event.
+
+<Note>
+Full payloads are kept for 30 days and then reduced to an identifier, so the log still says what an event was about after the body has gone. The rows themselves are kept for 13 months.
+</Note>
+
+## What a webhook can and cannot promise
+
+A webhook is written in the same transaction as the change it describes, so one can never fire for something that was then rolled back. Delivery is at least once, so write your receiver to tolerate seeing the same event twice: deduplicate on `Marzipan-Delivery`.
+
+If a delivery is lost outright, **Send again** is the answer rather than a support ticket.
+
+## Managing endpoints over the API
+
+Endpoints can also be created and changed through the API with a secret key carrying `webhooks:read` or `webhooks:write`. See [the API introduction](/api-reference/introduction).

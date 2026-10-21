@@ -1,0 +1,83 @@
+---
+title: 'Website'
+description: 'Your store address, the domains you connect to it, redirects, and clearing the cache'
+---
+
+Every store has an address of its own, and can have as many of your own domains pointed at it as you like. Both are managed under **Settings > Website**.
+
+## Store address
+
+Your store address is a name on our domain, and it serves your storefront on its own. It is also what a custom domain points at, so it is worth choosing before you connect one.
+
+- Three to thirty characters
+- Lower case letters, numbers and hyphens
+- It cannot start or end with a hyphen, or contain two hyphens in a row
+
+Some names are refused: ones the platform itself uses, and ones nobody should be publishing under our domain. If you believe a refusal is wrong, get in touch.
+
+<Warning>
+You can change your store address, but the old one stops working: links and bookmarks pointing at it will not reach you. Changing it also keeps the old name out of anybody else's hands for good, so your old links can never land on another store.
+</Warning>
+
+## Custom domains
+
+Press **Add Custom Domain** and type the domain without `http://` or `https://`.
+
+Connecting a domain is three steps, and the screen shows the records to add as copyable rows with a tick against each once it is satisfied.
+
+### 1. Prove the domain is yours
+
+Add a **TXT** record at `_marzipan-verify.yourdomain.com` with the value shown on screen.
+
+Nothing is registered with our edge until that record is found. That is deliberate: without it, the first person to type a domain would lock out its real owner, who would then be unable to connect their own domain at all.
+
+Once the domain is live you can remove the TXT record, and the screen tells you so.
+
+### 2. Point the domain at us
+
+What to add depends on whether it is a subdomain or a bare domain.
+
+- **A subdomain** like `shop.example.com` takes a **CNAME** pointing at the target on screen
+- **A bare domain** like `example.com` cannot use a CNAME: that is not allowed at the apex, and it is exactly where people get stuck. Use **ALIAS** or **ANAME** if your DNS provider offers one. If it does not, point `www` at us with a CNAME and redirect the bare domain to `www`
+
+Bare domains with a two-part ending, such as `example.co.uk`, are treated as bare, and `shop.example.co.uk` is not.
+
+### 3. The certificate
+
+Once the domain points at us it is registered and a certificate is issued, which usually takes a few minutes. The domain reads **Live** when it is done.
+
+### Checking, and what each status means
+
+Marzipan checks on its own every fifteen minutes, and **Check now** runs the same checks for one domain straight away. The screen shows how far a domain has got and the reason it is waiting.
+
+| Status | What it means |
+| --- | --- |
+| Awaiting verification | Waiting for the TXT record that proves you own the domain |
+| Awaiting DNS | Ownership confirmed. Waiting for the domain to point at us |
+| Issuing a certificate | The domain is registered with our edge and the certificate is on its way |
+| Live | Serving your storefront |
+| Failed | The TXT record was not found after fourteen days. Remove the domain and add it again once the record is in place |
+
+Two more things worth knowing:
+
+- **A domain another store has already connected** is refused with a message saying so, rather than appearing to save and then failing quietly
+- **A domain under our own hosting domain** cannot be added as a custom domain. Use your store address for that
+
+### The primary domain
+
+With more than one domain connected, **Set as primary domain** chooses the one Marzipan treats as canonical. It is the address used in emails, in links back to your site, and anywhere Marzipan has to name your storefront.
+
+## Redirects
+
+Forward old URLs to new ones, for a page that moved or a site you have just migrated.
+
+- **From path** - where to redirect from. It must start with `/`
+- **To path** - where to send it. It must start with `/`
+
+Use `*` for a wildcard, so `/blog/*` to `/articles/*` sends `/blog/my-post` to `/articles/my-post`.
+
+## Clear cache
+
+Your storefront's pages and catalogue reads are cached, which is what keeps a shop fast. **Clear Cache** drops that cache for your store, so the next request rebuilds it.
+
+Marzipan clears what it needs to on its own when you save a page or change a product, so this is for the cases it cannot know about: a change made somewhere else, or a page that is serving something you have already fixed.
