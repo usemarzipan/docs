@@ -52,6 +52,21 @@ When a customer visits your store, Marzipan works through the following order an
 
 On products, events, and subscription packages you can set optional **price**, **sale price**, and **subscriber price** overrides for each market. Where you don't set an override, prices convert automatically from your base price using the market's exchange rate.
 
+So every figure a market shows is one of four things:
+
+| | What it is |
+| --- | --- |
+| **Set for this market** | A price you typed for that market. It stays where you put it, and a change to the base price does not move it |
+| **Converted** | The base price at the market's exchange rate, rounded as the market says. It moves on its own when you change the base price |
+| **Not set** | There is no base value for that field either, so there is nothing to show |
+| **Not converted** | There **is** a base value, deliberately left unconverted. See below |
+
+**The last one is worth understanding, because it looks like a mistake and is not.** Once a market has a **price** of its own, the other figures for that market stop converting. A hand-set price of €26 beside a sale price converted from your £15 British sale is a sale nobody chose, and would quietly undercut the price you set. So set a market's sale price yourself when you set its price.
+
+<Tip>
+Clearing an override puts the figure back to converting on its own. Clearing a market's **price** also lets its other figures start converting again.
+</Tip>
+
 ## Per-market visibility
 
 You can show or hide individual products, events, packages, and [collections](/collections/overview#market-visibility) per market, so each region only sees what's relevant to it.
