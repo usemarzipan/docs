@@ -1,0 +1,48 @@
+---
+title: 'Groups'
+description: 'Arrange attributes under headings so a product screen and a storefront data sheet read as blocks rather than loose fields'
+---
+
+A **group** is a heading that attributes are shown under. Six loose fields become "Technical Info", on the product screen and on your storefront.
+
+Groups are managed from **Attributes** in the main navigation menu.
+
+## What a group holds
+
+A group holds **attributes, not values**. A product's values belong to the attribute itself, which is what makes groups safe to rearrange:
+
+- **Moving an attribute between groups** changes where it is shown and nothing else. No product's value is touched
+- **Deleting a group** sets its attributes loose rather than taking them with it. They keep their values and go back to being shown on their own
+- **A group reports the attributes assigned to it**, not every attribute you have
+
+## Managing groups
+
+Open the **Groups** panel from the attributes list.
+
+- **Add** a group with a name. The slug is derived from it
+- **Rename** and **reorder** them. The order is the order their headings appear in
+- **Assign attributes in bulk**, rather than one at a time from each attribute's own form
+- **Delete** a group. The confirmation says what will actually happen to the attributes in it
+
+Each attribute's own form has a group picker as well, with **No group** as a real first choice rather than a blank.
+
+## Where groups appear
+
+- **The attributes list** is sectioned by group, in the groups' own order, with everything ungrouped last. A group nothing is in leaves no empty heading, and with no groups at all the list reads exactly as it did before
+- **The product screen's attributes panel** renders the same sections, with ungrouped attributes under **Other** when there is something grouped to contrast with
+- **Search results** carry the group, so an attribute picked on a product lands under its heading straight away rather than sitting at the bottom until you save and reload
+
+## Changing a group reaches products already using it
+
+A field added to a group **does** turn up on products already stamped with that heading. A group is a set of fields, and a product showing three of its four is not that group any more.
+
+Two cases where it does not:
+
+- A product that only **infers** the heading, where nothing is stamped on it
+- A product whose heading the attribute has since **left**
+
+## Data sheets on your storefront
+
+The storefront API sends each attribute's group along with it, so a theme can render a specification table per heading rather than guessing at an order. Crawlers read the same groupings as the product's additional properties.
+
+Private attributes never leave the dashboard, grouped or not. See [Attributes](/attributes/overview).

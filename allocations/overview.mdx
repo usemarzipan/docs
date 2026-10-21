@@ -1,0 +1,138 @@
+---
+title: 'Overview'
+description: 'Decide in advance who may buy a scarce product, and how much each of them may have'
+---
+
+An **allocation** is a release: a window, an audience, and a line per product saying how many each customer may buy. It is how you sell two hundred cases of something five thousand people want without first come first served deciding it for you.
+
+To view your allocations:
+
+1. Log in to your Marzipan account
+2. Click on **Allocations** in the main navigation menu, under Sales
+3. The overview page will display all of your releases
+
+## What a release is
+
+A release holds one window and one audience across several products. An autumn release of six wines is **one** allocation with six lines, not six allocations with the same dates pasted into each.
+
+The quantities belong to the lines, because each product is its own bucket. Passing on your allocation of one wine does not earn you more of another.
+
+- **The merchant sets a maximum** (and optionally a minimum) per product
+- **The customer chooses within it.** "You have been allocated up to 6" rather than a payment link for a fixed six, because "I only want two this year" is a thing customers say
+- **They pay at checkout**, like anything else
+
+## A release is private
+
+Set a product's availability to **Allocation only** and it leaves the shop:
+
+| Who | In listings | Its own page |
+| --- | --- | --- |
+| Anybody, including the people it was allocated to | Hidden | Not found |
+| Anybody, once availability is back to normal | Visible | Visible |
+
+That is the point of allocating something. A release is claimed from the customer's account, not bought from the storefront, so there is one place it happens and one place to send people to.
+
+<Note>
+The product picker on a release only offers products already set to **Allocation only**, so you cannot build a release that nothing enforces.
+</Note>
+
+## Creating a release
+
+Press **Create allocation**.
+
+- **Name** - what the customer sees the release called
+- **Description** - the winemaker's note, shown in the account and in the invitation
+- **Internal note** - for your team, never shown to a customer
+- **Status** - `Draft`, `Active` or `Closed`. A draft is never claimable, whatever its dates say, because a release is normally drafted inside the window it is for
+- **Opens** and **Closes** - leave either blank for an open end
+- **Shipping note** - "ships from March 2027", shown to the customer. It is a promise to them and triggers nothing
+- **Hold orders until they are released** - see [Holding orders](#holding-orders) below
+- **Email subject** and **Email note** - the two parts of the invitation that change per release
+
+## Products
+
+Add products on the **Products** tab, with a minimum and a maximum against each. Saved as a set, so a release of six wines is one trip rather than six.
+
+- **Maximum per customer** is required. It is a statement about how many each customer may have, and without a number it is not one
+- **Changing a maximum changes everybody's share of that wine**, so the figure on the line is never a lie about what the basket will allow. The other products in the release are untouched
+- **A customer given a different number by hand is left alone**, and the screen marks them so you can see why their figure did not move
+- **Adding a product later reaches everybody already in the release**
+
+Each line shows what has been **promised** beside the stock you actually hold, by location where you count that way, and says plainly when you have promised more than you have. That is the mistake worth catching: promising three hundred bottles across two markets without noticing the stock sits in one place.
+
+<Note>
+There is no separate pool figure to keep in step. Nobody without an entitlement can buy the product, so the product's stock **is** the release's pool. Selling before the wine lands is [overselling](/products/inventory#purchase-rules), which already tracks what you owe.
+</Note>
+
+## Customers
+
+Build the audience on the **Customers** tab from four selectors, all choosable together and saved once:
+
+- **Customer tags**
+- **Marketing segments**, using the segment's own query, so it means here what it means on a campaign
+- **Clubs**, meaning an active subscription to a package. A lapsed member is not a member
+- **Named customers**, added one at a time
+
+Unticking a tag removes the people it brought in, and their shares with them. Anybody added by name stays, and is removed from the list on the page, which is how they were added.
+
+- **Archived customers are left out of all four.** A tag built a year ago still carries them, and somebody who has gone is not somebody to hold six bottles back for
+- **Running it again is safe.** Anybody already in the release is left exactly as they are, so a hand-set number survives a second tag being added
+- **A reward tier is already a tag**, written and kept up to date for you, so an audience of "Gold" is a tag audience and stays live as customers move between tiers
+- **Somebody caught twice holds one entitlement.** Two open releases on the same wine promise the larger of the two, not the sum. If you mean twelve, write twelve
+
+Each customer's row carries their totals across the release, and opens a panel listing every product with that one customer's number against it, editable in place. "What has she got in the autumn release?" is a question you get asked by person, not by wine.
+
+### A staggered release
+
+"Best customers get 48 hours, then it opens up" needs no ladder. It is **two releases holding the same wine**: one to the named audience opening on the 1st, one to everybody else opening on the 3rd. Somebody in both is promised six, not twelve.
+
+## The invitation
+
+Nobody knows about a release until you send it. Press **Invite** on the Customers tab.
+
+- The wording lives with your other [notification templates](/settings/email), so it is styled and worded once. The release carries only a subject and a short note of its own
+- Each customer's email lists their own numbers, product by product, which for somebody set to 24 by hand says 24
+- **Sending is what records who has been told**, so adding forty more customers next week and sending again reaches only the forty
+- A draft refuses to send, and so does a release with no products. The screen says why before you press rather than after
+
+## Holding orders
+
+An allocation is often sold before the wine is in the warehouse. The order is real and paid, and it must not be picked, must not reach a carrier and must not be sent to a fulfilment partner.
+
+Turn on **Hold orders until they are released** and the release's orders are placed on hold. They count as real trade and as outstanding work, because both are true. When the pallet actually arrives, release them all from the **Orders** tab in one action.
+
+**A date never releases them.** A ship date set in October is a guess, and a scheduled job firing on a guess would push two hundred orders at a warehouse that has received nothing. You know when it landed.
+
+## Claiming, and what a customer sees
+
+The customer's account gains an **Allocations** tab, which is the whole of their side of it. It carries everything a product page would: the picture, the note, the price in the market they shop in, whether there is any to be had, their own number, and a stepper bounded by the minimum and by what is left to them.
+
+- Open releases first, with the closing date on each. Past releases sit beneath them, stated factually: allocated, claimed, closed. There is no cut-off, because a closed release has left the storefront entirely and this is the only place it still exists for them
+- **An allocation is a permission, not a reservation.** Somebody allocated six, shopping in a market whose warehouse holds two, gets two. The row says so rather than failing at checkout
+- **An allocated product is sent on its own**, so the account warns a shopper whose basket holds something else before they claim
+- **Somebody who has taken their whole share** is told what they spent, not that it is unavailable to them, which would be a lie and the kind a customer emails you about
+- **A refund or a cancellation gives the units back** to the customer while the window is open
+
+## When a release closes
+
+Closing it stops anybody claiming and takes it off everybody's account. What was offered and what was taken is kept, and you can reopen it from **Actions**.
+
+Stock nobody claimed is simply still in your inventory, so it can go to general sale by putting the product back to ordinary availability, or into a second release. Only a **draft** can be deleted: once a release is live, people have been promised wine from it and some have been told, so it is a record rather than something to tidy away.
+
+## Seeing how it went
+
+The release's **Overview** tab carries the funnel: how many were told, how many claimed something, how many units went, and the take-up. **Latest claims** sits beside it.
+
+The **Customers** tab filters by told and by claimed, so "told, and took nothing" is the list you chase. The export carries one row per customer per product, which is the only grain that can answer "who still has Syrah owing".
+
+Across releases, **Insights > Allocations** answers how your releases do rather than how one is going: by product, by how people got in (the Gold tag against the Founders club against people named by hand), and the people invited three times who have never claimed. It is linked from the release as **All releases**.
+
+## Limits that interact
+
+| Case | What happens |
+| --- | --- |
+| No entitlement, adds to basket | Refused |
+| Entitlement of 6, asks for 8 | Capped at 6 |
+| Product also has a limit per customer | The **lower** of the two wins. A shop-wide limit is a floor on generosity, not something a release overrides |
+| A general discount that happens to cover the product | Does not apply. A discount that **names** the product does |
+| Two open releases on one product | The larger promise, not the sum |

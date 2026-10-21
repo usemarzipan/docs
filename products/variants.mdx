@@ -1,0 +1,91 @@
+---
+title: 'Variants'
+description: 'Sell the same product in several sizes, colours or pack sizes, each with its own SKU and stock'
+---
+
+A **variant** is the same product in a different size, colour or pack size. One product, one page, one description, and a row per combination carrying its own SKU, barcode, stock and picture.
+
+Open a product from **Products** in the main navigation menu and press **Manage variants**.
+
+<Note>
+Only **physical** products are sold in variants. A subscription is a plan, a bundle takes its availability from its parts, and an event's ticket count is its own thing, so none of them offer the panel.
+</Note>
+
+## Variant, option, or a product of its own
+
+Three features look similar on a product screen and do different jobs. Getting this right first saves rebuilding a catalogue later.
+
+| | What it is | Own page? | Own SKU and stock? |
+| --- | --- | --- | --- |
+| **Variant** | The same product, a different thing in the box | No | Yes |
+| **Upsell or related product** | A different product, offered from this page | Yes | Yes |
+| **Option** | Does not change what is in the box (engraving, a gift message) | No | No |
+
+So Small, Medium and Large are variants. A magnum of the same wine is its own product: people search for it, it carries its own tasting note and its own price, and it needs its own page. Gift wrapping is an [option](/products/bundles-and-options#options).
+
+## Setting up variants
+
+Press **Manage variants** and name **what varies**, then list **its values**.
+
+- **What varies** - the axis, for example `Size` or `Colour`
+- **Its values** - the choices, typed one after another: `Small, Medium, Large`
+
+Every combination becomes a variant, so two axes of three values each is six variants. Add a second axis with **Add** and the grid fills out.
+
+To stop selling one combination, **remove a value** rather than looking for a way to delete the row. That keeps the axes and the grid saying the same thing. Removing a value tells you how many variants it takes with it, and names them, before you save.
+
+<Note>
+An order that already names a variant stays readable after it stops being sold. Orders carry their own copy of the name and the SKU, so your history never changes under you.
+</Note>
+
+## What each variant holds
+
+| Field | Notes |
+| --- | --- |
+| **SKU** | Unique within your store. It is what a picking list prints and what an import matches on |
+| **Barcode** | EAN-13, UPC-A, EAN-8 or ITF-14 |
+| **Image** | Chosen from the product's own images. Left empty, the variant shows the product's first image, which is the usual case |
+| **Quantity** | Its own stock figure, or one per location where you count stock that way |
+
+**Variants are all sold at the product's price.** The price, sale price, subscriber price, wholesale price and cost price stay on the product and apply to every variant, so a price change is made once.
+
+## Stock
+
+Stock belongs to the variants. A product sold in variants has no figure of its own: the Inventory section says so, and sends you to the panel above it.
+
+- Each variant has **Manage Inventory** and **View History**, exactly as a product does, so an adjustment carries a reason and leaves a trail
+- Where you count stock by location, each variant shows a figure per location
+- The product keeps a read-only total on the inventory screen, with its variants beneath it
+
+**Imports and exports count per variant.** An export writes a line per variant and none for the product over them, so the column adds up. An import matches a variant's own SKU, or the product's SKU plus a `variant` column where a variant has no SKU of its own.
+
+<Warning>
+Saving the first variant on a product that already holds stock **takes that stock off**, through a write-off movement with the figure named, and asks you to assign stock to each variant. The parent cannot hold stock once its variants do. The movement stays in the inventory history, so a stocktake in six months has something to reconcile to, but the figure is not handed back if you take the variants off again.
+</Warning>
+
+## What the shopper sees
+
+The product page shows a selector built from your axes, as a group of pills per axis. Picking a value changes the price, the picture and the stock to match.
+
+- **Nothing unbuyable is offered.** Picking Navy when the page was on a size Navy is not made in honours the click and repairs the size around it, preferring one that is in stock
+- **Sold out is not the same as not made.** A size you do make but have none of stays pickable and struck through, so a shopper can see it is sold out and ask to be told when it is back
+- **Back in stock is per variant.** Somebody waiting for a Large is written to when a Large arrives, and the email names the size
+- **The low-stock badge follows what is on offer.** On a collection card no size is in play, so the badge counts everything a shopper could buy. On the page, with a size selected, it is about that size
+- **Cards ask which one.** A collection card has nowhere for a selector, so it opens the choice in a popup or sends the shopper to the product page rather than offering a button the basket would refuse
+
+## Bundles, pick and mix, and fixed shipments
+
+A product sold in variants **cannot** be a bundle component, a pick and mix choice or an item in a fixed subscription shipment, and it does not appear in those pickers.
+
+"Put the Chardonnay in" stops being a complete instruction once there are three of them, and a bundle's availability is worked out from its parts, so a component with variants would break the sum rather than just the label. Marzipan refuses it at both ends: you cannot add variants to a product already used that way, and you cannot pick a variant product in one of those lists.
+
+## Selling channels
+
+- **Google Shopping** lists one item per variant, tied together so Merchant Center shows them as a single listing a shopper picks within. Each carries its own availability, GTIN and MPN, so a sold-out Large lists as sold out beside available Smalls. A product sold in variants is not listed in its own right, because it is not something anybody can buy
+- **Crawlers** read a product group with each variant marked up under it, with its own SKU, barcode and availability
+
+An axis travels under a name the channels recognise where it plainly means the same thing, so "Bottle Size" is sent as a size. An axis that means something else, a vintage for instance, is left out of those fields rather than forced into one, since saying a vintage were a size would put your wine in front of people filtering for one.
+
+## In the API
+
+A product carries `variants` and `variantOptions`, and a collection card carries `hasVariants`. See [the API reference](/api-reference/introduction).

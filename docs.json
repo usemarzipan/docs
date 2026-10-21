@@ -74,6 +74,12 @@
             ]
           },
           {
+            "group": "Allocations",
+            "pages": [
+              "allocations/overview"
+            ]
+          },
+          {
             "group": "Subscriptions",
             "pages": [
               "subscriptions/overview",
@@ -138,6 +144,7 @@
               "products/create",
               "products/pricing",
               "products/inventory",
+              "products/variants",
               "products/bundles-and-options",
               "products/reviews-and-awards"
             ]
@@ -145,7 +152,8 @@
           {
             "group": "Attributes",
             "pages": [
-              "attributes/overview"
+              "attributes/overview",
+              "attributes/groups"
             ]
           },
           {
