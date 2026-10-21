@@ -3,35 +3,160 @@ title: 'Introduction'
 description: 'Welcome to the Marzipan API documentation.'
 ---
 
-The Marzipan REST API enables you to interact with the Marzipan platform, retrieve data, and allow customers to manage their orders and accounts. You may want to use our [web components](/web-components/introduction) instead of the API.
+The Marzipan REST API lets you read your catalogue, build a basket, take a payment, and manage what your store sells. It is one API at one address, and the kind of key you send decides how much of it you reach. You may want to use our [web components](/web-components/introduction) instead, which are built on it.
 
-## The Storefront API
-
-The Storefront API (`/v1/…`) is the API this reference and the scopes below cover. It powers our [web components](/web-components/introduction) and headless storefronts. Requests authenticate with a tenant API token, plus a customer bearer token for actions taken on behalf of a logged-in account.
-
-## Getting Started
-
-To get started with the Marzipan API, you will need to create an API key with the right permissions in your Marzipan [account settings](https://app.marzipan.co/settings/api).
-
-You will be able to choose the permissions you need for your API key. The current available permissions are:
-
-- `read` - read access to products, collections, events, subscriptions and CMS
-- `create` - create access to products, collections, events, subscriptions and CMS
-- `update` - update access to products, collections, events, subscriptions and CMS
-- `delete` - delete access to products, collections, events, subscriptions and CMS
-- `cart:create` - create access to carts
-- `cart:update` - update access to carts
-- `cart:read` - read access to carts
-- `cart:delete` - delete access to carts
-
-
-## Authentication
-
-The Marzipan API uses Bearer authentication. Include your generated API key in the `Authorization` header of your HTTP requests.
-
-```http
-Authorization: Bearer YOUR_API_KEY
+```
+https://api.marzipan.co/v1
 ```
 
-Keep your API key secure and never expose it in a public repository or share it with untrusted parties. If you believe your API key has been compromised, you can revoke it and generate a new one in your [account settings](https://app.marzipan.co/settings/api).
+## The two surfaces
 
+**The Storefront API** is what a shop front calls: products, collections, content, baskets, checkout and the customer's own account. It is **stable**, which means the deprecation policy below applies to it in full.
+
+**The Management API** is what your own software calls: products, prices, markets, collections, attributes, inventory, discounts, shipments, events and webhook endpoints. It is **beta**. It works and it is tested, but its shape may still change, so building on it is a decision taken with open eyes.
+
+Both live under `/v1`. There is no second hostname to learn, because the key is what draws the line.
+
+## Keys
+
+Create and manage keys under **Settings > API keys**.
+
+| Key | Prefix | Where it lives | What it reaches |
+| --- | --- | --- | --- |
+| Publishable | `pk_` | Browsers, HTML, static sites | The Storefront API |
+| Secret | `sk_` | Your own servers, never a browser | The Storefront API and the Management API |
+
+Send either as a bearer token.
+
+```http
+Authorization: Bearer pk_your_key_here
+```
+
+A publishable key is public by design: it is printed in page source, so it is given storefront access and nothing more. A secret key is shown **once**, when you create it, and stored hashed after that. If you lose it, replace it rather than looking for it.
+
+A publishable key presented to a management endpoint is answered with a **401**, not a 403. The kind of key is wrong rather than its permissions, and no scope could ever make a `pk_` safe there.
+
+<Note>
+Replacing a key gives you seven days of overlap by default, so a deploy does not have to be instant. The old key keeps working until then.
+</Note>
+
+### Scopes
+
+Every key carries scopes, and every endpoint names the one it needs. A key without it is answered with a **403** saying which scope was missing.
+
+Choose scopes when you create a key. A publishable key may hold any of the storefront scopes:
+
+```
+products:read               subscription_packages:read   cms:read
+events:read                 markets:read                 storefront:read
+cart:read                   cart:create                  cart:update
+cart:delete                 checkout:write               account:write
+forms:read                  forms:submit                 visits:write
+waitlist:write
+```
+
+A secret key may hold any of the management scopes as well. There are 48, in five groups: catalogue, selling, people, content and events, and automation and insight. The key creation screen lists each with a line saying what it covers.
+
+Read and write are separate, and three things are kept out of a general write because they move money or cannot be undone: `orders:refund`, `vouchers:issue` and `subscriptions:cancel`. Some scopes are never issuable to a key at all, however your own permissions read: team, roles, payment settings, till operations and integration credentials. A key that could edit your team could grant itself more access.
+
+### The customer's own token
+
+An action taken on behalf of a signed-in shopper needs that shopper's token as well as your key. On the `/v1/account` routes the customer's token is the bearer token. Everywhere else on the storefront the `Authorization` header is already carrying your key, so the customer's token travels in its own header:
+
+```http
+marzipan-customer-auth: <customer token>
+```
+
+## Case on the wire
+
+Request keys are read as snake_case or camelCase, whichever you send, at any depth. **Response keys are always camelCase**, including the field names inside a validation error. So `sale_price` and `salePrice` are the same field on the way in, and `salePrice` is what comes back.
+
+One endpoint is deliberately exempt: [the storefront schema](/api-reference/cms/retrieve-the-storefront-schema) serves your own identifiers exactly as you registered them.
+
+## Rate limits
+
+| Credential | Limit |
+| --- | --- |
+| Publishable key | 300 a minute per IP address per store, and 3,000 a minute across the store |
+| Secret key | 300 a minute, and the same store ceiling |
+| Customer token | 120 a minute |
+
+A few endpoints are tighter, because they are the ones worth abusing: signing in, registering and asking for a password reset are 10 a minute, and form submissions the same.
+
+Every answer carries what is left:
+
+```http
+RateLimit-Limit: 300
+RateLimit-Remaining: 287
+RateLimit-Reset: 42
+```
+
+`RateLimit-Reset` counts seconds from now. The same figures are also sent under their older `X-RateLimit-*` names. Go over and you get a **429** with a `Retry-After` header saying how long to wait.
+
+Catalogue and content reads are cached, so a storefront built on them mostly does not reach these limits at all.
+
+## Idempotency
+
+Send an `Idempotency-Key` header on anything that creates something or takes money, and a retry cannot do the work twice.
+
+```http
+Idempotency-Key: a-key-you-chose-9f8e7d6c
+```
+
+The first call is carried out and its response stored for 24 hours. A retry with the same key and the same body is answered with that stored response and an `Idempotency-Replayed: true` header, so a second press of Pay is handed the first answer rather than making a second order.
+
+The header is accepted on every write. It is **required** on the calls where a repeat does real damage, and those endpoints say so: checkout, payment intent creation, stock adjustments and transfers, creating a shipment, creating a market, and checking a ticket in. A required key that is missing is a **400**. The same key sent with a different body is a **409**, because the key is a promise about one request rather than a general licence to retry.
+
+## Stability
+
+Every response says how much it can be relied on:
+
+```http
+X-Api-Stability: stable
+```
+
+`stable` means the deprecation policy below applies in full. `beta` means the endpoint works and is tested but its shape may still change. Nothing is labelled beta as a hedge: it is labelled beta while that is true of it.
+
+## Versioning and deprecation
+
+The major version is in the URL. New endpoints, new response fields and new optional parameters ship at any time and are not breaking changes, so write a client that ignores fields it does not recognise.
+
+Anything else waits for the next major version. A **stable** endpoint that is going to change gets at least **twelve months' notice**: `Deprecation` and `Sunset` headers on the endpoint itself, an entry in the [changelog](/changelog/2026), and an email to every store whose keys called it in the last 30 days.
+
+Two things sit outside that promise, and it is worth being plain about both. **Beta endpoints** are not covered, which is what beta means. And a **security fix** can remove something sooner, because a year's notice on an endpoint that exposes data a key should not reach is a year of exposure.
+
+## Errors
+
+A failure carries a `message` meant for a developer rather than a shopper. Several shapes are in use, because the API grew:
+
+A validation failure sends the first message and the fields, with the field names camelCased:
+
+```json
+{
+  "message": "The courier field is required.",
+  "errors": { "courier": ["The courier field is required."] }
+}
+```
+
+A refusal with a reason worth branching on carries a stable `code` alongside the prose:
+
+```json
+{
+  "code": "over_shipped",
+  "message": "Item d4e5f607 has 1 left to send, which is fewer than the 2 in this shipment."
+}
+```
+
+The idempotency layer answers with `status` rather than `code`:
+
+```json
+{ "status": "error", "message": "An Idempotency-Key has already been used for a different request." }
+```
+
+And many refusals carry a `message` and nothing else. Branch on the HTTP status and on `code` where there is one. Do not match on the prose: it is written to be read, and it gets reworded.
+
+Statuses you should expect: **401** for a missing or wrong key, **403** for a missing scope, **404** for something that is not there or is not yours, **409** for a conflict, **422** for a refusal, and **429** for a rate limit.
+
+## Keeping your key safe
+
+Never put a secret key in a browser, a mobile app, or a public repository. If one gets out, replace it under **Settings > API keys**: the old key stops working as soon as the overlap you chose has passed, or straight away if you ask for that.
