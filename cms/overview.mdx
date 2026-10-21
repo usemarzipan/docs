@@ -3,7 +3,7 @@ title: 'Overview'
 description: 'Marzipan includes a lightweight CMS for building and managing content on Marzipan-hosted sites.'
 ---
 
-Marzipan includes a lightweight CMS for managing the content on Marzipan-hosted sites. You can build pages, publish posts, group content into collections, and manage the templates and files that power your site, all from your dashboard.
+Marzipan includes a CMS for managing your site's content. You can build pages out of blocks, publish posts, and group content into collections, all from your dashboard, and read every bit of it back over the API.
 
 To open the CMS:
 
@@ -13,16 +13,19 @@ To open the CMS:
 
 ## How content is structured
 
-The CMS is built from four pieces that work together.
+The CMS is built from three pieces that work together.
 
 | Area | What it holds |
 | --- | --- |
-| [**Pages**](/cms/pages) | Content pages built from templates, edited through sections and fields |
+| [**Pages**](/cms/pages) | Content pages built as an ordered list of blocks |
 | [**Posts**](/cms/posts) | Blog-style articles with an excerpt, content, author and images |
 | [**Collections**](/cms/collections) | Ordered groupings of pages and posts, used to build navigation and listings |
-| [**Website**](/cms/website) | The templates and shared files that your pages are built from |
 
-Pages and posts hold the content. Collections organise that content into menus and listings. The Website area holds the building blocks: the templates a page is built from, and the files shared across your site.
+Pages and posts hold the content. Collections organise that content into menus and listings. What a block looks like belongs to your storefront, which declares the block types it can render.
+
+<Note>
+The **Website** area has gone. Templates and shared files belonged to pages Marzipan rendered itself, and a storefront now owns its own layout and assets. Your store's address and the domains pointed at it are under [Settings > Website](/settings/website).
+</Note>
 
 ## Headless CMS API
 
@@ -31,6 +34,7 @@ All of your content is also available over the **headless CMS API**, so you can 
 - `/v1/cms/pages`
 - `/v1/cms/posts`
 - `/v1/cms/collections`
+- `/v1/cms/schema`
 
 See the [API reference](/api-reference/introduction) to get started.
 
@@ -40,5 +44,4 @@ See the [API reference](/api-reference/introduction) to get started.
   <Card title="Pages" href="/cms/pages">Build and publish content pages</Card>
   <Card title="Posts" href="/cms/posts">Write blog-style articles</Card>
   <Card title="Collections" href="/cms/collections">Group content for navigation and listings</Card>
-  <Card title="Website" href="/cms/website">Manage templates and shared files</Card>
 </CardGroup>

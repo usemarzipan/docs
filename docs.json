@@ -191,8 +191,7 @@
               "cms/overview",
               "cms/pages",
               "cms/posts",
-              "cms/collections",
-              "cms/website"
+              "cms/collections"
             ]
           },
           {
@@ -394,6 +393,10 @@
     {
       "source": "/api-reference/events/update-event-occurrence",
       "destination": "/api-reference/introduction"
+    },
+    {
+      "source": "/cms/website",
+      "destination": "/settings/website"
     }
   ]
 }

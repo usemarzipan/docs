@@ -1,9 +1,9 @@
 ---
 title: 'Pages'
-description: 'Build, edit and publish the content pages of your Marzipan-hosted site.'
+description: 'Build, edit and publish the content pages of your site as an ordered list of blocks.'
 ---
 
-Pages are the content pages of your site. Each page is built from a **template**, and you edit its content through **sections** and **fields**, so you're never editing raw code.
+A page is an **ordered list of blocks**. You decide which blocks are on a page and in what order; your storefront decides what block types exist and how each one looks.
 
 To find your pages, click on **CMS** in the main navigation menu. The Pages list is the first thing you see.
 
@@ -11,16 +11,40 @@ To find your pages, click on **CMS** in the main navigation menu. The Pages list
 <img src="https://marzipan-cloud.b-cdn.net/0/docs/cms/pages-list.png" alt="The CMS Pages list in the Marzipan dashboard" />
 </Frame>
 
-## Sections and fields
+## Blocks
 
-A page's template defines the **sections** it contains, and each section contains **fields** that you fill in. Field types include:
+A block is one thing on the page: a hero, a run of text, a gallery, a row of products. Inside a block are **fields** you fill in.
 
-- **Simple text**
-- **Rich text** (WYSIWYG)
-- **HTML**
-- **Image**
+- **Add block** offers the block types your storefront has declared for this kind of page
+- **Drag to reorder** them. The order on this screen is the order on the page
+- **Each block's fields edit inline**, with the right editor for the field's type
 
-Because the layout comes from the template, editing a page is a matter of filling in its fields. To change the layout itself, edit the template in the [Website](/cms/website) area.
+A composite thing is one block, not several. A hero with a heading, an image and a button moves as one, because it is one thing on the page.
+
+### Field types
+
+- **Text** - a single line
+- **Rich text** - formatted copy, edited visually
+- **HTML** - raw markup, where you need it
+- **Image** - chosen from your [media library](/media/overview)
+- **Link** - a label and where it goes
+- **Number** and **Yes or no**
+- **Choice** - one of a fixed list
+- **Reference** - points at a product, a collection, a form or another page
+
+### Locked blocks
+
+Some blocks are **required** by the kind of page, and arrive with it. They carry a padlock and cannot be deleted, though they can still be moved: required means it has to be on the page, not that it has to be in a particular place.
+
+Everything else your storefront declares stays addable. Required blocks are a floor rather than a fence.
+
+## Where block types come from
+
+Your storefront registers a **schema** saying which blocks it can render and what fields each one has. Marzipan stores it and builds this screen from it, so the editor always offers what your site can actually display.
+
+- **Changing the kind of page** creates the blocks the new kind requires, and unlocks the ones only the old kind did. Nothing is removed, because a block the old kind wanted may be holding content you still want
+- **A block type your storefront no longer has** is marked as no longer in your theme and left exactly where it is. Your content is never deleted by a change to a theme, and your storefront skips a block it does not recognise
+- **A store with no schema** keeps the free-form fields it has always had, and can adopt a schema later without rebuilding any page
 
 ## Page settings
 
@@ -32,12 +56,16 @@ Each page also has:
 
 ## Duplicating a page
 
-You can **duplicate** a page to reuse its layout. The duplicate arrives with the same sections and fields already in place, ready for you to edit and give a new slug.
+You can **duplicate** a page to reuse its layout. The duplicate arrives with the same blocks and the same content already in place, ready for you to edit and give a new slug.
 
 <Tip>
-Duplicating is the quickest way to build a set of pages that share a layout (landing pages, for example) without rebuilding each one from its template.
+Duplicating is the quickest way to build a set of pages that share a layout (landing pages, for example) without assembling each one block by block.
 </Tip>
 
 ## Previewing a page
 
 Generate a **preview link** to review a page before it goes live. This lets you check your changes, and share them with the rest of your team, while the page is still unpublished or scheduled.
+
+## In the API
+
+A page is served with a `blocks` array whose items name their own `type`, so a storefront maps a type to one of its components without knowing the page in advance. `GET /v1/cms/schema` returns the schema itself. The older flat `fields` and the grouped `sections` are both still served for sites written against them. See [the API reference](/api-reference/introduction).
