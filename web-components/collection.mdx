@@ -195,6 +195,12 @@ You can also give the product cards their own background, separate from the coll
 
 A collection can be [restricted to certain markets](/collections/overview#market-visibility). When a shopper is in a market the collection isn't available in, the component explains why there's nothing to show rather than rendering an empty grid, using the message and page you set on the collection.
 
+#### Variants
+
+A product sold in [variants](/products/variants) cannot be added from a card, because a card has nowhere to ask which size. The card asks in a popup, with a group of pills per axis, or sends the shopper to the product page. Either way nobody is offered a button the basket would refuse.
+
+A variant that is made but sold out stays pickable and struck through; one that does not exist is never offered. The low-stock badge on a card counts everything a shopper could buy across the variants, since no size is in play yet.
+
 #### Purchase Options
 
 A product with upsells shows a **See options** button rather than an add-to-cart button, opening a chooser that lists every purchase option as a priced row: the product itself alongside its upsells, each with its own price and a quantity to multiply it by.

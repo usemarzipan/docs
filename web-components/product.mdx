@@ -110,7 +110,8 @@ The mini view displays the product in a compact format suitable for product grid
 The full view displays the product in an expanded format suitable for dedicated product pages. It includes:
 - Image gallery with thumbnails
 - Detailed product information
-- Product options and variants
+- A [variant](/products/variants) selector, where the product is sold in more than one size or colour
+- Product options
 - Full description
 - Product attributes
 - Awards and reviews
@@ -309,8 +310,13 @@ The related products section.
 #### Subscription Products
 The product component automatically detects and handles subscription products, including pick-and-mix subscriptions. For subscription products, it integrates with the subscription configuration component to provide frequency selection and item management.
 
+#### Variants
+A product sold in [variants](/products/variants) shows a selector, as a group of pills per axis. Picking a value changes the price, the image and the stock to match. A size that is made but sold out stays pickable and struck through, so a shopper can see it is sold out and ask to be told when it is back, and a combination that does not exist is never offered.
+
+The mini view has nowhere to put a selector, so it opens the choice in a popup or sends the shopper to the full view rather than offering a button the basket would refuse.
+
 #### Upsell Products
-When a product has upsell variants, the component displays a dropdown selection allowing customers to choose between different options before adding to cart.
+When a product has upsells, the component displays a dropdown letting customers choose between them before adding to cart. An upsell is a **different product** offered from this page, which is not the same thing as a variant: it keeps its own page, its own description and its own URL.
 
 #### Quick Attributes
 When enabled in your [web component settings](/web-components/customisation#quick-attributes), key product attributes (e.g. Size, Colour, Material) are displayed directly on the mini view product card. You choose which attributes to show and their display order from Settings > Branding & Web Components > Product.
