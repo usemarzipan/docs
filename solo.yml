@@ -1,0 +1,7 @@
+name: Marzipan Docs
+icon_initials: MD
+processes:
+  Mintlify dev:
+    command: mint dev
+    auto_start: true
+    auto_restart: false
