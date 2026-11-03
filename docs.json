@@ -199,7 +199,6 @@
             "group": "Settings",
             "pages": [
               "settings/overview",
-              "settings/billing",
               "settings/roles-and-team",
               "settings/markets",
               "settings/inventory",
