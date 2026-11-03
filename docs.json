@@ -70,6 +70,7 @@
               "orders/fulfilment",
               "orders/payments",
               "orders/payment-links",
+              "orders/abandoned-carts",
               "orders/pos"
             ]
           },
@@ -80,6 +81,7 @@
               "subscriptions/packages",
               "subscriptions/details",
               "subscriptions/shipments",
+              "subscriptions/product-subscriptions",
               "subscriptions/gifts"
             ]
           },
@@ -89,7 +91,8 @@
               "events/overview",
               "events/create",
               "events/details",
-              "events/recurring"
+              "events/recurring",
+              "events/cancelling"
             ]
           },
           {
@@ -183,8 +186,7 @@
               "cms/overview",
               "cms/pages",
               "cms/posts",
-              "cms/collections",
-              "cms/website"
+              "cms/collections"
             ]
           },
           {
@@ -203,6 +205,7 @@
               "settings/shipping",
               "settings/cart-and-checkout",
               "settings/gift-vouchers",
+              "settings/notifications",
               "settings/email",
               "settings/test-mode"
             ]
@@ -213,7 +216,8 @@
               "integrations/overview",
               "integrations/ezypro",
               "integrations/google-merchant",
-              "integrations/london-city-bond"
+              "integrations/london-city-bond",
+              "integrations/mailchimp"
             ]
           }
         ]

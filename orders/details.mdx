@@ -14,10 +14,29 @@ The order details screen provides a comprehensive view of an order and lets you 
 The **Actions** menu in the top-right corner gives you quick access to common tasks:
 
 - **Resend email confirmation** - send the order confirmation email to the customer again
-- **Cancel** - cancel the order
-- **Refund** - refund all or part of the order
-- **Duplicate order** - create a new draft order with the same items
+- **Cancel order** - cancel the order, giving a reason, with the option to refund it at the same time
+- **Refund order** - refund all or part of the order (see [Payments](/orders/payments#refunds))
+- **Duplicate order** - create a new draft order with the same items and shipping details
 - **Assign customer** - only shown for POS walk-in orders, this links a walk-in sale to a real customer (see [Point of Sale](/orders/pos))
+
+Integrations you've connected can add their own actions to the top of the menu, such as sending the order to [London City Bond](/integrations/london-city-bond).
+
+### Cancelling an order
+
+Cancelling an order also tidies up after it:
+
+- Any **event tickets** on the order are cancelled, and their seats go back on sale. If the event has a waitlist, the freed seats are offered to it.
+- The order's leftover **cart** is cleared, so it never turns up under [Abandoned Carts](/orders/abandoned-carts) or keeps holding stock.
+
+This happens however the order is cancelled: from this menu, in bulk from the orders list, or by ticking **Cancel order** when you refund it in full.
+
+### Duplicating an order
+
+**Duplicate order** copies the order's lines into a new draft:
+
+- A **subscription order or renewal** is copied as the products that were in that shipment, as ordinary product lines. No second subscription is created. A first subscription order keeps the prices it recorded; a renewal's products take their current price for the customer in the order's market.
+- **One-off items** are copied as one-off items.
+- Products you've since deleted, empty shipments and balance payments are left out, and the confirmation message names anything that couldn't be copied.
 
 ### Order items
 
@@ -27,7 +46,7 @@ The order items section lists everything in the order. Each line shows:
 - Any selected **options** (for example size)
 - The unit price, quantity and line total
 
-For bundles, the **constituent items** that make up the bundle are listed beneath the bundle line.
+For bundles, the **constituent items** that make up the bundle are listed beneath the bundle line. A subscription renewal lists what went into that shipment in the same way, so whoever packs it knows what goes in the box.
 
 Beneath the items, the footer shows the order totals:
 
@@ -46,6 +65,9 @@ The payments section shows the payment status for the order and any payment acti
 - **Tap to Pay / card-present** payments taken in person show a Tap to Pay indicator (see [Point of Sale](/orders/pos))
 - Failed payments show the failure reason
 - Refunds appear as nested rows beneath the original payment, each with a reason
+- Payments and refunds are shown in the order's own currency, matching the order totals
+
+When a payment arrives, the [order activity](#order-activity) records it along with how it was made: through checkout, from the customer's account, or with a [payment link](/orders/payment-links).
 
 If the order is unpaid, you can take payment or complete it from here. See [Draft, unpaid and hold order actions](#draft-unpaid-and-hold-order-actions) below. For more on payments and refunds, see [Payments](/orders/payments).
 
@@ -54,10 +76,11 @@ If the order is unpaid, you can take payment or complete it from here. See [Draf
 When an order is not yet paid, or is on `hold`, extra actions are available:
 
 - **Process payment** - charge a saved card or record a manual payment (for example if the customer paid offline)
+- **Send payment link** - email the customer a link to pay the order themselves (see [Payment links](/orders/payment-links))
 - **Mark as free** - complete a zero-value order. This triggers the same automations as a paid order, so a warning is shown before you confirm
 - **Redeem points** - apply the customer's rewards points to the order, when rewards are enabled
 - **Edit items** - available on draft and pending orders only. Add or remove items and adjust quantities; at least one item must remain on the order
-- **Release order** - release an order that is on `hold`
+- **Release Order** - release an order that is on `hold`, once it has been paid or marked as free
 
 ### Order Fulfilment
 
@@ -89,6 +112,8 @@ You can add tags to an order to help you identify and manage orders. Tags are us
 
 The shipping details section contains the shipping address for the order and the shipping method that has been applied. If the order still has a `processing` status you can edit these details. Orders that are for collection will not have a shipping address.
 
+**Delivery instructions** (or **Collection instructions**, for a collection order) are capped at 120 characters, with a running count as you type. If you use London City Bond, delivery orders also show a reminder that some couriers only accept 30 characters.
+
 ### Shipping Date
 
 You can optionally set a shipping date for the order. This is the date that the order is expected to be shipped. This can be useful when the customer has requested a specific delivery date or you are expecting the customer to collect the order on a specific date.
@@ -115,4 +140,4 @@ An order that sold vouchers lists every code under **Vouchers issued**, each one
 
 This is where you can view a history of actions taken on the order (either manually or by the app) and any notes that have been added.
 
-The activity feed updates automatically, polling every few seconds. Some activity is written by background jobs, so an entry may appear a moment after you take an action.
+The activity feed updates automatically, polling every few seconds. Some activity is written by background jobs, so an entry may appear a moment after you take an action. Older entries load as you scroll down.

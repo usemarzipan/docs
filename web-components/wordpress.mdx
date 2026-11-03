@@ -171,7 +171,7 @@ Display products from a specific collection with full control over display optio
 
 | Attribute | Description | Default |
 |-----------|-------------|---------|
-| `collection` | Collection slug (required) | — |
+| `collection` | Collection slug (required) | None |
 | `show_collection_name` | Show the collection title | `true` |
 | `show_description` | Show product descriptions | `default` |
 | `show_more_link` | Show "view more" link on products | `false` |
@@ -181,7 +181,7 @@ Display products from a specific collection with full control over display optio
 | `show_cart_quantity` | Show quantity selector | `default` |
 | `redirect_to_cart` | Redirect to cart after adding | `default` |
 | `add_to_cart_text` | Custom button text | `Add to Cart` |
-| `show_subscriber_pricing` | Show member pricing | `default` |
+| `show_subscriber_pricing` | Show subscriber pricing | `default` |
 | `sale_badge_text` | Text for sale badges | `Sale` |
 | `subscriber_badge_text` | Text for subscriber badges | `Subscribers` |
 | `subscriber_price_label` | Label for subscriber pricing | `for subscribers` |
@@ -201,10 +201,10 @@ Display a single product in either mini (card) or full (page) view.
 
 | Attribute | Description | Default |
 |-----------|-------------|---------|
-| `product` | Product slug or ID (required) | — |
+| `product` | Product slug or ID (required) | None |
 | `view` | Display mode: `mini` or `full` | `mini` |
 | `show_collection_name` | Show the collection name | `true` |
-| `show_subscriber_pricing` | Show member pricing | `default` |
+| `show_subscriber_pricing` | Show subscriber pricing | `default` |
 | `hide_add_to_cart_button` | Hide the add to cart button | `false` |
 | `redirect_to_cart` | Redirect to cart after adding | `false` |
 | `add_to_cart_text` | Custom button text | `Add to Cart` |
@@ -226,7 +226,7 @@ A standalone add-to-cart button for embedding anywhere on your site.
 
 | Attribute | Description | Default |
 |-----------|-------------|---------|
-| `product_id` | Product UUID (required) | — |
+| `product_id` | Product UUID (required) | None |
 | `product_type` | `physical`, `bundle`, `event`, or `subscription` | `physical` |
 | `button_text` | Custom button text | `Add to Cart` |
 | `show_quantity` | Show quantity selector | `false` |
@@ -239,7 +239,7 @@ A standalone add-to-cart button for embedding anywhere on your site.
 ### Cart Shortcode
 
 ```html
-[marzipan_cart empty_cart_message="Your cart is empty — browse our products!"]
+[marzipan_cart empty_cart_message="Your cart is empty. Browse our products!"]
 ```
 
 | Attribute | Description | Default |
@@ -279,7 +279,7 @@ Display a form created in your Marzipan dashboard.
 
 | Attribute | Description | Default |
 |-----------|-------------|---------|
-| `slug` | Form slug as defined in your dashboard (required) | — |
+| `slug` | Form slug as defined in your dashboard (required) | None |
 | `button_text` | Custom submit button text | `Submit` |
 | `success_message` | Custom success message | Form setting |
 

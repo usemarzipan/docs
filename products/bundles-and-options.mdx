@@ -1,7 +1,7 @@
 ---
 title: 'Bundles and options'
 sidebarTitle: 'Bundles & Options'
-description: 'Build bundles, add product options, and link upsell and related products'
+description: 'Build bundles, add dropdown and text options, and link upsell and related products'
 ---
 
 These sections of the product form let you build up what a customer can buy, and what you show them alongside it. Open a product from **Products** in the main navigation menu to find them.
@@ -16,13 +16,25 @@ Bundle items only appear on products created with the **Bundle** type. The type 
 
 ## Options
 
-Define product **options**, for example size, as a list of choices. You can mark an option as **required** so the customer must pick a choice before adding the product to their cart.
+Use **Add option** to give a product options the customer chooses or fills in before adding it to their cart. Each option has a **Name** and a **Type**:
+
+- **Dropdown** - a list of choices, for example Small, Medium and Large. Type each value into **Available Options** and press Enter or a comma.
+- **Short text** - a text box for up to 100 characters on a single line, for example an engraving or a name on a label
+- **Long text** - a text box for up to 500 characters, over several lines if they like, for example a gift message
+
+Turn on **Required** so the customer must pick a choice, or type something, before the product can go in their cart.
+
+On the storefront, a text option shows as a text box with a character count, and the add to cart button waits until any required text is filled in. Product cards in a collection have nowhere to type, so a product with a required text option links through to its product page rather than adding straight to the cart.
+
+<Note>
+The same product added twice with different choices or text goes in the cart as two lines, so a second engraving never overwrites the first. What the customer typed keeps its line breaks and capitalisation on the order and in their emails.
+</Note>
 
 ## Upsell and related products
 
-- **Upsell products** - alternatives a customer can choose instead of this product, for example a gift box
-- **Related products** - products shown alongside this one
+- **Upsell products** - alternatives a customer can choose instead of this product, for example a case of wine or a bottle and gift box. Drag them into order, and give each a short storefront label for the list of options; leave it blank to use the product name.
+- **Related products** - products, events, subscription packages or vouchers shown alongside this one
 
 ## Tier exclusivity
 
-If you use reward tiers, you can restrict a product to specific membership tiers, so only members of those tiers can buy it.
+If you use reward tiers, **Tier Exclusivity** in the Inventory section restricts a product to specific tiers, so only customers in those tiers can buy it.

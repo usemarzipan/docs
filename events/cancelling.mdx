@@ -1,0 +1,68 @@
+---
+title: 'Cancelling an event'
+sidebarTitle: 'Cancel'
+description: 'Cancel an event or a single date, and reinstate it if plans change'
+---
+
+You can cancel a one-time event, or a single date of a recurring event, from its **Actions** menu. Cancelling takes it off sale straight away and is recorded in the event's activity. If plans change, you can reinstate it from the same menu.
+
+<Warning>
+Cancelling doesn't cancel or refund anyone's tickets, and doesn't message attendees. Those are yours to do from the [Attendees](/events/details#cancelling-tickets) tab, so you stay in control of what each customer is told and refunded.
+</Warning>
+
+## Cancelling a one-time event
+
+<Steps titleSize="p">
+  <Step title="Open the event">
+    Click on **Events** in the main navigation menu, then click the event.
+  </Step>
+  <Step title="Choose Cancel event">
+    Open the **Actions** menu in the top-right corner and choose **Cancel event**.
+  </Step>
+  <Step title="Give a reason and confirm">
+    Optionally enter a **Reason**. It's shown in the event's activity log, beneath the cancellation. Click **Cancel event** to confirm, or **Go back** to leave the event as it is.
+  </Step>
+</Steps>
+
+What happens depends on whether the event was published:
+
+- **A draft event** - it's cancelled and archived
+- **A live event** - it comes off sale and off your storefront straight away. Its tickets and orders are left as they are. If the event has a waitlist, the waitlist is closed and nobody on it is notified.
+
+A cancelled event shows a notice at the top of its **Overview** tab saying it has been cancelled and that its tickets and orders haven't been changed. It keeps its `cancelled` status once its date has passed, rather than becoming `finished`.
+
+## Cancelling a date of a recurring event
+
+A recurring event is cancelled a date at a time, leaving the rest of the series in place.
+
+1. Open the date you want to cancel, from the events list or the series' **Occurrences** tab
+2. Open the **Actions** menu and choose **Cancel this occurrence**
+3. Optionally enter a **Reason**, then click **Cancel date**
+
+The date comes off sale and is marked as cancelled. Its waitlist is closed without notifying anyone, and the date's page notes that it has been cancelled.
+
+<Frame>
+<img src="https://marzipan-cloud.b-cdn.net/0/docs/events/cancel-date.png" alt="The Cancel this date confirmation, with an optional reason" />
+</Frame>
+
+<Note>
+A date with tickets sold can't be cancelled until its attendees have been dealt with. Cancel their tickets from the date's **Attendees** tab first, then cancel the date.
+</Note>
+
+## Reinstating
+
+To put a cancelled event or date back on sale, open it and choose **Reinstate event** or **Reinstate date** from the **Actions** menu, then confirm.
+
+- You can reinstate up until the event's or date's day has passed
+- Reinstating a one-time event puts its date back on sale with it
+- The **waitlist stays closed**. The people on it were never told it closed, and may have made other plans since.
+
+The reinstatement is recorded in the event's activity alongside the cancellation.
+
+<Note>
+Cancelling and reinstating only happen from the **Actions** menu. On the event's edit page, and in a date's edit panel, a cancelled status is locked and points you back to the **Actions** menu.
+</Note>
+
+## Reporting
+
+Cancelled dates are left out of **Events Held** and **Average Attendance** in [Event Insights](/insights/overview), so they don't count as events nobody came to. The **Events Held** card shows how many were cancelled.

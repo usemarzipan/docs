@@ -24,11 +24,20 @@ Initialising location-based inventory **can't be undone**. Make sure your curren
 
 ### Inventory locations
 
-Add the locations you hold stock in, each with a **name** and **address**, and set one as your **default**.
+Under **Inventory Locations**, add the locations you hold stock in, each with a **Name** and **Address**, and set one as your **Default Location**.
+
+Every [market](/settings/markets) names the location its stock comes from, and the storefront shows each market the stock at its own location. A location a market uses, including an archived market, can't be deleted until the market is moved to another one.
 
 ### Inventory rules
 
-Once you have more than one location, add **inventory rules** to choose which location fulfils an order based on conditions such as the shipping country.
+Once you have more than one location, add **Inventory Rules** to choose which location fulfils an order based on conditions such as the shipping country or billing country, or whether the order is delivered or collected.
+
+An order's location is chosen in this order, using the first that applies:
+
+1. The shipping method's **Fulfil from** location, if it names one (see [Shipping](/settings/shipping#fulfil-from))
+2. An inventory rule whose conditions the order meets
+3. The order's market's location
+4. Your default location
 
 ## Stock movements
 
@@ -71,20 +80,22 @@ The inventory page also links straight to the [stock valuation report](/insights
 
 ## Low-stock badges
 
-Show customers when stock is running low with a storefront badge.
+Show customers when stock is running low with a storefront badge. These are global defaults that each product can override.
 
-- Enable the badge and set a **threshold**
-- Add **custom text**, which supports a `{count}` placeholder for the remaining quantity
-- Override the badge per product where needed
+- Turn on **Enable Low Stock Badges** and set a **Low Stock Threshold**
+- Set the **Badge Text**, which supports a `{count}` placeholder for the remaining quantity
+- Override the badge [per product](/products/inventory#low-stock-badge) where needed
 
 ## Low-stock alerts
 
 Email your team when a product's stock falls to a set level.
 
-- Enable alerts and set an **alert threshold**
-- Choose a delivery style:
+- Turn on **Enable Low Stock Alerts** and set an **Alert Threshold**. You're notified when stock falls to or below it.
+- Choose an **Alert Mode**:
   - **Real-time** - Sent immediately, at most one per product every 24 hours
-  - **Daily digest** - A single email at 8am
+  - **Daily digest** - A single email at 8am listing every product below the threshold
+
+With location-based inventory, alerts look at each location on its own. A product is alerted when any of its locations runs low, even if another location holds plenty, and only once per location until that location is restocked above the threshold. The email lists the product once, with the stock at every location.
 
 <Note>
 Only team members who have opted into the low-stock notification receive these alerts. Manage this under **Settings > Team**.
@@ -92,4 +103,4 @@ Only team members who have opted into the low-stock notification receive these a
 
 ## London City Bond
 
-If you use the [London City Bond](/integrations/overview) integration, stock syncs automatically into a dedicated inventory location. This requires location-based inventory to be initialised first.
+If you use the [London City Bond](/integrations/london-city-bond) integration, stock syncs automatically into a dedicated inventory location. This requires location-based inventory to be initialised first.

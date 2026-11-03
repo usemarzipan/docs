@@ -21,15 +21,17 @@ The Overview tab gives you an at-a-glance picture of the customer:
 
 ### Activity
 
-The full activity timeline for the customer, with the option to add a note.
+The full activity timeline for the customer, with the option to add a note. Older entries load as you scroll down.
 
-### Orders, Subscriptions and Events
+### Orders, Subscriptions, Events and Gift Vouchers
 
-Each of these tabs lists the customer's records of that type, so you can see everything they have ordered, subscribed to or attended.
+Each of these tabs lists the customer's records of that type, so you can see everything they have ordered, subscribed to or attended, and every [gift voucher](/gift-vouchers/overview) sent to them or spent by them.
 
 ### Emails
 
-A record of every email sent to the customer, each with a delivery status:
+A record of every email sent to the customer, showing its subject, which notification it was, when it was sent and last updated, and its delivery status. That includes the emails sent on their behalf from somewhere other than their account, such as back-in-stock alerts and event waitlist emails, which are matched to the customer by email address when they signed up as a guest.
+
+Each email has a delivery status:
 
 - `Queued`
 - `Sent`
@@ -38,7 +40,7 @@ A record of every email sent to the customer, each with a delivery status:
 - `Spam`
 - `Failed`
 
-Open any email to see its detail view.
+Open any email to see its detail view, with each step of its delivery. An email that has been sent again is marked **Resend**, and the original it replaced **Resent**.
 
 ### Rewards
 
@@ -56,13 +58,13 @@ Name, email (with a verified/email-status indicator), phone, company, date of bi
 
 The customer's saved addresses, along with any delivery instructions. You can add, edit and remove addresses, and set which one is the default.
 
-### Payment methods
+### Payment Methods
 
-The customer's saved cards, including which is the default. You can manage these from here.
+The customer's saved cards, with their expiry dates and which is the default. Click **Manage** to add or remove cards.
 
-### Mailing-list consent
+### Mailing Lists
 
-Toggles for the customer's marketing consent, so you can keep their preferences up to date.
+Toggles for each of your mailing lists, so you can keep the customer's marketing consent up to date.
 
 ### Rewards
 
@@ -74,15 +76,30 @@ Tags are free-form labels you can add to a customer to help you group and filter
 
 ## Actions
 
-From a customer's profile you can:
+The **Actions** menu at the top of the profile holds:
+
+- **Manually verify email** - mark the customer's email address as verified. Only shown while it isn't
+- **Send password reset email** - email the customer a link to set a new password for their account (see below)
+- **Archive customer** / **Unarchive customer** - archive a customer you no longer deal with, or restore them. Archiving can also unsubscribe them from all mailing lists
+
+From the panels on the profile you can also:
 
 - **Edit details** - update their name, contact details and other information
-- **Archive / Unarchive** - archive a customer you no longer deal with, or restore them. Archiving can also unsubscribe them from all mailing lists
-- **Verify email** - manually mark the customer's email address as verified
 - **Manage addresses and payment methods**
 - **Manage marketing consent**
 - **Manage tags**
 - **Adjust points or set tier** - when rewards are enabled, from the **Rewards** tab
+
+### Sending a password reset
+
+When a customer is locked out of their account, choose **Send password reset email** from the **Actions** menu and click **Send email** to confirm. They're emailed a link to your store's account page where they can choose a new password.
+
+- The link lasts for **an hour**
+- Their current password keeps working until they use the link
+- The send is recorded in the customer's activity, as sent by you rather than requested by the customer
+- Only one reset can be sent a minute. If you try again sooner, you're told so rather than another email going out
+
+Sending a reset needs the **Customers - Edit** permission.
 
 <Note>
 The customer's **type** (`Direct` or `Wholesale`) is set when the customer is [created](/customers/create) and cannot be changed from the profile.

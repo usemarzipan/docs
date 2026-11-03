@@ -95,16 +95,32 @@ The block doesn't appear for a shopper who checked out signed in, or whose email
 
 With [gifting](/settings/cart-and-checkout#gifting) turned on, the delivery step opens by asking **who the order is for**. Choosing someone else collects their delivery address and then asks whether the order is a gift, which adds a step for the message, the recipient's details, the date to deliver after and the date to tell them.
 
+Where the order includes a subscription, the date to deliver after can't be later than its first shipment, so the email explaining the parcel arrives before it does. The date picker stops there, and a line under it names the date, for example "Choose a date on or before 18 November, when their first shipment goes."
+
 Where the order includes a subscription, the billing step then asks how the gift is paid for: **They take it over**, **Gift a set number** (with **How many**, from the numbers you offer) or **Keep gifting it**. The giver pays for the first shipment at checkout and each of the rest as it's sent. See [Gift subscriptions](/subscriptions/gifts#what-the-giver-chooses).
 
-Every heading, option and note on those steps is editable in [web component settings](/web-components/customisation). See [Gift orders](/orders/gifts) for how the dates behave.
+Every heading, option and note on those steps is editable under [Checkout Section Labels](/web-components/customisation#checkout-section-labels). See [Gift orders](/orders/gifts) for how the dates behave.
+
+#### Delivery Choices
+
+The delivery step's two-way choices, **Myself** or **Someone else** and **Ship** or **Pickup**, are each a box of their own. The chosen side takes the **Selected Option Background** and **Selected Option Border** colours from the [Collection tab](/web-components/customisation#upsell-chooser), the same as the product page's option rows, and falls back to your muted background with a primary border.
+
+Choosing a collection point, or an address in another country, can move the order onto stock held somewhere else. If that location can't supply everything in the basket, the basket is cut down to match, and checkout says what was taken out in a notification that stays until the shopper closes it. If nothing is left, the shopper is sent back to the cart, where the note explains why.
+
+#### Subscriptions at Checkout
+
+Where the order includes a subscription, a line under the card form says the card will be kept to pay for the renewals. Word it yourself with **Saved card message** under [Checkout Section Labels](/web-components/customisation#checkout-section-labels).
+
+A package whose shipments go out on their own dates sends nothing with the order that joins it, so no delivery is charged for it at checkout. The address is still asked for, and the summary shows what each shipment will be charged for delivery when it ships, or that delivery is included. When nothing else in the order ships today, a note under the summary says nothing is sent today. Set the wording with the **Subscription Delivery** labels on the [Labels tab](/web-components/customisation#labels).
+
+A Fixed package is listed by name, without a quantity, on the order summary and the order confirmation.
 
 #### Gift Vouchers
 
 A [gift voucher](/gift-vouchers/redeeming) code is entered in the same box as a discount code. Marzipan recognises a voucher by its checksum, applies it as stored value, and charges the card the difference.
 
 <Note>
-Where a voucher covers a repeating order in full, checkout still asks for a card for the deliveries after the first one, since nothing is being charged today and the renewals would otherwise have nothing to bill. The wording of that explanation is yours to set.
+Where a voucher covers a repeating order in full, checkout still asks for a card for the deliveries after the first one, since nothing is being charged today and the renewals would otherwise have nothing to bill. The wording of that explanation is yours to set under [Card for Future Deliveries](/web-components/customisation#card-for-future-deliveries).
 </Note>
 
 #### Rewards Redemption
@@ -157,20 +173,35 @@ The input checkbox element.
 An `<a>` element used for links.
 </ResponseField>
 <ResponseField name="--option-button">
-The unselected option(s) of a radio group.
+The unselected side of a two-way choice.
 
-For example the "ship" and "pickup" delivery options
+For example **Ship** or **Pickup**, and **Myself** or **Someone else**
 </ResponseField>
 <ResponseField name="--option-button-active">
-The selected option of a radio group.
+The selected side of a two-way choice.
 
-For example the "ship" and "pickup" delivery options
+For example **Ship** or **Pickup**, and **Myself** or **Someone else**
 </ResponseField>
 <ResponseField name="--select">
 The select element.
 </ResponseField>
 <ResponseField name="--shipping-option">
 The options for the selected shipping method
+</ResponseField>
+<ResponseField name="--checkout-link">
+A link in the checkout, such as **Edit** beside a completed step.
+</ResponseField>
+<ResponseField name="--checkout-saved-card-note">
+The line under the card form saying the card is kept for a subscription's renewals.
+</ResponseField>
+<ResponseField name="--club-box-delivery">
+A summary row showing what a subscription's shipments will be charged for delivery.
+</ResponseField>
+<ResponseField name="--club-box-delivery-note">
+The note under the summary saying nothing is sent today.
+</ResponseField>
+<ResponseField name="--voucher-code-label">
+The applied gift voucher's code, shown as a pill.
 </ResponseField>
 
 The order confirmation adds the following parts:
@@ -241,10 +272,3 @@ The discount code label.
 <ResponseField name="--label">
 A form label element.
 </ResponseField>
-
-
-
-
-
-
-

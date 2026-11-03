@@ -17,7 +17,7 @@ To view your vouchers:
 <img src="https://marzipan-cloud.b-cdn.net/0/docs/gift-vouchers/vouchers-list.png" alt="Gift vouchers list showing headline figures and issued vouchers" />
 </Frame>
 
-Three buttons sit in the top-right corner: **Gift voucher products** for the [products you sell vouchers from](/gift-vouchers/products), **Issue voucher** to [issue one by hand](/gift-vouchers/issue), and a chart icon opening [Gift Voucher Insights](/insights/gift-vouchers).
+Three buttons sit in the top-right corner: **Gift voucher products** for the [products you sell vouchers from](/gift-vouchers/products), **Issue voucher** to [issue one by hand](/gift-vouchers/issue), and a chart icon opening [Gift Voucher Insights](/insights/gift-vouchers). The arrow beside **Issue voucher** holds **Bulk issue**, to [issue a batch of codes at once](/gift-vouchers/issue#issuing-in-bulk), and your recent batches.
 
 ### Headline figures
 
@@ -33,11 +33,11 @@ Four boxes sit above the list:
 Each voucher in the list shows:
 
 - **Code** - shown as `•••• BNVD`, its **last four characters only**, so a full spendable code is never on screen
-- **Sent to** - the recipient's name and email address, or `Not sent` where nobody has been emailed
-- **Value** - what the voucher was worth when it was issued
+- **Sent to** - the recipient's name or email address, or `Not sent` where nobody has been emailed
 - **Balance** - what's left on it
-- **Expires** - the expiry date, where the voucher has one
-- **Status**
+- **Value** - what the voucher was worth when it was issued
+- **Status** - `Unused`, `Part redeemed`, `Redeemed`, `Not yet valid`, `Expired` or `Voided`
+- **Expires** - the expiry date, or `Never`
 
 Click on any voucher to open its [details](/gift-vouchers/details).
 
@@ -47,6 +47,7 @@ Click on any voucher to open its [details](/gift-vouchers/details).
 | --- | --- |
 | **Still redeemable** | Active, with a balance left and not past its expiry date |
 | **Unclaimed** | Issued but not yet sent, because the buyer chose a future send date |
+| **Not yet valid** | Issued with a [valid-from date](/gift-vouchers/issue#valid-from) that hasn't arrived, so it can't be spent yet |
 | **Fully redeemed** | Every penny has been spent |
 | **Expired** | Past its expiry date, so the balance has lapsed |
 | **Voided** | Stopped by hand, and no longer spendable |
@@ -54,6 +55,7 @@ Click on any voucher to open its [details](/gift-vouchers/details).
 ### Filtering and searching
 
 - Filter by **Status**. Ticking more than one box widens the list rather than narrowing it, so **Still redeemable** and **Fully redeemed** together means either.
+- Filter by **Batch**, to see the codes from one or more [bulk issues](/gift-vouchers/issue#batches-and-downloading-the-codes). Only shown to team members who can bulk issue.
 - Filter by an **issue date** range
 - **Sort** by issued date, expiry date, balance or value
 - **Search** by code, recipient name or recipient email
@@ -65,6 +67,22 @@ Searching by code matches **anywhere** in the code, not just the start. Since ev
 <Note>
 Vouchers are never deleted. A voucher is money somebody paid for, so a code that shouldn't be spent is [voided](/gift-vouchers/details#void-a-voucher) and keeps its history.
 </Note>
+
+### Voiding in bulk
+
+To stop several codes at once, such as a box of printed cards lost in transit, tick them on the list and click **Void vouchers**. Tick the box in the header to select the whole page. With the list filtered to one or more batches, **Select all** then extends the selection to every voucher the filter matches, not just this page.
+
+The confirmation says, in numbers, what it will and won't touch, and asks **Why**:
+
+- Only **untouched** vouchers are voided, and their unused value is taken back
+- Part-spent vouchers are left alone, because someone has already used them. Void one from its own page if you need to.
+- Vouchers already spent, expired or voided are skipped, as there's nothing to stop
+
+Each voucher is voided just as it would be from its own page, with the reason in its activity log.
+
+<Warning>
+Voiding can't be undone. Ticking and voiding vouchers on the list needs the **Bulk Issue** permission. See [Permissions](/gift-vouchers/issue#permissions).
+</Warning>
 
 ## Codes
 

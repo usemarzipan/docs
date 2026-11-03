@@ -24,9 +24,13 @@ On an unpaid order, click **Process payment** to take payment. You can either:
 
 Use a manual payment when the customer has already paid you outside of Marzipan and you just need to record it against the order.
 
+Whichever you choose, the order then carries on as a paid order: event tickets are issued and any [flows](/flows/overview) on the `order.paid` trigger run, such as sending the order to London City Bond. An order on `hold` waits until it's released.
+
+When a payment arrives it's recorded in the order's activity, along with how it was made: through checkout, from the customer's own account, or with a payment link.
+
 ### Send payment link
 
-Rather than taking the card yourself, you can send the customer a link to pay the order themselves. Available on draft and held orders that settle through Stripe. See [Payment links](/orders/payment-links).
+Rather than taking the card yourself, you can send the customer a link to pay the order themselves. Available on unpaid orders that settle through Stripe. See [Payment links](/orders/payment-links).
 
 ### Mark as free
 
@@ -38,7 +42,13 @@ Marking an order as free triggers the same automations as a paid order, so a war
 
 ### Refunds
 
-You can refund an order in full or in part. When you issue a refund you add a reason, and the refund is shown against the original payment as a nested row on the order.
+Choose **Refund order** from the order's **Actions** menu to refund it in full or in part. Pick the payment to refund, add a reason, and optionally tick **Cancel order** to cancel the order once the refund has gone through. The refund is shown against the original payment as a nested row on the order.
+
+Payments and refunds are always shown in the order's own currency, so a euro order reads in euros throughout, whatever your default currency.
+
+<Note>
+PayFast has no refund API, so a refund against a PayFast payment doesn't move any money. Refund the customer in your PayFast dashboard, then record it in Marzipan to keep the order and your reports right.
+</Note>
 
 ### Redeem points
 

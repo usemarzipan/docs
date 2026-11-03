@@ -1,0 +1,66 @@
+---
+title: 'Product subscriptions'
+sidebarTitle: 'Product subscriptions'
+description: 'Let customers subscribe to a single product and have it sent on repeat, usually at a saving.'
+---
+
+A product subscription lets a customer buy a product once or subscribe to it, on the product's own page. It is a **Fixed** package: one product on repeat. Subscribers choose how many and how often, and it is sent with each payment.
+
+## Creating a product subscription
+
+<Steps titleSize="p">
+  <Step title="Open the product">
+    Go to **Products** and open the product. Its **Subscription** section lists the subscriptions already offered for it, each with its price, its number of subscribers and how many are due in the next 30 days.
+  </Step>
+  <Step title="Create the subscription">
+    Click **Create subscription**. A new **Fixed** package opens with the product already chosen and named after it, for example "Malbec subscription".
+
+    You can also create one from **Subscriptions > Packages** and choose **Fixed** as the type.
+  </Step>
+  <Step title="Choose the product and quantity">
+    - **Product** - the product subscribers receive. Its description, images and stock are used, so the package has no copy, images or inventory of its own
+    - **Quantity** - the least and most a subscriber may choose. Leave either empty for no limit
+  </Step>
+  <Step title="Set the price">
+    Under **Priced as**, choose:
+
+    - **Percentage off the product's price** - set the **Percentage off**. The price follows the product's price in every market, so changing the product's price changes the subscription's too, for existing subscribers as well
+    - **Own price** - a price per item set on the package, for an exact figure
+
+    Either way the price is per item, and the subscriber pays it times how many they chose.
+  </Step>
+  <Step title="Choose the frequency and delivery">
+    Choose the **Billing frequency** options as on any [package](/subscriptions/packages#creating-and-editing-a-package). Turn on **Delivery included** to send each shipment with no delivery charge. Off, your delivery rates apply to each one.
+  </Step>
+  <Step title="Save and activate">
+    Save the package and set its **Status** to `Active`. The product page then offers it.
+  </Step>
+</Steps>
+
+A package's type can't be changed once it has subscribers.
+
+## On the product page
+
+A product with an active Fixed package offers a choice between a **One-off purchase** and **Subscribe**. The subscribe option shows how often it is sent, the least the customer can take and the saving, for example "Monthly. Minimum 3. Save 10%", with the one-off price struck through beside its own. Where there's more than one frequency, the customer picks it inside the option. See [Product](/web-components/product).
+
+Where the product has upsells, such as a case of six, the subscription sits in that list beside the single product it buys.
+
+The wording is yours to change on the [Labels](/web-components/customisation#labels) tab under **Settings > Branding & Web Components**: **One-off or Subscribe Heading**, **One-off Option Label**, **Subscribe Option Label**, **Subscription Saving Note** and **Subscription Free Delivery Note**. On the [Product](/web-components/customisation#product) tab, **Purchase Option Selected First** decides whether the page opens on **One-off** or **Subscribe**. One-off is the default.
+
+In the cart, a subscription is one package holding the number the customer chose, and the quantity stepper changes that number within your limits. Adding more of it fills the same package up to its maximum.
+
+## Renewals
+
+Each renewal charges the subscription's price times its quantity, plus delivery unless it is included, and sends the product. Stock comes down as it would for a sale.
+
+If the product is out of stock when a renewal is due, nothing is charged and no order is made. Marzipan tries again on each of the next few days. If it is still out of stock, that delivery is skipped, the subscription carries on from its next renewal, and the customer is sent the **Delivery skipped (out of stock)** email. A renewal is never sent short: one for six isn't sent as four. The product's own overselling setting is respected.
+
+Where the product is no longer available at all, the package page says so beside it, and renewals are held.
+
+## On the subscription
+
+A Fixed subscription's **Shipments** tab shows the package and, under it, the product and how many are sent. See [Subscription details](/subscriptions/details#the-shipments-tab).
+
+<Note>
+Order emails say how often a subscription renews, for example "Renews: every month", and a Fixed package's line says how many it includes rather than "1 x".
+</Note>

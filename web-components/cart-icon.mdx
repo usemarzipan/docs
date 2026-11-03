@@ -27,7 +27,19 @@ The style of the icon to display.
 
 Can be one of `cart-outline`, `cart-solid`, `bag-outline`, or `bag-solid`.
 
-Defaults to `bag-outline`
+Defaults to the **Cart icon** setting on the [Cart tab](/web-components/customisation#cart-icon), which starts as `bag-outline`
+</ResponseField>
+
+<ResponseField name="show-count" type="boolean">
+Whether to show the number of items beside the icon.
+
+Defaults to the **Show the item count** setting on the Cart tab
+</ResponseField>
+
+<ResponseField name="size" type="number">
+The size of the icon, in pixels.
+
+Defaults to `20`
 </ResponseField>
 
 ### Styling
@@ -36,5 +48,13 @@ The following parts are available to style the cart icon component:
 
 <ResponseField name="cart-icon" type="string">
 The `<a>` element that contains the icon and cart count.
+</ResponseField>
+
+<ResponseField name="--cart-icon-svg" type="string">
+The icon itself.
+</ResponseField>
+
+<ResponseField name="--cart-count" type="string">
+The item count.
 </ResponseField>
 

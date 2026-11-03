@@ -18,11 +18,12 @@ Open the order and click **Send payment link**, in the same row as **Process pay
 
 The link is emailed to the customer straight away. You can set how long this particular link lasts as you send it, or let it take your [default expiry](#expiry).
 
-A payment link can be sent on an order that is:
+A payment link can be sent on an order that:
 
-- A **draft**, or on **hold**
-- Not yet paid
-- Settled through **Stripe**
+- Is a **draft**, on **hold**, `processing` or `pending`. A pending order with only a failed payment against it can be sent a link too.
+- Hasn't been paid, or marked as free
+- Has a customer, at least one item and a total above zero
+- Settles through **Stripe**
 
 <Note>
 The payment page takes money through Stripe, so an order whose market settles through PayFast or PayPal isn't offered a link at the moment. Support for PayFast is planned. Where a market points at a provider you've since turned off, Marzipan falls back to your first active card provider.
@@ -72,6 +73,8 @@ Payment links are served from Marzipan's own payment page rather than your store
 </Frame>
 
 The page reads top to bottom: the order summary with product images, the delivery or collection details, the total, and then the payment form.
+
+The order is checked against your checkout rules before the card is charged, never after, so a link can't take money for an order it then refuses. The shipping method you chose on the order is kept as you set it. Once a link has been paid, the page says the order is paid rather than offering the card form again, so a customer who comes back can't pay twice.
 
 Each link has its own address, which changes every time you send. Anything else on that domain is a dead end, so an old or cancelled link stops working outright.
 

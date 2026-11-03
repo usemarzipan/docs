@@ -22,9 +22,13 @@ A voucher can be spent over several orders until the balance runs out, and more 
 
 ## Restrictions
 
-Where the voucher was sold with a **Spendable on** restriction, it only pays for the lines that match: the products, collections or events it was sold against. For an event, scoping to the series covers every occurrence; scoping to a single date covers that date.
+Where the voucher was sold or issued with a **Spendable on** restriction, it only pays for the lines that match: the products, collections or events it was restricted to. For an event, scoping to the series covers every occurrence; scoping to a single date covers that date.
 
 Restrictions are fixed at the point of sale, so changing a voucher product later never narrows a voucher somebody already holds.
+
+## Valid-from dates
+
+A voucher [bulk issued](/gift-vouchers/issue#valid-from) with a **Valid from** date can't be applied before that day starts in its market's timezone. Until then it shows as `Not yet valid`, and its expiry counts from the valid-from date rather than the issue date.
 
 ## Markets and currency
 

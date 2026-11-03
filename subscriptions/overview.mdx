@@ -8,19 +8,22 @@ Subscriptions power your plans and recurring shipments in Marzipan.
 There are two things to understand:
 
 - A **package** (also called a plan) is the template a customer subscribes to.
-- A **subscription** is one customer's individual instance of that package.
+- A **subscription** is one customer's individual instance of that package. The customer is its **subscriber**, and what it sends them are its **shipments**.
 
 ### Package types
 
 Packages come in three **types**:
 
-- **Fixed** - the customer receives the same items each time.
-- **Variable** - you schedule changing shipments over time.
-- **Pick & Mix** - the customer chooses their own items each cycle.
+- **Variable** - you choose the products in each shipment, and shipments go out on the dates you set. A variable package can bill everyone together on each shipment's date, bill each subscriber on their own anniversary and send whichever shipment is current, or bill on anniversaries and send its dated shipments to everyone. See [Shipment dating](/subscriptions/packages#shipment-dating)
+- **Pick & Mix** - the customer chooses their own items each cycle, within the limits you set
+- **Fixed** - one product on repeat, which customers can subscribe to from the product's own page. See [Product subscriptions](/subscriptions/product-subscriptions)
 
 ### Pricing
 
-**Pricing** works one of two ways: a single **fixed** price for the whole package, or **per-item** pricing where each pick-and-mix item is priced individually.
+A package has a single price, except where:
+
+- A **pick & mix** package is priced per item, so each subscriber pays for what they pick
+- A **fixed** package is priced as a percentage off its product's price, which it follows, or at its own price per item. The subscriber pays it times how many they chose
 
 ### The Subscriber tag
 
@@ -63,7 +66,9 @@ You can refine the list with:
 
 ### Exporting subscriptions
 
-Click **Export** to download the subscriptions in the table as a CSV file.
+Click **Export** to download the subscriptions in the table as a CSV file. Along with each subscriber's details, package, price and status, it includes their **Next Billing Date** and **Next Shipping Date**, the **Next Shipment** they'll receive, their delivery details and **Delivery Charge**, any **Additional Items**, and when and why they cancelled.
+
+The next shipment is the one their next renewal will actually send, so a six-monthly subscriber isn't shown a shipment that goes before their payment. On a package that ships on its own dates, it is the next dated shipment.
 
 <Tip>
 Apply filters _before_ clicking the export button to only export the subscriptions you need.
@@ -77,6 +82,7 @@ For reporting on your plans, use **Subscription Insights**, where you can review
 
 <CardGroup cols={2}>
   <Card title="Packages" href="/subscriptions/packages">Create and edit the plans customers subscribe to</Card>
+  <Card title="Product subscriptions" href="/subscriptions/product-subscriptions">Let customers subscribe to a single product</Card>
   <Card title="Details" href="/subscriptions/details">Manage a single subscription and the actions available on it</Card>
   <Card title="Shipments" href="/subscriptions/shipments">Prepare and send batch shipments for variable packages</Card>
   <Card title="Gift subscriptions" href="/subscriptions/gifts">Who pays for a gift, reveal dates and what happens when the giver stops</Card>

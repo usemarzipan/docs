@@ -10,7 +10,7 @@ To create an event:
 
 1. Log in to your Marzipan account
 2. Navigate to **Events** in the main menu
-3. Click the **+ Create event** button in the top-right corner
+3. Click the **Add event** button in the top-right corner
 
 <Frame>
 <img src="https://marzipan-cloud.b-cdn.net/0/docs/events/create-event.png" alt="Create event form" />
@@ -20,22 +20,28 @@ To create an event:
 
 <Steps titleSize="p">
   <Step title="Name and describe the event">
-    Enter the **Name** and **description** for the event. These are shown to customers.
+    Enter the **Name**, **Summary** and **Description** for the event. These are shown to customers.
+
+    The **Description** can take video embed code, so you can paste in a player from Bunny Stream or another video host.
+  </Step>
+  <Step title="Add images and video">
+    Add images to the event's gallery under **Images**. The gallery can also hold [video](/media/overview#video) from your media library, which plays on the event's page on your storefront.
   </Step>
   <Step title="Choose the event type">
     Select the **Event type**: Tasting, Tour, Workshop, Class, Course or Other.
   </Step>
   <Step title="Set the recurrence">
-    Set the **Recurrence**: None, Daily, Weekly or Monthly.
+    Set **Recurring event** to **No - One time event**, **Daily**, **Weekly** or **Monthly**.
 
-    Weekly lets you pick the weekdays to repeat on, and you can set a **recurrence end date**.
+    - **Weekly** - use **Repeat on** to pick the weekdays. Leave them all unselected to repeat on the start date's day.
+    - **Monthly** - use **Repeat on** to choose **The same date each month**, or a week of the month (**The first** to **The fourth**, or **The last**) with one or more weekdays, for example the first Thursday.
 
     A recurring event can also run in [separate date ranges](/events/recurring#date-ranges), so a series can pause and pick up again without becoming a second event.
 
     Recurring events create **occurrences**: individual dated instances that customers book onto. See [Recurring events](/events/recurring).
   </Step>
   <Step title="Set the date and time">
-    Use the **All-day** toggle, or set a start and end date and time.
+    Use the **All day** toggle, or set the **Times**. Then set the start and end dates.
 
     Multi-day events are supported.
   </Step>
@@ -43,41 +49,50 @@ To create an event:
     Enter the **Location** as a text address, plus an optional **what3words** address.
   </Step>
   <Step title="Add email instructions">
-    **Email instructions** are included in the ticket emails sent to attendees.
+    **Email instructions** are added to the ticket email sent to attendees.
   </Step>
   <Step title="Set the tickets and price">
-    - **Max tickets per order** - the most tickets one customer can buy in a single order
-    - **Price** - the ticket price, with optional sale, subscriber and wholesale prices
-    - **Capacity** - the quantity of tickets available
+    - **Price** - the ticket price, with optional **Sale price**, **Subscriber price** and **Wholesale price**
+    - **Max tickets per order** - the most tickets one customer can buy in a single order. Leave it empty for no limit.
+    - **Number of tickets** - the capacity, under **Inventory Management**. Leave it empty for unlimited tickets.
   </Step>
   <Step title="Configure deposits, check-in and the waitlist">
-    Optionally set up **Deposits**, **Check-in** and a **Waitlist**. See below.
+    Optionally set up **Deposit payments**, **Enable Check-in** and **Enable waitlist**. See below.
   </Step>
 </Steps>
 
+<Note>
+A monthly event on the same date each month keeps that date. A series that starts on the 31st lands on the last day of shorter months and goes back to the 31st when it can, rather than drifting to an earlier date.
+</Note>
+
 ## Deposits
 
-You can optionally take a **deposit** rather than the full price upfront:
+Turn on **Deposit payments** to let customers pay a deposit to reserve their place rather than the full price upfront:
 
 - **Deposit amount** - the amount taken upfront
-- **Balance due days** - the number of days after which the balance falls due
-- **Auto-charge** - charge the balance automatically when it falls due
+- **Days before event to collect balance** - the balance falls due this many days before the event. Tickets bought after that point are charged the full price at the time of purchase.
 
-You can also set a **sales cut-off** to close ticket sales a set number of days before the event.
+You can also set a **Ticket sales cutoff** to stop selling tickets a set number of days before the event. Leave it blank for no cutoff.
 
 <Note>
 On a recurring event the cut-off is counted from **each date**, so it closes sales for a date a set number of days before that date rather than before the first in the series. A series only reports its sales as closed once every remaining date has passed its own cut-off.
 </Note>
 
 <Note>
-Outstanding balances can be requested or processed from the event detail screen. See [Details](/events/details#deposits-and-balances).
+Outstanding balances can be requested from the event detail screen. See [Details](/events/details#deposits-and-balances).
 </Note>
 
 ## Check-in and waitlist
 
-- **Check-in** - enable QR check-in so attendees can be checked in at the door
-- **Waitlist** - enable a waitlist to capture demand once tickets sell out
+- **Enable Check-in** - check attendees in by scanning the QR code on their ticket. See [Details](/events/details#tickets-and-qr-check-in).
+- **Enable waitlist** - let customers join a waitlist once tickets sell out. See [Details](/events/details#waitlist).
 
 <Warning>
-A waitlist requires a capacity.
+A waitlist needs a **Number of tickets**. It isn't available for an event with unlimited tickets.
 </Warning>
+
+## Duplicating an event
+
+To start a new event from an existing one, open the event's edit page and choose **Duplicate product** from the **Actions** menu. Enter a new **Name**, **Slug** and **SKU**, and choose whether to copy its **Images** and **Reviews**.
+
+The copy is created as a draft and starts with nothing sold, so its ticket count and revenue begin at zero.
