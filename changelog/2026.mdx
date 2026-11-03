@@ -64,13 +64,9 @@ The **New Subscription**, **Gift Subscription Revealed** and **Subscription Pack
 
 ## A Subscription's Shipments
 
-A subscription's **Shipments** tab (on Pick & Mix it was **Next Renewal**) now shows what it has been sent as well as what comes next. **Past shipments** lists every renewal with its order, and on a package with dated shipments the next shipment is shown apart from the next payment, since they fall on different days.
+A subscription's **Shipments** tab now shows what it has been sent as well as what comes next. **Past shipments** lists every renewal with its order, and on a package with dated shipments the next shipment is shown apart from the next payment, since they fall on different days.
 
 A package's **Overview** lists its ten latest subscribers, and its **Shipments** tab is in three parts: on joining, upcoming, and completed newest first. See [The Shipments tab](/subscriptions/details#the-shipments-tab) and [The package page](/subscriptions/packages#the-package-page).
-
-## Subscriptions, Not Clubs
-
-The admin, the storefront and the emails now say **subscriptions**, **packages**, **shipments** and **subscribers** throughout, where some screens said clubs, boxes and members. Nothing about how they work has changed, and the [word you set for a shipment](/web-components/customisation#labels) still wins wherever a customer reads it.
 
 ## Per-Customer Discount Allowances
 
@@ -324,10 +320,6 @@ Turn on **Record goods received** to add stock as soon as London City Bond book 
 
 Cancelling an order now puts its stock back, to the location it came off. Previously the units were simply gone, except where a London City Bond sync happened to paper over it.
 
-## Branding & Web Components
-
-**Settings > Web Components** is now **Settings > Branding & Web Components**, since those settings brand the payment page as well as your storefront components. Nothing has moved. Only the name has changed.
-
 ## Custom Checkout Questions
 
 Ask your own questions on the checkout details step, such as a reciprocal club's membership number. Set them up in **Settings > Cart & Checkout**, optionally restricted to particular markets, and choose whether each one is required. Answers appear on the order and the customer, fill themselves in for a returning customer, and can be added to the orders CSV export. A question can carry an **auto-tag** applied to the customer once it's answered. See [Cart & Checkout](/settings/cart-and-checkout).
@@ -358,7 +350,7 @@ A new Insights report values the stock you hold at cost price, with a headline t
 
 - **Adjust stock** in bulk from a slide-over panel, correcting several products in one go with one location, reason and note across the batch. See [Inventory settings](/settings/inventory#adjusting-stock).
 - **Export** the inventory list to CSV, with a column per location.
-- The **Trade** adjustment reason is now called **Wholesale**, and an adjustment can name the trade customer it was made for.
+- An adjustment can now name the trade customer it was made for.
 - Bundles can **derive their stock from constituent items**, so a case assembled from bottles you already hold stays accurate on its own. See [Product inventory](/products/inventory#stock-source).
 - **Overselling** now takes an optional limit, so you can sell a set number beyond the figure on screen rather than sell indefinitely.
 
@@ -684,7 +676,6 @@ Added support for blocked items in the London City Bond integration, preventing 
 - `Web Components` Themed button border CSS variables
 - `Web Components` Free checkout support
 - `Web Components` Bundle optimisation with lazy loading and DOM-conditional loading
-- `Web Components` Market switcher (renamed from currency switcher)
 
 ## Bug Fixes
 - `App` Fixed customer archive referencing non-existent subscribed column
