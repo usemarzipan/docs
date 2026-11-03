@@ -3,7 +3,7 @@ title: 'Shipments'
 description: 'Prepare and send batch shipments for variable packages'
 ---
 
-For **variable** packages, the **Shipments** fulfilment view lets you prepare and send shipments to many subscribers at once.
+For **variable** packages, **Package Shipments** lets you prepare and send shipments to many subscribers at once.
 
 To view your shipments:
 
@@ -16,14 +16,16 @@ To view your shipments:
 </Frame>
 
 <Note>
-Batch shipments apply to **variable** packages only. Variable packages also have a **Shipments** tab on the package detail screen, where you schedule the changing shipments over time. See [Packages](/subscriptions/packages).
+Batch shipments apply to **variable** packages only. Variable packages also have a **Shipments** tab on the package detail screen, where you schedule shipments and see those already sent. See [Package shipments](/subscriptions/packages#package-shipments).
 </Note>
 
 ## Dated shipments and windows
 
-The shipments list covers both kinds of shipment a [variable package](/subscriptions/packages#shipment-dating) can use, both those with scheduled dates and those with an availability window, ordered by whichever date they carry. The date columns are relabelled when windows are present.
+The shipments list covers every kind of shipment a [variable package](/subscriptions/packages#shipment-dating) can use, ordered by whichever date they carry. The date columns read **Starts** and **Ends** when windows are present.
 
-A dated shipment goes to every active subscriber. A window only concerns the subscribers whose renewal falls inside it, so its recipient list and pick lists are scoped to them rather than to the whole plan.
+- A **scheduled** shipment goes to every active subscriber, and is what their payment is for
+- A **window** only concerns the subscribers whose renewal falls inside it, so its recipient list and pick lists are scoped to them rather than to the whole package
+- A shipment on a package with **shipments on their own dates** goes to every active subscriber on its processing date, whenever they joined, and is sent on its own order. See [Held shipments](#held-shipments) below
 
 <Note>
 Customers see the window covering their next billing date in their upcoming shipments.
@@ -38,20 +40,44 @@ Shipments move through status tabs:
 - **Processing** - currently being sent
 - **Completed** - sent
 
-## Recipients
+## A shipment's page
 
-Each shipment lists its **recipients**, along with **skipped** and **failed** counts.
+Click a shipment to open it. Its tabs are:
 
-Skipped and failed subscribers show the reason, so you can see why a shipment did not go out.
+- **Overview** - the processing and shipping dates, how many subscribers are scheduled (or processing, or received) and how many skipped, and the [inventory estimates](#inventory-estimates)
+- **Scheduled** - the subscribers it is going to, with their preferred delivery option, preferred shipping date and whether they have additional items. Called **Processing** while it is being sent and **Received** once completed
+- **Skipped** - subscribers who skipped it, with their reason
+- **Failed** - subscribers it couldn't be sent to, with the reason. Only once it is processing or completed
+
+Use **Edit shipment** to change it while it is still to come.
+
+<Tip>
+Saving a shipment also moves any subscriptions on the package that were [waiting for a shipment](/subscriptions/details#waiting-for-a-shipment) onto the next scheduled one, however many subscribers the package has.
+</Tip>
+
+## Held shipments
+
+On a package with shipments on their own dates, each subscriber's shipment is sent on its own order, which charges its delivery. If it can't go, it is held on that order and listed on the shipment's **Failed** tab rather than lost. The reasons are:
+
+- **Delivery charge declined**
+- **No delivery address set**
+- **No shipping method available**
+- **No payment method**
+
+A held subscriber is still subscribed, and their subscription is untouched. Click their row on the **Failed** tab to see what went wrong. Where the order was made, **View order** opens it so you can resolve it there, for example by taking the delivery payment, after which the shipment goes. Otherwise resolve the problem and click **Send shipment** to try again.
+
+A subscriber whose renewal payment is failing isn't sent the shipment until they've paid. You can send it from the shipment once they have.
+
+Team members with **Daily Subscription Renewal Errors** turned on under [Settings > Team](/settings/roles-and-team) are sent one email per shipment run listing the held shipments, with a link to the **Failed** tab.
 
 ## Inventory estimates
 
-View **inventory estimates** to see the stock a shipment needs before you send it:
+View **Inventory Estimates** on a shipment's **Overview** to see the stock it needs before you send it:
 
-- The **required** quantity per location
-- The **available** quantity per location
+- The **Required** quantity, broken down by inventory location
+- The **Available** quantity
 
-You can **export** the inventory estimates.
+Additional items subscribers have added are listed below the shipment's own items. You can **export** the inventory estimates, for one shipment or for several selected on the list.
 
 <Tip>
 Check the inventory estimates before completing a shipment so you know you have the stock to fulfil it.
@@ -59,4 +85,4 @@ Check the inventory estimates before completing a shipment so you know you have 
 
 ## Completing a shipment
 
-Once a shipment is ready, **complete** it to send it to its recipients.
+Once a shipment has gone out, click **Mark as completed** on its page, or select several on the **Processing** tab and click **Complete Shipments**. Completed shipments move to the **Completed** section of the [package's Shipments tab](/subscriptions/packages#package-shipments), newest first.

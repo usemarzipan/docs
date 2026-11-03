@@ -18,71 +18,125 @@ To view your packages:
 ## Creating and editing a package
 
 <Steps titleSize="p">
-  <Step title="Set the basics">
-    When you create or edit a package you can set:
+  <Step title="Choose the type">
+    A package starts with its **Type**:
 
+    - **Variable** - you choose the products in each shipment, and shipments go out on the dates you set
+    - **Pick & Mix** - the customer chooses their own products, within the limits you set, and each shipment goes out on the anniversary of their first order
+    - **Fixed** - one product on repeat. Subscribers choose how many and how often, and it is sent with each payment. See [Product subscriptions](/subscriptions/product-subscriptions)
+
+    A package's type can't be changed once it has subscribers. From then on the form shows the type with a note saying so.
+  </Step>
+  <Step title="Set the basics">
     - **Name** - the package name shown to customers
     - **Slug** - the URL-friendly identifier
-    - **Type** - `fixed`, `variable` or `picknmix`
     - **Summary** and **Description** - short and long copy for the storefront
     - **SKU** - the package's stock-keeping unit
-    - **Minimum items** - for pick & mix packages, the fewest items a customer must choose
+    - **Minimum no. of required items** - for a saved pick & mix package, the fewest items a customer must choose
     - **Collections** - the collections the package belongs to
-    - **Availability** - when the package can be subscribed to
-    - **Status** - whether the package is `active`
+    - **Availability** - **Everyone**, or subscribers only
+    - **Status** - `Active`, `Draft`, `Archived`, `Out of Stock` or `Unavailable`
+
+    On a multi-market store you also choose which markets the package is visible in.
+  </Step>
+  <Step title="Add images">
+    The **Images** gallery is the package's storefront gallery, and can hold video as well as images.
   </Step>
   <Step title="Set the pricing">
-    For multi-market stores, **per-market pricing tabs** let you set prices for each market.
+    Set the package's **Price**. For multi-market stores, **per-market pricing tabs** let you override it for each market.
+
+    A pick & mix package also has a **Pricing Type**:
+
+    - **Fixed Price** - customers pay the same price whichever items they pick
+    - **Per-Item Pricing** - customers pay for each item they pick. There is no package price to set, and the package page shows the price as **Per item**
   </Step>
   <Step title="Choose the billing frequency">
-    Choose the billing frequencies you want to allow, each expressed as every N months.
+    Under **Billing frequency**, choose the frequencies you want to allow: **Monthly**, **Quarterly**, **Bi-Annually** or **Annually**.
 
-    If you offer more than one frequency, set a **default**. Customers pick their frequency on the storefront, shown as boxes or a dropdown, with your default pre-selected. See [Product](/web-components/product#billing-frequency). The default is also what's used anywhere the choice isn't offered.
+    If you offer more than one, set a **Default billing frequency**. Customers pick their frequency on the storefront, shown as boxes or a dropdown, with your default pre-selected. See [Product](/web-components/product). The default is also what's used anywhere the choice isn't offered.
 
     <Note>
     The frequency a customer chooses is recorded on their cart, so the subscription is created on the terms they were shown rather than on whatever the package defaults to by the time the order lands.
     </Note>
   </Step>
   <Step title="Configure the renewal options">
-    Renewal options control how and when subscriptions renew. See [Renewal options](#renewal-options) below.
+    Renewal options control how and when subscriptions renew, and for a variable package how billing and shipments fit together. See [Shipment dating](#shipment-dating) and [Renewal options](#renewal-options) below.
   </Step>
   <Step title="Choose what subscribers can do">
-    Decide whether customers can skip, move or bring forward a delivery from their account, and which packages they can switch to. See [What subscribers can do](#what-subscribers-can-do) and [Switching package](#switching-package) below.
+    Decide whether customers can skip, move or bring forward a shipment from their account, and which packages they can switch to. See [What subscribers can do](#what-subscribers-can-do) and [Switching package](#switching-package) below.
+  </Step>
+  <Step title="Set the inventory">
+    Under **Inventory Management**, leave **Quantity** blank to not track stock. The package stays in stock unless you set its status to `Out of Stock`.
   </Step>
   <Step title="Save the package">
-    Review the package and save it. Set the **Status** to `active` when you are ready for customers to subscribe.
+    Review the package and save it. Set the **Status** to `Active` when you are ready for customers to subscribe.
   </Step>
 </Steps>
 
 ## Shipment dating
 
-**Variable** packages choose how their shipments are dated:
+A **Variable** package chooses, under **Billing and shipments**, how payments and shipments fit together:
 
-- **Scheduled dates** - each shipment carries a processing and shipping date. Every subscriber on the plan renews against the shipment dated for that day.
-- **Availability window** - each shipment carries an available-from date and an optional available-to date. Subscribers renew on their own anniversary and receive whichever window covers that date.
+- **Scheduled dates** - every subscriber is billed together on the shipment's processing date. Each shipment carries a processing and shipping date
+- **Availability window** - each subscriber is billed on their own anniversary and sent whichever shipment is available on that date. Each shipment carries an available-from date and an optional available-to date
+- **Shipments on their own dates** - each subscriber is billed on their own anniversary, and every subscriber is sent the package's dated shipments, with nothing sent in between. See [Shipments on their own dates](#shipments-on-their-own-dates) below
 
-Use an availability window when what you send is "whatever is in the box right now" rather than a dated release. Leave the available-to date empty and the window stays current until a later one supersedes it, so you simply open a new window when the contents change.
+The form explains whichever option you choose.
+
+<Frame>
+<img src="https://marzipan-cloud.b-cdn.net/0/docs/subscriptions/package-billing-and-shipments.png" alt="The Billing and shipments setting on a variable package, set to Shipments on their own dates" />
+</Frame>
+
+### Availability windows
+
+Use an availability window when what you send is "whatever is in the package right now" rather than a dated release. Leave the available-to date empty and the window stays current until a later one supersedes it, so you simply open a new window when the contents change.
 
 <Note>
 Windows for the same product may not overlap, and an open-ended window blocks any later one. Marzipan rejects an overlapping window when you enter it rather than picking between them at renewal.
 </Note>
 
-Windowed packages drop the parts of the scheduled flow that have no meaning without a processing date: the **first-order cut-off window** and the **initial shipment**. A new subscriber simply gets whichever window is current, the same box a renewal would get.
+Windowed packages drop the parts of the scheduled flow that have no meaning without a processing date: the **First order cut off window** and the initial shipment. A new subscriber simply gets whichever window is current, the same shipment a renewal would get.
 
 <Tip>
 Editing a window never moves anyone's billing date, so you can correct or extend one without disturbing your subscribers.
 </Tip>
 
+### Shipments on their own dates
+
+Choose this when payments and shipments don't line up: a monthly payment for a shipment every quarter, say, or a membership that sends a few shipments a year.
+
+- **Payments** - each subscriber pays on their own anniversary at the frequency they chose. A payment sends nothing on its own
+- **Shipments** - on each dated shipment's processing date, every active subscriber is sent it, however recently they joined. Those who skipped it are left out, and so is anyone whose payment is failing, until they've paid
+- **Joining** - the first order sends nothing, so checkout charges no delivery for it. It still asks where shipments should go (and a gift recipient's address), and quotes what each shipment will be charged for delivery when it ships. The wording is on the [Labels](/web-components/customisation#labels) tab
+- **Delivery** - each shipment is charged delivery on its own order, at the rate at the time, unless you turn on **Delivery included** or the subscriber collects
+- **Extras** - items a subscriber adds go in their next dated shipment, and are charged on its order with its delivery
+- **Skipping** - holds back the shipment only. Their payments carry on as normal
+
+A package like this has no initial shipment. You can also run one with no dated shipments at all, where the payment buys the package's [benefits](#benefits).
+
+This option adds three settings to the [renewal options](#renewal-options): **Delivery included**, **Minimum term** and **Shipment notice**. **Requires shipping** isn't shown, since every shipment is posted.
+
+A shipment that can't be sent to a subscriber is held rather than lost. See [Held shipments](/subscriptions/shipments#held-shipments).
+
 ## Renewal options
 
 Renewal options control how and when subscriptions renew:
 
-- **First-order cut-off window** - how long a customer has before their first renewal is due
-- **Auto-renew** - renew subscriptions automatically
-- **Requires shipping** - whether renewals need a shipping address
-- **Grace period** - extra time allowed after a renewal is due
-- **Free-renewal rule** - a builder for rules that grant a free renewal
-- **Renewal reminder emails** - reminders sent 30, 21, 14, 7, 3 and 1 days before renewal
+- **First order cut off window** - the first order is processed and dispatched immediately, unless it is placed within this many days of the next scheduled shipment. Only on scheduled dates
+- **Auto renew** - renew subscriptions automatically
+- **Requires shipping** - turn off if renewals don't need shipping. See [A package that sends nothing](#a-package-that-sends-nothing)
+- **Delivery included** - send each shipment with no delivery charge. Off, your delivery rates apply to each shipment. On fixed packages and packages with shipments on their own dates
+- **Minimum term** - how many months subscribers commit for before they can cancel from their account. Leave it empty to let them cancel at any time. Only on packages with shipments on their own dates
+- **Shipment notice** - email subscribers this many days before each shipment, so they can check their address or skip it. Leave it empty to send nothing. Only on packages with shipments on their own dates
+- **Grace period** - the number of days after the subscription expires when renewal is still allowed
+- **Free renewal** - conditions that, when met in the current period, renew the subscription for free
+- **Send renewal emails** - reminders sent 30, 21, 14, 7 or 3 days before the next processing date, and 1 day into the grace period
+
+The shipment notice is the **Subscription shipment** email, editable under **Settings > Notifications**. Only subscribers the shipment will actually go to are sent it.
+
+<Note>
+Within a minimum term, the customer's account says the date they can cancel from instead of offering the button. Staff can always cancel from the admin.
+</Note>
 
 <Note>
 If a renewal payment fails, Marzipan retries it before cancelling the subscription. See [Failed renewals](/subscriptions/details#failed-renewals).
@@ -90,14 +144,14 @@ If a renewal payment fails, Marzipan retries it before cancelling the subscripti
 
 ## What subscribers can do
 
-Each package decides what a customer may do to their own subscription from the [account area](/web-components/account). Not every club can honour every action: a twice-yearly club has no stock to send early, while a monthly one does.
+Each package decides what a customer may do to their own subscription from the [account area](/web-components/account). Not every package can honour every action: a twice-yearly package has no stock to send early, while a monthly one does.
 
-- **Customers can skip a box** - miss the next delivery, with the payment moving on with it. On by default
-- **Boxes they can skip at once** - how far ahead they can skip before one has to come, from 1 to 12. One at a time unless you say otherwise
-- **Customers can move a delivery** - push the next one back to a later date. Off by default
-- **Customers can send a box early** - charge and send the next one immediately. Only worth offering where there is stock to send. Off by default
+- **Customers can skip a shipment** - miss the next shipment. The payment moves on with it, except on a package with shipments on their own dates, where payments carry on as normal. On by default
+- **Shipments they can skip at once** - how far ahead they can skip before the next one has to come, from 1 to 12. One shipment at a time unless you say otherwise
+- **Customers can move a delivery** - push the next shipment back to a later date. Off by default
+- **Customers can send a shipment early** - charge and send the next shipment immediately. Only worth offering where there is stock to send. Off by default
 
-Cancelling is deliberately not on the list. It is always available, and an account that cannot cancel is a trap. The account asks for a reason before it confirms, and offers whichever of the above answers what the customer said, so it never offers a save this package would then refuse. See [Cancelling and reactivating](/subscriptions/details#cancelling-and-reactivating).
+Cancelling is deliberately not on the list. It is always available (after any [minimum term](#renewal-options)), and an account that cannot cancel is a trap. The account asks for a reason before it confirms, and offers whichever of the above answers what the customer said, so it never offers a save this package would then refuse. See [Cancelling and reactivating](/subscriptions/details#cancelling-and-reactivating).
 
 <Note>
 Pausing has been withdrawn in favour of skipping. Subscriptions already paused come back on the day they said.
@@ -136,23 +190,51 @@ The customer is sent a **Subscription Package Changed** email, editable under **
 The account also offers a switch when a customer goes to cancel: a cheaper package where they say it costs too much or they're cutting down, and any listed package where they don't enjoy it. See [Cancelling and reactivating](/subscriptions/details#cancelling-and-reactivating).
 </Note>
 
-## Package metrics and tabs
+## A package that sends nothing
 
-The package detail screen shows key metrics:
+Turn off **Requires shipping** on a package that is never posted anything, such as a local membership paid for its perks. Subscribers then aren't asked to choose delivery or collection, in their account or in the admin, and their subscription has no **Shipments** tab or **Next shipping** date. Its highlights show the next payment instead.
 
-- Active, paused and cancelled counts
-- Total revenue
-- Average lifetime value (LTV)
-- Monthly recurring revenue (MRR)
+## Benefits
+
+A package's **Benefits** are the discounts its subscribers get. They are listed on the package's **Overview**, and each is a discount that requires the customer to have an active subscription, either to this package or to any package.
+
+Click **Add** on the **Benefits** card to create a discount with this package already chosen under **Package must be one of**. See [Creating a discount](/discounts/create).
+
+Each benefit shows its status, the code to use or **applied automatically**, and any per-customer allowance. One open to every subscriber is marked **every package**. Running benefits are listed first.
+
+The **New Subscription**, **Gift Subscription Revealed** and **Subscription Package Changed** emails carry a **Benefits** block listing the running benefits, with the code to use or a note that they apply automatically at checkout. It shows nothing when the package has none.
+
+<Tip>
+To introduce the benefits in your own words, put a line inside the **has benefits** condition in those emails, under **Settings > Notifications**. It only shows when there is a benefit below it. The default emails start with "As a subscriber, these are yours too:".
+</Tip>
+
+## The package page
+
+Click a package to open it. Its **Overview** shows:
+
+- **Highlights** - active, paused and cancelled counts, **Total Revenue**, **Average LTV** (per subscriber lifetime value) and **Recurring Revenue**
+- **Latest subscribers** - the 10 most recent, with **View all** opening the **Subscribers** tab
+- **Package Details** - the package's settings at a glance, with **Edit**
+- **Benefits** - see [Benefits](#benefits)
 
 Depending on the package type, extra tabs are available:
 
-- **Variable** packages have a **Shipments** tab for scheduling changing shipments, and choose how those shipments are dated. See [Shipment dating](#shipment-dating) below and [Shipments](/subscriptions/shipments).
-- **Pick & Mix** packages have an **Available items** tab, where you set the default, minimum and maximum quantities per item.
+- **Variable** packages have a **Shipments** tab. See [Package shipments](#package-shipments) below and [Shipments](/subscriptions/shipments)
+- **Pick & Mix** packages have an **Available Items** tab. See [Available items](#available-items) below
+
+The **Subscribers** tab lists everyone on the package, filtered by status and searchable by name or email.
+
+### Package shipments
+
+A variable package's **Shipments** tab is in three sections:
+
+- **On joining** - the initial shipment a new subscriber is sent. Only on scheduled dates
+- **Upcoming** - the shipments to come, with their dates and status
+- **Completed** - shipments already sent, newest first. Five are shown, with **Show all** for the rest
 
 ### Available items
 
-For pick & mix packages, the **Available items** tab is where you choose which items customers can pick from. For each item you set:
+For pick & mix packages, the **Available Items** tab is where you choose which items customers can pick from. For each item you set:
 
 - The **default** quantity
 - The **minimum** quantity

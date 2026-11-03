@@ -45,7 +45,7 @@ A gift subscription separates the two:
 
 Each renewal the giver pays for is an order in the **giver's** name, charged to the card they paid with at checkout, marked as a gift and sent to the recipient. Billing email, renewal reminders and failed-payment emails go to the giver, so the person receiving the gift never sees a price or a payment request for it. The giver's card is kept apart from the recipient's own payment methods, and is never used once the giver has finished paying.
 
-An account is created for the recipient so they can manage their deliveries, which is why a gift subscription needs the recipient's email address at checkout.
+An account is created for the recipient so they can manage their deliveries, which is why a gift subscription needs the recipient's email address at checkout. On a package that ships on its own dates, checkout still asks for the recipient's address, although nothing is sent with the order itself.
 
 <Tip>
 A recipient who later signs up with the gifted address inherits the subscription, rather than ending up with a duplicate account.
@@ -54,6 +54,8 @@ A recipient who later signs up with the gifted address inherits the subscription
 ## The reveal date
 
 Nothing reaches the recipient before the date the giver chose. See [Tell them on](/orders/gifts#tell-them-on) for how the timing works.
+
+A gift subscription has to be revealed by its first shipment, so the checkout's date picker stops at that date and a line under it names it, rather than the giver learning the limit from an error.
 
 The giver is sent a **Gift Subscription Scheduled** email at the point of purchase, confirming that nothing reaches the recipient until then, which is otherwise the first thing they write in to ask.
 
@@ -75,6 +77,7 @@ A gift subscription carries a **Gift** block on its [detail page](/subscriptions
 - **Paid for by** - the giver, linking to their customer record
 - **Tell them on** / **Told on** - the reveal date
 - **Deliveries left** - for a set number, how many of the giver's shipments are still to be charged, for example `2 of 6`. Not shown on a gift the giver keeps paying for
+- **Paid up to** - where it applies, the date the giver has paid up to
 - **When it runs out** - what the giver chose, spelled out so you can answer "so what happens in March?" without knowing the stored values
 
 A gift's package can't be changed, either from the admin or from the recipient's account, since the giver chose and is paying for that package at that price.
@@ -96,5 +99,7 @@ The life of a gift is covered by these emails, all editable under **Settings > N
 | **Gift Ending (Giver)** | Giver | 30 days before the gift hands over or stops |
 | **Gift Ending (Recipient)** | Recipient | 14 days before they take it over |
 | **Gift Ended** | Recipient | When a set number ends, after the last shipment |
+
+The **Gift Subscription Revealed** email carries a **Benefits** block listing what the recipient's package gets them, as the welcome email does for any subscriber. See [Benefits](/subscriptions/packages#benefits).
 
 A giver who keeps gifting is reminded of each charge by the ordinary [renewal reminder emails](/subscriptions/packages#renewal-options), sent to them rather than to the recipient, so **Gift Renewal Upcoming** is no longer sent.
