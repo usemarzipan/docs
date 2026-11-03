@@ -4,31 +4,45 @@ sidebarTitle: 'Overview'
 description: 'Configure your store, payments, integrations, and web components.'
 ---
 
-The Settings section is where you configure your store's core options, payment providers, integrations, and appearance. Access it from the main navigation sidebar.
+The Settings section is where you configure your store's core options, payment providers, integrations, and appearance.
 
 ## Settings areas
 
-Use the links below to jump to each area of your store's settings.
+Open **Settings** from the menu under your name at the bottom of the sidebar. The page is split into three parts: your core settings at the top, then **Features** and **Developer**.
 
 <CardGroup cols={2}>
   <Card title="General" href="#general">Store and business details</Card>
-  <Card title="Roles & Team" href="/settings/roles-and-team">Users, roles, and permissions</Card>
+  <Card title="Team" href="/settings/roles-and-team#team">Your users and the emails they receive</Card>
+  <Card title="Roles" href="/settings/roles-and-team">Roles and permissions</Card>
   <Card title="Tax">Tax rates and rules</Card>
-  <Card title="Payments" href="#payments">Payment gateways</Card>
-  <Card title="Markets" href="/settings/markets">Currencies and regional pricing</Card>
-  <Card title="Inventory" href="/settings/inventory">Stock and locations</Card>
-  <Card title="Shipping" href="/settings/shipping">Shipping methods and zones</Card>
-  <Card title="Discounts" href="/discounts/overview">Discount codes and automatic offers</Card>
-  <Card title="Gift Vouchers" href="/settings/gift-vouchers">Amounts, expiry and whether vouchers are sold</Card>
+  <Card title="Payments" href="#payments">Payment providers and payment link expiry</Card>
   <Card title="Integrations" href="/integrations/overview">Third-party services</Card>
-  <Card title="Notifications">Team notification preferences</Card>
-  <Card title="Rewards">Loyalty and rewards</Card>
-  <Card title="Cart & Checkout" href="/settings/cart-and-checkout">Cart and checkout behaviour</Card>
-  <Card title="Branding & Web Components" href="/web-components/customisation">Branding, and your storefront components</Card>
-  <Card title="Email" href="/settings/email">Sending domains and delivery</Card>
-  <Card title="Test Mode" href="/settings/test-mode">Test without real payments</Card>
-  <Card title="API tokens">Tokens for external systems</Card>
 </CardGroup>
+
+### Features
+
+<CardGroup cols={2}>
+  <Card title="Cart & Checkout" href="/settings/cart-and-checkout">Abandoned carts, checkout rules and gifting</Card>
+  <Card title="Discounts" href="/discounts/overview">Discount code limits and rules</Card>
+  <Card title="Events" href="/events/overview">Event and waitlist settings</Card>
+  <Card title="Inventory" href="/settings/inventory">Stock locations, rules and low-stock alerts</Card>
+  <Card title="Markets" href="/settings/markets">Currencies and regional pricing</Card>
+  <Card title="Notifications" href="/settings/notifications">The emails your customers receive</Card>
+  <Card title="Rewards" href="/rewards/earning-and-redemption">Points, redemption and tier emails</Card>
+  <Card title="Shipping Methods" href="/settings/shipping">Shipping options and rates</Card>
+  <Card title="Gift Vouchers" href="/settings/gift-vouchers">Amounts, expiry and whether vouchers are sold</Card>
+</CardGroup>
+
+### Developer
+
+<CardGroup cols={2}>
+  <Card title="API Tokens" href="#api">Tokens for external systems</Card>
+  <Card title="Email" href="/settings/email">Sending domains and DNS records</Card>
+  <Card title="Test Mode" href="/settings/test-mode">Test without real payments, then go live</Card>
+  <Card title="Branding & Web Components" href="/web-components/customisation">Colours and styling for your storefront and payment pages</Card>
+</CardGroup>
+
+Your Marzipan plan and the card you pay for it with are on a page of their own. See [Plan and billing](/settings/billing).
 
 ## General
 
@@ -44,20 +58,21 @@ Navigate to **Settings > General** to manage your store and business details.
 - **Contact email** - Where customer enquiries and contact form submissions are sent
 - **Contact number** - Your customer-facing phone number
 - **Logo** - Your store logo, shown in emails and on hosted pages
-- **Open Graph image** - The default image shown when your links are shared on social media
+- **Default open graph image** - The default image shown when your links are shared on social media
 - **Favicon** - The small icon shown in browser tabs
 
 ### Business details
 
 - **Legal name** - Your registered legal business name
 - **Trading name** - The name you trade under, if different
-- **Address** - Your business street address
+- **Address line 1** and **Address line 2** - Your business street address
 - **City** - Your business city or town
-- **State/Province** - Your business state, province, or county
-- **Post code** - Your business postal code
+- **State / Province** - Your business state, province, or county
+- **ZIP / Post Code** - Your business postal code
 - **Country** - The country your business is registered in
-- **EORI number** - Your Economic Operators Registration and Identification number, used for customs
-- **AWRS number** - Your Alcohol Wholesaler Registration Scheme number
+- **Timezone** - Your store's timezone
+- **EORI Number** - Your Economic Operators Registration and Identification number, used for customs
+- **AWRS Number** - Your Alcohol Wholesaler Registration Scheme number
 
 <Note>
 Your store's currency is not set here. Currency is governed by [Markets](/settings/markets), where you can sell in more than one currency.
@@ -97,8 +112,8 @@ Manage your email sending domains and delivery settings. See [Email](/settings/e
 
 ## API
 
-Generate API tokens for integrating with external systems or powering your web components. Each token has configurable permission scopes.
+Navigate to **Settings > API Tokens** to generate API tokens for integrating with external systems or powering your web components. Each token has configurable permission scopes.
 
 ## Test Mode
 
-Test the full purchase flow without processing real payments. A global toggle switches your payment gateways and integrations to their test/sandbox mode. See [Test Mode](/settings/test-mode).
+Test the full purchase flow without processing real payments, then go live when you're ready. See [Test Mode](/settings/test-mode).

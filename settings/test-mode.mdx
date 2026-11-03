@@ -7,26 +7,36 @@ Test mode lets you test the complete shopping experience, including checkout and
 
 ## How It Works
 
-Navigate to **Settings > Developer Settings** to access the test mode toggle.
+Navigate to **Settings > Test Mode**, under **Developer**, to find the **Enable Test Mode** switch.
 
 When test mode is **on**:
 - All payment gateways use their test/sandbox credentials
 - All integrations switch to their test/sandbox mode, not just payment gateways
 - Orders are processed normally but payments go through sandbox environments
 - You can test the full checkout flow with test card numbers
-- All other store functionality (inventory, emails, fulfilment) works as normal
+- All other store functionality (inventory, fulfilment) works as normal
 
-When test mode is **off**:
-- All payment gateways automatically switch back to their live credentials
-- All integrations are set to live mode
-- Real payments are processed
+Two more switches control what test mode does outside Marzipan:
+
+- **Send Emails** - turn it off to have emails logged but not sent while test mode is on
+- **Sync Marketing** - turn it off to skip Mailchimp syncs while test mode is on. Changes coming in from Mailchimp are still processed.
 
 <Note>
 For Stripe, test mode uses a **separate test Connect account** rather than stored test API keys. Connect your test account in **Settings > Payments** alongside your live one.
 </Note>
 
+## Going live
+
+Turning test mode off takes your store live. A **Switch to Live Mode?** confirmation reminds you to set up live credentials first, and names any payment provider that has none connected yet, since you won't be able to take real payments through it until you do. Click **Go Live** to confirm.
+
+When you go live:
+- All payment gateways switch to their live credentials
+- All integrations are set to live mode
+- Real payments are processed
+- Your customers are kept, but anything they picked up in testing is cleared: test payment cards, test Stripe customer records, their stats and their test activity
+
 <Warning>
-Always turn off test mode before making your store available to real customers. Orders placed in test mode use sandbox payment processing.
+Going live is **one-way**. Once your store is live, test mode can't be turned back on, so real customers can never be sent through sandbox payments. Finish testing before you go live.
 </Warning>
 
 ## Setting Up Test Credentials
@@ -56,9 +66,12 @@ Use any future expiry date and any 3-digit CVC.
 
 ## Clearing Test Data
 
-Testing your store creates real records (test-mode orders and customers) that you won't want cluttering your data when you go live. When you're ready to launch, you can **purge test data** to remove them.
+Testing your store creates real records that you won't want cluttering your data when you go live. The **Test Data** section lists what was created in test mode, and **Purge Test Data** removes it:
 
-- **Preview purge** - See what would be removed before you commit to anything
-- **Purge test data** - Permanently delete test-mode orders and customers
+- Orders, along with their payments, items and shipments
+- Carts
+- Subscriptions
+
+Customers and products are not affected. The confirmation lists exactly what will be removed before you click **Purge**, and a purge can't be undone.
 
 Run a purge once you've finished testing and before you open your store to real customers.

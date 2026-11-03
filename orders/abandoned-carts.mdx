@@ -1,0 +1,54 @@
+---
+title: 'Abandoned carts'
+sidebarTitle: 'Abandoned carts'
+description: 'See the carts customers left behind, chase them up, and turn a cart into an order.'
+---
+
+When a customer fills a cart and leaves without checking out, the cart is kept under **Abandoned Carts** in the **Sales** section of the main menu. From there you can see what they were about to buy, send them a reminder, or turn the cart into an order yourself.
+
+## The carts list
+
+A cart appears in the list once it has sat untouched for 15 minutes, as long as it has an email address or a customer attached. A cart with neither can't be followed up, so it isn't shown.
+
+The list shows each cart's:
+
+- **Date**
+- **Customer**
+- **Email**
+- **No. of Items**
+- **Total**
+
+Filter the list by date, or by **Market** if you sell in more than one, search by name or email, and sort by when a cart was last updated, when it was created, or its value. The chart icon in the top-right opens the cart recovery report (see [Sales reports](/insights/sales#cart-recovery)).
+
+<Note>
+A cart behind a [payment link](/orders/payment-links) isn't an abandoned cart, so it never appears here. Whether the link has been sent and paid is shown on the order itself.
+</Note>
+
+## A cart's details
+
+Click a cart to open it. Alongside the items and totals you'll see the cart's **Customer**, **Shipping**, **Billing** and any **Gift options** the customer filled in. If a recovery email has gone out, the **Details** section says when.
+
+Under **Actions** you can:
+
+- **Convert to order** - turn the cart into an order (see below)
+- **Copy cart link** - copy a link that reopens the cart, to send to the customer yourself
+
+## Recovery emails
+
+Recovery emails and recovery tasks are set up under [Settings > Cart & Checkout](/settings/cart-and-checkout#abandoned-carts), and the email's wording under **Settings > Notifications**.
+
+If automatic recovery emails are turned off, a cart with an email address shows a **Send recovery email** button instead, which sends a one-off reminder to that customer. Each cart is only ever sent one recovery email, and the send is recorded on the customer's activity.
+
+## Converting a cart to an order
+
+**Convert to order** opens a panel that starts from everything the cart already knows:
+
+- **Customer** - the cart's customer, with their reward tier and tags. If the cart has an email address but no customer, a new customer is created with that email.
+- **Billing Address** and **Shipping Address** - the cart's addresses are picked from the customer's saved addresses where they match, or typed in for you where they don't. A cart with no billing address uses its delivery address, and a cart with no address at all falls back to the customer's default.
+- **Shipping Method**, with optional **Delivery Instructions** of up to 120 characters
+- **Items** - the cart's lines, which you can adjust or add to
+- **Discount** and **Gift Options**
+
+Everything is priced in the **cart's market** and its currency, including any products you add and the shipping rates. The order keeps that market too, so flows that check the order's market treat it like any other order from that market.
+
+Click **Create Order** to finish. The new order is created as `pending`, ready for you to take payment or [send a payment link](/orders/payment-links), and you're taken straight to it. The cart is removed from the list.

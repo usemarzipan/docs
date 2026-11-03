@@ -1,0 +1,68 @@
+---
+title: 'Plan and billing'
+sidebarTitle: 'Plan and billing'
+description: 'See your Marzipan plan, add or update the card you pay with, and what happens if a payment is missed.'
+---
+
+The **Plan and billing** page shows what you pay for Marzipan itself: your plan, the card it's charged to, and the prices of every plan. It's about your Marzipan bill, not the payments your customers make to you, which are set up under [Payments](/settings/overview#payments).
+
+To open it, go to `/settings/billing` in the app (for example `https://app.marzipan.co/settings/billing`). It's also linked from the **Pay now** and **Update your payment details** buttons Marzipan shows when a payment is due.
+
+<Frame>
+<img src="https://marzipan-cloud.b-cdn.net/0/docs/settings/plan-and-billing.png" alt="The Plan and billing page showing the current plan, the card on file and the plans table" />
+</Frame>
+
+## Your plan
+
+The name of your plan and what it costs, monthly or yearly, with a badge for its state. While you're on a trial, the page says when the trial ends.
+
+If we invoice you rather than charging a card, your plan reads **Custom**.
+
+## Payment details
+
+The card your plan is charged to, shown as its brand and last four digits, for example **Visa ending 4242**. The card is held securely by Stripe.
+
+<Steps titleSize="p">
+   <Step title="Open the card form">
+      Click **Add a card**, or **Update card** if you already have one on file. The card form opens in a dialog on the page, rather than sending you off to another site.
+   </Step>
+   <Step title="Enter the card">
+      The form only asks for the card itself, since we already hold your name and address. **Apple Pay** and **Google Pay** are offered too, on browsers that support them.
+   </Step>
+   <Step title="Save it">
+      Click **Save card**. If a payment is already due, the dialog says so before you commit: the button reads **Save card and pay**, and the outstanding amount is taken straight away. Paying late doesn't move your renewal date, which stays on its usual anniversary.
+   </Step>
+</Steps>
+
+If the card is declined, the dialog stays open with the reason, so you can try another card straight away.
+
+<Note>
+An invoiced account has no card to manage. The page says so instead: "We invoice this account rather than charging a card, so there is nothing to manage here."
+</Note>
+
+## Plans
+
+The plans table lists every tier, priced on the annual revenue going through your store. Switch between **monthly** and **yearly** to compare prices, and your own tier is marked **Your plan**.
+
+To move up or down a tier, email [hello@marzipan.co](mailto:hello@marzipan.co).
+
+## When a payment is missed
+
+Your shop keeps trading whatever happens to your Marzipan bill. Customers can still order and subscription renewals still go out. Only your access to the admin is ever affected.
+
+### After a trial ends
+
+If your trial ends and we can't take payment, you have **seven days** to add a card:
+
+- A banner across the top of every page says your trial has ended and the date to pay by, with a **Pay now** link
+- Owners and admins also see a **Your trial has ended** message when they sign in. **Not now** dismisses it until the next sign-in, and **Update your payment details** takes you to this page
+
+### If your account is locked
+
+Once the seven days are up without payment, signing in shows **Your account is locked** instead of the admin. Click **Update your payment details**, add a card, and you're straight back in.
+
+If Marzipan has paused your account over an outstanding invoice, the screen says so and gives the reason. Settle the amount, then let us know with **Email us about this**.
+
+<Tip>
+Settings, your general settings and this page stay open while an account is locked, so you can always get back to the card form.
+</Tip>
