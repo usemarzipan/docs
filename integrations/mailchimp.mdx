@@ -1,0 +1,68 @@
+---
+title: 'Mailchimp'
+sidebarTitle: 'Mailchimp'
+description: 'Sync your customers and subscribers to Mailchimp audiences, with their tags and the fields you map.'
+---
+
+The Mailchimp integration keeps your Mailchimp audiences in step with your store. Customers are added and updated as they change in Marzipan, subscribers can go to an audience of their own, and the fields you map are kept up to date on each contact.
+
+Navigate to **Settings > Integrations** and choose **Mailchimp**.
+
+## Connecting
+
+Click **Connect with Mailchimp** and sign in to the Mailchimp account you want to sync to. Once connected, turn on **Enabled** and the settings below become available.
+
+<Note>
+An older integration connected with an API key shows **Upgrade Required**. Background syncing keeps working, but reconnect with Mailchimp to change any settings. Your configuration and field mappings are kept.
+</Note>
+
+## Customers
+
+- **Default audience** - the Mailchimp audience customers are synced to. If none are listed, create an audience in Mailchimp and choose **Refresh Lists** from the **Actions** menu.
+- **Sync customer tags** - keep Marzipan customer tags and Mailchimp tags in step, in both directions
+- **Field mapping** - click **Configure Field Mapping** to map Marzipan customer fields to Mailchimp merge fields for the default audience
+- **Manual Sync** - click **Trigger Full Sync** to send every customer to the default audience once. You don't need this day to day: customers are synced automatically when they're created or updated.
+
+## Subscriptions
+
+The **Subscriptions** section syncs your subscribers to a separate audience.
+
+- **Enabled** - while this is on, customers are added to the subscription audience as soon as they take out a subscription. Turn it off to sync subscriptions by hand instead.
+- **Subscription audience** - the audience subscribers are synced to
+- **Field mapping** - map subscription fields, such as the subscription's status, price or next billing date, to merge fields for the subscription audience
+- **Manual Sync** - click **Trigger Full Sync** to send every customer with an active subscription to the subscription audience once
+- **Sync customer tags for subscriptions** - include customer tags when syncing subscription data
+
+A subscription change is synced in the background, and only when it changes a field you've mapped, so saving a subscription never waits on Mailchimp. When rescheduling a shipment moves its subscribers' billing dates, the new dates are sent to Mailchimp too, if you've mapped the billing date.
+
+## Field mapping
+
+Each mapping pairs a **Marzipan Field** with a **Mailchimp Merge Field**. Fields are grouped by customer, default address, subscription, subscription address, subscription product and rewards.
+
+- Choose **Custom Field...** to enter a **Custom Field Path** for a value not in the list, for example `subscription.options.delivery_notes`
+- When you map a date of birth, choose its **Birthday Format**: **MM/DD (US format)** or **DD/MM (UK/EU format)**
+
+Saving your mappings queues a sync in the background.
+
+## Unsubscribes
+
+Someone who unsubscribes in Mailchimp stays unsubscribed. Updating their details in Marzipan, such as a new address or a change to their subscription, doesn't sign them back up.
+
+They're only re-subscribed when they opt in again: by ticking the newsletter box at checkout or on the POS, or when your team subscribes them from their customer record.
+
+## Actions
+
+The **Actions** menu offers:
+
+- **Sync History** - see recent syncs and any problems with them
+- **Refresh Lists** - re-read your audiences from Mailchimp
+- **Test Connection** - check that Marzipan can reach your Mailchimp account
+- **Disconnect** - disconnect from Mailchimp, which stops all syncing
+
+## Sync history
+
+**Sync History** shows how many customers are synced, pending and failed in the last seven days, with **Field mapping warnings** for mappings Mailchimp couldn't accept and the reason, and the **Recent sync activity** with how many contacts each run processed, and how many succeeded and failed.
+
+<Note>
+Turning **Enabled** off stops syncing straight away, including anything already waiting to go.
+</Note>

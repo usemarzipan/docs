@@ -1,10 +1,10 @@
 ---
 title: 'London City Bond'
 sidebarTitle: 'London City Bond'
-description: 'Bonded-warehouse fulfilment, with stock syncing, order submission and stock transfers.'
+description: 'Bonded-warehouse fulfilment, with stock syncing, order submission, LCB Transport delivery options and stock transfers.'
 ---
 
-London City Bond (LCB) handles bonded-warehouse fulfilment. Once installed, its settings page covers stock, orders and transfers.
+London City Bond (LCB) handles bonded-warehouse fulfilment. Once installed, its settings page covers stock, orders and transfers, and orders can be sent to LCB from the order screen.
 
 ## Stock sync
 
@@ -30,9 +30,46 @@ A part delivery credits what actually arrived and leaves the rest counting as st
 
 Orders are submitted to LCB over the API, with many orders batched into a single call. Subscription renewals are included: orders shipping later are held and released by a sweep that runs through the day, so a late-settling renewal payment doesn't wait until the next day.
 
+A held order is sent with the day it's released as its order date, since LCB reject an order date more than about a week old.
+
 <Note>
 The [flow](/flows/overview) action is called **Fulfil order via LCB**. It sends orders due now and holds the rest until their shipping date.
 </Note>
+
+### Renewals with extra items
+
+A dated subscription renewal that has extra items on it is held **whole** and sent on its shipping date, so the customer gets everything in one delivery. A new signup with extra items is still split: the extras go straight away, and the subscription itself goes on its shipping date.
+
+### Retries and rejected sends
+
+If a send is turned away because of a rate limit, Marzipan waits and tries again rather than retrying straight away. A send that runs out of attempts says so in the order's activity, so you know it wasn't sent.
+
+A send LCB reject stays on the order so you can see what went wrong, but it doesn't stop the order going on its shipping date.
+
+## Sending an order by hand
+
+To send an order yourself, open it and choose **Send to LCB** from the **Actions** menu. Select the carrier to send it with, or tick **Auto select using cheapest rate**, then click **Send to LCB**.
+
+If the order has a preferred shipping date, sending it now submits it straight away, ahead of that date.
+
+**Download LCB XML** in the same menu downloads the order as an LCB XML file instead of sending it.
+
+### LCB Transport delivery options
+
+When you send an order by **LCB Transport**, you can add **LCB delivery options**:
+
+- **Booking in required** - ask LCB to book the delivery in with the recipient. The options below are only available once this is ticked.
+- **Delivery window** - a time to deliver, or a window of at least 2 hours
+- **Second delivery window** - an optional second window of at least 2 hours, starting after the first ends
+- **Security PIN** - 4 digits. The recipient must quote it to take the delivery.
+
+Delivery windows must fall between 09:00 and 17:00, and the time pickers only offer times that fit.
+
+The options are saved on the order and shown in their own **LCB delivery options** section on it, with the PIN hidden until you choose to show it. A retry or a held release sends the same options. Sending the order again by LCB Transport replaces them, and sending it by a courier clears them, as couriers aren't sent them.
+
+<Tip>
+**Download LCB XML** offers the same delivery options for the file, without saving them to the order.
+</Tip>
 
 ## Stock transfers
 
