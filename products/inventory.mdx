@@ -1,21 +1,32 @@
 ---
 title: 'Inventory'
-description: 'Manage stock, purchase limits, overselling, and low-stock badges for a product'
+description: 'Manage stock, purchase limits, overselling, out of stock by market, and low-stock badges for a product'
 ---
 
 Stock for a product is managed in the **Inventory** section of the product form. Open a product from **Products** in the main navigation menu and scroll to **Inventory**.
 
 ## Quantity
 
-- **Quantity** - a single stock quantity, or per-location quantities if [location-based inventory](/settings/inventory) is enabled
+- **Quantity** - a single stock quantity. Leave it blank to not track inventory for the product.
+- **Quantity at** each location - per-location quantities, once [location-based inventory](/settings/inventory) is initialised. On an existing product these are read-only here; change them with **Manage Inventory**.
 
 <Note>
-With location-based inventory on, you can also **manage inventory** and **view history** for a product from the products list.
+With location-based inventory on, the section also has a **Manage Inventory** button to adjust stock and a history button to see every movement. Both are in the product's **Actions** menu too.
+</Note>
+
+### Untracked products
+
+A product with a blank quantity is untracked: it has no stock cap and sells for as long as it's active. It only stops selling if you set it out of stock by hand. Enter a quantity to turn tracking back on.
+
+This is how products imported with stock management switched off arrive, so they sell normally rather than being refused as out of stock.
+
+<Note>
+Products tracked by location always carry a quantity at each location, so they're never untracked.
 </Note>
 
 ## Stock source
 
-**Bundles** choose how their available quantity is worked out:
+**Bundles** choose how their available quantity is worked out, under **Stock**:
 
 - **Managed** - the bundle holds a stock figure of its own
 - **Derived from constituent items** - the figure comes from the items the bundle contains
@@ -26,11 +37,30 @@ A derived bundle updates on its own as its parts move. Each item limits the bund
 Use **Derived** for a case you assemble from stock you already hold, and **Managed** for a pre-pack the warehouse holds under its own SKU.
 </Tip>
 
+## Which stock a market sells from
+
+Each [market](/settings/markets) names the inventory location its stock comes from. What the storefront shows in a market (in stock, out of stock, or the low-stock badge) is worked out from that market's location, not the total across every location, so a UK shopper is never offered stock that's only held in France.
+
+An order takes its stock from the shipping method's **Fulfil from** location if it names one, then from a matching [inventory rule](/settings/inventory#inventory-rules). When neither applies, it takes stock from its market's location, and only then from your default location.
+
 ## Purchase rules
 
-- **Limit per customer** - cap how many of this product a single customer can buy
+- **Limit per customer** - the maximum total quantity a single customer can buy. Leave blank for no limit.
 - **Allow overselling** - let customers buy the product even when it's out of stock
 - **Overselling limit** - extra units that can be sold on top of the stock level. Leave blank for no limit.
+
+### How the per-customer limit is counted
+
+The limit counts what the customer has already ordered as well as what's in their cart:
+
+- Past orders are matched by customer account **or** email address, so someone who has bought before and checks out as a guest is still counted
+- A guest with no past orders is capped at the limit within their cart
+- The limit is checked when an item is added, when a quantity changes, and again at checkout once the email address is known
+- Free promotional lines, such as a free item from a discount, don't count towards it
+
+On the storefront, quantity steppers stop at the limit and the cart notes it, for example **Max 2 per customer**.
+
+### Overselling
 
 The overselling limit is an allowance **on top of** the current stock figure rather than a total, so it rebases whenever stock is resynced. Use it when you hold stock somewhere Marzipan can't see, such as a second warehouse, and want to sell a set number beyond the figure on screen rather than sell forever.
 
@@ -38,18 +68,38 @@ The overselling limit is an allowance **on top of** the current stock figure rat
 Overselling doesn't apply to events, untracked products, or bundles taking their stock from constituent items, none of which carry a figure for an allowance to sit on.
 </Note>
 
+## Out of stock by market
+
+Once you sell in more than one market, a physical product or bundle is put out of stock market by market rather than through its status. Choose the markets under **Out of stock in**: the product shows as out of stock in those markets even when there is stock.
+
+Marking a product out of stock in a market overrides its stock and any overselling allowance there:
+
+- The storefront shows it out of stock in that market, and the cart refuses it
+- It's left out of that market's Google Merchant Center feed
+- Back-in-stock emails wait until you take the market off the list
+
+<Note>
+With more than one market live, the **Out of Stock** status is no longer offered, and a sale that empties stock doesn't flip the product's status. Each market reads the stock at its own location instead. Single-market stores, events and subscription packages keep using the status as before.
+</Note>
+
 ## Low-stock badge
 
 The **low-stock badge** tells customers when stock is running low. On the product you can:
 
-- Show or hide the badge
-- Set the **threshold** at which it appears
-- Set the badge **text**
-- Or fall back to your global default
+- Choose whether to show it with **Show "low stock" badge**: **Use global default**, **Always show** or **Never show**
+- Set the **Low stock threshold** at which it appears
+- Set the **Badge text**, using `{count}` to show the stock number
+- Or tick **Use global default** for the threshold or the text
 
 <Tip>
 Set the badge once under [Inventory settings](/settings/inventory) and only override it on the products that need something different.
 </Tip>
+
+## Back-in-stock emails
+
+When a product is out of stock, the storefront offers a form so customers can be emailed when it's back. A signup remembers the market it was made in, so the customer is told when stock returns at **that market's** location, not when another market is restocked. Signups made before 14 October 2026 have no market and are told on a restock anywhere.
+
+A product you've set out of stock by hand doesn't send back-in-stock emails, even if stock arrives. Back-in-stock emails appear on the customer's **Emails** tab.
 
 ## Valuing your stock
 

@@ -1,7 +1,7 @@
 ---
 title: 'Create a discount'
 sidebarTitle: 'Create'
-description: 'Set up a discount, with its type, validity, limits and conditions'
+description: 'Set up a discount, with its type, what it applies to, who can use it, limits and dates'
 ---
 
 To create a discount:
@@ -10,24 +10,28 @@ To create a discount:
 2. Navigate to **Discounts** in the main menu
 3. Click the **Add discount** button in the top-right corner
 
+Clicking a discount in the list opens the same form for editing.
+
 <Frame>
 <img src="https://marzipan-cloud.b-cdn.net/0/docs/discounts/create-discount.png" alt="Create discount form" />
 </Frame>
 
-## The basics
+The form runs in sections, in the order you'd answer them: the discount itself, what it applies to, who can use it, what the cart needs, how often it can be used, and when. Each condition is a toggle: turn one on and its settings appear beneath it.
+
+## The discount
 
 - **Discount code** - the code customers enter at checkout. Use **Generate code** to create one automatically.
-- **Description** - a short description shown to the customer at checkout.
-- **Automatically apply** - when enabled, the discount applies on its own without the customer needing to enter a code.
+- **Description** - shown to customers at checkout, and in subscription emails when the discount is a subscription benefit.
+- **Apply automatically** - applied automatically when a cart qualifies, without the customer needing to enter a code.
+- **Type** - how the discount reduces the price (see below).
+- **Amount** - the amount or percentage off, for **Fixed amount** and **Percent** discounts.
 
 ### Type
 
-Choose how the discount reduces the price:
-
-- **Fixed amount** - takes a set amount off the order.
-- **Percentage** - takes a percentage off the order.
+- **Fixed amount** - takes a set amount off.
+- **Percent** - takes a percentage off.
 - **Free shipping** - removes shipping costs.
-- **Free item** - adds a product to the order for free. Choose the product to add and set a label prefix (such as `FREE`).
+- **Free item** - adds a product to the order for free. Choose the **Free item** and set an **Item label prefix**, the text put before the product name, such as `FREE`.
 - **Cheapest item free** - takes the cheapest qualifying item already in the cart off the total. One unit, not the whole line, so three bottles at £10 is £10 off.
 
 <Note>
@@ -36,42 +40,65 @@ Choose how the discount reduces the price:
 
 ### Market
 
-For multi-market stores, choose the market the discount applies to. A market is **required for fixed-amount** discounts; for all other types it's optional and the discount applies to all markets when left unset.
+For multi-market stores, choose the **Market** the discount applies to. A market is **required for fixed amount** discounts; for all other types it's optional and the discount applies to all markets when left blank.
 
 <Note>
 A fixed amount is a sum of money, so it needs a market to tell it which currency to use. Percentage and free-shipping discounts work in any currency, so they don't.
 </Note>
 
-### Validity
+## What it applies to
 
-Set **valid-from** and **valid-until** dates to control when the discount is active. Leave a date blank for no start limit or no expiry.
-
-### Minimum spend
-
-Set a minimum spend the cart must reach for the discount to apply. This is measured **before discounts and shipping**.
-
-### Limits
-
-- A **total usage limit** caps how many times the discount can be used across all customers.
-- A **one-use-per-customer** option limits each customer to a single use.
-
-### Conditions
-
-Restrict when a discount applies:
-
-- The cart must reach a **minimum number of items**, for offers framed by count rather than value. Giveaway lines aren't counted, so a free item can't help satisfy the condition that produced it.
-- The cart must contain a given item type (for example, a **Subscription**).
-- The customer must have an active subscription, or one of certain **tags**.
-- The discount applies only to specific products or product types (**Physical**, **Bundle**, **Subscription**, or **Event**).
-- The discount applies only to certain shipping methods.
-
-### Pricing exclusions
-
-Optionally stop a discount from stacking on already-reduced prices:
-
-- Don't apply to sale pricing.
-- Don't apply to subscriber pricing.
+- **Specific products only** - limit the discount to the **Products** you choose, which can include events and subscriptions.
+- **Specific product types only** - limit it to **Physical**, **Bundle**, **Subscription** or **Event** items.
+- **Don't discount sale prices** - leave items that are already on sale at their sale price.
+- **Don't discount subscriber prices** - products with a subscriber price aren't discounted any further.
 
 <Tip>
-Use pricing exclusions when you run a broad promotion but don't want it compounding on items that are already discounted.
+Use the two pricing exclusions when you run a broad promotion but don't want it compounding on items that are already reduced.
 </Tip>
+
+## Who can use it
+
+- **Customer must have an active subscription** - only customers with an active subscription can use the discount. Under **Package must be one of**, pick the packages that qualify, or leave it empty for any package.
+- **Customer must have one of these tags** - only customers with at least one of the **Tags** you enter can use it.
+
+Both conditions are about the **customer**, not what's in the cart. To require a subscription in the cart, use **Cart must contain a subscription** under Requirements.
+
+<Tip>
+A package's **Benefits** card lists the discounts limited to its subscribers, and its **Add** button opens this form with the package already picked. Saving or cancelling takes you back to the package. See [Packages](/subscriptions/packages).
+</Tip>
+
+## Requirements
+
+- **Minimum spend** - the amount the cart must reach, measured before any discounts or shipping fees.
+- **Minimum items** - the total quantity the cart must hold, for offers framed by count rather than value. Leave blank for no requirement. Giveaway lines aren't counted, so a free item can't help satisfy the condition that produced it.
+- **Cart must contain a subscription** - the discount only applies when someone subscribes. It still comes off everything it applies to, for example a free bottle, or 10% off the whole order.
+- **Specific shipping methods only** - pick the **Shipping methods** the discount works with, from a list like the market visibility picker.
+
+## Limits
+
+- **Limit total uses** - cap how many times the discount can be used across every customer, under **Uses**.
+- **Limit per customer** - cap how much each customer can use it, set as an **Allowance** (see below). This is based on the customer's email address, so it counts guest checkouts too.
+- **Can be used with other discounts** - let this discount apply alongside others in the same cart. It's off by default.
+
+### Per-customer allowance
+
+The allowance reads as one line: a number, then **orders** or **items**, then **in total**, **every month** or **every year**. For example:
+
+- **1 order in total** - the classic one use per customer
+- **3 orders every month** - up to three orders a month get the discount
+- **2 items every year** - the discount applies to up to two items a year, which can be spread over more than one order. Any more are charged in full, and the cheapest are discounted first.
+
+An info box under the allowance says it back as a sentence, naming the items it covers. Counting in items uses whatever you chose under **What it applies to**, so pick products there if the allowance should only cover certain things, such as tour tickets.
+
+<Note>
+A subscriber's month or year runs from when their subscription started; anyone else's goes by the calendar. Cancelled, failed and draft orders, and orders refunded in full, give their use back.
+</Note>
+
+<Tip>
+For a subscriber perk such as two free tour tickets a year, make a **Percent** discount of 100% on the tour, limit it to subscribers, and set the allowance to **2 items every year**. The units it gives away show as free in the cart, with the discount's description, just as **Cheapest item free** does.
+</Tip>
+
+## Dates
+
+Set **Valid from** and **Valid until** dates to control when the discount is active. Leave **Valid until** blank if the discount doesn't expire.

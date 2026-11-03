@@ -27,8 +27,17 @@ The list shows each collection's **name**, **slug**, **status**, **number of pro
 - **Name** - the collection name
 - **Description** - a description of the collection
 - **Published** - when on, the collection is live on your storefront
-- **Products** - add the products in the collection, and **drag to reorder** them. The order controls how products display on your storefront. You can also add subscription packages and events.
+- **Products** - add the products in the collection, and **drag to reorder** them. The order controls how products display on your storefront. You can also add subscription packages and events. What you pick while creating a collection is saved with it.
 - **Attributes** - set collection-level [attribute](/attributes/overview) values
+
+## System collections
+
+Every shop has two locked system collections that parts of Marzipan look up:
+
+- **Subscription Additional Items** - the products subscribers can add to their upcoming shipments as one-off extras, from their account
+- **Marzipan POS** - the products available to sell on the Marzipan POS till in the mobile app
+
+Add and remove their products, and set their description, status and markets, as with any other collection. Their name can't be changed, because renaming would change the slug they're found by, and no other collection can take their slug.
 
 ## Market visibility
 
@@ -39,7 +48,7 @@ For multi-market stores, the **Market visibility** section controls where a coll
 
 ### Explaining a restricted collection
 
-A collection that isn't available in a shopper's market would otherwise just look empty. Set an optional **message** and a **CMS page** to link to, and your storefront can say why there's nothing to show instead of rendering a blank grid.
+A collection that isn't available in a shopper's market would otherwise just look empty. Under **Unavailable in other markets**, set an optional **Message** and a CMS **Page** to link to, and your storefront can say why there's nothing to show instead of rendering a blank grid.
 
 <Note>
 The message is only sent to the storefront when the collection genuinely isn't available in that market, so it never reaches shoppers who can see the collection perfectly well.

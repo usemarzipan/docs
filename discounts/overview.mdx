@@ -28,24 +28,29 @@ Every discount has a **type**, which determines how it reduces the price:
 
 | Type | What it does |
 | --- | --- |
-| **Fixed amount** | Takes a set amount off the order |
-| **Percentage** | Takes a percentage off the order |
+| **Fixed amount** | Takes a set amount off |
+| **Percent** | Takes a percentage off |
 | **Free shipping** | Removes shipping costs |
 | **Free item** | Adds a product to the order for free |
+| **Cheapest item free** | Takes the cheapest qualifying item already in the cart off the total |
 
 ### Codes and automatic discounts
 
 A discount reaches the customer in one of two ways:
 
 - **By code** - the customer enters the discount code at checkout
-- **Automatically** - with **Automatically apply** enabled, the discount applies on its own as soon as the cart meets its conditions, with no code needed
+- **Automatically** - with **Apply automatically** on, the discount is applied as soon as a cart qualifies, with no code needed
 
 <Tip>
 Automatic discounts are ideal for site-wide promotions and subscriber perks. Codes are better when you want to control who can use the offer.
 </Tip>
 
+### Subscriber benefits
+
+A discount limited to a package's subscribers is listed as one of that package's **Benefits**, and the subscription welcome, gift and package change emails list it, with the code to use or a note that it applies on its own. Combine it with a [per-customer allowance](/discounts/create#per-customer-allowance), such as two free items a year, for a perk that renews with the subscription.
+
 ## In this section
 
 <CardGroup cols={2}>
-  <Card title="Create" href="/discounts/create">Set up a discount, with its type, validity, limits and conditions</Card>
+  <Card title="Create" href="/discounts/create">Set up a discount, with its type, conditions, per-customer allowance and dates</Card>
 </CardGroup>

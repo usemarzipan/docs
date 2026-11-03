@@ -1,10 +1,10 @@
 ---
 title: 'Issuing by hand'
 sidebarTitle: 'Issuing by hand'
-description: 'Issue a gift voucher yourself, for goodwill, a phone order or a voucher sold over the counter.'
+description: 'Issue a gift voucher yourself, or a batch of them at once, for goodwill, a phone order or printed cards.'
 ---
 
-As well as being bought from your shop, a voucher can be issued by hand, as a gesture of goodwill, to settle a complaint, or because somebody bought one over the phone.
+As well as being bought from your shop, a voucher can be issued by hand, as a gesture of goodwill, to settle a complaint, or because somebody bought one over the phone. When you need a stack of codes at once, such as cards for a Christmas market or a corporate order, [issue them in bulk](#issuing-in-bulk).
 
 Click **Issue voucher** on the **Gift Vouchers** page.
 
@@ -17,11 +17,14 @@ Click **Issue voucher** on the **Gift Vouchers** page.
 - **Market** - which market the voucher belongs to. It can only be spent on orders in that currency. Only shown when you sell in more than one market.
 - **Amount** - what the voucher is worth
 - **Expiry** - how long it lasts, defaulting to your [shop policy](/settings/gift-vouchers). Choose **Never** for a voucher that doesn't expire.
+- **Spendable on** - an optional restriction on what the voucher can buy. Add products, collections or events, such as a voucher that only buys tour tickets. Leave it empty and it can be spent on anything.
 - **Why** - your reason for issuing it, such as `Goodwill after a late delivery`. Kept with the voucher, so anyone looking at it later knows where it came from.
+
+A restricted voucher works exactly like one [sold from a restricted voucher product](/gift-vouchers/redeeming#restrictions): it only pays for the lines that match. Its [detail page](/gift-vouchers/details#voucher-details) names the restriction, or says it can be spent on **Anything**.
 
 Under **Who it is for**:
 
-- **Select existing customer** - attach the voucher to a customer you already have, or leave it and type a name instead
+- **Select existing customer** - attach the voucher to a customer you already have. Picking one fills in their details and records the voucher against their account, whether or not you email it to them. Leave it blank and the code belongs to whoever you hand it to.
 - **Their name** - what the email says hello to. Leave it blank for a plain greeting.
 - **Their email**
 - **Email it to them** - whether Marzipan emails the code to the recipient
@@ -35,10 +38,45 @@ Turn **Email it to them** off to record who the voucher is for and hand the code
 A voucher with a **Send it on** date in the future sits at `Unclaimed` until that morning, when the email goes out and it becomes `Still redeemable`. It can't be parked more than a year ahead.
 </Note>
 
+## Issuing in bulk
+
+To issue many identical codes at once, click the arrow beside **Issue voucher** and choose **Bulk issue**. Bulk-issued codes aren't named or emailed to anyone: you download them once they're issued, ready to print or pass on.
+
+<Frame>
+<img src="https://marzipan-cloud.b-cdn.net/0/docs/gift-vouchers/bulk-issue-vouchers.png" alt="The Bulk issue vouchers panel" />
+</Frame>
+
+- **Voucher product** - optional. Pick one of your [voucher products](/gift-vouchers/products) to fill in its market, expiry and what it can be spent on. The codes are recorded against it.
+- **Market** - which market the vouchers belong to. Only shown when you sell in more than one market.
+- **Amount each** - what each voucher is worth
+- **How many** - up to 500 at a time
+- **Valid from** - the date the codes can first be spent. Leave blank and they can be spent straight away. Expiry counts from this date.
+- **Expiry** - how long they last, defaulting to your shop policy
+- **Spendable on** - an optional restriction, as on a single voucher
+- **Why** - required, such as `Cards for the Christmas market`. Kept with the batch and every voucher in it.
+
+Click **Issue vouchers** (it shows the number, such as **Issue 200 vouchers**) to create them. Every code gets its own balance and ledger entry, and its activity says it came from a bulk issue.
+
+### Valid from
+
+A code with a **Valid from** date in the future shows as `Not yet valid` and is refused at checkout until that day starts, at midnight in the market's timezone. Use it to hand out cards ahead of an event or a launch without them being spendable early.
+
+### Batches and downloading the codes
+
+Each bulk issue is a **batch**. The five most recent are listed under **Recent batches** in the same menu as **Bulk issue**; click one to filter the list to it. Older batches are in the **Batch** filter on the list, where you can tick several at once.
+
+With the list filtered to one or more batches, use **Export** to download their codes as a CSV, with each code's value, live balance, currency, status, valid-from and expiry dates. Each download is recorded against the batch.
+
+A bulk-issued voucher's detail page shows the **Batch** it belongs to, linking back to the rest of it.
+
+<Tip>
+If a box of cards goes missing, filter to its batch, tick the vouchers and [void them in bulk](/gift-vouchers/overview#voiding-in-bulk).
+</Tip>
+
 ## Permissions
 
-Issuing a voucher needs the **Issue vouchers** permission. Viewing them needs **View vouchers**, and voiding, adjusting or resending needs **Edit vouchers**. See [Roles](/settings/roles-and-team).
+Permissions for vouchers are in the **Vouchers** group of a role. Issuing a single voucher needs **Issue**, and bulk issuing needs the separate **Bulk Issue**, which also covers batches, exports and voiding in bulk. Owners and admins have **Bulk Issue** by default, as do existing roles that could already edit vouchers. Viewing vouchers needs **View**, and voiding, adjusting or resending one needs **Edit**. See [Roles](/settings/roles-and-team).
 
 <Warning>
-An issued voucher is money. It's created immediately, appears in your [liability report](/insights/gift-vouchers), and can't be deleted, only [voided](/gift-vouchers/details#void-a-voucher).
+An issued voucher is money. It's created immediately, appears in your [liability report](/insights/gift-vouchers), and can't be deleted, only [voided](/gift-vouchers/details#void-a-voucher). A bulk issue creates spendable value for every code straight away, and is recorded against your name.
 </Warning>

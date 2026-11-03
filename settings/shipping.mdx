@@ -1,7 +1,7 @@
 ---
 title: 'Shipping'
 sidebarTitle: 'Shipping'
-description: 'Set up shipping methods, rates, and delivery zones.'
+description: 'Set up shipping methods, rates, delivery zones and postcode lists.'
 ---
 
 Shipping methods control how much your customers pay for delivery and where each option is available.
@@ -30,30 +30,54 @@ The **Method** type can be one of:
 
 ### Custom rate bands
 
-A **Custom rate** method works out the charge from **bands**. First choose how bands are measured:
+A **Custom rate** method works out the charge from **Bands**. First choose a **Custom rate type**:
 
-- **Weight based (kg)** - Bands are based on the order's total weight
-- **Volume based (number of items)** - Bands are based on the number of items
+- **Weight based** - Bands are based on the order's total weight, in kg
+- **Volume based** - Bands are based on the number of items
 
-Then add rows of **From** / **To** / **Amount**. Set the last row's **To** to **Unlimited** to cover everything above the previous band.
+Then add rows of **From** / **To** / **Amount**. Leave the last row's **To** empty (it reads **Unlimited**) to cover everything above the previous band.
 
 ## Countries and zones
 
-Select the **countries** a method applies to, and optionally restrict it to specific **zones**. Rates apply based on the customer's postcode.
+Under **Countries & Zones**, select the countries a method applies to, and optionally restrict each one to specific **zones** or to your own list of postcodes. If you don't select any countries, the method applies to all countries.
 
-Marzipan includes the following built-in zones:
+Marzipan includes the following built-in zones, matched from the customer's postcode:
 
 | Country | Zones |
 |---------|-------|
 | **UK** | UK Mainland, Scottish Highlands & Islands, Northern Ireland, Isle of Man, Channel Islands |
 | **South Africa** | Major Cities, Remote Areas |
 
+### Custom postcodes
+
+To offer a method only to certain postcodes, such as local delivery, tick **Custom postcodes** under the country and list the postcodes it covers, one per line:
+
+- **Wildcards** - use `*` for the rest of the postcode. `RH12 *` covers the whole RH12 district, and `RH13 0*` covers only the RH13 0 sector.
+- **Exact postcodes** - such as `RH12 1AB`
+- **Numeric ranges** - such as `90210...99000`, for countries with numeric postcodes
+
+UK postcodes keep the space before the last three characters, so `RH1 *` covers RH1 only and not RH13. A pattern typed without a space, such as `RH130*`, is compared with the spaces taken out.
+
+The list is tidied when you save, and anything that isn't a valid pattern is refused by name. On the shipping methods list, a method with a list shows a badge such as **3 postcodes**; hover over it to see them.
+
+<Note>
+On one country, zones and postcodes are either/or: an address matching any ticked zone or any listed postcode can use the method. Ticking **Custom postcodes** with nothing listed is refused rather than covering the whole country.
+</Note>
+
+Like a zone, a postcode list counts as a more specific match than the whole country, so when an address matches a method limited to its zone or postcode, whole-country delivery methods are hidden for it. Pickup methods are always still offered.
+
+## Fulfil from
+
+With location-based [inventory](/settings/inventory) on, **Fulfil from** sets the location that stock for orders using this method is checked against and taken from. This is how a collection point takes its stock from the shop it's collected at. Leave it on **Use inventory rules** to use your inventory rules, the market's location, or your default location.
+
 ## Conditions
 
 You can gate when a method is offered.
 
 - **Minimum order value** - Require a minimum order value for the method to be available. This is measured on the **goods total after discounts**: the subtotal minus any discount, with no shipping and no tax.
-- **Cart conditions** - Restrict a method to carts that only contain items from certain collections
+- **Cart conditions** - Restrict a method to carts that:
+  - **Must only contain item/s in one of following collections**, or
+  - **Must only contain items of the following types** - **Subscription**, **Subscription Renewal**, **Physical** or **Bundle**
 
 <Note>
 A discount counts against the minimum, so what the customer pays for the goods is what earns free shipping. The shipping charge itself is never counted, which would otherwise let the rate being charged close the gap towards removing it.
