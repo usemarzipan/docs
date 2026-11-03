@@ -19,78 +19,151 @@ To open an event:
 
 The event detail screen is organised into tabs:
 
-- **Overview** - tickets sold, revenue and waitlist figures
+- **Overview** - tickets sold, revenue, the tickets panel and the event's details
 - **Attendees** - a table of everyone booked on
-- **Activity** - the history of actions on the event
-- **Waitlist** - position, name, tickets and status
+- **Activity** - the history of actions and notes on the event
+- **Waitlist** - everyone waiting for a ticket, and the offers made to them. Shown when the waitlist is enabled.
 
 <Note>
 For a [recurring event](/events/recurring), these tabs belong to a single **date**. The series page shows its dates instead. See [Recurring events](/events/recurring#the-series-and-its-dates).
 </Note>
 
+## Actions menu
+
+The **Actions** menu in the top-right corner offers:
+
+- **Edit event** - open the event's edit page. On a date of a recurring event this reads **Edit all occurrences**.
+- **Cancel event**, or **Cancel this occurrence** on a date of a recurring event - see [Cancelling an event](/events/cancelling)
+- **Reinstate event** or **Reinstate date** - put a cancelled event or date back on sale
+- **View parent event** - on a date of a recurring event, open the series
+
+## Overview
+
+The top of the **Overview** tab shows:
+
+- **Tickets Sold** - out of the event's capacity
+- **Revenue** - what was actually charged for the event's tickets, so tickets bought at a subscriber price, on sale or before a price change count at what the customer paid. An unpaid checkout isn't counted.
+- **Outstanding** - deposit balances still to be paid
+- **Checked In**
+- **Waitlist**
+
+Tickets bought with a deposit count as sold, and their balances count towards **Outstanding**.
+
+### Tickets panel
+
+The **Tickets** panel shows where the event's seats stand:
+
+- **Price** - the ticket price, with the **Deposit** beneath it on a deposit event
+- **Total** - the capacity, or `Unlimited`
+- **Sold** - tickets sold, including those paid by deposit
+- **Waitlist** - the number of tickets wanted by everyone on the waitlist, rather than the number of people
+- **Available** - what the public can buy now. This is the same figure your storefront uses, so seats being held for the waitlist aren't counted. See [Waitlist](#waitlist).
+- **Per order** - the most tickets one customer can buy in a single order, when set
+
+**Available** isn't shown for an event with unlimited tickets.
+
 ## Attendees
 
-The **Attendees** tab shows a table of everyone booked on to the event. Columns include:
+The **Attendees** tab shows a table of everyone booked on to the event, with these columns:
 
 - **Customer**
 - **Tickets**
 - **Price**
-- **Deposit/balance**
-- **Order**
-- **Checked-in**
+- **Date**
 - **Status**
 
-You can filter the table by **status**.
+You can search by name, email or order, filter the table by **Status** (Confirmed, Checked In, Cancelled or Waitlist) or by **Number of tickets**, and sort by name, purchase date or number of tickets.
 
 ### Exporting attendees
 
-Click **CSV export** to download the attendees table as a CSV file.
+Click **Export**, choose the columns you want and click **Download** to download the attendees as a CSV file.
 
 ### Bulk check-in
 
-Select attendees in the table to **bulk check-in** everyone at once.
+Select attendees in the table and click **Check in** to check them all in at once.
 
-### Attendee actions
+### Attendee panel
 
-From an attendee's panel you can:
+Click an attendee to open their panel. It shows their details, the **Order** the ticket came from and any **Balance payment** order, payment information, guest tickets, pinned notes and their customer stats.
 
-- **Check in** the attendee
-- **Resend the ticket email**
-- **Request balance payment** - for deposit bookings with an outstanding balance
-- **Cancel or refund** the booking
+From the panel you can:
 
-The ticket links back to its originating order.
+- **Check In** the attendee. For a booking with guests, use **Check in all** or check in just the lead attendee.
+- **Request Payment** - for a deposit booking with a balance still due
+- **View Profile** - open the customer, from the **Actions** menu
+- **Resend Ticket** - send the ticket email again, from the **Actions** menu. On a cancelled ticket this reads **Resend Cancellation**.
+- **Cancel Ticket** - cancel the booking, from the **Actions** menu. See below.
+
+### Cancelling tickets
+
+**Cancel Ticket** opens a dialog where you:
+
+1. Choose which tickets to cancel, for a booking with guests
+2. Choose whether to **Return ticket to inventory**, so the seat can be sold again or offered to the waitlist
+3. Choose a refund: **No refund**, **Full refund** or a **Custom amount**
+4. Optionally give a **Reason for cancellation**
+
+The refund is capped at what was actually paid for those seats, less any share of an order discount, rather than today's ticket price. The purchaser is notified.
+
+<Note>
+Cancelling an order cancels its event tickets too, returning the seats to the event and offering them to anyone on the waitlist.
+</Note>
 
 ## Tickets and QR check-in
 
-Ticket emails include a **QR code**. At the door, open the QR scanner in the Marzipan app and scan each attendee's code to check them in.
+Ticket emails include a **QR code** for each ticket. To check people in at the door:
+
+1. Open the event on a phone or tablet
+2. Tap **Check In** at the top of the page to open the camera scanner
+3. Scan each attendee's QR code
+
+The scanner says straight away if a ticket can't be let in, for example because it has already been checked in, is for a different event or date, or has been cancelled. You can also check attendees in from the Marzipan mobile app.
 
 <Tip>
 You can also check attendees in from the attendees table, either individually or with **bulk check-in**.
 </Tip>
 
+<Note>
+The QR code is included in the default ticket email. If you've edited your own copy of the ticket email template, add the QR code merge tag to it yourself.
+</Note>
+
 ## Deposits and balances
 
-For bookings taken on a deposit, you can request or process the outstanding **balance payment** directly from the event, using **Request balance payment** on the attendee's panel.
+For bookings taken on a deposit, you can request the outstanding balance from the attendee's panel using **Request Payment**.
 
 Deposits are configured when you create the event. See [Create](/events/create#deposits).
 
 ## Waitlist
 
-The **Waitlist** tab shows everyone waiting for a ticket:
+The **Waitlist** tab lists the people still waiting first, in queue order, with each one's **Position**, **Name**, **Email**, **No. of Tickets** and **Date Added**. Beneath them, an **Offered** section lists the people who have been offered seats, in the order the offers were made.
 
-- **Position**
-- **Name**
-- **Tickets**
-- **Status**
+<Frame>
+<img src="https://marzipan-cloud.b-cdn.net/0/docs/events/waitlist-tab.png" alt="Waitlist tab showing the queue and the Offered section" />
+</Frame>
 
-You can **add** and **remove** entries.
+You can **Add to Waitlist** once the event is sold out, and remove an entry with its bin icon.
 
-For a [recurring event](/events/recurring), each date keeps its own waitlist, numbered from 1. A customer can wait on **more than one date** of the same event. When a seat frees up on a date, the queue for that date is offered it, and raising a date's capacity offers the new seats to that date's queue.
+### How seats are offered
+
+When a seat frees up because a ticket is cancelled or you raise the capacity, the people waiting are offered it automatically, in queue order. Each person offered seats gets an email with a link to claim them.
+
+Use **Offer free seats** to offer seats that came free any other way. It offers every free seat that isn't already on an open offer, in queue order, without skipping someone who wants more seats than are free. Pressing it again won't offer the same seats twice.
+
+An offer stays open for the **Promotion expiration time** set under **Settings > Events**, 24 hours by default. If it isn't claimed in time, the seats go to the next person.
+
+### Seats held for the waitlist
+
+While anyone is still waiting, every free seat is held for the waitlist, so the public can't buy them on your storefront and your waitlist isn't jumped. Once nobody is left waiting, only the seats on open offers are held, and any other free seats go back on sale.
+
+As soon as someone claims an offer and pays, their seats count as sold and stop being held.
 
 <Note>
-Someone claiming a waitlist place gets a ticket for the date they were waiting on. A date that has since sold out can't be claimed into.
+A subscriber claiming a waitlist offer pays their subscriber price, even if they claim without logging in, as long as the email on their waitlist entry matches their account.
 </Note>
+
+### Waitlists on recurring events
+
+For a [recurring event](/events/recurring), each date keeps its own waitlist, numbered from 1. A customer can wait on **more than one date** of the same event. Someone claiming a waitlist place gets a ticket for the date they were waiting on, and a date that has since sold out can't be claimed into.
 
 ## Event Insights
 
