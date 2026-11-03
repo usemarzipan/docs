@@ -1,6 +1,6 @@
 ---
 title: 'Cart'
-description: "The Cart component displays the user's cart."
+description: 'The Cart component displays the shopper''s cart.'
 ---
 
 ### Code
@@ -32,13 +32,23 @@ Defaults to `/shop`
 
 #### Free Shipping Notification
 
-The cart can display a progress message showing how much more a customer needs to spend to qualify for free shipping. This is configured in your [web component settings](/web-components/customisation#free-shipping-notification) and includes a customisable message with an `{amount}` placeholder and per-market display thresholds.
+The cart can display a progress message showing how much more a customer needs to spend to qualify for free shipping. This is configured in your [web component settings](/web-components/customisation#free-shipping-notification), with a display threshold and a message for each market. Use `{amount}` in the message for what's left to spend.
 
 The amount remaining is measured on the goods total after discounts, matching how the [shipping method's minimum order value](/settings/shipping#conditions) is applied. The banner is hidden once there's nothing left to add, so it never tells a customer they're £0.00 away.
 
 #### Checkout Requirements
 
 If you've set a [minimum item count or full-case requirement](/settings/cart-and-checkout#checkout-requirements), the cart tells the customer what's missing and won't let them continue until it's met. A customer who reaches checkout below the minimum is sent back to the cart.
+
+#### Quantities
+
+Each line has a quantity stepper. It stops at a product's per-customer limit and says **Max** followed by the number **per customer** once it gets there.
+
+A Fixed [package](/subscriptions/packages) is one line in the cart, and its stepper changes how many bottles it holds, between the package's minimum and maximum. Those bottles count towards the cart's item total and any [checkout requirements](#checkout-requirements).
+
+#### Items Removed by a Market Change
+
+When a shopper switches market and something in their basket isn't sold in the new one, it's taken out, and both the market switcher and the cart say what went (see [how a customer's market is chosen](/settings/markets#how-a-customers-market-is-chosen)). The cart's note stays until the basket changes. The wording is yours to set under [Item Removed on Market Change](/web-components/customisation#item-removed-on-market-change).
 
 #### Related Products
 
@@ -70,6 +80,30 @@ The containing `<div>` around the product image.
 
 <ResponseField name="--cart-shopping-link">
 The "continue shopping" link element.
+</ResponseField>
+
+<ResponseField name="--cart-quantity-container">
+The quantity stepper on a line.
+</ResponseField>
+
+<ResponseField name="--cart-quantity-minus">
+The stepper's minus button.
+</ResponseField>
+
+<ResponseField name="--cart-quantity-plus">
+The stepper's plus button.
+</ResponseField>
+
+<ResponseField name="--cart-quantity-value">
+The quantity shown between the stepper's buttons.
+</ResponseField>
+
+<ResponseField name="--cart-item-billing-frequency">
+How often a subscription line is billed.
+</ResponseField>
+
+<ResponseField name="--free-shipping-banner">
+The free shipping notification.
 </ResponseField>
 
 <ResponseField name="--empty-cart-message">

@@ -40,11 +40,21 @@ The slug for the collection to display products from.
 <ResponseField name="add-to-cart-text">
 The text to display on the "add to cart" button.
 
-Defaults to `Add to Cart`
+Defaults to the **Add to Cart Button** label (`Add to Cart`)
+</ResponseField>
+<ResponseField name="buy-options-text">
+The text on the button a card shows instead of "add to cart" when its product has options to choose.
+
+Defaults to the **See Options Button** label (`See options`)
+</ResponseField>
+<ResponseField name="upsell-popup-style">
+How the options chooser opens on this grid: `modal` or `anchored`.
+
+Defaults to the **Popup Style** setting on the Collection tab
 </ResponseField>
 
-<ResponseField name="hide-add-to-cart-button" type="boolean">
-Whether to hide the "add to cart" button for the product.
+<ResponseField name="hideaddtocartbutton" type="boolean">
+Whether to hide the "add to cart" button on every product. Written as one word, with no hyphens.
 
 Defaults to `false`
 </ResponseField>
@@ -56,12 +66,12 @@ Defaults to `8`
 <ResponseField name="redirect-to-cart" type="boolean">
 Whether to redirect to the cart page after adding the product to the cart.
 
-Defaults to `false`
+Defaults to the **After Adding to Cart** setting on the Collection tab
 </ResponseField>
 <ResponseField name="show-cart-quantity" type="boolean">
 Whether to show the quantity field for the product.
 
-Defaults to `false`
+Defaults to the **Show Quantity Selector** setting on the Collection tab
 </ResponseField>
 <ResponseField name="show-collection-name" type="boolean">
 Whether to show the name of the collection.
@@ -71,7 +81,7 @@ Defaults to `true`
 <ResponseField name="show-more-link" type="boolean">
 Whether to show a "show more" link.
 
-Defaults to `false`
+Defaults to the **Show "More" Link** setting on the Collection tab
 </ResponseField>
 <ResponseField name="show-more-text">
 The text to display on the "show more" link.
@@ -81,7 +91,7 @@ Defaults to `More`
 <ResponseField name="show-description" type="boolean">
 Whether to show the product description.
 
-Defaults to `false`
+Defaults to the **Show Description** setting on the Collection tab
 </ResponseField>
 <ResponseField name="sale-badge-text">
 The text to display on sale price badges.
@@ -101,7 +111,17 @@ Defaults to `for subscribers`
 <ResponseField name="show-subscriber-pricing" type="boolean">
 Whether to show subscriber pricing information.
 
+Defaults to the **Show Subscriber Pricing** setting on the Collection tab
+</ResponseField>
+<ResponseField name="show-event-date" type="boolean">
+Whether to show the date under an event's name.
+
 Defaults to `false`
+</ResponseField>
+<ResponseField name="columns-mobile" type="number">
+Columns on a phone. `columns-tablet`, `columns-desktop` and `columns-large` set the wider breakpoints.
+
+Defaults to the **Grid Columns** setting on the Collection tab
 </ResponseField>
 
 
@@ -185,6 +205,12 @@ The "show more" link element.
 
 You can choose from four product card styles in your [web component settings](/web-components/customisation#product-cards): **Minimal** (clean, no border), **Bordered** (subtle border), **Elevated** (shadow effect), or **Filled** (solid background). You can also control text alignment and image corner radius.
 
+**Image Shape** sets how tall each card's image is, from **Square** to **Tall**, and **Image Fit** chooses between showing the whole image (**Fit**, best for bottle shots) and cropping it to fill the space (**Fill**, best for photos). The images fill the card's width on every screen size.
+
+#### Grid Spacing
+
+**Grid Spacing** sets the space between products, from **Tight** to **Spacious**. It's set with the [grid columns](/web-components/customisation#background) on the Collection tab, and related products on the product page follow the same spacing, image shape and fit.
+
 #### Background Colour
 
 Set a custom background colour for your collection pages from [web component settings](/web-components/customisation#background).
@@ -202,5 +228,7 @@ A product with upsells shows a **See options** button rather than an add-to-cart
 Each option carries a short label, such as `Case of 6`, set on the product. Options that are out of stock report their own availability, so a shopper can't pick a sold-out case and find out at the cart.
 
 The button's wording and the label used for the product's own row are set on the [Labels tab](/web-components/customisation#labels).
+
+A product with a required [text option](/products/bundles-and-options#options) also shows the **See options** button, linking to its product page, since a card has nowhere to type. Quantity steppers stop at a product's per-customer limit.
 
 The collection component uses the [add to cart](./add-to-cart) component to display the "add to cart" button for each product. If you have set styles for the add to cart component they will be applied to the "add to cart" button with this component.

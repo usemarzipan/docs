@@ -1,6 +1,6 @@
 ---
-title: "Add to Cart"
-description: "The Add to Cart component is a call to action button that adds a product to a user's cart."
+title: 'Add to Cart'
+description: 'The Add to Cart component is a call to action button that adds a product to the cart.'
 ---
 
 ### Code
@@ -51,13 +51,27 @@ Defaults to `Add to cart`
 <ResponseField name="product-type" type="string" required>
   The product type of the product being added to the cart.
 
-  One of `physical`, `bundle`, `event`, `subscription`.
+  One of `physical`, `bundle`, `event`, `subscription`, `voucher`.
+
+  A `voucher` at a fixed price adds straight to the cart. The amount chooser opens only when there's an amount to pick or one to type.
 
 Defaults to `physical`
 </ResponseField>
 
 <ResponseField name="quantity" type="number">
   The quantity of the product to add to the cart.
+
+Defaults to `1`
+</ResponseField>
+
+<ResponseField name="max-per-customer" type="number">
+  The most one customer may buy. The quantity stepper stops there and says **Max** followed by the number **per customer**.
+
+  Leave it off and the button looks up the product's own per-customer limit.
+</ResponseField>
+
+<ResponseField name="min-quantity" type="number">
+  The fewest that may be added. The quantity starts here and the stepper won't go below it.
 
 Defaults to `1`
 </ResponseField>
@@ -144,8 +158,20 @@ The following parts are available to style the add to cart component:
   The `<div>` that contains the out of stock message.
 </ResponseField>
 
-<ResponseField name="--add-to-cart-quantity">
-  The quantity input field.
+<ResponseField name="--add-to-cart-quantity-container">
+  The quantity stepper.
+</ResponseField>
+
+<ResponseField name="--add-to-cart-quantity-minus">
+  The stepper's minus button.
+</ResponseField>
+
+<ResponseField name="--add-to-cart-quantity-plus">
+  The stepper's plus button.
+</ResponseField>
+
+<ResponseField name="--add-to-cart-quantity-value">
+  The quantity shown between the stepper's buttons.
 </ResponseField>
 
 <ResponseField name="--view-cart-button">
@@ -154,4 +180,12 @@ The following parts are available to style the add to cart component:
 
 <ResponseField name="--add-to-cart-subscription-required">
   The "Members only" message container when product is subscriber-only
+</ResponseField>
+
+<ResponseField name="--add-to-cart-waitlist-button">
+  The waitlist button on a sold-out event.
+</ResponseField>
+
+<ResponseField name="--back-in-stock-button">
+  The back-in-stock button, when [Back in Stock Notifications](/web-components/customisation#product-behaviour) are on.
 </ResponseField>

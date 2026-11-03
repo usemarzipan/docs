@@ -11,23 +11,20 @@ These settings apply globally to all web components on your site. If you need mo
 
 ## Styling
 
-The Styling tab lets you set the colours, border radius, and other visual properties that all web components use by default.
+The Styling tab sets the colours, corner rounding and notifications that every web component uses by default.
 
 ### Brand Colours
+
+Each button colour has a second swatch, **Hover**, for the colour it changes to under the pointer.
 
 | Setting | Description |
 | :-------- | :------------ |
 | Primary button background | The main colour for buttons like "Add to Cart" and "Checkout" |
-| Primary button hover | The colour buttons change to when hovered |
 | Primary button text | Text colour on primary buttons |
-| Primary button text (hover) | Text colour on primary buttons when hovered |
 | Secondary button background | Background for secondary actions like "Continue Shopping" |
-| Secondary button hover | Hover state for secondary buttons |
 | Secondary button text | Text colour on secondary buttons |
-| Button border | Border colour for primary buttons |
-| Button border hover | Border colour for primary buttons on hover |
+| Primary button border | Border colour for primary buttons |
 | Secondary button border | Border colour for secondary buttons |
-| Secondary button border hover | Border colour for secondary buttons on hover |
 
 <Note>
 Your button colours and [corner radius](#border-radius) also brand the [payment page](/orders/payment-links#branding), which isn't part of your storefront. Backgrounds and text colours there are left as they are.
@@ -45,7 +42,8 @@ Your button colours and [corner radius](#border-radius) also brand the [payment 
 
 | Setting | Description |
 | :-------- | :------------ |
-| Page background | The background colour behind components |
+| Surface background | Cards, panels and modals |
+| Page background | What each component paints behind itself. Match it to your page so components don't sit on a white panel |
 | Card & loading background | Background for cards and loading placeholders |
 | Modal overlay | The semi-transparent overlay behind modals |
 | Primary borders | Main border colour for cards and inputs |
@@ -57,29 +55,31 @@ Your button colours and [corner radius](#border-radius) also brand the [payment 
 
 | Setting | Description |
 | :-------- | :------------ |
-| Success | Colour for success messages and icons (e.g. "Added to cart") |
-| Warning | Colour for warnings (e.g. low stock notices) |
-| Error | Colour for error messages (e.g. validation errors) |
-
-Each status colour has a corresponding background colour for message containers.
+| Success text/icon and background | Success messages (e.g. "Added to cart") |
+| Warning text/icon and background | Warnings (e.g. low stock notices) |
+| Error text/icon and background | Error messages (e.g. validation errors) |
 
 ### Badge Colours
 
+Under **Badges**, a background and a text colour for each kind of badge:
+
 | Setting | Description |
 | :-------- | :------------ |
-| Default badge | Background and text for standard badges |
-| Sale badge | Background and text for sale price badges |
-| Subscriber badge | Background and text for subscriber/member pricing badges |
+| Default badge | Standard badges |
+| Sale badge | Sale price badges |
+| Subscriber badge | Subscriber pricing badges |
 
 ### Account Accents
 
-These accent colours are used as highlights on the customer account page sections:
+Used as highlights in the customer account:
 
 | Setting | Description |
 | :-------- | :------------ |
-| Rewards icon | Accent colour for the rewards/loyalty section |
-| Profile icon | Accent colour for the profile section |
-| Subscriptions icon | Accent colour for the subscriptions section |
+| Rewards | Accent colour for the rewards section |
+| Profile | Accent colour for the profile section |
+| Subscriptions | Accent colour for the subscriptions section |
+| Rewards card background | The points card beside the subscriptions and orders lists |
+| Heading font | The font for account page headings, such as the greeting. Use a font your site already loads, or leave blank to use the component's own |
 
 ### Border Radius
 
@@ -88,23 +88,17 @@ Control how rounded corners appear across your components:
 - **Buttons and inputs** - Choose from Sharp, XS, SM, MD, LG, XL, 2XL, or Full (pill shape)
 - **Cards and containers** - Choose from Sharp, SM, MD, LG, XL, 2XL, 3XL, or Full
 - **Modals and popups** - The radius used for dialogs, drawers and the upsell option chooser
-- **Product image corners** - Set a separate radius for product images
+
+The corners of product images are set separately, with **Image Corners** on the [Collection tab](#product-cards).
 
 ### Add-to-Cart Notification
 
-The confirmation shown when a customer adds something to their cart without being redirected. See [After adding to cart](#product-behaviour).
+Under **Notifications**, the confirmation shown when a customer adds something to their cart without being redirected. See [After Adding to Cart](#product-behaviour).
 
 - **Style** - **Dark** or **Light**. Two fixed looks, so it stays readable over whatever your page puts behind it.
 - **Position** - Bottom centre, bottom left, bottom right, top centre, top left or top right
 
-Its corners follow the **Modals and popups** radius above.
-
-### Checkout Background
-
-Set separate background colours for the two panels in the checkout layout:
-
-- **Order summary (left)** - The background behind the order summary sidebar
-- **Checkout form (right)** - The background behind the customer details and payment form
+Its corners follow the **Modals and popups** radius above. The same notification tells a shopper when a market switch, or the delivery choice at checkout, has taken something out of their basket.
 
 ## Product
 
@@ -112,11 +106,26 @@ The Product tab controls how individual products are displayed in both mini and 
 
 ### Quick Attributes
 
-Display key product attributes (e.g. Size, Colour, Material) directly on the product card without customers needing to open the full product page.
+Display key product attributes (e.g. Size, Colour, Material) directly under the product name, without customers needing to open the full product page.
 
-- Toggle quick attributes on or off
-- Choose which attributes to display
-- Drag to reorder the attributes
+- **Enable Quick Attributes** - Toggle quick attributes on or off
+- **Attributes to Display** - Choose which attributes to show and drag to reorder them. Leave empty to show any attributes.
+
+### Product images
+
+Under **Image**, control how the product images are laid out and viewed on the full product page:
+
+- **Thumbnail position** - Show the other images down the **Side** of the main image, or along the **Bottom**. Either way the strip is held to the size of the main image and scrolls when there are more images than fit, with an arrow at each end showing there's more.
+- **Enable image overlay** - Let shoppers click the main image to view the larger images in a full-screen overlay
+
+A gallery can include videos as well as images. How they play is set on the [Video tab](#video).
+
+### Event display
+
+Under **Events**, choose how upcoming dates are shown on event product pages:
+
+- **Default view** - Show upcoming dates as a **List** or a **Calendar**
+- **Upcoming dates to show** - How many upcoming dates the list view displays (1–60)
 
 ### Accordion Sections
 
@@ -135,41 +144,35 @@ Configure which content sections appear on the full product page and in what ord
 
 Each section can be set to open or collapsed by default.
 
-### Product images
-
-Control how product images are displayed on the full product page:
-
-- **Thumbnail position** - Show thumbnails to the **side** of the main image or along the **bottom**
-- **Zoom / lightbox** - Toggle an image zoom and lightbox overlay so customers can view images full-screen
-
-### Event display
-
-For event products, choose how upcoming occurrences are presented:
-
-- **Default view** - Show occurrences as a **list** or a **calendar**
-- **Upcoming occurrences** - Set how many upcoming occurrences to show (1–60)
-
 ### Product behaviour
+
+Under **Options**:
 
 | Setting | Description |
 | :-------- | :------------ |
-| Show Subscriber Pricing | Whether to display subscriber/member pricing |
-| Show Quantity Selector | Whether to show a quantity picker |
 | Upsell Options | How a product with upsells offers them. **Boxes** show every price at once, a **Dropdown** takes less room |
-| Billing Frequency Options | How a subscription sold at more than one frequency offers the choice: **Boxes** or **Dropdown** |
+| Billing Frequency Options | How a subscription package sold at more than one frequency offers the choice: **Boxes** or **Dropdown** |
+| Purchase Option Selected First | On a product that can also be [subscribed to](/web-components/product#one-off-or-subscribe), which option the page opens on: **One-off** (the default) or **Subscribe** |
+| Back in Stock Notifications | Show a sign-up form for a notification when a product is out of stock |
+| Show Subscriber Pricing | Whether to display subscriber prices on product pages |
+| Show Quantity Selector | Whether to show a quantity picker |
 | After Adding to Cart | **Redirect** goes straight to the cart, **Notify** shows a short confirmation and leaves the shopper where they are, **Nothing** relies on the cart icon's count |
 
 <Note>
-Text labels such as Add to Cart, Sale badge and Subscriber badge now live on the [Labels](#labels) tab.
+Text labels such as Add to Cart, Sale badge and Subscriber badge live on the [Labels](#labels) tab.
 </Note>
 
 ## Collection
 
-The Collection tab controls how product grids appear.
+The Collection tab controls how product grids appear. Grid spacing, image shape and image fit also apply to related products on the product page.
 
 ### Background
 
-Set a background colour for collection pages.
+| Setting | Description |
+| :-------- | :------------ |
+| Collection background | A background colour for collection pages |
+| Grid Columns | How many columns to show on **Mobile** (1–2), **Tablet** (1–4) and **Desktop** (1–4) |
+| Grid Spacing | The space between products: **Tight**, **Normal** (the default), **Relaxed** or **Spacious** |
 
 ### Product Cards
 
@@ -179,53 +182,80 @@ Set a background colour for collection pages.
 | Product Background | The background behind each product card. Follows the collection background until you pick a colour here, and **Reset** goes back to following it. |
 | Text Alignment | Left-align or centre-align product card text |
 | Image Corners | Control the roundness of product image corners |
+| Image Shape | Images fill the card's width, and this sets their height: **Square**, **Tall**, **Portrait** (the default) or **Landscape** |
+| Image Fit | **Fit** shows the whole image, best for bottle shots. **Fill** crops it to cover the space, best for photos. **Fit** is the default |
 | Show Quantity Selector | Whether to show quantity pickers on product cards |
 
-### Collection Behaviour
+### Upsell chooser
+
+Under **Upsell/Frequency Options**, how a card lets shoppers choose between its upsells, or between the billing frequencies a subscription is sold at.
 
 | Setting | Description |
 | :-------- | :------------ |
-| Show Subscriber Pricing | Display subscriber/member pricing |
+| Popup Style | **Modal** centres the chooser over a dimmed page. **Anchored** floats it above the button, falling back to a bottom sheet on phones |
+| Popup Background | Follows the general background until you pick a colour |
+| Popup Border | Follows the general border colour until you pick a colour |
+| Selected Option Background | The highlight behind the option a shopper has chosen |
+| Selected Option Border | The outline around the option a shopper has chosen |
+
+The two selected option colours are also used on the product page's option rows and for the chosen side of **Myself**/**Someone else** and **Ship**/**Pickup** at checkout.
+
+### Collection Behaviour
+
+Under **Options**:
+
+| Setting | Description |
+| :-------- | :------------ |
+| Show Subscriber Pricing | Display subscriber pricing on product cards |
 | Show Description | Show product descriptions on cards |
 | Show "More" Link | Show a link to the full product page |
 | After Adding to Cart | **Redirect**, **Notify** or **Nothing**, as on the Product tab |
 
 <Note>
-Text labels such as Add to Cart, badges and the "More" link text now live on the [Labels](#labels) tab.
+Text labels such as Add to Cart, badges and the "More" link text live on the [Labels](#labels) tab.
 </Note>
 
 ## Labels
 
-The Labels tab consolidates the storefront text labels used across your components in one place. These previously lived under the Product and Collection tabs.
+The Labels tab holds the wording used across all web components: product pages, collection grids and the cart. Leave a field blank to use the default shown in it.
 
 | Setting | Description |
 | :-------- | :------------ |
-| Add to Cart text | Button text (default: "Add to Cart") |
-| Sale Badge text | Label on sale price badges (default: "Sale") |
-| Subscriber Badge text | Label on subscriber price badges (default: "Subscribers") |
-| Subscriber Price label | Text next to subscriber pricing (default: "for subscribers") |
-| Bundle text | Unit text for bundles (default: "bundle") |
+| Add to Cart Button | Button text (default: "Add to Cart") |
 | Shipment (singular) | What you call one subscription delivery in the customer account (default: "shipment") |
 | Shipment (plural) | The plural of the above, asked for separately so nothing has to guess at an s (default: "shipments") |
-| Waitlist Button text | Text for waitlist buttons on sold-out items |
-| Sales Closed text | Text shown when sales are closed |
-| Back in Stock Button text | Text for the back-in-stock button |
-| "More" Link text | Text for the link to the full product page |
+| See Options Button | Shown instead of Add to Cart on a card with options to choose, because the button opens a chooser rather than adding anything (default: "See options") |
 | Configure Button (pick and mix) | The button that opens a configurator rather than adding anything (default: "Configure") |
 | Base Option Label | Names the product's own row in the upsell chooser, beside options like "Case of 6" (default: "Single") |
 | Upsell Picker Heading | An optional heading above a product's upsell options. Leave blank for no heading at all. |
 | Frequency Picker Heading | The heading above the billing frequency options (default: "Delivery frequency") |
+| One-off or Subscribe Heading | Sits over the choice between buying a product once and subscribing to it (default: "How would you like it?") |
+| One-off Option Label | The row for buying it once (default: "One-off purchase") |
+| Subscribe Option Label | The row for subscribing, where there's one package to subscribe to. With several, each row carries the package's name (default: "Subscribe") |
+| Subscription Saving Note | What a subscribe row says it saves. `{percent}` is replaced with the package's discount (default: "Save \{percent\}%") |
+| Subscription Free Delivery Note | Added to a subscribe row when the package includes delivery (default: "Free delivery") |
+| Subscription Delivery Per Shipment | The checkout summary row for a package whose shipments go out on their own dates and are charged delivery as each one ships (default: "Delivery per shipment, charged when it ships") |
+| Subscription Delivery Included | The same row when the package includes delivery (default: "Delivery included with every shipment") |
+| Subscription Delivery Note | Under the summary when nothing in the order is sent today (default: "Nothing is sent today. Each shipment is charged delivery when it ships, at the rate at the time.") |
+| Sale Badge Text | Label on sale price badges (default: "Sale") |
+| Subscriber Badge Text | Label on subscriber price badges (default: "Subscribers") |
+| Subscriber Price Label | Text next to subscriber pricing, on product cards and on the product page's option rows (default: "for subscribers") |
+| Bundle Text | Unit text for bundles (default: "bundle") |
+| Waitlist Button Text | Text for waitlist buttons on sold-out items (default: "Join Waitlist") |
+| Sales Closed Text | Text shown when sales are closed (default: "Tickets no longer available") |
+| "More" Link Text | Text for the link to the full product page (default: "More") |
+| Back in Stock Button Text | Text for the back-in-stock button (default: "Notify me when available") |
 
 ### Subscription frequency wording
 
-Choose how subscription frequencies are described:
+**Subscription Frequency** chooses how subscription frequencies are described:
 
 - **Worded** - e.g. "quarterly"
 - **Interval** - e.g. "every 3 months"
 
 ## Cart
 
-The Cart tab controls the shopping cart component.
+The Cart tab controls the shopping cart and cart icon components.
 
 ### Container Styling
 
@@ -234,13 +264,23 @@ Add a background colour or border to the cart component to help it stand out on 
 - **Background** - Toggle on and select a colour
 - **Border** - Toggle on and select a border colour
 
+### Cart Icon
+
+The icon used wherever the cart is linked, checkout included. A page can still override it on the [cart icon](/web-components/cart-icon) tag itself.
+
+- **Cart icon** - **Bag**, **Bag, filled**, **Trolley** or **Trolley, filled**
+- **Show the item count** - Show the number of items beside the icon. Never shown on checkout.
+
 ### Free Shipping Notification
 
 Show a message in the cart telling customers how much more they need to spend to qualify for free shipping.
 
 - **Enabled** - Toggle the notification on or off
-- **Message** - Customise the message text. Use `{amount}` as a placeholder for the remaining amount (e.g. "Spend {amount} more for free shipping!")
-- **Display Threshold** - Set a minimum cart value per market/currency. The notification only appears when the cart value is below this threshold.
+- **Market Settings** - For each market, a display threshold and a message. The notification only appears when the cart value is below the threshold, and a market left blank never shows it. Use `{amount}` in the message for the remaining amount (e.g. "Spend \{amount\} more for free shipping!")
+
+### Item Removed on Market Change
+
+The message shown when a shopper switches market and something in their basket isn't sold in the new one, so it's taken out. Use `{product}` for the item's name and `{market}` for the market they switched to. Leave blank to use "\{product\} isn't available in \{market\}, so it has been removed from your basket."
 
 ### Related Products
 
@@ -265,12 +305,29 @@ The checkout uses a split-panel layout. You can set separate background colours 
 
 Control how your logo appears at the top of the checkout:
 
-- **Position** - Left, Centre, or Right
+- **Position** - Left, Center or Right
 - **Height** - Small, Medium, Large, or Extra Large
 
 ### Phone Field
 
 - **Require phone number** - When enabled, customers must enter a phone number to complete checkout
+
+### Checkout Section Labels
+
+Wording used across the checkout. Each falls back to its default when left blank.
+
+| Setting | Description |
+| :-------- | :------------ |
+| Who is this for | The question that opens the delivery step when [gifting](/settings/cart-and-checkout#gifting) is on (default: "Who is this for?") |
+| Myself option | (default: "Myself") |
+| Someone else option | Broader than "a gift", since it also covers sending something to your own office (default: "Someone else") |
+| Gift checkbox | Asked at the end of the delivery step once a customer says the order is for someone else. Ticking it adds a step for the message and timing (default: "This is a gift") |
+| Delivery method question | (default: "Delivery method") |
+| Ship option | Rename to "Deliver" if that reads better with your pickup wording (default: "Ship") |
+| Pickup option | Rename to "Collect" if that suits (default: "Pickup") |
+| Subscription explanation | Shown on the gift step when the order includes a subscription, explaining that an account is created for the recipient. Write `{date}` where the chosen date should appear |
+| Saved card message | Shown under the card form when the order includes a subscription, whose card is always kept for its renewals (default: "Your card will be saved to pay for your subscription as it renews. You can change it in your account at any time.") |
+| End of term question | Sits over the choice of [how a gift subscription is paid for](/subscriptions/gifts#what-the-giver-chooses), asked with the billing details (default: "When the gift subscription expires") |
 
 ### Newsletter
 
@@ -289,7 +346,7 @@ Marzipan records the wording each customer was actually shown, and whether the b
 
 ### Create an Account
 
-Guests are always offered a password field on the order confirmation, so the order they just placed becomes an account. Only the wording is configurable. Anyone who already has a password never sees it.
+Under **Customer Accounts**. Guests are always offered a password field on the order confirmation, so the order they just placed becomes an account. Only the wording is configurable. Anyone who already has a password never sees it.
 
 - **Label** - The only line of copy in the block. Leave blank to use "Enter a password to create an account".
 - **Button** - Leave blank to use "Create account".
@@ -302,6 +359,10 @@ Asks the referral question again on the confirmation page when the customer skip
 
 Needs the [referral sources](#referral-sources) below to be configured, and it never appears on an order that already has an answer.
 
+### Card for Future Deliveries
+
+Shown at the payment step when a [voucher](/gift-vouchers/redeeming) covers a repeating order in full. Nothing is charged, but a card is taken for the deliveries after the first one, and this **Note** says why. Leave blank to use the default wording, which is worth changing if you call it something other than an order.
+
 ### Reward Points Banner
 
 The band on the order confirmation showing what the order earned. It only appears when rewards are switched on.
@@ -309,20 +370,20 @@ The band on the order confirmation showing what the order earned. It only appear
 - **Banner colour**
 - **Text colour**
 - **Icon colour**
-- **Corners**
+- **Corners** - Square, Slightly rounded, Rounded or Pill
 
 A preview shows how the band will look as you change it.
 
 ### Referral Sources
 
-Ask customers how they heard about you during checkout. This data feeds into your Attribution insights.
+Ask customers how they heard about you during checkout and registration. This data feeds into your Attribution insights.
 
-- **Enable dropdown** - Show or hide the "How did you hear about us?" question
+- **Enable dropdown** - Replace the free-text "How did you hear about us?" field with a dropdown of your own options
 - **Allow "Other" option** - Let customers type a free-text answer
-- **Source options** - Add, remove, and reorder options. Each source can include:
+- **Dropdown options** - Add, remove, and reorder options. Each source can include:
   - A display label
   - An auto-tag (automatically applied to the customer record)
-  - An optional follow-up question (free text or dropdown) for more detail
+  - An optional follow-up question (text input or dropdown) for more detail
 
 ## Account
 
@@ -332,10 +393,11 @@ The Account tab controls the customer account component.
 
 Display a product grid within the customer account encouraging customers to start a subscription.
 
-- **Enable** - Toggle the upsell section on or off
+- **Enable Subscription Upsell** - Toggle the upsell section on or off
 - **Product Collection** - Choose which collection to display products from
 - **Heading** - Customise the section heading
 - **Message** - Add a message encouraging customers to subscribe
+- **Product Details** - How much of each product the upsell shows: its **Description** and a **View all link**
 - **Grid Columns** - Set the number of columns for mobile, tablet, and desktop views
 
 ### Account Copy
@@ -389,3 +451,18 @@ Explanations shown to a customer managing a subscription.
 <Note>
 Write `{shipment}` and `{shipments}` rather than your own word for a delivery, and they are replaced with the [shipment labels](#labels) you set. That way a shop that renames a shipment later does not end up with a message contradicting the rest of the account. A token that is not recognised is left on screen exactly as you typed it, so a typo is visible rather than quietly eating half a sentence.
 </Note>
+
+## Video
+
+The Video tab sets how videos in your product galleries play. Changes apply to every video, including ones already uploaded.
+
+| Setting | Description |
+| :-------- | :------------ |
+| Player colour | Follows your primary button colour unless you choose one |
+| Controls | What the player shows: Large play button, Play/pause, Progress bar, Current time, Duration, Mute, Volume, Captions, Settings, Picture in picture, AirPlay, Chromecast and Fullscreen. Turn them all off for a video that just plays |
+| Compact controls | A slimmer control bar that covers less of the video. On by default |
+| Remember position | Pick up where the shopper left off when they come back |
+| Show heatmap | Show which parts of the video get watched most on the progress bar |
+| Player language | The language of the player's menus (default: English) |
+
+See [Image Gallery](/web-components/product#image-gallery-full-view) for how videos appear on the product page.

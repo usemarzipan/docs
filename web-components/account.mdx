@@ -37,11 +37,11 @@ Each live subscription is a card carrying its status, when the next shipment is 
 - **Move a delivery** - push the next one back a week, a fortnight, or to a date of their own, counted from the day it is currently due. A delivery cannot be moved past the one after it, and only that shipment moves: the payment and the shipments after it keep their dates
 - **Send now** - charge and send the next shipment immediately, offered once it is within a fortnight and there is something scheduled
 - **Change frequency** - where the package sells at more than one billing frequency, using [your own wording](/web-components/customisation#subscription-frequency-wording) for it. Only the frequencies the package sells are accepted
-- **Change package** - on the Plan card, where the package lists others its subscribers [can switch to](/subscriptions/packages#switching-package). Each is shown with its image, its price per shipment and how that compares with what they pay now, and the chooser says when the new package starts and whether their frequency will change
+- **Change package** - on the Plan card, where the package lists others its subscribers [can switch to](/subscriptions/packages#switching-package). Each is shown with its image, its price per shipment and how that compares with what they pay now, and the chooser says when the new package starts and whether their frequency will change. Where a variable package has a shipment before that date, the subscriber chooses between **Wait until** the start date, which is picked to begin with and changes nothing before then, and **Start with the** earlier shipment, which says what is charged and when
 - **Extras** - add items to the next shipment, or to every shipment. Extras close while a shipment is being prepared
 - **Pick & mix selections** - unless disabled with the prop below
-- **Payment and delivery details** - the card on file and where the shipments go
-- **Cancel** - always available, after asking why and offering whatever answers it
+- **Payment and delivery details** - the card on file and where the shipments go. A package that never sends anything, such as a local membership, shows no delivery or collection details
+- **Cancel** - after asking why and offering whatever answers it, such as a cheaper package for a subscriber who finds it too expensive, or a different one for someone who doesn't enjoy it. Backing out of an offer returns to the others. Inside a package's minimum term there is no cancel button, and the subscriber is told the date they **can cancel from** instead
 
 Packages with dated shipments also show what is **coming up**, and a shipment further out can be skipped from there.
 
